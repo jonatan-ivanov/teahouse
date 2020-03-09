@@ -6,3 +6,5 @@ org.junit.jupiter:junit-jupiter-api:5.6.0
 org.junit.platform:junit-platform-commons:1.6.0
 org.junit:junit-bom:5.6.0
 org.opentest4j:opentest4j:1.2.0
+org.springframework.boot:spring-boot-dependencies:2.2.5.RELEASE
+org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR3

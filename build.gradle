@@ -1,4 +1,8 @@
+ext.springBootVersion = '2.2.5.RELEASE'
+ext.springCloudVersion = 'Hoxton.SR3'
+
 task clean
+task bootRun
 
 allprojects {
     apply plugin: 'idea'
@@ -10,6 +14,15 @@ allprojects {
 }
 
 subprojects {
+    buildscript {
+        repositories {
+            mavenCentral()
+        }
+        dependencies {
+            classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+        }
+    }
+
     apply plugin: 'java'
 
     sourceCompatibility = 13
@@ -23,10 +36,14 @@ subprojects {
     }
 
     dependencies {
-        implementation platform('org.junit:junit-bom:5.+')
+        ['annotationProcessor', 'compileOnly', 'implementation'].each { conf ->
+            dependencies.add(conf, platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
+            dependencies.add(conf, platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"))
+        }
+        testImplementation platform('org.junit:junit-bom:5.+')
 
-        annotationProcessor 'org.projectlombok:lombok:1.+'
-	    compileOnly 'org.projectlombok:lombok:1.+'
+        annotationProcessor 'org.projectlombok:lombok'
+        compileOnly 'org.projectlombok:lombok'
 
         testImplementation 'org.junit.jupiter:junit-jupiter-api'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
