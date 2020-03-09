@@ -66,6 +66,7 @@ org.springframework.boot:spring-boot-test-autoconfigure:2.2.5.RELEASE
 org.springframework.boot:spring-boot-test:2.2.5.RELEASE
 org.springframework.boot:spring-boot:2.2.5.RELEASE
 org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR3
+org.springframework.data:spring-data-releasetrain:Moore-SR5
 org.springframework.hateoas:spring-hateoas:1.0.3.RELEASE
 org.springframework.plugin:spring-plugin-core:2.0.0.RELEASE
 org.springframework:spring-aop:5.2.4.RELEASE

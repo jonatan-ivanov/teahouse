@@ -28,7 +28,9 @@ org.apache.tomcat.embed:tomcat-embed-el:9.0.31
 org.apache.tomcat.embed:tomcat-embed-websocket:9.0.31
 org.apache.tomcat:tomcat-annotations-api:9.0.31
 org.apiguardian:apiguardian-api:1.1.0
+org.aspectj:aspectjrt:1.9.5
 org.assertj:assertj-core:3.13.2
+org.atteo:evo-inflector:1.2.2
 org.hamcrest:hamcrest:2.1
 org.hdrhistogram:HdrHistogram:2.1.11
 org.hibernate.validator:hibernate-validator:6.0.18.Final
@@ -52,6 +54,7 @@ org.springframework.boot:spring-boot-actuator:2.2.5.RELEASE
 org.springframework.boot:spring-boot-autoconfigure:2.2.5.RELEASE
 org.springframework.boot:spring-boot-dependencies:2.2.5.RELEASE
 org.springframework.boot:spring-boot-starter-actuator:2.2.5.RELEASE
+org.springframework.boot:spring-boot-starter-data-rest:2.2.5.RELEASE
 org.springframework.boot:spring-boot-starter-hateoas:2.2.5.RELEASE
 org.springframework.boot:spring-boot-starter-json:2.2.5.RELEASE
 org.springframework.boot:spring-boot-starter-logging:2.2.5.RELEASE
@@ -64,6 +67,11 @@ org.springframework.boot:spring-boot-test-autoconfigure:2.2.5.RELEASE
 org.springframework.boot:spring-boot-test:2.2.5.RELEASE
 org.springframework.boot:spring-boot:2.2.5.RELEASE
 org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR3
+org.springframework.data:spring-data-commons:2.2.5.RELEASE
+org.springframework.data:spring-data-jpa:2.2.5.RELEASE
+org.springframework.data:spring-data-releasetrain:Moore-SR5
+org.springframework.data:spring-data-rest-core:3.2.5.RELEASE
+org.springframework.data:spring-data-rest-webmvc:3.2.5.RELEASE
 org.springframework.hateoas:spring-hateoas:1.0.3.RELEASE
 org.springframework.plugin:spring-plugin-core:2.0.0.RELEASE
 org.springframework:spring-aop:5.2.4.RELEASE
@@ -72,7 +80,10 @@ org.springframework:spring-context:5.2.4.RELEASE
 org.springframework:spring-core:5.2.4.RELEASE
 org.springframework:spring-expression:5.2.4.RELEASE
 org.springframework:spring-jcl:5.2.4.RELEASE
+org.springframework:spring-jdbc:5.2.4.RELEASE
+org.springframework:spring-orm:5.2.4.RELEASE
 org.springframework:spring-test:5.2.4.RELEASE
+org.springframework:spring-tx:5.2.4.RELEASE
 org.springframework:spring-web:5.2.4.RELEASE
 org.springframework:spring-webmvc:5.2.4.RELEASE
 org.xmlunit:xmlunit-core:2.6.3

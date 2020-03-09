@@ -3,3 +3,4 @@
 # This file is expected to be part of source control.
 org.springframework.boot:spring-boot-dependencies:2.2.5.RELEASE
 org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR3
+org.springframework.data:spring-data-releasetrain:Moore-SR5
