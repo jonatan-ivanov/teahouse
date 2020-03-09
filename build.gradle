@@ -1,0 +1,26 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 13
+targetCompatibility = 13
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task cleanAll {
+    dependsOn clean, cleanIdea, cleanIdeaWorkspace
+}
+
+wrapper {
+    distributionType = Wrapper.DistributionType.ALL
+}
