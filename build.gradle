@@ -2,6 +2,7 @@ task clean
 
 allprojects {
     apply plugin: 'idea'
+    apply from: "$rootDir/gradle/dependency-locking.gradle"
 
     task cleanAll {
         dependsOn clean, cleanIdea, cleanIdeaWorkspace
