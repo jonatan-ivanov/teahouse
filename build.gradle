@@ -4,8 +4,9 @@ ext.springCloudVersion = 'Hoxton.SR3'
 task clean
 task bootRun
 
+apply from: "$rootDir/gradle/idea.gradle"
+
 allprojects {
-    apply plugin: 'idea'
     apply from: "$rootDir/gradle/dependency-locking.gradle"
 
     task cleanAll {
