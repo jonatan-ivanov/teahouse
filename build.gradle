@@ -1,24 +1,39 @@
-apply plugin: 'java'
-apply plugin: 'idea'
+task clean
 
-sourceCompatibility = 13
-targetCompatibility = 13
+allprojects {
+    apply plugin: 'idea'
 
-repositories {
-    mavenCentral()
+    task cleanAll {
+        dependsOn clean, cleanIdea, cleanIdeaWorkspace
+    }
 }
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
-}
+subprojects {
+    apply plugin: 'java'
 
-test {
-    useJUnitPlatform()
-}
+    sourceCompatibility = 13
+    targetCompatibility = 13
 
-task cleanAll {
-    dependsOn clean, cleanIdea, cleanIdeaWorkspace
+    group = 'org.example.teahouse'
+    version = '0.0.1-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation platform('org.junit:junit-bom:5.+')
+
+        annotationProcessor 'org.projectlombok:lombok:1.+'
+	    compileOnly 'org.projectlombok:lombok:1.+'
+
+        testImplementation 'org.junit.jupiter:junit-jupiter-api'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
 }
 
 wrapper {

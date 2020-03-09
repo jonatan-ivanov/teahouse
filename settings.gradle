@@ -1,1 +1,6 @@
 rootProject.name = 'teahouse'
+include(
+    'water-service', 'water-service:api', 'water-service:client',
+    'tea-leaf-service', 'tea-leaf-service:api', 'tea-leaf-service:client',
+    'tea-service', 'tea-service:api', 'tea-service:client'
+)
