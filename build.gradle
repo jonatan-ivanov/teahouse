@@ -38,7 +38,7 @@ subprojects {
     }
 
     dependencies {
-        ['annotationProcessor', 'compileOnly', 'implementation'].each { conf ->
+        ['annotationProcessor', 'compileOnly', 'implementation', 'runtimeOnly', 'testImplementation'].each { conf ->
             dependencies.add(conf, platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
             dependencies.add(conf, platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"))
             dependencies.add(conf, platform("org.springframework.data:spring-data-releasetrain:$springDataVersion"))
