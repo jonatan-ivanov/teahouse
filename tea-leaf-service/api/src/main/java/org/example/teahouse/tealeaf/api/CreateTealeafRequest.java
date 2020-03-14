@@ -1,5 +1,6 @@
 package org.example.teahouse.tealeaf.api;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
@@ -9,18 +10,23 @@ import lombok.Value;
 @Builder
 @RequiredArgsConstructor
 public class CreateTealeafRequest {
+    @NotNull
     @Size(min = 1, max = 10)
     private final String name;
 
+    @NotNull
     @Size(min = 1, max = 10)
     private final String type;
 
+    @NotNull
     @Size(min = 1, max = 10)
     private final String suggestedAmount;
 
+    @NotNull
     @Size(min = 1, max = 10)
     private final String suggestedSteepingTime;
 
+    @NotNull
     @Size(min = 1, max = 10)
     private final String suggestedWaterTemperature;
 }
