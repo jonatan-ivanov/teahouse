@@ -1,6 +1,7 @@
 # This is a Gradle generated file for dependency locking.
 # Manual edits can break the build and are not advised.
 # This file is expected to be part of source control.
+antlr:antlr:2.7.7
 ch.qos.logback:logback-classic:1.2.3
 ch.qos.logback:logback-core:1.2.3
 com.fasterxml.jackson.core:jackson-annotations:2.10.2
@@ -10,10 +11,20 @@ com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.10.2
 com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.10.2
 com.fasterxml.jackson.module:jackson-module-parameter-names:2.10.2
 com.fasterxml:classmate:1.5.1
+com.h2database:h2:1.4.200
 com.jayway.jsonpath:json-path:2.4.0
+com.sun.istack:istack-commons-runtime:3.0.8
+com.sun.xml.fastinfoset:FastInfoset:1.2.16
+com.zaxxer:HikariCP:3.4.2
 io.micrometer:micrometer-core:1.3.5
+jakarta.activation:jakarta.activation-api:1.2.2
 jakarta.annotation:jakarta.annotation-api:1.3.5
+jakarta.persistence:jakarta.persistence-api:2.2.3
+jakarta.transaction:jakarta.transaction-api:1.3.3
 jakarta.validation:jakarta.validation-api:2.0.2
+jakarta.xml.bind:jakarta.xml.bind-api:2.3.2
+javax.validation:validation-api:2.0.1.Final
+net.bytebuddy:byte-buddy:1.10.8
 net.minidev:accessors-smart:1.2
 net.minidev:json-smart:2.3
 org.apache.logging.log4j:log4j-api:2.12.1
@@ -22,9 +33,18 @@ org.apache.tomcat.embed:tomcat-embed-core:9.0.31
 org.apache.tomcat.embed:tomcat-embed-el:9.0.31
 org.apache.tomcat.embed:tomcat-embed-websocket:9.0.31
 org.apache.tomcat:tomcat-annotations-api:9.0.31
+org.aspectj:aspectjweaver:1.9.5
+org.dom4j:dom4j:2.1.1
+org.glassfish.jaxb:jaxb-runtime:2.3.2
+org.glassfish.jaxb:txw2:2.3.2
 org.hdrhistogram:HdrHistogram:2.1.11
+org.hibernate.common:hibernate-commons-annotations:5.1.0.Final
 org.hibernate.validator:hibernate-validator:6.0.18.Final
+org.hibernate:hibernate-core:5.4.12.Final
+org.javassist:javassist:3.24.0-GA
 org.jboss.logging:jboss-logging:3.4.1.Final
+org.jboss:jandex:2.1.1.Final
+org.jvnet.staxex:stax-ex:1.8.1
 org.latencyutils:LatencyUtils:2.0.3
 org.ow2.asm:asm:5.0.4
 org.slf4j:jul-to-slf4j:1.7.30
@@ -34,7 +54,10 @@ org.springframework.boot:spring-boot-actuator:2.2.5.RELEASE
 org.springframework.boot:spring-boot-autoconfigure:2.2.5.RELEASE
 org.springframework.boot:spring-boot-dependencies:2.2.5.RELEASE
 org.springframework.boot:spring-boot-starter-actuator:2.2.5.RELEASE
+org.springframework.boot:spring-boot-starter-aop:2.2.5.RELEASE
+org.springframework.boot:spring-boot-starter-data-jpa:2.2.5.RELEASE
 org.springframework.boot:spring-boot-starter-hateoas:2.2.5.RELEASE
+org.springframework.boot:spring-boot-starter-jdbc:2.2.5.RELEASE
 org.springframework.boot:spring-boot-starter-json:2.2.5.RELEASE
 org.springframework.boot:spring-boot-starter-logging:2.2.5.RELEASE
 org.springframework.boot:spring-boot-starter-tomcat:2.2.5.RELEASE
@@ -43,15 +66,21 @@ org.springframework.boot:spring-boot-starter-web:2.2.5.RELEASE
 org.springframework.boot:spring-boot-starter:2.2.5.RELEASE
 org.springframework.boot:spring-boot:2.2.5.RELEASE
 org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR3
+org.springframework.data:spring-data-commons:2.2.5.RELEASE
+org.springframework.data:spring-data-jpa:2.2.5.RELEASE
 org.springframework.data:spring-data-releasetrain:Moore-SR5
 org.springframework.hateoas:spring-hateoas:1.0.3.RELEASE
 org.springframework.plugin:spring-plugin-core:2.0.0.RELEASE
 org.springframework:spring-aop:5.2.4.RELEASE
+org.springframework:spring-aspects:5.2.4.RELEASE
 org.springframework:spring-beans:5.2.4.RELEASE
 org.springframework:spring-context:5.2.4.RELEASE
 org.springframework:spring-core:5.2.4.RELEASE
 org.springframework:spring-expression:5.2.4.RELEASE
 org.springframework:spring-jcl:5.2.4.RELEASE
+org.springframework:spring-jdbc:5.2.4.RELEASE
+org.springframework:spring-orm:5.2.4.RELEASE
+org.springframework:spring-tx:5.2.4.RELEASE
 org.springframework:spring-web:5.2.4.RELEASE
 org.springframework:spring-webmvc:5.2.4.RELEASE
 org.yaml:snakeyaml:1.25
