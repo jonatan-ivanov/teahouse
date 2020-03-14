@@ -32,7 +32,6 @@ org.apache.tomcat.embed:tomcat-embed-el:9.0.31
 org.apache.tomcat.embed:tomcat-embed-websocket:9.0.31
 org.apache.tomcat:tomcat-annotations-api:9.0.31
 org.aspectj:aspectjweaver:1.9.5
-org.atteo:evo-inflector:1.2.2
 org.dom4j:dom4j:2.1.1
 org.glassfish.jaxb:jaxb-runtime:2.3.2
 org.glassfish.jaxb:txw2:2.3.2
@@ -56,7 +55,6 @@ org.springframework.boot:spring-boot-dependencies:2.2.5.RELEASE
 org.springframework.boot:spring-boot-starter-actuator:2.2.5.RELEASE
 org.springframework.boot:spring-boot-starter-aop:2.2.5.RELEASE
 org.springframework.boot:spring-boot-starter-data-jpa:2.2.5.RELEASE
-org.springframework.boot:spring-boot-starter-data-rest:2.2.5.RELEASE
 org.springframework.boot:spring-boot-starter-hateoas:2.2.5.RELEASE
 org.springframework.boot:spring-boot-starter-jdbc:2.2.5.RELEASE
 org.springframework.boot:spring-boot-starter-json:2.2.5.RELEASE
@@ -70,8 +68,6 @@ org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR3
 org.springframework.data:spring-data-commons:2.2.5.RELEASE
 org.springframework.data:spring-data-jpa:2.2.5.RELEASE
 org.springframework.data:spring-data-releasetrain:Moore-SR5
-org.springframework.data:spring-data-rest-core:3.2.5.RELEASE
-org.springframework.data:spring-data-rest-webmvc:3.2.5.RELEASE
 org.springframework.hateoas:spring-hateoas:1.0.3.RELEASE
 org.springframework.plugin:spring-plugin-core:2.0.0.RELEASE
 org.springframework:spring-aop:5.2.4.RELEASE
