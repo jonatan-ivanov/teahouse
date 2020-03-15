@@ -1,10 +1,10 @@
 rootProject.name = 'teahouse'
 
-include 'water-service'
-include 'water-service:api'
+include ':water-service'
+include ':water-service:water-api'
 
-include 'tea-leaf-service'
-include 'tea-leaf-service:api'
+include ':tea-leaf-service'
+include ':tea-leaf-service:tea-leaf-api'
 
-include 'tea-service'
-include 'tea-service:api'
+include ':tea-service'
+include ':tea-service:tea-api'
