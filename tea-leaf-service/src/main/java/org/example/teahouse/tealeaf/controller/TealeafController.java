@@ -4,9 +4,12 @@ import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.teahouse.tealeaf.api.CreateTealeafRequest;
+import org.example.teahouse.tealeaf.api.TealeafResponse;
 import org.example.teahouse.tealeaf.repo.Tealeaf;
 import org.example.teahouse.tealeaf.repo.TealeafRepository;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,26 +28,30 @@ public class TealeafController {
     private final TealeafRepository tealeafRepository;
 
     @GetMapping("/tealeaf")
-    public Iterable<Tealeaf> findAll() {
-        return tealeafRepository.findAll();
+    public Iterable<TealeafResponse> findAll() {
+        return StreamSupport.stream(tealeafRepository.findAll().spliterator(), false)
+            .map(Tealeaf::toTealeafResponse)
+            .collect(Collectors.toUnmodifiableList());
     }
 
     @GetMapping("/tealeaf/{id}")
-    public Tealeaf findById(@PathVariable Long id) {
+    public TealeafResponse findById(@PathVariable Long id) {
         return tealeafRepository.findById(id)
+            .map(Tealeaf::toTealeafResponse)
             .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "No resource found with that id"));
     }
 
     @GetMapping("/tealeaf/search/findByName")
-    public Tealeaf findBySize(@RequestParam("name") String name) {
+    public TealeafResponse findByName(@RequestParam("name") String name) {
         return tealeafRepository.findByName(name)
+            .map(Tealeaf::toTealeafResponse)
             .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "No resource found with that name"));
     }
 
     @PostMapping("/tealeaf")
     @ResponseStatus(CREATED)
-    public Tealeaf save(@Valid @RequestBody CreateTealeafRequest createTealeafRequest) {
-        return tealeafRepository.save(Tealeaf.fromCreateTealeafRequest(createTealeafRequest));
+    public TealeafResponse save(@Valid @RequestBody CreateTealeafRequest createTealeafRequest) {
+        return tealeafRepository.save(Tealeaf.fromCreateTealeafRequest(createTealeafRequest)).toTealeafResponse();
     }
 
     @DeleteMapping("/tealeaf")

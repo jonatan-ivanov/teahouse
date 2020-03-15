@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import org.example.teahouse.water.api.CreateWaterRequest;
+import org.example.teahouse.water.api.WaterResponse;
 
 @Entity
 @Value
@@ -26,6 +27,14 @@ public class Water {
 
     @Column(unique=true, nullable = false)
     private final String amount;
+
+    public WaterResponse toWaterResponse() {
+        return WaterResponse.builder()
+            .id(this.id)
+            .size(this.size)
+            .amount(this.amount)
+            .build();
+    }
 
     public static Water fromCreateWaterRequest(CreateWaterRequest createWaterRequest) {
         return Water.builder()
