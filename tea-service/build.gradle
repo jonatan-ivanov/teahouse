@@ -1,6 +1,7 @@
 apply plugin: 'org.springframework.boot'
 
 dependencies {
+    implementation project(':core')
     implementation project(':water-service:water-api')
     implementation project(':tea-leaf-service:tea-leaf-api')
     implementation project(':tea-service:tea-api')

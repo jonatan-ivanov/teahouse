@@ -1,0 +1,20 @@
+# This is a Gradle generated file for dependency locking.
+# Manual edits can break the build and are not advised.
+# This file is expected to be part of source control.
+com.fasterxml.jackson.core:jackson-annotations:2.10.2
+com.fasterxml.jackson.core:jackson-core:2.10.2
+com.fasterxml.jackson.core:jackson-databind:2.10.2
+com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.10.2
+org.projectlombok:lombok:1.18.12
+org.springframework.boot:spring-boot-actuator:2.2.5.RELEASE
+org.springframework.boot:spring-boot-dependencies:2.2.5.RELEASE
+org.springframework.boot:spring-boot:2.2.5.RELEASE
+org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR3
+org.springframework.data:spring-data-releasetrain:Moore-SR5
+org.springframework:spring-aop:5.2.4.RELEASE
+org.springframework:spring-beans:5.2.4.RELEASE
+org.springframework:spring-context:5.2.4.RELEASE
+org.springframework:spring-core:5.2.4.RELEASE
+org.springframework:spring-expression:5.2.4.RELEASE
+org.springframework:spring-jcl:5.2.4.RELEASE
+org.springframework:spring-web:5.2.4.RELEASE
