@@ -1,14 +1,15 @@
 package org.example.teahouse.tealeaf.api;
 
+import java.util.UUID;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 
-@Value
+@Getter
 @Builder
 @RequiredArgsConstructor
-public class TealeafResponse {
-    private final Long id;
+public class SimpleTealeafModel implements TealeafModel{
+    private final UUID id;
     private final String name;
     private final String type;
     private final String suggestedAmount;

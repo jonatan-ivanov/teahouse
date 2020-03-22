@@ -2,6 +2,7 @@ package org.example.teahouse.tealeaf.repo;
 
 import static lombok.AccessLevel.PRIVATE;
 
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import org.example.teahouse.tealeaf.api.CreateTealeafRequest;
-import org.example.teahouse.tealeaf.api.TealeafResponse;
+import org.example.teahouse.tealeaf.controller.RepresentationTealeafModel;
 
 @Entity
 @Value
@@ -20,7 +21,7 @@ import org.example.teahouse.tealeaf.api.TealeafResponse;
 @NoArgsConstructor(force = true, access = PRIVATE)
 public class Tealeaf {
     @Id @GeneratedValue
-    private final Long id;
+    private final UUID id;
 
     @Column(unique = true, nullable = false)
     private final String name;
@@ -37,8 +38,8 @@ public class Tealeaf {
     @Column(nullable = false)
     private final String suggestedSteepingTime;
 
-    public TealeafResponse toTealeafResponse() {
-        return TealeafResponse.builder()
+    public RepresentationTealeafModel toRepresentationTealeafModel() {
+        return RepresentationTealeafModel.builder()
             .id(this.id)
             .name(this.name)
             .type(this.type)

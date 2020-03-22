@@ -1,9 +1,10 @@
 package org.example.teahouse.tealeaf.repo;
 
 import java.util.Optional;
-import org.springframework.data.repository.CrudRepository;
+import java.util.UUID;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
-public interface TealeafRepository extends CrudRepository<Tealeaf, Long> {
+public interface TealeafRepository extends PagingAndSortingRepository<Tealeaf, UUID> {
     Optional<Tealeaf> findByName(@Param("name") String name);
 }

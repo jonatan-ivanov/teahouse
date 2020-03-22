@@ -6,7 +6,7 @@ import org.example.teahouse.tea.api.Tealeaf;
 import org.example.teahouse.tea.api.Water;
 import org.example.teahouse.tea.tealeaf.TealeafClient;
 import org.example.teahouse.tea.water.WaterClient;
-import org.example.teahouse.tealeaf.api.TealeafResponse;
+import org.example.teahouse.tealeaf.api.TealeafModel;
 import org.example.teahouse.water.api.WaterModel;
 import org.springframework.stereotype.Service;
 
@@ -18,23 +18,23 @@ public class TeaService {
 
     public TeaResponse make(String name, String size) {
         WaterModel waterModel = waterClient.findBySize(size);
-        TealeafResponse tealeafResponse = tealeafClient.findByName(name);
+        TealeafModel tealeafModel = tealeafClient.findByName(name);
 
         return TeaResponse.builder()
             .water(
                 Water.builder()
                     .amount(waterModel.getAmount())
-                    .temperature(tealeafResponse.getSuggestedWaterTemperature())
+                    .temperature(tealeafModel.getSuggestedWaterTemperature())
                     .build()
             )
             .tealeaf(
                 Tealeaf.builder()
-                    .name(tealeafResponse.getName())
-                    .type(tealeafResponse.getType())
-                    .amount(tealeafResponse.getSuggestedAmount())
+                    .name(tealeafModel.getName())
+                    .type(tealeafModel.getType())
+                    .amount(tealeafModel.getSuggestedAmount())
                     .build()
             )
-            .steepingTime(tealeafResponse.getSuggestedSteepingTime())
+            .steepingTime(tealeafModel.getSuggestedSteepingTime())
             .build();
     }
 }
