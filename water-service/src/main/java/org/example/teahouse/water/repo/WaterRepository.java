@@ -1,9 +1,10 @@
 package org.example.teahouse.water.repo;
 
 import java.util.Optional;
-import org.springframework.data.repository.CrudRepository;
+import java.util.UUID;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
-public interface WaterRepository extends CrudRepository<Water, Long> {
+public interface WaterRepository extends PagingAndSortingRepository<Water, UUID> {
     Optional<Water> findBySize(@Param("size") String size);
 }

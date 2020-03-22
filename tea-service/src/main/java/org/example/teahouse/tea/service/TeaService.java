@@ -7,7 +7,7 @@ import org.example.teahouse.tea.api.Water;
 import org.example.teahouse.tea.tealeaf.TealeafClient;
 import org.example.teahouse.tea.water.WaterClient;
 import org.example.teahouse.tealeaf.api.TealeafResponse;
-import org.example.teahouse.water.api.WaterResponse;
+import org.example.teahouse.water.api.WaterModel;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,13 +17,13 @@ public class TeaService {
     private  final TealeafClient tealeafClient;
 
     public TeaResponse make(String name, String size) {
-        WaterResponse waterResponse = waterClient.findBySize(size);
+        WaterModel waterModel = waterClient.findBySize(size);
         TealeafResponse tealeafResponse = tealeafClient.findByName(name);
 
         return TeaResponse.builder()
             .water(
                 Water.builder()
-                    .amount(waterResponse.getAmount())
+                    .amount(waterModel.getAmount())
                     .temperature(tealeafResponse.getSuggestedWaterTemperature())
                     .build()
             )

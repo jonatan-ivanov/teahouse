@@ -1,14 +1,15 @@
 package org.example.teahouse.water.api;
 
+import java.util.UUID;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 
-@Value
+@Getter
 @Builder
 @RequiredArgsConstructor
-public class WaterResponse {
-    private final Long id;
+public class SimpleWaterModel implements WaterModel {
+    private final UUID id;
     private final String size;
     private final String amount;
 }
