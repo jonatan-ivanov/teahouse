@@ -6,3 +6,5 @@ out/
 *.iws
 *.iml
 *.ipr
+
+logs/
