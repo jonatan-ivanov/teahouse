@@ -1,4 +1,5 @@
 apply plugin: 'org.springframework.boot'
+apply plugin: 'com.gorylenko.gradle-git-properties'
 
 dependencies {
     implementation project(':core')
@@ -14,4 +15,12 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+}
+
+processResources {
+    expand(project.properties)
+}
+
+springBoot {
+    buildInfo()
 }
