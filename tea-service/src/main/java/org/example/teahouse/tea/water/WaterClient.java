@@ -1,8 +1,7 @@
 package org.example.teahouse.tea.water;
 
-import org.example.teahouse.core.health.HealthClient;
+import org.example.teahouse.core.actuator.health.HealthClient;
 import org.example.teahouse.water.api.WaterResponse;
-import org.springframework.boot.actuate.health.Health;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

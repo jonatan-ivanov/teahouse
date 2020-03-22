@@ -1,4 +1,4 @@
-package org.example.teahouse.core.health;
+package org.example.teahouse.core.actuator.health;
 
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;

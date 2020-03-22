@@ -1,4 +1,4 @@
-package org.example.teahouse.core.health;
+package org.example.teahouse.core.actuator.health;
 
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,6 +1,6 @@
 package org.example.teahouse.tea.config;
 
-import org.example.teahouse.core.health.HealthClientAdapter;
+import org.example.teahouse.core.actuator.health.HealthClientAdapter;
 import org.example.teahouse.tea.tealeaf.TealeafClient;
 import org.example.teahouse.tea.water.WaterClient;
 import org.springframework.boot.actuate.health.HealthIndicator;

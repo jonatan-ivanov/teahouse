@@ -1,4 +1,4 @@
-package org.example.teahouse.core.health;
+package org.example.teahouse.core.actuator.health;
 
 import static java.util.stream.Collectors.toUnmodifiableMap;
 
