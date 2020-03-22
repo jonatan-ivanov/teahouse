@@ -9,6 +9,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.data:spring-data-rest-hal-explorer'
+
+    implementation 'io.springfox:springfox-swagger2:3.+'
+    implementation 'io.springfox:springfox-swagger-ui:3.+'
+    implementation 'io.springfox:springfox-bean-validators:3.+'
+    implementation 'io.springfox:springfox-data-rest:3.+'
 
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.jolokia:jolokia-core'
