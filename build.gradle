@@ -35,6 +35,8 @@ subprojects {
     group = 'org.example.teahouse'
     version = '0.0.1-SNAPSHOT'
 
+    ext.profile = project.hasProperty('profile') ? project.getProperty('profile') : 'local' //./gradlew bootRun -Pprofile=profileName
+
     repositories {
         mavenCentral()
     }

@@ -25,3 +25,7 @@ processResources {
 springBoot {
     buildInfo()
 }
+
+bootRun {
+    jvmArgs += ["-Dspring.profiles.active=$profile"]
+}
