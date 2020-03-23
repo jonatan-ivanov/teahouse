@@ -5,3 +5,4 @@ javax.validation:validation-api:2.0.1.Final
 org.springframework.boot:spring-boot-dependencies:2.2.5.RELEASE
 org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR3
 org.springframework.data:spring-data-releasetrain:Moore-SR5
+org.zalando:logbook-bom:2.0.0

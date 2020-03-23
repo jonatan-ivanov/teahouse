@@ -13,11 +13,15 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.data:spring-data-rest-hal-explorer'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'io.github.openfeign:feign-okhttp'
 
     implementation 'io.springfox:springfox-swagger2:3.+'
     implementation 'io.springfox:springfox-swagger-ui:3.+'
     implementation 'io.springfox:springfox-bean-validators:3.+'
     implementation 'io.springfox:springfox-data-rest:3.+'
+
+    implementation 'org.zalando:logbook-spring-boot-starter'
+    implementation 'org.zalando:logbook-okhttp'
 
     runtimeOnly 'org.jolokia:jolokia-core'
 

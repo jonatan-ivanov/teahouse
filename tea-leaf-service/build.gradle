@@ -17,6 +17,8 @@ dependencies {
     implementation 'io.springfox:springfox-bean-validators:3.+'
     implementation 'io.springfox:springfox-data-rest:3.+'
 
+    implementation 'org.zalando:logbook-spring-boot-starter'
+
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.jolokia:jolokia-core'
 

@@ -29,3 +29,4 @@ org.springframework:spring-core:5.2.4.RELEASE
 org.springframework:spring-expression:5.2.4.RELEASE
 org.springframework:spring-jcl:5.2.4.RELEASE
 org.springframework:spring-web:5.2.4.RELEASE
+org.zalando:logbook-bom:2.0.0
