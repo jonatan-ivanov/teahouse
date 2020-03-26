@@ -17,9 +17,9 @@ org.apache.tomcat.embed:tomcat-embed-core:9.0.31
 org.apache.tomcat:tomcat-annotations-api:9.0.31
 org.apiguardian:apiguardian-api:1.1.0
 org.checkerframework:checker-qual:2.10.0
-org.junit.jupiter:junit-jupiter-api:5.6.0
-org.junit.platform:junit-platform-commons:1.6.0
-org.junit:junit-bom:5.6.0
+org.junit.jupiter:junit-jupiter-api:5.6.1
+org.junit.platform:junit-platform-commons:1.6.1
+org.junit:junit-bom:5.6.1
 org.opentest4j:opentest4j:1.2.0
 org.slf4j:slf4j-api:1.7.30
 org.springframework.boot:spring-boot-actuator:2.2.5.RELEASE
