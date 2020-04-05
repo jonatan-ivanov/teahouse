@@ -1,6 +1,6 @@
-ext.springBootVersion = '2.2.5.RELEASE'
+ext.springBootVersion = '2.2.6.RELEASE'
 ext.springCloudVersion = 'Hoxton.SR3'
-ext.springDataVersion = 'Moore-SR5'
+ext.springDataVersion = 'Moore-SR6'
 
 task clean
 task bootRun
@@ -47,7 +47,7 @@ subprojects {
             dependencies.add(conf, platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
             dependencies.add(conf, platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"))
             dependencies.add(conf, platform("org.springframework.data:spring-data-releasetrain:$springDataVersion"))
-            dependencies.add(conf, platform('org.zalando:logbook-bom:2.0.0'))
+            dependencies.add(conf, platform('org.zalando:logbook-bom:2.1.0'))
         }
         testImplementation platform('org.junit:junit-bom:5.+')
 

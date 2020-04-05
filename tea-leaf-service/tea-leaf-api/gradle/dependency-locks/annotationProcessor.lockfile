@@ -2,7 +2,7 @@
 # Manual edits can break the build and are not advised.
 # This file is expected to be part of source control.
 org.projectlombok:lombok:1.18.12
-org.springframework.boot:spring-boot-dependencies:2.2.5.RELEASE
+org.springframework.boot:spring-boot-dependencies:2.2.6.RELEASE
 org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR3
-org.springframework.data:spring-data-releasetrain:Moore-SR5
-org.zalando:logbook-bom:2.0.0
+org.springframework.data:spring-data-releasetrain:Moore-SR6
+org.zalando:logbook-bom:2.1.0
