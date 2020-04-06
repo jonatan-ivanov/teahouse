@@ -60,6 +60,9 @@ subprojects {
 
     test {
         useJUnitPlatform()
+        jvmArgs += [
+            "-Dspring.application.home=$rootDir"
+        ]
     }
 }
 
