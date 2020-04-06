@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import org.example.teahouse.water.api.CreateWaterRequest;
 import org.example.teahouse.water.controller.RepresentationWaterModel;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Value
@@ -21,6 +22,7 @@ import org.example.teahouse.water.controller.RepresentationWaterModel;
 @NoArgsConstructor(force = true, access = PRIVATE)
 public class Water {
     @Id @GeneratedValue
+    @Type(type = "uuid-char")
     private final UUID id;
 
     @Column(unique = true, nullable = false)

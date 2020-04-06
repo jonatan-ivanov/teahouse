@@ -67,6 +67,7 @@ org.assertj:assertj-core:3.13.2
 org.atteo:evo-inflector:1.2.2
 org.checkerframework:checker-qual:2.10.0
 org.dom4j:dom4j:2.1.1
+org.flywaydb:flyway-core:6.0.8
 org.glassfish.jaxb:jaxb-runtime:2.3.2
 org.glassfish.jaxb:txw2:2.3.2
 org.hamcrest:hamcrest:2.2

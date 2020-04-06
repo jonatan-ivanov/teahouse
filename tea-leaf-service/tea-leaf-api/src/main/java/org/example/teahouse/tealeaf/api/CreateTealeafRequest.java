@@ -11,7 +11,7 @@ import lombok.Value;
 @RequiredArgsConstructor
 public class CreateTealeafRequest {
     @NotNull
-    @Size(min = 1, max = 10)
+    @Size(min = 1, max = 30)
     private final String name;
 
     @NotNull

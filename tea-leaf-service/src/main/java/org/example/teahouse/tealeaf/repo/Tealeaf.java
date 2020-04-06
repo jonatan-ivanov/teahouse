@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import org.example.teahouse.tealeaf.api.CreateTealeafRequest;
 import org.example.teahouse.tealeaf.controller.RepresentationTealeafModel;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Value
@@ -21,6 +22,7 @@ import org.example.teahouse.tealeaf.controller.RepresentationTealeafModel;
 @NoArgsConstructor(force = true, access = PRIVATE)
 public class Tealeaf {
     @Id @GeneratedValue
+    @Type(type = "uuid-char")
     private final UUID id;
 
     @Column(unique = true, nullable = false)

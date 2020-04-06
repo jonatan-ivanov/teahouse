@@ -20,6 +20,7 @@ dependencies {
     implementation 'org.zalando:logbook-spring-boot-starter'
 
     runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'org.flywaydb:flyway-core'
     runtimeOnly 'org.jolokia:jolokia-core'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
