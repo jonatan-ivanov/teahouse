@@ -3,21 +3,21 @@
     <jmxConfigurator />
     <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />
     <property scope="local" name="accessLogPattern" value="%date{yyyy-MM-dd HH:mm:ss.SSS} method=&quot;%m&quot; url=&quot;%U&quot; query=&quot;%q&quot; protocol=&quot;%H&quot; statusCode=&quot;%s&quot; duration=&quot;%D&quot; bytesSent=&quot;%b&quot; remoteIp=&quot;%a&quot; remoteHost=&quot;%h&quot; localIp=&quot;%A&quot; localServer=&quot;%v&quot; localPort=&quot;%localPort&quot; userAgent=&quot;%i{User-Agent}&quot;" />
-    <property scope="local" name="fileName" value="${rootDir}/logs/tea-leaf-service.access.log" />
+    <property scope="local" name="fileName" value="${spring.application.home}/logs/tea-leaf-service.access.log" />
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>\${accessLogPattern}</pattern>
+            <pattern>${accessLogPattern}</pattern>
         </encoder>
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder>
-            <pattern>\${accessLogPattern}</pattern>
+            <pattern>${accessLogPattern}</pattern>
         </encoder>
-        <file>\${fileName}</file>
+        <file>${fileName}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <fileNamePattern>\${fileName}.%i</fileNamePattern>
+            <fileNamePattern>${fileName}.%i</fileNamePattern>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>10MB</MaxFileSize>

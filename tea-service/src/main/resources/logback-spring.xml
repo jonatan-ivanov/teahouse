@@ -2,15 +2,15 @@
 <configuration>
     <jmxConfigurator />
     <include resource="org/springframework/boot/logging/logback/base.xml" />
-    <property scope="local" name="payloadFileName" value="${rootDir}/logs/tea-service.payload.log" />
+    <property scope="local" name="payloadFileName" value="${spring.application.home}/logs/tea-service.payload.log" />
 
     <appender name="PAYLOAD_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder>
-            <pattern>\${FILE_LOG_PATTERN}</pattern>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
         </encoder>
-        <file>\${payloadFileName}</file>
+        <file>${payloadFileName}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <fileNamePattern>\${payloadFileName}.%i</fileNamePattern>
+            <fileNamePattern>${payloadFileName}.%i</fileNamePattern>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>10MB</MaxFileSize>

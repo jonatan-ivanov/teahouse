@@ -31,7 +31,7 @@ dependencies {
 }
 
 processResources {
-    expand(project.properties)
+    filesMatching('build.properties') { it.expand(project.properties) }
 }
 
 springBoot {
@@ -39,5 +39,8 @@ springBoot {
 }
 
 bootRun {
-    jvmArgs += ["-Dspring.profiles.active=$profile"]
+    jvmArgs += [
+        "-Dspring.profiles.active=$profile",
+        "-Dspring.application.home=$rootDir"
+    ]
 }
