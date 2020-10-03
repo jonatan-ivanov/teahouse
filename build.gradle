@@ -1,6 +1,6 @@
-ext.springBootVersion = '2.2.6.RELEASE'
-ext.springCloudVersion = 'Hoxton.SR3'
-ext.springDataVersion = 'Moore-SR6'
+ext.springBootVersion = '2.3.4.RELEASE'
+ext.springCloudVersion = 'Hoxton.SR8'
+ext.springDataVersion = 'Neumann-SR4'
 
 task clean
 task bootRun
