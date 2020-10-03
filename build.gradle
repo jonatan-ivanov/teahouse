@@ -39,7 +39,6 @@ subprojects {
 
     repositories {
         mavenCentral()
-        maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' } // for springfox-swagger 3.+
     }
 
     dependencies {
