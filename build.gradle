@@ -1,6 +1,6 @@
-ext.springBootVersion = '2.2.6.RELEASE'
-ext.springCloudVersion = 'Hoxton.SR3'
-ext.springDataVersion = 'Moore-SR6'
+ext.springBootVersion = '2.3.4.RELEASE'
+ext.springCloudVersion = 'Hoxton.SR8'
+ext.springDataVersion = 'Neumann-SR4'
 
 task clean
 task bootRun
@@ -23,14 +23,14 @@ subprojects {
         }
         dependencies {
             classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
-            classpath 'gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:2.2.2'
+            classpath 'gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:2.2.3'
         }
     }
 
     apply plugin: 'java'
 
-    sourceCompatibility = 14
-    targetCompatibility = 14
+    sourceCompatibility = 15
+    targetCompatibility = 15
 
     group = 'org.example.teahouse'
     version = '0.0.1-SNAPSHOT'
@@ -39,7 +39,6 @@ subprojects {
 
     repositories {
         mavenCentral()
-        maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' } // for springfox-swagger 3.+
     }
 
     dependencies {

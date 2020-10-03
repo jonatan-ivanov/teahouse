@@ -1,0 +1,17 @@
+# This is a Gradle generated file for dependency locking.
+# Manual edits can break the build and are not advised.
+# This file is expected to be part of source control.
+javax.validation:validation-api:2.0.1.Final=compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+org.apiguardian:apiguardian-api:1.1.0=testCompileClasspath,testRuntimeClasspath
+org.junit.jupiter:junit-jupiter-api:5.7.0=testCompileClasspath,testRuntimeClasspath
+org.junit.jupiter:junit-jupiter-engine:5.7.0=testRuntimeClasspath
+org.junit.platform:junit-platform-commons:1.7.0=testCompileClasspath,testRuntimeClasspath
+org.junit.platform:junit-platform-engine:1.7.0=testRuntimeClasspath
+org.junit:junit-bom:5.7.0=testCompileClasspath,testRuntimeClasspath
+org.opentest4j:opentest4j:1.2.0=testCompileClasspath,testRuntimeClasspath
+org.projectlombok:lombok:1.18.12=annotationProcessor,compileClasspath,compileOnly
+org.springframework.boot:spring-boot-dependencies:2.3.4.RELEASE=annotationProcessor,compileClasspath,compileOnly,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR8=annotationProcessor,compileClasspath,compileOnly,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+org.springframework.data:spring-data-releasetrain:Neumann-SR4=annotationProcessor,compileClasspath,compileOnly,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+org.zalando:logbook-bom:2.1.0=annotationProcessor,compileClasspath,compileOnly,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+empty=archives,compile,runtime,testAnnotationProcessor,testCompile,testCompileOnly,testRuntime
