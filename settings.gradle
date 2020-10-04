@@ -10,8 +10,8 @@ include ':spring-boot-admin'
 include ':water-service'
 include ':water-service:water-api'
 
-include ':tea-leaf-service'
-include ':tea-leaf-service:tea-leaf-api'
+include ':tealeaf-service'
+include ':tealeaf-service:tealeaf-api'
 
 include ':tea-service'
 include ':tea-service:tea-api'
