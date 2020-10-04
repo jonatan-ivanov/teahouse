@@ -12,9 +12,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.data:spring-data-rest-hal-explorer'
-    implementation 'io.micrometer:micrometer-registry-prometheus'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
     implementation 'io.zipkin.brave:brave-instrumentation-p6spy'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
 
     implementation 'io.springfox:springfox-boot-starter:3.+'
     implementation 'io.springfox:springfox-swagger-ui:3.+'
