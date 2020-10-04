@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+    zipkin:
+        image: openzipkin/zipkin
+        container_name: zipkin
+        restart: always
+        ports:
+            - 9411:9411
+    prometheus:
+        image: prom/prometheus
+        container_name: prometheus
+        volumes:
+            - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+        ports:
+            - 9090:9090

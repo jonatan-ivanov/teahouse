@@ -13,6 +13,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.data:spring-data-rest-hal-explorer'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
     implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation 'io.github.openfeign:feign-okhttp'
