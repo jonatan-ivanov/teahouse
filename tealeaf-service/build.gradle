@@ -3,7 +3,7 @@ apply plugin: 'com.gorylenko.gradle-git-properties'
 
 dependencies {
     implementation project(':core')
-    implementation project(':tea-leaf-service:tea-leaf-api')
+    implementation project(':tealeaf-service:tealeaf-api')
 
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
