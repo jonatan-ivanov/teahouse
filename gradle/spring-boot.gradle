@@ -1,0 +1,42 @@
+apply plugin: 'org.springframework.boot'
+apply plugin: 'com.gorylenko.gradle-git-properties'
+
+ext.profile = project.hasProperty('profile') ? project.getProperty('profile') : 'local' //./gradlew bootRun -Pprofile=profileName
+
+dependencies {
+    implementation project(':core')
+
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+
+    compileOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'org.jolokia:jolokia-core'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+bootJar.manifest.attributes += jar.manifest.attributes
+
+processResources {
+    filesMatching('build.properties') { it.expand(project.properties) }
+}
+
+springBoot {
+    buildInfo()
+}
+
+bootRun {
+    jvmArgs += [
+        "-Dspring.profiles.active=$profile",
+        "-Dspring.application.home=$rootDir"
+    ]
+}
+
+test {
+    jvmArgs += [
+        "-Dspring.application.home=$rootDir"
+    ]
+}

@@ -1,41 +1,45 @@
-ext.springBootVersion = '2.3.4.RELEASE'
-ext.springCloudVersion = 'Hoxton.SR8'
-ext.springDataVersion = 'Neumann-SR4'
+ext.buildTime = new Date().toInstant()
+
+buildscript {
+    ext.springBootVersion = '2.3.4.RELEASE'
+    ext.springCloudVersion = 'Hoxton.SR8'
+    ext.springDataVersion = 'Neumann-SR4'
+
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+        classpath 'org.ajoberstar.grgit:grgit-gradle:4.1.0'
+        classpath 'gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:2.2.3'
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+    }
+}
 
 task clean
-task bootRun
 
+apply plugin: 'org.ajoberstar.grgit'
 apply from: "$rootDir/gradle/idea.gradle"
 
 allprojects {
-    apply from: "$rootDir/gradle/dependency-locking.gradle"
-
     task cleanAll {
+        description = 'Deletes the build directory and the IDE files and directories'
+        group = 'build'
         dependsOn clean, cleanIdea, cleanIdeaWorkspace
+        doLast {
+            delete 'out', '.idea'
+        }
     }
 }
 
 subprojects {
-    buildscript {
-        repositories {
-            maven { url 'https://plugins.gradle.org/m2/' }
-            mavenCentral()
-        }
-        dependencies {
-            classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
-            classpath 'gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:2.2.3'
-        }
-    }
-
     apply plugin: 'java'
+    apply from: "$rootDir/gradle/dependency-locking.gradle"
 
     sourceCompatibility = 15
     targetCompatibility = 15
 
     group = 'org.example.teahouse'
-    version = '0.0.1-SNAPSHOT'
-
-    ext.profile = project.hasProperty('profile') ? project.getProperty('profile') : 'local' //./gradlew bootRun -Pprofile=profileName
+    version = "${grgit.head().abbreviatedId}.${buildTime.toEpochMilli()}"
 
     repositories {
         mavenCentral()
@@ -54,14 +58,28 @@ subprojects {
         compileOnly 'org.projectlombok:lombok'
 
         testImplementation 'org.junit.jupiter:junit-jupiter-api'
+        testImplementation 'org.junit.jupiter:junit-jupiter-params'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     }
 
+    jar.manifest.attributes(
+        'Name': project.name,
+        'Implementation-Build-Date': buildTime,
+        'Implementation-Title': project.name,
+        'Implementation-Version': project.version,
+        'Implementation-Vendor': project.group,
+        'Commit-AbbreviatedId': grgit.head().abbreviatedId,
+        'Commit-Id': grgit.head().id,
+        'Commit-Date': grgit.head().getDate().toInstant(),
+        'Source-Path': grgit.remote.list().findResult { it.name == 'origin' ? it.url : null },
+        'Created-By': "Gradle ${gradle.gradleVersion} with Gradle Ghost (grg)",
+        'Built-By': System.properties['user.name'],
+        'JDK': org.gradle.internal.jvm.Jvm.current(),
+        'OS': org.gradle.internal.os.OperatingSystem.current()
+    )
+
     test {
         useJUnitPlatform()
-        jvmArgs += [
-            "-Dspring.application.home=$rootDir"
-        ]
     }
 }
 
