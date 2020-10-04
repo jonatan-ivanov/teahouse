@@ -9,4 +9,4 @@ scrape_configs:
     - job_name: 'teahouse-services'
       metrics_path: '/actuator/prometheus'
       static_configs:
-          - targets: ['host.docker.internal:8080', 'host.docker.internal:8081', 'host.docker.internal:8082']
+          - targets: ['host.docker.internal:8080', 'host.docker.internal:8081', 'host.docker.internal:8082', 'host.docker.internal:8761', 'host.docker.internal:9091']
