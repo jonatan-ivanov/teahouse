@@ -23,10 +23,10 @@ allprojects {
 }
 
 idea {
-    project.ipr.withXml { provider -> // Annotation processor
-        def compilerConfiguration = provider.asNode().component.find { it.'@name' == 'CompilerConfiguration' }
-        compilerConfiguration.annotationProcessing.replaceNode {
-            annotationProcessing { profile(default: true, name: 'Default', enabled: true) }
-        }
+    // Enable annotation processing (e.g.: for Lombok)
+    project.ipr.withXml { provider ->
+        provider.node.component
+            .find { it.@name == 'CompilerConfiguration' }
+            .annotationProcessing.replaceNode { annotationProcessing {profile(default: true, name: 'Default', enabled: true) } }
     }
 }

@@ -1,34 +1,5 @@
-apply plugin: 'org.springframework.boot'
-apply plugin: 'com.gorylenko.gradle-git-properties'
+apply from: "$rootDir/gradle/spring-boot.gradle"
 
 dependencies {
-    implementation project(':core')
-
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
-    implementation 'io.micrometer:micrometer-registry-prometheus'
-
-    runtimeOnly 'org.jolokia:jolokia-core'
-
-    compileOnly 'org.springframework.boot:spring-boot-devtools'
-
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
-}
-
-processResources {
-    filesMatching('build.properties') { it.expand(project.properties) }
-}
-
-springBoot {
-    buildInfo()
-}
-
-bootRun {
-    jvmArgs += [
-        "-Dspring.profiles.active=$profile",
-        "-Dspring.application.home=$rootDir"
-    ]
 }

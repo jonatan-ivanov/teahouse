@@ -1,21 +1,16 @@
-apply plugin: 'org.springframework.boot'
-apply plugin: 'com.gorylenko.gradle-git-properties'
+apply from: "$rootDir/gradle/spring-boot.gradle"
 
 dependencies {
-    implementation project(':core')
     implementation project(':tealeaf-service:tealeaf-api')
 
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.data:spring-data-rest-hal-explorer'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
     implementation 'io.zipkin.brave:brave-instrumentation-p6spy'
-    implementation 'io.micrometer:micrometer-registry-prometheus'
 
     implementation 'io.springfox:springfox-boot-starter:3.+'
     implementation 'io.springfox:springfox-swagger-ui:3.+'
@@ -26,26 +21,4 @@ dependencies {
 
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.flywaydb:flyway-core'
-    runtimeOnly 'org.jolokia:jolokia-core'
-
-    compileOnly 'org.springframework.boot:spring-boot-devtools'
-
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
-}
-
-processResources {
-    filesMatching('build.properties') { it.expand(project.properties) }
-}
-
-springBoot {
-    buildInfo()
-}
-
-bootRun {
-    jvmArgs += [
-        "-Dspring.profiles.active=$profile",
-        "-Dspring.application.home=$rootDir"
-    ]
 }

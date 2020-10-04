@@ -4,6 +4,7 @@
 org.apiguardian:apiguardian-api:1.1.0=testCompileClasspath,testRuntimeClasspath
 org.junit.jupiter:junit-jupiter-api:5.7.0=testCompileClasspath,testRuntimeClasspath
 org.junit.jupiter:junit-jupiter-engine:5.7.0=testRuntimeClasspath
+org.junit.jupiter:junit-jupiter-params:5.7.0=testCompileClasspath,testRuntimeClasspath
 org.junit.platform:junit-platform-commons:1.7.0=testCompileClasspath,testRuntimeClasspath
 org.junit.platform:junit-platform-engine:1.7.0=testRuntimeClasspath
 org.junit:junit-bom:5.7.0=testCompileClasspath,testRuntimeClasspath
