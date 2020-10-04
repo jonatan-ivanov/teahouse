@@ -4,6 +4,9 @@ enableFeaturePreview 'ONE_LOCKFILE_PER_PROJECT'
 
 include ':core'
 
+include ':eureka'
+include ':spring-boot-admin'
+
 include ':water-service'
 include ':water-service:water-api'
 
