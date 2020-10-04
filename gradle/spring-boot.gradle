@@ -28,15 +28,35 @@ springBoot {
     buildInfo()
 }
 
+def commonjvmArgs = [
+    '-server',
+    // '-XX:+PrintFlagsFinal',
+    '-XX:NativeMemoryTracking=summary',
+    // '-XX:+UnlockDiagnosticVMOptions',
+    // '-XX:+PrintNMTStatistics',
+    '-XX:MinHeapSize=256M',
+    '-XX:MaxHeapSize=256M',
+    '-XX:MaxMetaspaceSize=256M',
+    '-XX:MaxDirectMemorySize=256M',
+    '-XX:+HeapDumpOnOutOfMemoryError',
+    "-XX:HeapDumpPath=$rootDir/logs",
+    "-Xlog:gc*:file=$rootDir/logs/$project.name-gc.log:time,uptime,pid,tid,level,tags:filecount=5,filesize=5M",
+
+    '-Djava.security.egd=file:/dev/./urandom',
+    '-Duser.timezone=UTC',
+    '-Dfile.encoding=UTF-8'
+]
+
+mkdir "$rootDir/logs"
 bootRun {
-    jvmArgs += [
+    jvmArgs += commonjvmArgs + [
         "-Dspring.profiles.active=$profile",
         "-Dspring.application.home=$rootDir"
     ]
 }
 
 test {
-    jvmArgs += [
+    jvmArgs += commonjvmArgs + [
         "-Dspring.application.home=$rootDir"
     ]
 }
