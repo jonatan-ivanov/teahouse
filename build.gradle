@@ -10,7 +10,7 @@ buildscript {
     }
     dependencies {
         classpath 'org.ajoberstar.grgit:grgit-gradle:4.1.0'
-        classpath 'gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:2.2.3'
+        classpath 'gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:2.2.4'
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
     }
 }
