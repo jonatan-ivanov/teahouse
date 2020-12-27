@@ -12,7 +12,8 @@ dependencies {
     implementation 'io.github.openfeign:feign-okhttp'
     implementation 'org.springframework.data:spring-data-rest-hal-explorer'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
+    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+    implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
 
     implementation 'io.springfox:springfox-boot-starter:3.+'
     implementation 'io.springfox:springfox-swagger-ui:3.+'
