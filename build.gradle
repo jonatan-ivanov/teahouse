@@ -1,9 +1,9 @@
 ext.buildTime = new Date().toInstant()
 
 buildscript {
-    ext.springBootVersion = '2.4.1'
+    ext.springBootVersion = '2.4.2'
     ext.springCloudVersion = '2020.0.0'
-    ext.springDataVersion = '2020.0.2'
+    ext.springDataVersion = '2020.0.3'
 
     repositories {
         maven { url 'https://plugins.gradle.org/m2/' }
@@ -50,7 +50,7 @@ subprojects {
             dependencies.add(conf, platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
             dependencies.add(conf, platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"))
             dependencies.add(conf, platform("org.springframework.data:spring-data-bom:$springDataVersion"))
-            dependencies.add(conf, platform('org.zalando:logbook-bom:2.4.1'))
+            dependencies.add(conf, platform('org.zalando:logbook-bom:2.+'))
         }
         testImplementation platform('org.junit:junit-bom:5.+')
 
