@@ -1,9 +1,9 @@
 ext.buildTime = new Date().toInstant()
 
 buildscript {
-    ext.springBootVersion = '2.4.2'
-    ext.springCloudVersion = '2020.0.0'
-    ext.springDataVersion = '2020.0.3'
+    ext.springBootVersion = '2.4.3'
+    ext.springCloudVersion = '2020.0.1'
+    ext.springDataVersion = '2020.0.5'
 
     repositories {
         maven { url 'https://plugins.gradle.org/m2/' }
