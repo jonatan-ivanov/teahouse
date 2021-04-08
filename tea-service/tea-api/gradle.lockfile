@@ -18,5 +18,5 @@ org.projectlombok:lombok:1.18.18=annotationProcessor,compileClasspath,compileOnl
 org.springframework.boot:spring-boot-dependencies:2.4.3=annotationProcessor,compileClasspath,compileOnly,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 org.springframework.cloud:spring-cloud-dependencies:2020.0.1=annotationProcessor,compileClasspath,compileOnly,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 org.springframework.data:spring-data-bom:2020.0.5=annotationProcessor,compileClasspath,compileOnly,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-org.zalando:logbook-bom:2.5.0=annotationProcessor,compileClasspath,compileOnly,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+org.zalando:logbook-bom:2.6.2=annotationProcessor,compileClasspath,compileOnly,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 empty=archives,compile,runtime,testAnnotationProcessor,testCompile,testCompileOnly,testRuntime
