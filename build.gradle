@@ -14,7 +14,7 @@ buildscript {
     }
     dependencies {
         classpath 'org.ajoberstar.grgit:grgit-gradle:latest.release'
-        classpath 'gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:latest.release'
+        classpath 'com.gorylenko.gradle-git-properties:gradle-git-properties:latest.release'
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
     }
 }
