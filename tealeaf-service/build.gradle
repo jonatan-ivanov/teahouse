@@ -20,6 +20,6 @@ dependencies {
 
     implementation 'org.zalando:logbook-spring-boot-starter'
 
-    runtimeClasspath 'com.h2database:h2'
-    runtimeClasspath 'org.flywaydb:flyway-core'
+    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'org.flywaydb:flyway-core'
 }

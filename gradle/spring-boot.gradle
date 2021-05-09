@@ -10,8 +10,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'io.micrometer:micrometer-registry-prometheus'
 
-    compileClasspath 'org.springframework.boot:spring-boot-devtools'
-    runtimeClasspath 'org.jolokia:jolokia-core'
+    compileOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'org.jolokia:jolokia-core'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

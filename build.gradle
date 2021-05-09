@@ -50,7 +50,7 @@ subprojects {
     }
 
     dependencies {
-        ['annotationProcessor', 'compileClasspath', 'implementation', 'runtimeClasspath', 'testImplementation'].each { conf ->
+        ['annotationProcessor', 'compileOnly', 'implementation', 'runtimeOnly', 'testImplementation'].each { conf ->
             dependencies.add(conf, platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
             dependencies.add(conf, platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"))
             dependencies.add(conf, platform("org.springframework.data:spring-data-bom:$springDataVersion"))
@@ -59,11 +59,11 @@ subprojects {
         testImplementation platform('org.junit:junit-bom:latest.release')
 
         annotationProcessor 'org.projectlombok:lombok'
-        compileClasspath 'org.projectlombok:lombok'
+        compileOnly 'org.projectlombok:lombok'
 
         testImplementation 'org.junit.jupiter:junit-jupiter-api'
         testImplementation 'org.junit.jupiter:junit-jupiter-params'
-        testRuntimeClasspath 'org.junit.jupiter:junit-jupiter-engine'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     }
 
     jar.manifest.attributes(
