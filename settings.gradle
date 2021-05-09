@@ -1,7 +1,5 @@
 rootProject.name = 'teahouse'
 
-enableFeaturePreview 'ONE_LOCKFILE_PER_PROJECT'
-
 include ':core'
 
 include ':eureka'

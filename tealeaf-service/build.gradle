@@ -13,13 +13,13 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
     implementation 'io.zipkin.brave:brave-instrumentation-p6spy'
 
-    implementation 'io.springfox:springfox-boot-starter:3.+'
-    implementation 'io.springfox:springfox-swagger-ui:3.+'
-    implementation 'io.springfox:springfox-bean-validators:3.+'
-    implementation 'io.springfox:springfox-data-rest:3.+'
+    implementation 'io.springfox:springfox-boot-starter:latest.release'
+    implementation 'io.springfox:springfox-swagger-ui:latest.release'
+    implementation 'io.springfox:springfox-bean-validators:latest.release'
+    implementation 'io.springfox:springfox-data-rest:latest.release'
 
     implementation 'org.zalando:logbook-spring-boot-starter'
 
-    runtimeOnly 'com.h2database:h2'
-    runtimeOnly 'org.flywaydb:flyway-core'
+    runtimeClasspath 'com.h2database:h2'
+    runtimeClasspath 'org.flywaydb:flyway-core'
 }

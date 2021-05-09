@@ -1,16 +1,20 @@
 ext.buildTime = new Date().toInstant()
 
 buildscript {
-    ext.springBootVersion = '2.4.4'
-    ext.springCloudVersion = '2020.0.2'
-    ext.springDataVersion = '2020.0.7'
+    ext.springBootVersion = 'latest.release'
+    ext.springCloudVersion = 'latest.release'
+    ext.springDataVersion = 'latest.release'
+
+    configurations.classpath {
+        resolutionStrategy.activateDependencyLocking()
+    }
 
     repositories {
         maven { url 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
-        classpath 'org.ajoberstar.grgit:grgit-gradle:4.1.0'
-        classpath 'gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:2.2.4'
+        classpath 'org.ajoberstar.grgit:grgit-gradle:latest.release'
+        classpath 'gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:latest.release'
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
     }
 }
@@ -35,8 +39,8 @@ subprojects {
     apply plugin: 'java'
     apply from: "$rootDir/gradle/dependency-locking.gradle"
 
-    sourceCompatibility = 15
-    targetCompatibility = 15
+    sourceCompatibility = JavaVersion.VERSION_16
+    targetCompatibility = JavaVersion.VERSION_16
 
     group = 'org.example.teahouse'
     version = "${grgit.head().abbreviatedId}.${buildTime.toEpochMilli()}"
@@ -46,20 +50,20 @@ subprojects {
     }
 
     dependencies {
-        ['annotationProcessor', 'compileOnly', 'implementation', 'runtimeOnly', 'testImplementation'].each { conf ->
+        ['annotationProcessor', 'compileClasspath', 'implementation', 'runtimeClasspath', 'testImplementation'].each { conf ->
             dependencies.add(conf, platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
             dependencies.add(conf, platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"))
             dependencies.add(conf, platform("org.springframework.data:spring-data-bom:$springDataVersion"))
-            dependencies.add(conf, platform('org.zalando:logbook-bom:2.+'))
+            dependencies.add(conf, platform('org.zalando:logbook-bom:latest.release'))
         }
-        testImplementation platform('org.junit:junit-bom:5.+')
+        testImplementation platform('org.junit:junit-bom:latest.release')
 
         annotationProcessor 'org.projectlombok:lombok'
-        compileOnly 'org.projectlombok:lombok'
+        compileClasspath 'org.projectlombok:lombok'
 
         testImplementation 'org.junit.jupiter:junit-jupiter-api'
         testImplementation 'org.junit.jupiter:junit-jupiter-params'
-        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+        testRuntimeClasspath 'org.junit.jupiter:junit-jupiter-engine'
     }
 
     jar.manifest.attributes(

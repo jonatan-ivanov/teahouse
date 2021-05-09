@@ -10,12 +10,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'io.micrometer:micrometer-registry-prometheus'
 
-    compileOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'org.jolokia:jolokia-core'
+    compileClasspath 'org.springframework.boot:spring-boot-devtools'
+    runtimeClasspath 'org.jolokia:jolokia-core'
 
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 bootJar.manifest.attributes += jar.manifest.attributes
