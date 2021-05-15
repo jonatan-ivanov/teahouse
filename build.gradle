@@ -1,13 +1,13 @@
 ext.buildTime = new Date().toInstant()
 
 buildscript {
-    ext.springBootVersion = 'latest.release'
-    ext.springCloudVersion = 'latest.release'
-    ext.springDataVersion = 'latest.release'
+    ext.springBootVersion = '2.4.5'
+    ext.springCloudVersion = '2020.0.2'
+    ext.springDataVersion = '2021.0.1'
 
-    configurations.classpath {
-        resolutionStrategy.activateDependencyLocking()
-    }
+//    configurations.classpath {
+//        resolutionStrategy.activateDependencyLocking()
+//    }
 
     repositories {
         maven { url 'https://plugins.gradle.org/m2/' }
@@ -37,7 +37,7 @@ allprojects {
 
 subprojects {
     apply plugin: 'java'
-    apply from: "$rootDir/gradle/dependency-locking.gradle"
+//    apply from: "$rootDir/gradle/dependency-locking.gradle"
 
     sourceCompatibility = JavaVersion.VERSION_16
     targetCompatibility = JavaVersion.VERSION_16
@@ -47,6 +47,8 @@ subprojects {
 
     repositories {
         mavenCentral()
+        maven { url 'https://repo.spring.io/milestone' }
+        maven { url 'https://repo.spring.io/snapshot' }
     }
 
     dependencies {
@@ -54,6 +56,7 @@ subprojects {
             dependencies.add(conf, platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
             dependencies.add(conf, platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"))
             dependencies.add(conf, platform("org.springframework.data:spring-data-bom:$springDataVersion"))
+            dependencies.add(conf, platform('org.springframework.cloud:spring-cloud-sleuth-otel-dependencies:1.0.0-M7'))
             dependencies.add(conf, platform('org.zalando:logbook-bom:latest.release'))
         }
         testImplementation platform('org.junit:junit-bom:latest.release')

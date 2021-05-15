@@ -12,8 +12,12 @@ dependencies {
     implementation 'io.github.openfeign:feign-okhttp'
     implementation 'org.springframework.data:spring-data-rest-hal-explorer'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
-    implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
+    implementation ('org.springframework.cloud:spring-cloud-starter-sleuth:3.0.3-SNAPSHOT') {
+        exclude group: 'org.springframework.cloud', module: 'spring-cloud-sleuth-brave'
+    }
+    implementation 'org.springframework.cloud:spring-cloud-sleuth-otel-autoconfigure'
+    implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin:3.0.3-SNAPSHOT'
+    implementation 'io.opentelemetry:opentelemetry-exporter-zipkin'
 
     implementation 'io.springfox:springfox-boot-starter:latest.release'
     implementation 'io.springfox:springfox-swagger-ui:latest.release'
