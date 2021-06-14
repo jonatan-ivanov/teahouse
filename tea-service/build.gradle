@@ -16,8 +16,9 @@ dependencies {
         exclude group: 'org.springframework.cloud', module: 'spring-cloud-sleuth-brave'
     }
     implementation 'org.springframework.cloud:spring-cloud-sleuth-otel-autoconfigure'
-    implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin:3.0.3-SNAPSHOT'
-    implementation 'io.opentelemetry:opentelemetry-exporter-zipkin'
+//    implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin:3.0.3-SNAPSHOT'
+    implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
+    implementation 'io.grpc:grpc-netty-shaded:1.36.1'
 
     implementation 'io.springfox:springfox-boot-starter:latest.release'
     implementation 'io.springfox:springfox-swagger-ui:latest.release'
