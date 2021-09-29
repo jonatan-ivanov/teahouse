@@ -67,6 +67,15 @@ subprojects {
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     }
 
+    configurations.all {
+        resolutionStrategy {
+            dependencySubstitution {
+                // com.wavefront:wavefront-sdk-java:2.6.5 is broken if you use Sleuth but Micrometer 1.7.4 depends on 2.6.5
+                substitute module('com.wavefront:wavefront-sdk-java') with module('com.wavefront:wavefront-sdk-java:2.6.4')
+            }
+        }
+    }
+
     jar.manifest.attributes(
         'Name': project.name,
         'Implementation-Build-Date': buildTime,
