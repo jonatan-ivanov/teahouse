@@ -1,5 +1,7 @@
 # teahouse
 
+![build badge](https://github.com/jonatan-ivanov/teahouse/actions/workflows/gradle.yml/badge.svg)
+
 `./gradlew bootRun`
 - Spring Boot Admin: http://localhost:8080/
 - Eureka: http://localhost:8761/
