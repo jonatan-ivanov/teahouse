@@ -50,6 +50,7 @@ io.github.classgraph:classgraph:4.8.83=compileClasspath,default,productionRuntim
 io.github.openfeign.form:feign-form-spring:3.8.0=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 io.github.openfeign.form:feign-form:3.8.0=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 io.github.openfeign:feign-core:10.12=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+io.github.openfeign:feign-micrometer:10.12=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 io.github.openfeign:feign-okhttp:10.12=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 io.github.openfeign:feign-slf4j:10.12=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 io.github.x-stream:mxparser:1.2.2=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
