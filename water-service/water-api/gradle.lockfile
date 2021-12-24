@@ -3,16 +3,16 @@
 # This file is expected to be part of source control.
 javax.validation:validation-api:2.0.1.Final=compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 org.apiguardian:apiguardian-api:1.1.2=testCompileClasspath
-org.junit.jupiter:junit-jupiter-api:5.8.1=testCompileClasspath,testRuntimeClasspath
-org.junit.jupiter:junit-jupiter-engine:5.8.1=testRuntimeClasspath
-org.junit.jupiter:junit-jupiter-params:5.8.1=testCompileClasspath,testRuntimeClasspath
-org.junit.platform:junit-platform-commons:1.8.1=testCompileClasspath,testRuntimeClasspath
-org.junit.platform:junit-platform-engine:1.8.1=testRuntimeClasspath
-org.junit:junit-bom:5.8.1=testCompileClasspath,testRuntimeClasspath
+org.junit.jupiter:junit-jupiter-api:5.8.2=testCompileClasspath,testRuntimeClasspath
+org.junit.jupiter:junit-jupiter-engine:5.8.2=testRuntimeClasspath
+org.junit.jupiter:junit-jupiter-params:5.8.2=testCompileClasspath,testRuntimeClasspath
+org.junit.platform:junit-platform-commons:1.8.2=testCompileClasspath,testRuntimeClasspath
+org.junit.platform:junit-platform-engine:1.8.2=testRuntimeClasspath
+org.junit:junit-bom:5.8.2=testCompileClasspath,testRuntimeClasspath
 org.opentest4j:opentest4j:1.2.0=testCompileClasspath,testRuntimeClasspath
-org.projectlombok:lombok:1.18.20=annotationProcessor,compileClasspath
-org.springframework.boot:spring-boot-dependencies:2.5.5=annotationProcessor,compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-org.springframework.cloud:spring-cloud-dependencies:2020.0.4=annotationProcessor,compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-org.springframework.data:spring-data-bom:2021.0.5=annotationProcessor,compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-org.zalando:logbook-bom:2.13.0=annotationProcessor,compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+org.projectlombok:lombok:1.18.22=annotationProcessor,compileClasspath
+org.springframework.boot:spring-boot-dependencies:2.6.2=annotationProcessor,compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+org.springframework.cloud:spring-cloud-dependencies:2021.0.0=annotationProcessor,compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+org.springframework.data:spring-data-bom:2021.1.0=annotationProcessor,compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+org.zalando:logbook-bom:2.14.0=annotationProcessor,compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 empty=archives,testAnnotationProcessor
