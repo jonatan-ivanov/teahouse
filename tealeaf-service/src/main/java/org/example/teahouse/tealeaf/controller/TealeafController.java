@@ -4,10 +4,11 @@ import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import java.util.UUID;
 import javax.validation.Valid;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.example.teahouse.tealeaf.api.CreateTealeafRequest;
 import org.example.teahouse.tealeaf.api.TealeafModel;
@@ -32,20 +33,20 @@ import org.springframework.web.server.ResponseStatusException;
 @RequiredArgsConstructor
 @RequestMapping("/tealeaves")
 @ExposesResourceFor(TealeafModel.class)
-@Api(tags = "Tealeaf API")
+@Tag(name = "Tealeaf API")
 public class TealeafController {
     private final TealeafRepository tealeafRepository;
     private final TealeafModelAssembler modelAssembler;
     private final PagedResourcesAssembler<Tealeaf> pagedAssembler;
 
     @GetMapping
-    @ApiOperation("Fetches all of the resources")
+    @Operation(summary = "Fetches all of the resources")
     public PagedModel<RepresentationTealeafModel> findAll(Pageable pageable) {
         return pagedAssembler.toModel(tealeafRepository.findAll(pageable), modelAssembler);
     }
 
     @GetMapping("/{id}")
-    @ApiOperation("Fetches a resource by its ID")
+    @Operation(summary = "Fetches a resource by its ID")
     public TealeafModel findById(@PathVariable UUID id) {
         return tealeafRepository.findById(id)
             .map(modelAssembler::toModel)
@@ -53,7 +54,7 @@ public class TealeafController {
     }
 
     @GetMapping("/search/findByName")
-    @ApiOperation("Finds a resource by its name")
+    @Operation(summary = "Finds a resource by its name")
     public TealeafModel findByName(@RequestParam("name") String name) {
         return tealeafRepository.findByName(name)
             .map(modelAssembler::toModel)
@@ -62,21 +63,21 @@ public class TealeafController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    @ApiOperation("Creates a resource")
+    @Operation(summary = "Creates a resource")
     public TealeafModel save(@Valid @RequestBody CreateTealeafRequest createTealeafRequest) {
         return modelAssembler.toModel(tealeafRepository.save(Tealeaf.fromCreateTealeafRequest(createTealeafRequest)));
     }
 
     @DeleteMapping
     @ResponseStatus(NO_CONTENT)
-    @ApiOperation("Deletes all of the resources")
+    @Operation(summary = "Deletes all of the resources")
     public void deleteAll() {
         tealeafRepository.deleteAll();
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(NO_CONTENT)
-    @ApiOperation("Deletes a resource by its ID ")
+    @Operation(summary = "Deletes a resource by its ID ")
     public void deleteById(@PathVariable UUID id) {
         tealeafRepository.deleteById(id);
     }

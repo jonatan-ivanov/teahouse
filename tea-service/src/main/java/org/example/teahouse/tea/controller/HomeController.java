@@ -1,6 +1,6 @@
 package org.example.teahouse.tea.controller;
 
-import springfox.documentation.annotations.ApiIgnore;
+import io.swagger.v3.oas.annotations.Hidden;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,9 +8,9 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class HomeController {
-    @ApiIgnore
+    @Hidden
     @GetMapping("/")
     RedirectView redirectWithUsingRedirectView() {
-        return new RedirectView("/swagger-ui/");
+        return new RedirectView("/swagger-ui.html");
     }
 }
