@@ -10,7 +10,6 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
     implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
-    implementation 'io.zipkin.brave:brave-instrumentation-p6spy'
 
     implementation 'org.springdoc:springdoc-openapi-ui:latest.release'
     implementation 'org.springdoc:springdoc-openapi-hateoas:latest.release'
@@ -20,4 +19,5 @@ dependencies {
 
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.flywaydb:flyway-core'
+    runtimeOnly 'p6spy:p6spy:latest.release'
 }
