@@ -39,8 +39,8 @@ subprojects {
     apply plugin: 'java'
     apply from: "$rootDir/gradle/dependency-locking.gradle"
 
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_18
+    targetCompatibility = JavaVersion.VERSION_18
 
     group = 'org.example.teahouse'
     version = "${grgit.head().abbreviatedId}.${buildTime.toEpochMilli()}"
