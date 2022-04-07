@@ -3,7 +3,7 @@
 # This file is expected to be part of source control.
 com.fasterxml.jackson.core:jackson-annotations:2.13.2=classpath
 com.fasterxml.jackson.core:jackson-core:2.13.2=classpath
-com.fasterxml.jackson.core:jackson-databind:2.13.2=classpath
+com.fasterxml.jackson.core:jackson-databind:2.13.2.2=classpath
 com.fasterxml.jackson.module:jackson-module-parameter-names:2.13.2=classpath
 com.fasterxml.jackson:jackson-bom:2.13.2=classpath
 com.google.code.findbugs:jsr305:3.0.2=classpath
@@ -21,10 +21,10 @@ org.apache.httpcomponents:httpclient:4.5.13=classpath
 org.apache.httpcomponents:httpcore:4.4.13=classpath
 org.eclipse.jgit:org.eclipse.jgit:6.0.0.202111291000-r=classpath
 org.slf4j:slf4j-api:1.7.30=classpath
-org.springframework.boot:spring-boot-buildpack-platform:2.6.5=classpath
-org.springframework.boot:spring-boot-gradle-plugin:2.6.5=classpath
-org.springframework.boot:spring-boot-loader-tools:2.6.5=classpath
-org.springframework:spring-core:5.3.17=classpath
-org.springframework:spring-jcl:5.3.17=classpath
+org.springframework.boot:spring-boot-buildpack-platform:2.6.6=classpath
+org.springframework.boot:spring-boot-gradle-plugin:2.6.6=classpath
+org.springframework.boot:spring-boot-loader-tools:2.6.6=classpath
+org.springframework:spring-core:5.3.18=classpath
+org.springframework:spring-jcl:5.3.18=classpath
 org.tomlj:tomlj:1.0.0=classpath
 empty=
