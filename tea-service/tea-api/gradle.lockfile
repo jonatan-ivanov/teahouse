@@ -12,6 +12,6 @@ org.opentest4j:opentest4j:1.2.0=testCompileClasspath,testRuntimeClasspath
 org.projectlombok:lombok:1.18.22=annotationProcessor,compileClasspath
 org.springframework.boot:spring-boot-dependencies:2.6.6=annotationProcessor,compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 org.springframework.cloud:spring-cloud-dependencies:2021.0.1=annotationProcessor,compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-org.springframework.data:spring-data-bom:2021.1.3=annotationProcessor,compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+org.springframework.data:spring-data-bom:2021.1.4=annotationProcessor,compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 org.zalando:logbook-bom:2.14.0=annotationProcessor,compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 empty=archives,testAnnotationProcessor
