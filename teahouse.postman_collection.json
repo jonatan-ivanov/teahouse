@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "bb3554b4-d6f5-4011-85ba-2a869df9dee4",
+		"name": "teahouse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/tea/sencha?size=small",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/tea/sencha?size=small",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"tea",
+						"sencha"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "small"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tea-service/actuator",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/actuator",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"actuator"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/tealeaves",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8092/tealeaves",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"tealeaves"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tealeaf-service/actuator",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8092/actuator",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"actuator"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/waters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8091/waters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"waters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "water-service/actuator",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8091/actuator",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"actuator"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

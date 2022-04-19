@@ -4,10 +4,11 @@ import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import java.util.UUID;
 import javax.validation.Valid;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.example.teahouse.water.api.CreateWaterRequest;
 import org.example.teahouse.water.api.WaterModel;
@@ -32,20 +33,20 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("/waters")
 @ExposesResourceFor(WaterModel.class)
 @RequiredArgsConstructor
-@Api(tags = "Water API")
+@Tag(name = "Water API")
 public class WaterController {
     private final WaterRepository waterRepository;
     private final WaterModelAssembler modelAssembler;
     private final PagedResourcesAssembler<Water> pagedAssembler;
 
     @GetMapping
-    @ApiOperation("Fetches all of the resources")
+    @Operation(summary = "Fetches all of the resources")
     public PagedModel<RepresentationWaterModel> findAll(Pageable pageable) {
         return pagedAssembler.toModel(waterRepository.findAll(pageable), modelAssembler);
     }
 
     @GetMapping("/{id}")
-    @ApiOperation("Fetches a resource by its ID")
+    @Operation(summary = "Fetches a resource by its ID")
     public WaterModel findById(@PathVariable UUID id) {
         return waterRepository.findById(id)
             .map(modelAssembler::toModel)
@@ -53,7 +54,7 @@ public class WaterController {
     }
 
     @GetMapping("/search/findBySize")
-    @ApiOperation("Finds a resource by its size")
+    @Operation(summary = "Finds a resource by its size")
     public WaterModel findBySize(@RequestParam("size") String size) {
         return waterRepository.findBySize(size)
             .map(modelAssembler::toModel)
@@ -62,21 +63,21 @@ public class WaterController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    @ApiOperation("Creates a resource")
+    @Operation(summary = "Creates a resource")
     public WaterModel save(@Valid @RequestBody CreateWaterRequest createWaterRequest) {
         return modelAssembler.toModel(waterRepository.save(Water.fromCreateWaterRequest(createWaterRequest)));
     }
 
     @DeleteMapping
     @ResponseStatus(NO_CONTENT)
-    @ApiOperation("Deletes all of the resources")
+    @Operation(summary = "Deletes all of the resources")
     public void deleteAll() {
         waterRepository.deleteAll();
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(NO_CONTENT)
-    @ApiOperation("Deletes a resource by its ID ")
+    @Operation(summary = "Deletes a resource by its ID ")
     public void deleteById(@PathVariable UUID id) {
         waterRepository.deleteById(id);
     }
