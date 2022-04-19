@@ -1,6 +1,9 @@
 dependencies {
     implementation 'org.springframework:spring-web'
     implementation 'org.springframework.boot:spring-boot-actuator'
+    compileOnly 'org.springframework.cloud:spring-cloud-starter-sleuth'
+    compileOnly 'com.wavefront:wavefront-spring-boot-starter'
+
     implementation 'com.google.guava:guava:latest.release'
     implementation 'org.slf4j:slf4j-api'
 
