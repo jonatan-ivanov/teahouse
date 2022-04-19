@@ -32,6 +32,7 @@ import io.micrometer.core.instrument.MeterRegistry;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import org.springframework.cloud.sleuth.Span;
 import org.springframework.cloud.sleuth.TraceContext;
 import org.springframework.cloud.sleuth.exporter.FinishedSpan;
 import org.springframework.util.StringUtils;
@@ -221,6 +222,7 @@ public final class HackedWavefrontSleuthSpanHandler implements Runnable, Closeab
 
         List<SpanLog> spanLogs = convertAnnotationsToSpanLogs(span);
         TagList tags = new TagList(defaultTagKeys, defaultTags, span);
+        fixTags(span, tags);
 
         try {
             wavefrontSender.sendSpan(name, startMillis, durationMillis, source, traceId, spanId,
@@ -394,6 +396,20 @@ public final class HackedWavefrontSleuthSpanHandler implements Runnable, Closeab
         }
         return result;
     }
+
+    private static void fixTags(FinishedSpan span, TagList tags) {
+        if (isDbSpan(span)) {
+            tags.removeIf(pair -> "service".equals(pair._1));
+            tags.add(Pair.of("service", span.getRemoteServiceName()));
+
+            // This does not work: https://docs.wavefront.com/tracing_external_services.html#external-db-services-for-java-applications
+//            tags.add(Pair.of("component", "java-jdbc"));
+//            tags.add(Pair.of("db.type", "mysql"));
+//            tags.add(Pair.of("db.instance", span.getRemoteServiceName()));
+        }
+    }
+
+    private static boolean isDbSpan(FinishedSpan span) {
+        return span.getKind() == Span.Kind.CLIENT && (span.getTags().containsKey("jdbc.query") || span.getTags().containsKey("sql.query"));
+    }
 }
-
-
