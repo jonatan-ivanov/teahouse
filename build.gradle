@@ -43,7 +43,9 @@ subprojects {
     targetCompatibility = JavaVersion.VERSION_18
 
     group = 'org.example.teahouse'
-    version = "${grgit.head().abbreviatedId}.${buildTime.toEpochMilli()}"
+    ext.commitId = grgit ? grgit.head().id : System.env.SOURCE_VERSION ?: 'N/A'
+    ext.abbreviatedCommitId = grgit ? grgit.head().abbreviatedId : ext.commitId.take(7)
+    version = "${abbreviatedCommitId}.${buildTime.toEpochMilli()}"
 
     repositories {
         mavenCentral()
@@ -72,10 +74,10 @@ subprojects {
         'Implementation-Title': project.name,
         'Implementation-Version': project.version,
         'Implementation-Vendor': project.group,
-        'Commit-AbbreviatedId': grgit.head().abbreviatedId,
-        'Commit-Id': grgit.head().id,
-        'Commit-Date': grgit.head().getDate().toInstant(),
-        'Source-Path': grgit.remote.list().findResult { it.name == 'origin' ? it.url : null },
+        'Commit-AbbreviatedId': abbreviatedCommitId,
+        'Commit-Id': commitId,
+        'Commit-Date': grgit ? grgit.head().getDate().toInstant() : 'N/A',
+        'Source-Path': grgit ? grgit.remote.list().findResult { it.name == 'origin' ? it.url : null } : 'N/A',
         'Created-By': "Gradle ${gradle.gradleVersion} with Gradle Ghost (grg)",
         'Built-By': System.properties['user.name'],
         'JDK': org.gradle.internal.jvm.Jvm.current(),
@@ -85,6 +87,10 @@ subprojects {
     test {
         useJUnitPlatform()
     }
+}
+
+task stage {
+    dependsOn ":${System.getenv()['PROJECT_NAME']}:herokuStage"
 }
 
 wrapper {
