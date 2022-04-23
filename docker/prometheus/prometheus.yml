@@ -6,7 +6,8 @@ scrape_configs:
     - job_name: 'prometheus'
       static_configs:
           - targets: ['host.docker.internal:9090']
-    - job_name: 'teahouse-services'
+    - job_name: 'eureka'
+    #   scheme: 'https'
       metrics_path: '/actuator/prometheus'
-      static_configs:
-          - targets: ['host.docker.internal:8080', 'host.docker.internal:8090', 'host.docker.internal:8091', 'host.docker.internal:8092', 'host.docker.internal:8761']
+      eureka_sd_configs:
+          - server: http://host.docker.internal:8761/eureka
