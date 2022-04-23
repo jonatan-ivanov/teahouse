@@ -8,6 +8,7 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
     implementation 'com.wavefront:wavefront-spring-boot-starter'
 
     compileOnly 'org.springframework.boot:spring-boot-devtools'
