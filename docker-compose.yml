@@ -10,6 +10,9 @@ services:
         image: prom/prometheus
         container_name: prometheus
         restart: always
+        command:
+            - --enable-feature=exemplar-storage
+            - --config.file=/etc/prometheus/prometheus.yml
         volumes:
             - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
         ports:
@@ -23,3 +26,5 @@ services:
             - ./docker/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro
         ports:
             - 3000:3000
+# Grafana creds: admin:admin
+
