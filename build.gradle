@@ -10,7 +10,7 @@ buildscript {
     }
 
     repositories {
-        maven { url 'https://plugins.gradle.org/m2/' }
+        gradlePluginPortal()
     }
     dependencies {
         classpath 'org.ajoberstar.grgit:grgit-gradle:latest.release'
