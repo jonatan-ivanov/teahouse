@@ -5,12 +5,10 @@ import static java.time.Duration.between;
 import com.google.common.collect.ImmutableMap;
 import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.ManagementFactory;
-import java.lang.management.OperatingSystemMXBean;
 import java.net.InetAddress;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.actuate.info.Info.Builder;
@@ -35,7 +33,6 @@ public class RuntimeInfoContributor implements InfoContributor {
             .put("java", javaInfo())
             .put("gcs", gcInfo())
             .put("user", userInfo())
-            .put("os", osInfo())
             .put("network", networkInfo())
             .put("startTime", startTime)
             .put("uptime", between(startTime, Instant.now()))
@@ -70,8 +67,7 @@ public class RuntimeInfoContributor implements InfoContributor {
 
     private List<Map<String, Object>> gcInfo() {
         return ManagementFactory.getGarbageCollectorMXBeans().stream()
-            .map(this::toInfoObject)
-            .collect(Collectors.toUnmodifiableList());
+            .map(this::toInfoObject).toList();
     }
 
     private Map<String, Object> toInfoObject(GarbageCollectorMXBean gcMXBean) {
@@ -93,22 +89,12 @@ public class RuntimeInfoContributor implements InfoContributor {
             .build();
     }
 
-    private Map<String, Object> osInfo() {
-        OperatingSystemMXBean osMXBean = ManagementFactory.getOperatingSystemMXBean();
-        return ImmutableMap.<String, Object>builder()
-            .put("arch", osMXBean.getArch())
-            .put("name", osMXBean.getName())
-            .put("version", osMXBean.getVersion())
-            .build();
-    }
-
     private Map<String, Object> networkInfo() {
         return ImmutableMap.<String, Object>builder()
             .put("host", hostName())
             .put("ip", ipAddress())
             .build();
     }
-
 
     private String hostName() {
         try {
