@@ -22,4 +22,6 @@ dependencies {
 
     implementation 'org.zalando:logbook-spring-boot-starter'
     implementation 'org.zalando:logbook-okhttp'
+
+    implementation 'de.codecentric:chaos-monkey-spring-boot:latest.release'
 }

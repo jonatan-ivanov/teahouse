@@ -17,6 +17,8 @@ dependencies {
 
     implementation 'org.zalando:logbook-spring-boot-starter'
 
+    implementation 'de.codecentric:chaos-monkey-spring-boot:latest.release'
+
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.flywaydb:flyway-core'
     runtimeOnly 'p6spy:p6spy:latest.release'
