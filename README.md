@@ -33,7 +33,29 @@ $ ./scripts/run_docker.sh
 Run apps
 
 ```bash
-./gradlew bootRun
+$ ./gradlew bootRun
+```
+
+### Introducing network latency
+
+Call this script
+
+```bash
+$ ./scripts/add_latency_to_toxi_proxy.sh
+```
+
+If you've removed network latency you need to first call
+
+```bash
+$ ./scripts/setup_toxi_proxy.sh
+```
+
+### Removing network latency
+
+Call this script
+
+```bash
+$ ./scripts/remove_toxi_proxy_for_postgres.sh
 ```
 
 ## Troubleshooting

@@ -13,6 +13,7 @@ services:
         image: shopify/toxiproxy
         ports:
             - "22220:22220"
+            - "8474:8474"
 
     tempo:
         image: grafana/tempo
