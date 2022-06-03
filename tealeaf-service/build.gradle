@@ -22,4 +22,5 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.flywaydb:flyway-core'
     runtimeOnly 'p6spy:p6spy:latest.release'
+    runtimeOnly "com.github.loki4j:loki-logback-appender:latest.release"
 }

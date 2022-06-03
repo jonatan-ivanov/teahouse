@@ -24,4 +24,6 @@ dependencies {
     implementation 'org.zalando:logbook-okhttp'
 
     implementation 'de.codecentric:chaos-monkey-spring-boot:latest.release'
+
+    runtimeOnly "com.github.loki4j:loki-logback-appender:latest.release"
 }

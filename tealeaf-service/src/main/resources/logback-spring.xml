@@ -2,6 +2,7 @@
 <configuration>
     <jmxConfigurator />
     <include resource="org/springframework/boot/logging/logback/base.xml" />
+    <springProperty scope="context" name="appName" source="spring.application.name"/>
     <property scope="local" name="payloadFileName" value="${spring.application.home:-.}/logs/tealeaf-service.payload.log" />
 
     <appender name="PAYLOAD_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -17,7 +18,26 @@
         </triggeringPolicy>
     </appender>
 
+    <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
+        <http>
+            <url>http://localhost:3100/loki/api/v1/push</url>
+        </http>
+        <format>
+            <label>
+                <pattern>app=${appName},host=${HOSTNAME},level=%level</pattern>
+            </label>
+            <message>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+            </message>
+            <sortByTime>true</sortByTime>
+        </format>
+    </appender>
+
     <logger name="org.zalando.logbook.Logbook" level="ALL" additivity="false">
         <appender-ref ref="PAYLOAD_FILE" />
     </logger>
+
+    <root level="INFO">
+        <appender-ref ref="LOKI"/>
+    </root>
 </configuration>
