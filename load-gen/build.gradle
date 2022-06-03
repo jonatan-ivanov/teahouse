@@ -1,0 +1,14 @@
+buildscript {
+    configurations.classpath {
+        resolutionStrategy.activateDependencyLocking()
+    }
+
+    repositories {
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath 'gradle.plugin.io.gatling.gradle:gatling-gradle-plugin:latest.release'
+    }
+}
+
+apply plugin: 'io.gatling.gradle'
