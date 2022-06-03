@@ -35,3 +35,7 @@ Run apps
 ```bash
 ./gradlew bootRun
 ```
+
+## Troubleshooting
+
+* If you can't start / stop `docker-compose` (it times out) restart the docker service with `sudo systemctl restart docker`

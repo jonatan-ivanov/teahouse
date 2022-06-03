@@ -24,7 +24,7 @@
         </http>
         <format>
             <label>
-                <pattern>app=${appName},host=${HOSTNAME},level=%level</pattern>
+                <pattern>app=${appName},host=${HOSTNAME},traceID=%X{traceId:-},level=%level</pattern>
             </label>
             <message>
                 <pattern>${FILE_LOG_PATTERN}</pattern>

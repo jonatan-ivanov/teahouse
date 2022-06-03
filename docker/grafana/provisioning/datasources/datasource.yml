@@ -10,7 +10,7 @@ datasources:
         httpMethod: POST
         exemplarTraceIdDestinations:
           - name: trace_id
-            url: http://localhost:9411/zipkin/traces/$${__value.raw}
+            datasourceUid: tempo
     - name: Tempo
       type: tempo
       access: proxy
@@ -22,8 +22,13 @@ datasources:
       editable: false
       apiVersion: 1
       uid: tempo
+      jsonData:
+          httpMethod: GET
+          tracesToLogs:
+              datasourceUid: 'loki'
     - name: Loki
       type: loki
+      uid: loki
       access: proxy
       orgId: 1
       url: http://loki:3100
