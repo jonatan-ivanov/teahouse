@@ -1,5 +1,19 @@
 version: '3'
 services:
+    postgres:
+        image: postgres
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_DB: test
+            POSTGRES_USER: test
+            POSTGRES_PASSWORD: test
+
+    postgres_toxiproxy:
+        image: shopify/toxiproxy
+        ports:
+            - "22220:22220"
+
     tempo:
         image: grafana/tempo
         command: [ "-config.file=/etc/tempo.yaml" ]
