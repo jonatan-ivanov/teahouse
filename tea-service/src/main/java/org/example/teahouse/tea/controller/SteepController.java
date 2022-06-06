@@ -24,7 +24,7 @@ public class SteepController {
     public String steep(Model model) {
         // Adding a non existent tea leave to throw an exception
         List<SimpleTealeafModel> tealeaves = new ArrayList<>(teaService.tealeaves());
-        tealeaves.add(new SimpleTealeafModel(UUID.randomUUID(), "tee-bar", "white", "10 g", "200 °C", "10 min"));
+        tealeaves.add(new SimpleTealeafModel(UUID.randomUUID(), "english breakfast", "white", "10 g", "200 °C", "10 min"));
 
         model.addAttribute("tealeaves", tealeaves);
         model.addAttribute("waters", teaService.waters());

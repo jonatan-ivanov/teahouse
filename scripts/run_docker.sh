@@ -7,7 +7,7 @@ set -o errexit
 echo "Running docker compose"
 docker-compose up -d
 
-echo "Waiting for the apps to start, please wait"
+echo "Waiting for the infrastructure to start, please wait"
 # TODO: We could curl health points etc. - I'm too lazy
 sleep 15
 

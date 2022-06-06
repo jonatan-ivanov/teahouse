@@ -36,6 +36,12 @@ Run apps
 $ ./gradlew bootRun
 ```
 
+Run Gatling performance tests
+
+```bash
+$ ./gradlew gatlingRun
+```
+
 ### Introducing network latency
 
 Call this script

@@ -1,0 +1,46 @@
+= Conference Script
+
+== Before the presentation
+
+* Prepare for conference `./scripts/get_ready_for_conference.sh`
+
+== Presentation
+
+* Explain the architecture
+* Show the UI
+* Exception example (`english breakfast` gone wrong)
+** Got notification on my phone that users are experiencing errors
+** METRICS
+*** Write a query in prometheus to see if that's actually the case (`rate(http_server_requests_seconds_count{exception!~"None", application="tea-service", uri!~"/actuator/prometheus"}[$__rate_interval])`)
+*** We will see a raise in such results for the URL `/tea/\{name}`
+** TRACES
+*** Now that we see a pattern in behaviour, we can try to narrow down what's going on
+*** Go to TEMPO, go to `Query` and for app` tea-service` find logs with severity `ERROR`
+**** We can explain that we're going through all the logs that got aggregated and since for a single business transaction we share an identifier called Trace ID we can then visualize the traces
+*** Now, pick a Trace ID to view the whole Trace
+*** Analyze the trace by going one by one through spans
+**** Explain the status codes, the parameters in the database, result set sizes (we will show that for `english breakfast` we get exceptions cause there are entries in the database missing)
+** LOGS
+*** Find all log entries for any app with ERROR log and line containing `english%20breakfast`
+*** We will see a pattern where there are plenty of logs related to this entry
+*** Why isn't there a metric for that? Cause it's a parameter and it's of high cardinality
+** Time to fix this
+*** We have found out the following pieces of information
+**** Our metrics are confirming that we have a steady amount of error entries on one of our endpoints
+**** Our traces showed us that there is an entry in the database to retrieve a list of tea leaves for english breakfast missing
+**** Our logs are providing additional context and prove that the problem is repeatable
+*** We need to add the missing entry in the database
+**** Let's go to the `tealeaf-service` and since we're using Flyway (we're versioning schema changes) we will add a new changeset where we'll add 1 more tealeaf entry for `english breakfast`
+**** Run from the IDE another instance of `tealeaf-service` - it will update the schema
+**** Check the metrics again to see if number of error status codes is falling
+**** Show that there should be no more ERROR status codes in the logs
+**** Take a random trace for `english breakfast` and see that result set count is 1
+**** Show the dashboard where for a given trace id you can see traces, metrics and logs together
+**** Add an alert that when number of http codes is going up we will be alerted
+***** Go to Grafana dashboards, pick the Boot one and go to HTTP statuses
+***** Modify it and create an alert that if the rate for non 2xx status codes is above a threashold we should be notified
+* Latency example
+** Run the `./scripts/add_latency_to_toxi_proxy.sh` script to introduce latency for the database
+** Start talking about how we've managed to save the day and finally will be able to chill out
+**
+

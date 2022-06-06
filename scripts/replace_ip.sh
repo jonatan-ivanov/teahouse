@@ -8,7 +8,6 @@ echo "Root dir [${root}]"
 my_ip="$( "${root}"/scripts/whats_my_ip.sh )"
 
 echo "Replacing files with your ip [${my_ip}]"
-# TODO: Do it in a generated folder?
 
 rm -rf "${root}"/build/docker/
 mkdir -p "${root}"/build/docker/grafana/provisioning/datasources/
