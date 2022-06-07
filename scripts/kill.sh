@@ -9,3 +9,4 @@ pkill -9 -f water-service || echo "App not running"
 pkill -9 -f eureka || echo "App not running"
 
 docker-compose kill
+docker-compose rm -v -f

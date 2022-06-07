@@ -36,11 +36,18 @@
 **** Show that there should be no more ERROR status codes in the logs
 **** Take a random trace for `english breakfast` and see that result set count is 1
 **** Show the dashboard where for a given trace id you can see traces, metrics and logs together
-**** Add an alert that when number of http codes is going up we will be alerted
+**** Add an alert that when number of http codes is going up we will be alerted (TODO: write the query here)
 ***** Go to Grafana dashboards, pick the Boot one and go to HTTP statuses
 ***** Modify it and create an alert that if the rate for non 2xx status codes is above a threashold we should be notified
 * Latency example
 ** Run the `./scripts/add_latency_to_toxi_proxy.sh` script to introduce latency for the database
 ** Start talking about how we've managed to save the day and finally will be able to chill out
-**
+** Look at the graphs again and see that something is wrong - we're seeing a big latency increase
+** Metrics - let's check them out
+*** In Boot dashboard, the HTTP response time has increased
+*** Let's look at the custom Tea Dashboard. We can see that the latency has changed - let's see a trace via exemplars for one trace that was working well, then let's look at another one when latency increased
+**** We see that one of the databases has increased latency! How could we have caught it before?
+**** We could use the `spring_data_repository_invocations_seconds`
+
+
 
