@@ -7,6 +7,7 @@
 == Presentation
 
 * Explain the architecture
+* Explain the code structure - including Sleuth & Micrometer
 * Show the UI
 * Exception example (`english breakfast` gone wrong)
 ** Got notification on my phone that users are experiencing errors
@@ -47,7 +48,6 @@
 *** In Boot dashboard, the HTTP response time has increased
 *** Let's look at the custom Tea Dashboard. We can see that the latency has changed - let's see a trace via exemplars for one trace that was working well, then let's look at another one when latency increased
 **** We see that one of the databases has increased latency! How could we have caught it before?
-**** We could use the `spring_data_repository_invocations_seconds`
-
-
-
+**** We could use the `spring_data_repository_invocations_seconds_bucket` with `histogram_quantiles` to show the `99th` percentile. We could put an alert on the hikari database metrics.
+*** How can we fix this?
+**** If we want to quickly provide a solution one way would be to add `@EnableCaching` in `tealeaf-service` and `@Cacheable("tealeaves")` on the Spring Data Repository interface. We would restart our application and kill the other instance of our app. That way we should see a significant drop in latency
