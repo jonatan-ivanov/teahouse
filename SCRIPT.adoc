@@ -51,3 +51,14 @@
 **** We could use the `spring_data_repository_invocations_seconds_bucket` with `histogram_quantiles` to show the `99th` percentile. We could put an alert on the hikari database metrics.
 *** How can we fix this?
 **** If we want to quickly provide a solution one way would be to add `@EnableCaching` in `tealeaf-service` and `@Cacheable("tealeaves")` on the Spring Data Repository interface. We would restart our application and kill the other instance of our app. That way we should see a significant drop in latency
+* Summarize what we've done
+** Exception scenario
+*** We've managed to find the reason for an exception by looking at the metrics, traces and logs
+*** We've fixed that problem by adding a missing database entry and created an alert so that we get notified if things go wrong
+*** We also doubled checked via the metrics that everything is ok
+** Latency scenario
+*** We've used metrics to confirm that there's a latency issue
+*** Using metrics and tracing we've found out where the concrete issue was - somewhere in the database
+*** We've filed a ticket to the database team but as a immediate steps we've decided to add caching to our application on the repository side
+*** Finally, we've added an alert to catch these issues
+* Go back to the slides to do the summary
