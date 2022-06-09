@@ -55,15 +55,16 @@
 *** In JDBC dashboard for `tealeaf-service` there are some major latency issues with the database
 *** Let's look at the custom Tea Dashboard again to use Exemplars to verify how things looked like before and after
 **** Check a trace via exemplars for one trace that was working well, then let's look at another one when latency increased - use the split view
-**** We see that one of the databases has increased latency! How could we have caught it before?
+**** We see that one of the databases has increased latency!
 **** *SUMMARY* - make a short break to explain why we see that the culprit is the database
-**** We could use the `spring_data_repository_invocations_seconds_bucket` with `histogram_quantiles` to show the `99th` percentile. We could put an alert on the hikari database metrics.
 *** How can we fix this?
 **** If we want to quickly provide a solution one way would be to add `@EnableCaching` in `tealeaf-service` and `@Cacheable("tealeaves")` on the Spring Data Repository interface.
 **** Start the app with port `8192`
 **** Normally we would gracefully de-register the other instance in Eureka wait for app caches to get updated etc. but it's a demo so we won't do it. We will kill the running `8092` app manually and run a second instance with the cache
-**** After a while we will see an improvement in latency (we need a minute or two)
-**** To not waste the time here we can show the LOGS & TRACES & METRICS (in the meantime the latency should fall)
+**** After a while we will see an improvement in latency
+**** In the meantime...
+***** Show that could use the `spring_data_repository_invocations_seconds_bucket` with `rate->sum->histogram_quantiles` to show the `99th` percentile. We could put an alert on the hikari database metrics.
+***** Show the LOGS & TRACES & METRICS - as an implementation of the observability vision
 * Summarize what we've done
 ** Exception scenario
 *** We've managed to find the reason for an exception by looking at the metrics, traces and logs
