@@ -9,7 +9,7 @@ if [[ -z "${JAVA_HOME}" ]] ; then
 fi
 [[ -z "${MEM_ARGS}" ]] && MEM_ARGS="-Xmx1024m"
 WAIT_TIME="${WAIT_TIME:-5}"
-RETRIES="${RETRIES:-7}"
+RETRIES="${RETRIES:-15}"
 
 mkdir -p build
 
@@ -24,7 +24,7 @@ function run_apps() {
     nohup ${JAVA_PATH_TO_BIN}java ${MEM_ARGS} -jar spring-boot-admin/build/libs/*.jar > build/spring-boot-admin.log &
     nohup ${JAVA_PATH_TO_BIN}java ${MEM_ARGS} -jar tea-service/build/libs/*.jar > build/tea-service.log &
     nohup ${JAVA_PATH_TO_BIN}java ${MEM_ARGS} -jar tealeaf-service/build/libs/*.jar > build/tealeaf-service.log &
-    nohup ${JAVA_PATH_TO_BIN}java ${MEM_8761ARGS} -jar water-service/build/libs/*.jar > build/water-service.log &
+    nohup ${JAVA_PATH_TO_BIN}java ${MEM_ARGS} -jar water-service/build/libs/*.jar > build/water-service.log &
 }
 
 function check_app() {
