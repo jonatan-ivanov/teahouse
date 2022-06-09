@@ -6,8 +6,10 @@
 
 == Presentation
 
-* Explain the architecture
 * Explain the code structure - including Sleuth & Micrometer
+** We're using `spring-boot-actuator` to bring in Micrometer and metrics support
+** We're using `spring-cloud-sleuth` to give distributed tracing and context propagation and log correlation
+** We're using `spring-cloud-sleuth-zipkin` to send tracing information in a Zipkin compatible format
 * Show the UI
 * Exception example (`english breakfast` gone wrong)
 ** Got notification on my phone that users are experiencing errors
@@ -21,10 +23,11 @@
 *** Now, pick a Trace ID to view the whole Trace
 *** Analyze the trace by going one by one through spans
 **** Explain the status codes, the parameters in the database, result set sizes (we will show that for `english breakfast` we get exceptions cause there are entries in the database missing)
+**** *SUMMARY* - make a short break to summarize what we've managed to do so far
 ** LOGS
+*** We need to know if this was a single scenario or is it a more frequent scenario?
 *** Find all log entries for any app with ERROR log and line containing `english%20breakfast`
 *** We will see a pattern where there are plenty of logs related to this entry
-*** Why isn't there a metric for that? Cause it's a parameter and it's of high cardinality
 ** Time to fix this
 *** We have found out the following pieces of information
 **** Our metrics are confirming that we have a steady amount of error entries on one of our endpoints
@@ -33,24 +36,34 @@
 *** We need to add the missing entry in the database
 **** Let's go to the `tealeaf-service` and since we're using Flyway (we're versioning schema changes) we will add a new changeset where we'll add 1 more tealeaf entry for `english breakfast`
 **** Run from the IDE another instance of `tealeaf-service` - it will update the schema
+**** *SUMMARY* - make a short break to explain why this will work for the other instance - they share a database
 **** Check the metrics again to see if number of error status codes is falling
 **** Show that there should be no more ERROR status codes in the logs
 **** Take a random trace for `english breakfast` and see that result set count is 1
 **** Show the dashboard where for a given trace id you can see traces, metrics and logs together
-**** Add an alert that when number of http codes is going up we will be alerted (TODO: write the query here)
-***** Go to Grafana dashboards, pick the Boot one and go to HTTP statuses
-***** Modify it and create an alert that if the rate for non 2xx status codes is above a threashold we should be notified
+**** Add an alert that when number of http codes is going up we will be alerted
+***** Go to Grafana dashboards, pick the Tea API dashboard
+***** Modify it and create an alert that if the rate for responses with `exception != "None"` is above 0 we should be notified
 * Latency example
 ** Run the `./scripts/add_latency_to_toxi_proxy.sh` script to introduce latency for the database
 ** Start talking about how we've managed to save the day and finally will be able to chill out
-** Look at the graphs again and see that something is wrong - we're seeing a big latency increase
-** Metrics - let's check them out
-*** In Boot dashboard, the HTTP response time has increased
-*** Let's look at the custom Tea Dashboard. We can see that the latency has changed - let's see a trace via exemplars for one trace that was working well, then let's look at another one when latency increased
+** Look at the custom Tea Dashboard graphs again and see that something is wrong - we're seeing a big latency increase
+** Let's confirm that the latency is there on the API side - let's check Metrics
+*** In Boot dashboard for `tea-service` nothing other than the HTTP response time has increased
+*** In Boot dashboard for `water-service` nothing has changed
+*** In Boot dashboard for `tealeaf-service` there are some changes in database connection
+*** In JDBC dashboard for `tealeaf-service` there are some major latency issues with the database
+*** Let's look at the custom Tea Dashboard again to use Exemplars to verify how things looked like before and after
+**** Check a trace via exemplars for one trace that was working well, then let's look at another one when latency increased - use the split view
 **** We see that one of the databases has increased latency! How could we have caught it before?
+**** *SUMMARY* - make a short break to explain why we see that the culprit is the database
 **** We could use the `spring_data_repository_invocations_seconds_bucket` with `histogram_quantiles` to show the `99th` percentile. We could put an alert on the hikari database metrics.
 *** How can we fix this?
-**** If we want to quickly provide a solution one way would be to add `@EnableCaching` in `tealeaf-service` and `@Cacheable("tealeaves")` on the Spring Data Repository interface. We would restart our application and kill the other instance of our app. That way we should see a significant drop in latency
+**** If we want to quickly provide a solution one way would be to add `@EnableCaching` in `tealeaf-service` and `@Cacheable("tealeaves")` on the Spring Data Repository interface.
+**** Start the app with port `8192`
+**** Normally we would gracefully de-register the other instance in Eureka wait for app caches to get updated etc. but it's a demo so we won't do it. We will kill the running `8092` app manually and run a second instance with the cache
+**** After a while we will see an improvement in latency (we need a minute or two)
+**** To not waste the time here we can show the LOGS & TRACES & METRICS (in the meantime the latency should fall)
 * Summarize what we've done
 ** Exception scenario
 *** We've managed to find the reason for an exception by looking at the metrics, traces and logs

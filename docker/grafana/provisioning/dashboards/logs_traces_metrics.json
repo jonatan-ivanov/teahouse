@@ -208,7 +208,7 @@
                     "refId": "C"
                 }
             ],
-            "title": "tee-service latency for All",
+            "title": "tea-service latency for All",
             "type": "timeseries"
         }
     ],
