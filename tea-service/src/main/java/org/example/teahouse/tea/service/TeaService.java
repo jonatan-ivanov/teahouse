@@ -48,7 +48,7 @@ public class TeaService {
     }
 
     public Collection<SimpleTealeafModel> tealeaves() {
-        Pageable pageable = PageRequest.ofSize(1);
+        Pageable pageable = PageRequest.ofSize(20); // set to 1 to get one resource per request
         PagedModel<SimpleTealeafModel> tealeavesPage = tealeafClient.tealeaves(pageable);
         Collection<SimpleTealeafModel> tealeaves = new ArrayList<>(tealeavesPage.getContent());
 
