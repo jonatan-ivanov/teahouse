@@ -21,5 +21,5 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     runtimeOnly 'org.flywaydb:flyway-core'
     runtimeOnly 'org.flywaydb:flyway-mysql'
-    runtimeOnly 'p6spy:p6spy:latest.release'
+    runtimeOnly 'net.ttddyy:datasource-proxy:latest.release'
 }
