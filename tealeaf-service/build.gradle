@@ -18,6 +18,8 @@ dependencies {
     implementation 'org.zalando:logbook-spring-boot-starter'
 
     runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'mysql:mysql-connector-java'
     runtimeOnly 'org.flywaydb:flyway-core'
+    runtimeOnly 'org.flywaydb:flyway-mysql'
     runtimeOnly 'p6spy:p6spy:latest.release'
 }
