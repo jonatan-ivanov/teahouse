@@ -21,6 +21,29 @@ services:
             - mysql
         ports:
             - 8888:8080
+    toxiproxy:
+        container_name: toxiproxy
+        image: ghcr.io/shopify/toxiproxy
+        command: -host=0.0.0.0 -config /config/toxiproxy.json -proxy-metrics -runtime-metrics
+        restart: always
+        depends_on:
+            - mysql
+        volumes:
+            - ./docker/toxiproxy:/config
+        ports:
+            - 8474:8474
+            - 3307:3307
+            - 3308:3308
+    toxiproxy-ui:
+        container_name: toxiproxy-ui
+        image: buckle/toxiproxy-frontend
+        restart: always
+        environment:
+            TOXIPROXY_URL: http://host.docker.internal:8474
+        depends_on:
+            - toxiproxy
+        ports:
+            - 8484:8080
     zipkin:
         image: openzipkin/zipkin
         container_name: zipkin

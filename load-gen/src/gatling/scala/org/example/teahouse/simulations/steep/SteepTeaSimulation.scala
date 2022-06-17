@@ -10,8 +10,8 @@ import java.time.Duration
 import scala.concurrent.duration.{FiniteDuration, SECONDS}
 
 class SteepTeaSimulation extends Simulation {
-    val duration: Duration = Duration.ofMinutes(10)
-    val rate: Int = 50
+    val duration: Duration = Duration.ofMinutes(30)
+    val rate: Int = 5
 
     println(s"duration: $duration")
     println(s"constantUsersPerSec: $rate")
