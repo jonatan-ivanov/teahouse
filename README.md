@@ -14,6 +14,14 @@
 - Grafana: http://localhost:3000/
 - Zipkin: http://localhost:9411/
 
+## Before doing a presentation
+
+Stop all VPNs (we might read wrong IP address and you won't see any metrics).
+
+Set up JDK18 (otherwise your build won't work).
+
+Run `./scripts/get_ready_for_conference.sh` script.
+
 ## Building
 
 If you add a new dependency run
