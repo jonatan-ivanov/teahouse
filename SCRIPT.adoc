@@ -63,7 +63,7 @@
 **** Normally we would gracefully de-register the other instance in Eureka wait for app caches to get updated etc. but it's a demo so we won't do it. We will kill the running `8092` app manually and run a second instance with the cache
 **** After a while we will see an improvement in latency
 **** In the meantime...
-***** Show that could use the `spring_data_repository_invocations_seconds_bucket` with `rate->sum->histogram_quantiles` to show the `99th` percentile. We could put an alert on the hikari database metrics.
+***** Show that could use the `spring_data_repository_invocations_seconds_count` with `rate->sum` that the time spent on Spring Data repositories dropped to 0. We could put an alert on the hikari database metrics.
 ***** Show the LOGS & TRACES & METRICS - as an implementation of the observability vision
 * Summarize what we've done
 ** Exception scenario
