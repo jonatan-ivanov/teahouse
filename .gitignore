@@ -6,6 +6,7 @@ out/
 *.iws
 *.iml
 *.ipr
+.vscode/
 
 logs/
 
