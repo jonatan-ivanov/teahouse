@@ -13,3 +13,5 @@ include ':tealeaf-service:tealeaf-api'
 
 include ':tea-service'
 include ':tea-service:tea-api'
+
+include ':load-gen'
