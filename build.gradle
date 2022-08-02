@@ -36,6 +36,10 @@ allprojects {
 }
 
 subprojects {
+    repositories {
+        mavenCentral()
+    }
+
     if (project.name != 'load-gen') {
         apply plugin: 'java'
         apply from: "$rootDir/gradle/dependency-locking.gradle"
@@ -47,10 +51,6 @@ subprojects {
         ext.commitId = grgit ? grgit.head().id : System.env.SOURCE_VERSION ?: 'N/A'
         ext.abbreviatedCommitId = grgit ? grgit.head().abbreviatedId : ext.commitId.take(7)
         version = "${abbreviatedCommitId}.${buildTime.toEpochMilli()}"
-
-        repositories {
-            mavenCentral()
-        }
 
         dependencies {
             ['annotationProcessor', 'compileOnly', 'implementation', 'runtimeOnly', 'testImplementation'].each { conf ->

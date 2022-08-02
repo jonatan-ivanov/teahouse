@@ -1,17 +1,14 @@
 # This is a Gradle generated file for dependency locking.
 # Manual edits can break the build and are not advised.
 # This file is expected to be part of source control.
-com.fasterxml.jackson.core:jackson-annotations:2.13.2=classpath
-com.fasterxml.jackson.core:jackson-core:2.13.2=classpath
-com.fasterxml.jackson.core:jackson-databind:2.13.2.2=classpath
-com.fasterxml.jackson:jackson-bom:2.13.2=classpath
-com.squareup.okhttp3:okhttp:3.14.9=classpath
-com.squareup.okio:okio:1.17.2=classpath
-gradle.plugin.io.gatling.gradle:gatling-gradle-plugin:3.7.6.3=classpath
+com.fasterxml.jackson.core:jackson-annotations:2.13.3=classpath
+com.fasterxml.jackson.core:jackson-core:2.13.3=classpath
+com.fasterxml.jackson.core:jackson-databind:2.13.3=classpath
+com.fasterxml.jackson:jackson-bom:2.13.3=classpath
+gradle.plugin.io.gatling.gradle:gatling-gradle-plugin:3.8.2=classpath
 io.gatling:gatling-asm-shaded:9.2=classpath
-io.gatling:gatling-enterprise-plugin-commons:1.1.2=classpath
+io.gatling:gatling-enterprise-plugin-commons:1.4.3=classpath
 io.gatling:gatling-scanner:1.1.0=classpath
 org.apache.ant:ant-launcher:1.10.11=classpath
 org.apache.ant:ant:1.10.11=classpath
-org.apache.commons:commons-exec:1.3=classpath
 empty=
