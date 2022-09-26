@@ -2,6 +2,7 @@ version: '3'
 services:
     postgres:
         image: postgres
+        extra_hosts: ['host.docker.internal:host-gateway']
         ports:
             - "5432:5432"
         environment:
@@ -11,12 +12,14 @@ services:
 
     postgres_toxiproxy:
         image: shopify/toxiproxy
+        extra_hosts: ['host.docker.internal:host-gateway']
         ports:
             - "22220:22220"
             - "8474:8474"
 
     tempo:
         image: grafana/tempo
+        extra_hosts: ['host.docker.internal:host-gateway']
         command: [ "-config.file=/etc/tempo.yaml" ]
         volumes:
             - ./docker/tempo/tempo-local.yaml:/etc/tempo.yaml
@@ -31,6 +34,7 @@ services:
 
     loki:
         image: grafana/loki
+        extra_hosts: ['host.docker.internal:host-gateway']
         command: [ "-config.file=/etc/loki/local-config.yaml" ]
         ports:
             - "3100:3100"                                   # loki needs to be exposed so it receives logs
@@ -46,11 +50,12 @@ services:
 
     prometheus:
         image: prom/prometheus
+        extra_hosts: ['host.docker.internal:host-gateway']
         command:
             - --enable-feature=exemplar-storage
             - --config.file=/etc/prometheus/prometheus.yml
         volumes:
-            - ./build/docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+            - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
         ports:
             - "9090:9090"
         logging:
@@ -60,8 +65,9 @@ services:
 
     grafana:
         image: grafana/grafana
+        extra_hosts: ['host.docker.internal:host-gateway']
         volumes:
-            - ./build/docker/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources:ro
+            - ./docker/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources:ro
             - ./docker/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro
         environment:
             - GF_AUTH_ANONYMOUS_ENABLED=true
