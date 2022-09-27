@@ -6,6 +6,8 @@ set -o errexit
 
 ./scripts/run_docker.sh
 
+./scripts/setup.sh
+
 ./scripts/run_apps.sh
 
 echo "Running performance tests"

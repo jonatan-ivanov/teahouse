@@ -3,14 +3,15 @@ package org.example.teahouse.water.repo;
 import static lombok.AccessLevel.PRIVATE;
 
 import java.util.UUID;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
+import org.example.teahouse.core.db.UuidUserType;
 import org.example.teahouse.water.api.CreateWaterRequest;
 import org.example.teahouse.water.controller.RepresentationWaterModel;
 import org.hibernate.annotations.Type;
@@ -22,7 +23,7 @@ import org.hibernate.annotations.Type;
 @NoArgsConstructor(force = true, access = PRIVATE)
 public class Water {
     @Id @GeneratedValue
-    @Type(type = "uuid-char")
+    @Type(UuidUserType.class)
     private final UUID id;
 
     @Column(unique = true, nullable = false)

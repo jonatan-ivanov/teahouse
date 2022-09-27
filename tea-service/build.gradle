@@ -10,11 +10,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    implementation 'io.github.openfeign:feign-okhttp'
-    implementation 'io.github.openfeign:feign-micrometer'
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
-    implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
+    implementation 'io.github.openfeign:feign-okhttp:11.10-SNAPSHOT'
+    implementation 'io.github.openfeign:feign-micrometer:11.10-SNAPSHOT'
+    implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
+
+    implementation 'io.micrometer:micrometer-tracing'
+    implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+    implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
 
     implementation 'org.springdoc:springdoc-openapi-ui:latest.release'
     implementation 'org.springdoc:springdoc-openapi-hateoas:latest.release'

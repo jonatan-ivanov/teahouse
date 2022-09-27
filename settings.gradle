@@ -2,7 +2,6 @@ rootProject.name = 'teahouse'
 
 include ':core'
 
-include ':eureka'
 include ':spring-boot-admin'
 
 include ':water-service'

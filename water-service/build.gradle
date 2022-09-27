@@ -7,9 +7,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
-    implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
+    implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
+
+    implementation 'io.micrometer:micrometer-tracing'
+    implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+    implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
+
+    implementation "net.ttddyy.observation:datasource-micrometer-spring-boot:0.0.1-SNAPSHOT"
 
     implementation 'org.springdoc:springdoc-openapi-ui:latest.release'
     implementation 'org.springdoc:springdoc-openapi-hateoas:latest.release'
@@ -21,6 +25,5 @@ dependencies {
 
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.flywaydb:flyway-core'
-    runtimeOnly 'p6spy:p6spy:latest.release'
     runtimeOnly "com.github.loki4j:loki-logback-appender:latest.release"
 }

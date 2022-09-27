@@ -1,19 +1,21 @@
 package org.example.teahouse.tealeaf.repo;
 
-import static lombok.AccessLevel.PRIVATE;
-
 import java.util.UUID;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
+import org.example.teahouse.core.db.UuidUserType;
 import org.example.teahouse.tealeaf.api.CreateTealeafRequest;
 import org.example.teahouse.tealeaf.controller.RepresentationTealeafModel;
 import org.hibernate.annotations.Type;
+
+import static lombok.AccessLevel.PRIVATE;
 
 @Entity
 @Value
@@ -21,8 +23,9 @@ import org.hibernate.annotations.Type;
 @RequiredArgsConstructor
 @NoArgsConstructor(force = true, access = PRIVATE)
 public class Tealeaf {
-    @Id @GeneratedValue
-    @Type(type = "uuid-char")
+    @Id
+    @GeneratedValue
+    @Type(UuidUserType.class)
     private final UUID id;
 
     @Column(unique = true, nullable = false)

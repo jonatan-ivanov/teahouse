@@ -2,8 +2,10 @@ dependencies {
     implementation 'org.springframework:spring-web'
     implementation 'org.springframework.boot:spring-boot-actuator'
     implementation 'com.google.guava:guava:latest.release'
-    implementation 'org.slf4j:slf4j-api'
+    implementation 'org.slf4j:slf4j-api:latest.release'
+    implementation 'org.hibernate.orm:hibernate-core'
 
-    implementation 'ch.qos.logback:logback-access'
+//    implementation 'ch.qos.logback:logback-access'
     implementation 'org.apache.tomcat.embed:tomcat-embed-core'
+    implementation 'org.slf4j:slf4j-simple:latest.release' // We have 2 versions of slf4j on the classpath
 }
