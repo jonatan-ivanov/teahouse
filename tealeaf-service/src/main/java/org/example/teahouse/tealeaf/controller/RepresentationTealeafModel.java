@@ -13,7 +13,7 @@ import org.springframework.hateoas.server.core.Relation;
 @RequiredArgsConstructor
 @Relation(collectionRelation = "tealeaves", itemRelation = "tealeaf")
 public class RepresentationTealeafModel extends RepresentationModel<RepresentationTealeafModel> implements TealeafModel {
-    private final UUID id;
+    private final String id;
     private final String name;
     private final String type;
     private final String suggestedAmount;

@@ -1,13 +1,10 @@
 version: '3'
 services:
-    consul:
-        image: progrium/consul
+    zookeeper:
+        image: zookeeper:3.6
         extra_hosts: ['host.docker.internal:host-gateway']
-        command: -server -bootstrap
         ports:
-            - 8400:8400
-            - 8500:8500
-            - 8600:8600
+            - "2181:2181"
 
     postgres:
         image: postgres

@@ -10,9 +10,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    implementation 'io.github.openfeign:feign-okhttp:11.10-SNAPSHOT'
-    implementation 'io.github.openfeign:feign-micrometer:11.10-SNAPSHOT'
-    implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
+    implementation 'io.github.openfeign:feign-okhttp:12.0-SNAPSHOT'
+    implementation 'io.github.openfeign:feign-micrometer:12.0-SNAPSHOT'
+    implementation 'org.springframework.cloud:spring-cloud-starter-zookeeper-discovery'
 
     implementation 'io.micrometer:micrometer-tracing'
     implementation 'io.micrometer:micrometer-tracing-bridge-brave'

@@ -11,7 +11,7 @@ import org.zalando.logbook.okhttp.LogbookInterceptor;
 @Configuration
 public class LogBookConfig {
 
-    @Bean
+   /* @Bean
     public LogbookInterceptor logbookInterceptor(Logbook logbook) {
         return new LogbookInterceptor(logbook);
     }
@@ -20,5 +20,5 @@ public class LogBookConfig {
     public OkHttpClientFactory okHttpClientFactory(OkHttpClient.Builder builder, LogbookInterceptor logbookInterceptor) {
         builder.addNetworkInterceptor(logbookInterceptor);
         return new DefaultOkHttpClientFactory(builder);
-    }
+    }*/
 }

@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 @Builder
 @RequiredArgsConstructor
 public class SimpleTealeafModel implements TealeafModel{
-    private final UUID id;
+    private final String id;
     private final String name;
     private final String type;
     private final String suggestedAmount;

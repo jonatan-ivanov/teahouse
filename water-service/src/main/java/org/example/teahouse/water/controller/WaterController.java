@@ -5,10 +5,10 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 import java.util.UUID;
-import javax.validation.Valid;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.teahouse.water.api.CreateWaterRequest;
 import org.example.teahouse.water.api.WaterModel;
@@ -48,7 +48,7 @@ public class WaterController {
     @GetMapping("/{id}")
     @Operation(summary = "Fetches a resource by its ID")
     public WaterModel findById(@PathVariable UUID id) {
-        return waterRepository.findById(id)
+        return waterRepository.findById(id.toString())
             .map(modelAssembler::toModel)
             .orElseThrow(this::notFound);
     }
@@ -79,7 +79,7 @@ public class WaterController {
     @ResponseStatus(NO_CONTENT)
     @Operation(summary = "Deletes a resource by its ID ")
     public void deleteById(@PathVariable UUID id) {
-        waterRepository.deleteById(id);
+        waterRepository.deleteById(id.toString());
     }
 
     private ResponseStatusException notFound() {

@@ -2,6 +2,8 @@ package org.example.teahouse.tea;
 
 import org.example.teahouse.core.actuator.config.ActuatorConfig;
 import org.example.teahouse.core.log.access.AccessLogConfig;
+import org.example.teahouse.core.observability.ObservabilityConfig;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.metrics.buffering.BufferingApplicationStartup;
@@ -14,11 +16,12 @@ import org.springframework.context.annotation.PropertySource;
 @EnableDiscoveryClient
 @SpringBootApplication
 @PropertySource("classpath:build.properties")
-@Import({ActuatorConfig.class, AccessLogConfig.class})
+@Import({ActuatorConfig.class, AccessLogConfig.class, ObservabilityConfig.class})
 public class TeaServiceApplication {
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplication(TeaServiceApplication.class);
         springApplication.setApplicationStartup(new BufferingApplicationStartup(10_000));
         springApplication.run(args);
     }
+
 }

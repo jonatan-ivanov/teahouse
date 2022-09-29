@@ -3,7 +3,7 @@ package org.example.teahouse.tealeaf.api;
 import java.util.UUID;
 
 public interface TealeafModel {
-    UUID getId();
+    String getId();
     String getName();
     String getType();
     String getSuggestedAmount();

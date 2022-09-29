@@ -13,7 +13,7 @@ import org.springframework.hateoas.server.core.Relation;
 @RequiredArgsConstructor
 @Relation(collectionRelation = "waters", itemRelation = "water")
 public class RepresentationWaterModel extends RepresentationModel<RepresentationWaterModel> implements WaterModel {
-    private final UUID id;
+    private final String id;
     private final String size;
     private final String amount;
 }

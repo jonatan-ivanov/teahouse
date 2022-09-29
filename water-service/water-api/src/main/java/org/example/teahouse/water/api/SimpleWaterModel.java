@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 @Builder
 @RequiredArgsConstructor
 public class SimpleWaterModel implements WaterModel {
-    private final UUID id;
+    private final String id;
     private final String size;
     private final String amount;
 }
