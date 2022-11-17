@@ -1,15 +1,16 @@
 ext.buildTime = new Date().toInstant()
 
 buildscript {
-    ext.springBootVersion = '2.+'
-    ext.springCloudVersion = '2021.+'
-    ext.springDataVersion = '2021.+'
+    ext.springBootVersion = '3.0.0-RC2'
+    ext.springCloudVersion = '2022.0.0-RC1'
+    ext.springDataVersion = '2022.0.0-RC2'
 
     configurations.classpath {
         resolutionStrategy.activateDependencyLocking()
     }
 
     repositories {
+        maven { url 'https://repo.spring.io/milestone' }
         gradlePluginPortal()
     }
     dependencies {
@@ -37,6 +38,8 @@ allprojects {
 
 subprojects {
     repositories {
+        maven { url 'https://repo.spring.io/milestone' }
+        maven { url 'https://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates' }
         mavenCentral()
     }
 
@@ -52,7 +55,7 @@ subprojects {
                 dependencies.add(conf, platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
                 dependencies.add(conf, platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"))
                 dependencies.add(conf, platform("org.springframework.data:spring-data-bom:$springDataVersion"))
-                dependencies.add(conf, platform('org.zalando:logbook-bom:latest.release'))
+//                dependencies.add(conf, platform('org.zalando:logbook-bom:latest.release'))
             }
             testImplementation platform('org.junit:junit-bom:latest.release')
 

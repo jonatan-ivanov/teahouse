@@ -1,7 +1,7 @@
 package org.example.teahouse.water.api;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;

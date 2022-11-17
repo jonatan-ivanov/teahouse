@@ -1,5 +1,5 @@
 create table tealeaf (
-    id varchar(255) not null,
+    id uuid not null,
     name varchar(255) not null,
     suggested_amount varchar(255) not null,
     suggested_steeping_time varchar(255) not null,
@@ -8,4 +8,5 @@ create table tealeaf (
     primary key (id)
 );
 
-alter table tealeaf add constraint UK_9v6fqg4d3pq6ryc2xghqq0sqj unique (name);
+alter table if exists tealeaf add constraint UK_9v6fqg4d3pq6ryc2xghqq0sqj unique (name);
+

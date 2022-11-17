@@ -1,5 +1,10 @@
 apply from: "$rootDir/gradle/spring-boot.gradle"
 
+repositories {
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url 'https://jitpack.io' }
+}
+
 dependencies {
     implementation project(':water-service:water-api')
     implementation project(':tealeaf-service:tealeaf-api')
@@ -9,17 +14,27 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    implementation 'io.github.openfeign:feign-okhttp'
-    implementation 'io.github.openfeign:feign-micrometer'
+
+    // TODO: Fix these after Feign support is released
+    implementation('org.springframework.cloud:spring-cloud-starter-openfeign'){
+        exclude group: 'io.github.openfeign'
+    }
+    implementation 'com.github.Openfeign.feign:feign-core:72f379a03d'
+    implementation 'com.github.Openfeign.feign:feign-slf4j:72f379a03d'
+    implementation 'com.github.Openfeign.feign:feign-okhttp:72f379a03d'
+    implementation 'com.github.Openfeign.feign:feign-micrometer:72f379a03d'
+//    implementation 'io.github.openfeign:feign-okhttp'
+//    implementation 'io.github.openfeign:feign-micrometer'
+
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
-    implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
+    implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+    implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
 
-    implementation 'org.springdoc:springdoc-openapi-ui:latest.release'
-    implementation 'org.springdoc:springdoc-openapi-hateoas:latest.release'
-    implementation 'org.springdoc:springdoc-openapi-data-rest:latest.release'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.+'
+    // TODO: Add them back once released
+//    implementation 'org.springdoc:springdoc-openapi-hateoas:latest.release'
+//    implementation 'org.springdoc:springdoc-openapi-data-rest:latest.release'
 
-    implementation 'org.zalando:logbook-spring-boot-starter'
-    implementation 'org.zalando:logbook-okhttp'
+    // implementation 'org.zalando:logbook-spring-boot-starter'
+    // implementation 'org.zalando:logbook-okhttp'
 }
