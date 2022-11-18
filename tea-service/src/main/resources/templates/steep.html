@@ -36,17 +36,21 @@
                 </button>
             </div>
         </div>
-        <div id="tea-card" class="row col col-4 mt-5 card" hidden>
-            <div id="tea-header" class="card-header"></div>
-            <ul class="list-group list-group-flush">
-                <li id="steeping-time" class="list-group-item"></li>
-                <li id="water-amount" class="list-group-item"></li>
-                <li id="water-temperature"class="list-group-item"></li>
-                <li id="tealeaves-name" class="list-group-item"></li>
-                <li id="tealeaves-type" class="list-group-item"></li>
-                <li id="tealeaves-amount" class="list-group-item"></li>
-            </ul>
+
+        <div id="tea-card-container" class="row mt-5" hidden>
+            <div id="tea-card" class="col col-4 p-0 card">
+                <div id="tea-header" class="card-header"></div>
+                <ul class="list-group list-group-flush">
+                    <li id="steeping-time" class="list-group-item"></li>
+                    <li id="water-amount" class="list-group-item"></li>
+                    <li id="water-temperature"class="list-group-item"></li>
+                    <li id="tealeaves-name" class="list-group-item"></li>
+                    <li id="tealeaves-type" class="list-group-item"></li>
+                    <li id="tealeaves-amount" class="list-group-item"></li>
+                </ul>
+            </div>
         </div>
+        <div id="alert-container" class="m-5 alert alert-danger" role="alert" hidden></div>
     </div>
     <script src="steep.js"></script>
 </body>
