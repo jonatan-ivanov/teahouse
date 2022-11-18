@@ -52,7 +52,6 @@ function renderTea(tea) {
     $('#tea-card-container').removeAttr('hidden');
 }
 
-
 function renderErrorResponse(response) {
     renderErrorMessage(response.error);
 }
