@@ -2,7 +2,6 @@ apply from: "$rootDir/gradle/spring-boot.gradle"
 
 repositories {
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
-    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -15,16 +14,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
-    // TODO: Fix these after Feign support is released
-    implementation('org.springframework.cloud:spring-cloud-starter-openfeign'){
-        exclude group: 'io.github.openfeign'
-    }
-    implementation 'com.github.Openfeign.feign:feign-core:72f379a03d'
-    implementation 'com.github.Openfeign.feign:feign-slf4j:72f379a03d'
-    implementation 'com.github.Openfeign.feign:feign-okhttp:72f379a03d'
-    implementation 'com.github.Openfeign.feign:feign-micrometer:72f379a03d'
-//    implementation 'io.github.openfeign:feign-okhttp'
-//    implementation 'io.github.openfeign:feign-micrometer'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'io.github.openfeign:feign-core:12.1' // TODO: Fix this after Feign support is released
+    implementation 'io.github.openfeign:feign-slf4j:12.1' // TODO: Fix this after Feign support is released
+    implementation 'io.github.openfeign:feign-okhttp:12.1'
+    implementation 'io.github.openfeign:feign-micrometer:12.1'
 
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'io.micrometer:micrometer-tracing-bridge-brave'
