@@ -44,9 +44,6 @@ subprojects {
         apply plugin: 'java'
         apply from: "$rootDir/gradle/dependency-locking.gradle"
 
-        sourceCompatibility = JavaVersion.VERSION_18
-        targetCompatibility = JavaVersion.VERSION_18
-
         group = 'org.example.teahouse'
         ext.commitId = grgit ? grgit.head().id : System.env.SOURCE_VERSION ?: 'N/A'
         ext.abbreviatedCommitId = grgit ? grgit.head().abbreviatedId : ext.commitId.take(7)
@@ -67,6 +64,10 @@ subprojects {
             testImplementation 'org.junit.jupiter:junit-jupiter-api'
             testImplementation 'org.junit.jupiter:junit-jupiter-params'
             testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+        }
+
+        java {
+            toolchain { languageVersion = JavaLanguageVersion.of(19) }
         }
 
         jar.manifest.attributes(
