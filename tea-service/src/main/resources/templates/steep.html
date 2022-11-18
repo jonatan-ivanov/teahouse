@@ -14,6 +14,7 @@
             <div class="col col-2 form-floating">
                 <select id="tealeaf-selector" class="form-select" aria-label="Select tealeaf" required>
                     <option th:each="tealeaf, status : ${tealeaves}" th:selected="${status.first}" th:value="${tealeaf.getName()}" th:text="${tealeaf.getName()} + ' (' + ${tealeaf.getType()} + ')'"></option>
+                    <option value="english breakfast">english breakfast (black)</option>
                 </select>
                 <label for="tealeaf-selector" class="form-label">Tealeaf</label>
             </div>
