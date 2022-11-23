@@ -20,7 +20,7 @@ import org.example.teahouse.water.controller.RepresentationWaterModel;
 @RequiredArgsConstructor
 @NoArgsConstructor(force = true, access = PRIVATE)
 public class Water {
-    @Id @GeneratedValue//(strategy = UUID)
+    @Id @GeneratedValue
     private final UUID id;
 
     @Column(unique = true, nullable = false)

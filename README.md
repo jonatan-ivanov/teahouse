@@ -11,5 +11,4 @@
   
 `docker-compose up`
 - Prometheus: http://localhost:9090/
-- Grafana: http://localhost:3000/
-- Zipkin: http://localhost:9411/
+- Loki, Grafana, Tempo: http://localhost:3000/

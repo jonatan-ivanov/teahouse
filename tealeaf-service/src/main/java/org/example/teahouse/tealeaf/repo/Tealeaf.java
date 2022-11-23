@@ -20,7 +20,7 @@ import org.example.teahouse.tealeaf.controller.RepresentationTealeafModel;
 @RequiredArgsConstructor
 @NoArgsConstructor(force = true, access = PRIVATE)
 public class Tealeaf {
-    @Id @GeneratedValue //(strategy = UUID)
+    @Id @GeneratedValue
     private final UUID id;
 
     @Column(unique = true, nullable = false)
