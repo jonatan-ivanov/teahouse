@@ -25,10 +25,13 @@ dependencies {
     implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
 
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.+'
+
     // TODO: Add them back once released
 //    implementation 'org.springdoc:springdoc-openapi-hateoas:latest.release'
 //    implementation 'org.springdoc:springdoc-openapi-data-rest:latest.release'
 
     // implementation 'org.zalando:logbook-spring-boot-starter'
     // implementation 'org.zalando:logbook-okhttp'
+
+    runtimeOnly 'com.github.loki4j:loki-logback-appender:latest.release'
 }

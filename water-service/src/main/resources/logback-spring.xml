@@ -3,6 +3,7 @@
     <jmxConfigurator />
     <include resource="org/springframework/boot/logging/logback/base.xml" />
     <property scope="local" name="payloadFileName" value="${spring.application.home:-.}/logs/water-service.payload.log" />
+    <springProperty scope="context" name="appName" source="spring.application.name" />
 
     <appender name="PAYLOAD_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder>
@@ -17,7 +18,28 @@
         </triggeringPolicy>
     </appender>
 
+    <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
+        <http>
+            <url>http://localhost:3100/loki/api/v1/push</url>
+        </http>
+        <format>
+            <label>
+                <pattern>org=teahouse,application=${appName},host=${HOSTNAME},level=%level,traceId=%X{traceId:-},spanId=%X{spanId:-}</pattern>
+            </label>
+            <message>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+            </message>
+            <sortByTime>true</sortByTime>
+        </format>
+    </appender>
+
     <logger name="org.zalando.logbook.Logbook" level="ALL" additivity="false">
         <appender-ref ref="PAYLOAD_FILE" />
     </logger>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+        <appender-ref ref="LOKI" />
+    </root>
 </configuration>

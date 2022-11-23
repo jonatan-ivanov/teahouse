@@ -24,21 +24,19 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "iteration": 1654027822859,
     "links": [],
     "liveNow": false,
     "panels": [
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PBFA97CFB590B2093"
-        },
+        "datasource": "Prometheus",
         "fieldConfig": {
           "defaults": {
             "color": {
               "mode": "palette-classic"
             },
             "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
               "axisLabel": "",
               "axisPlacement": "auto",
               "barAlignment": 0,
@@ -95,7 +93,8 @@
           "legend": {
             "calcs": [],
             "displayMode": "list",
-            "placement": "bottom"
+            "placement": "bottom",
+            "showLegend": true
           },
           "tooltip": {
             "mode": "single",
@@ -104,10 +103,7 @@
         },
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PBFA97CFB590B2093"
-            },
+            "datasource": "Prometheus",
             "editorMode": "code",
             "exemplar": true,
             "expr": "histogram_quantile(1.00, sum(rate(http_server_requests_seconds_bucket{application=~\"$application\", uri=~\"$uri\"}[$__rate_interval])) by (le))",
@@ -116,10 +112,7 @@
             "refId": "A"
           },
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PBFA97CFB590B2093"
-            },
+            "datasource": "Prometheus",
             "editorMode": "code",
             "exemplar": true,
             "expr": "histogram_quantile(0.99, sum(rate(http_server_requests_seconds_bucket{application=~\"$application\", uri=~\"$uri\"}[$__rate_interval])) by (le))",
@@ -129,10 +122,7 @@
             "refId": "B"
           },
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PBFA97CFB590B2093"
-            },
+            "datasource": "Prometheus",
             "editorMode": "code",
             "exemplar": true,
             "expr": "histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket{application=~\"$application\", uri=~\"$uri\"}[$__rate_interval])) by (le))",
@@ -146,16 +136,15 @@
         "type": "timeseries"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PBFA97CFB590B2093"
-        },
+        "datasource": "Prometheus",
         "fieldConfig": {
           "defaults": {
             "color": {
               "mode": "palette-classic"
             },
             "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
               "axisLabel": "",
               "axisPlacement": "auto",
               "barAlignment": 0,
@@ -211,7 +200,8 @@
           "legend": {
             "calcs": [],
             "displayMode": "list",
-            "placement": "bottom"
+            "placement": "bottom",
+            "showLegend": true
           },
           "tooltip": {
             "mode": "single",
@@ -220,10 +210,7 @@
         },
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PBFA97CFB590B2093"
-            },
+            "datasource": "Prometheus",
             "editorMode": "code",
             "exemplar": true,
             "expr": "sum(rate(http_server_requests_seconds_count{application=~\"$application\", uri=~\"$uri\"}[$__rate_interval])) by (outcome)",
@@ -236,16 +223,15 @@
         "type": "timeseries"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PBFA97CFB590B2093"
-        },
+        "datasource": "Prometheus",
         "fieldConfig": {
           "defaults": {
             "color": {
               "mode": "palette-classic"
             },
             "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
               "axisLabel": "",
               "axisPlacement": "auto",
               "barAlignment": 0,
@@ -301,7 +287,8 @@
           "legend": {
             "calcs": [],
             "displayMode": "list",
-            "placement": "bottom"
+            "placement": "bottom",
+            "showLegend": true
           },
           "tooltip": {
             "mode": "single",
@@ -310,10 +297,7 @@
         },
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PBFA97CFB590B2093"
-            },
+            "datasource": "Prometheus",
             "editorMode": "code",
             "exemplar": true,
             "expr": "sum(rate(tea_make_total[$__rate_interval])) by (name, size)",
@@ -335,9 +319,21 @@
           "mode": "spectrum"
         },
         "dataFormat": "tsbuckets",
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PBFA97CFB590B2093"
+        "datasource": "Prometheus",
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "scaleDistribution": {
+                "type": "linear"
+              }
+            }
+          },
+          "overrides": []
         },
         "gridPos": {
           "h": 18,
@@ -353,14 +349,48 @@
           "show": true
         },
         "maxDataPoints": 25,
-        "pluginVersion": "8.5.0",
+        "options": {
+          "calculate": false,
+          "calculation": {},
+          "cellGap": 2,
+          "cellValues": {},
+          "color": {
+            "exponent": 0.5,
+            "fill": "#b4ff00",
+            "mode": "scheme",
+            "reverse": false,
+            "scale": "exponential",
+            "scheme": "Spectral",
+            "steps": 128
+          },
+          "exemplars": {
+            "color": "rgba(255,0,255,0.7)"
+          },
+          "filterValues": {
+            "le": 1e-9
+          },
+          "legend": {
+            "show": true
+          },
+          "rowsFrame": {
+            "layout": "auto"
+          },
+          "showValue": "never",
+          "tooltip": {
+            "show": true,
+            "yHistogram": false
+          },
+          "yAxis": {
+            "axisPlacement": "left",
+            "reverse": true,
+            "unit": "s"
+          }
+        },
+        "pluginVersion": "9.2.5",
         "reverseYBuckets": true,
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PBFA97CFB590B2093"
-            },
+            "datasource": "Prometheus",
             "editorMode": "code",
             "exemplar": true,
             "expr": "sum(increase(http_server_requests_seconds_bucket{application=~\"$application\", uri=~\"$uri\"}[$__interval])) by (le)",
@@ -389,7 +419,7 @@
       }
     ],
     "refresh": "5s",
-    "schemaVersion": 36,
+    "schemaVersion": 37,
     "style": "dark",
     "tags": [],
     "templating": {
@@ -397,13 +427,13 @@
         {
           "allValue": ".*",
           "current": {
-            "selected": true,
+            "selected": false,
             "text": "tea-service",
             "value": "tea-service"
           },
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "prometheus"
           },
           "definition": "label_values(application)",
           "hide": 0,
@@ -425,13 +455,13 @@
         {
           "allValue": ".*",
           "current": {
-            "selected": true,
+            "selected": false,
             "text": "/tea/{name}",
             "value": "/tea/{name}"
           },
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "prometheus"
           },
           "definition": "label_values(http_server_requests_seconds_count{application=\"$application\"}, uri)",
           "hide": 0,
