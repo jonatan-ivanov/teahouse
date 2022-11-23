@@ -1,15 +1,16 @@
 ext.buildTime = new Date().toInstant()
 
 buildscript {
-    ext.springBootVersion = '3.0.0-RC2'
-    ext.springCloudVersion = '2022.0.0-RC1'
-    ext.springDataVersion = '2022.0.0-RC2'
+    ext.springBootVersion = '3.0.0-SNAPSHOT'
+    ext.springCloudVersion = '2022.0.0-RC2'
+    ext.springDataVersion = '2022.0.0'
 
     configurations.classpath {
         resolutionStrategy.activateDependencyLocking()
     }
 
     repositories {
+        maven { url 'https://repo.spring.io/snapshot' }
         maven { url 'https://repo.spring.io/milestone' }
         gradlePluginPortal()
     }
@@ -38,6 +39,7 @@ allprojects {
 
 subprojects {
     repositories {
+        maven { url 'https://repo.spring.io/snapshot' }
         maven { url 'https://repo.spring.io/milestone' }
         maven { url 'https://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates' }
         mavenCentral()
