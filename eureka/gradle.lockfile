@@ -2,6 +2,7 @@
 # Manual edits can break the build and are not advised.
 # This file is expected to be part of source control.
 antlr:antlr:2.7.7=default,productionRuntimeClasspath,runtimeClasspath,testRuntimeClasspath
+aopalliance:aopalliance:1.0=default,productionRuntimeClasspath,runtimeClasspath,testRuntimeClasspath
 ch.qos.logback:logback-access:1.4.5=default,productionRuntimeClasspath,runtimeClasspath,testRuntimeClasspath
 ch.qos.logback:logback-classic:1.4.5=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 ch.qos.logback:logback-core:1.4.5=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
@@ -40,10 +41,12 @@ commons-configuration:commons-configuration:1.10=compileClasspath,default,produc
 commons-jxpath:commons-jxpath:1.3=default,productionRuntimeClasspath,runtimeClasspath,testRuntimeClasspath
 commons-lang:commons-lang:2.6=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 io.github.x-stream:mxparser:1.2.2=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-io.micrometer:micrometer-commons:1.10.1=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-io.micrometer:micrometer-core:1.10.1=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-io.micrometer:micrometer-observation:1.10.1=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+io.micrometer:context-propagation:1.0.0=default,productionRuntimeClasspath,runtimeClasspath,testRuntimeClasspath
+io.micrometer:micrometer-commons:1.10.2=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+io.micrometer:micrometer-core:1.10.2=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+io.micrometer:micrometer-observation:1.10.2=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 io.micrometer:micrometer-registry-prometheus:1.10.1=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+io.micrometer:micrometer-tracing:1.0.0=default,productionRuntimeClasspath,runtimeClasspath,testRuntimeClasspath
 io.projectreactor.addons:reactor-extra:3.5.0=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 io.projectreactor:reactor-core:3.5.0=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 io.prometheus:simpleclient:0.16.0=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
@@ -65,6 +68,7 @@ net.minidev:accessors-smart:2.4.8=testCompileClasspath,testRuntimeClasspath
 net.minidev:json-smart:2.4.8=testCompileClasspath,testRuntimeClasspath
 org.antlr:antlr-runtime:3.4=default,productionRuntimeClasspath,runtimeClasspath,testRuntimeClasspath
 org.antlr:stringtemplate:3.2.1=default,productionRuntimeClasspath,runtimeClasspath,testRuntimeClasspath
+org.apache.commons:commons-lang3:3.12.0=default,productionRuntimeClasspath,runtimeClasspath,testRuntimeClasspath
 org.apache.commons:commons-math:2.2=default,productionRuntimeClasspath,runtimeClasspath,testRuntimeClasspath
 org.apache.httpcomponents.client5:httpclient5:5.1.4=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 org.apache.httpcomponents.core5:httpcore5-h2:5.1.5=compileClasspath,default,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath

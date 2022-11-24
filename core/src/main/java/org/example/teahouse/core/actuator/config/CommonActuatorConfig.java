@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 
 @Configuration
-public class ActuatorConfig {
+public class CommonActuatorConfig {
     @Bean
     public InfoContributor runtimeInfoContributor(Environment environment) {
         return new RuntimeInfoContributor(environment);
