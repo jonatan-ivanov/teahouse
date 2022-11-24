@@ -53,7 +53,15 @@ function renderTea(tea) {
 }
 
 function renderErrorResponse(response) {
-    renderErrorMessage(response.error);
+    if (response.title) {
+        renderErrorMessage(response.title);
+    }
+    else if (response.error) {
+        renderErrorMessage(response.error);
+    }
+    else {
+        renderErrorMessage(response);
+    }
 }
 
 function renderError(error) {
