@@ -382,11 +382,11 @@
           },
           "yAxis": {
             "axisPlacement": "left",
-            "reverse": true,
+            "reverse": false,
             "unit": "s"
           }
         },
-        "pluginVersion": "9.2.5",
+        "pluginVersion": "9.2.6",
         "reverseYBuckets": true,
         "targets": [
           {
