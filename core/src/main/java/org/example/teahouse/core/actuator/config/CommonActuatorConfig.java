@@ -3,11 +3,13 @@ package org.example.teahouse.core.actuator.config;
 import feign.Request;
 import feign.micrometer.FeignContext;
 import io.micrometer.common.KeyValue;
+import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationPredicate;
-import io.micrometer.observation.transport.RequestReplyReceiverContext;
+import io.micrometer.observation.ObservationRegistry;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.example.teahouse.core.actuator.info.RuntimeInfoContributor;
+
+import org.springframework.boot.actuate.autoconfigure.observation.ObservationRegistryCustomizer;
 import org.springframework.boot.actuate.info.InfoContributor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,5 +38,20 @@ public class CommonActuatorConfig {
                 return true;
             }
         };
+    }
+
+    @Bean
+    public ObservationRegistryCustomizer<ObservationRegistry> tempoCustomizer() {
+        return registry -> registry.observationConfig().observationFilter(this::tempoFilter);
+    }
+
+    // TODO: remove this once Tempo is fixed: https://github.com/grafana/tempo/issues/1916
+    private Observation.Context tempoFilter(Observation.Context context) {
+        if (context.getError() != null) {
+            context.addHighCardinalityKeyValue(KeyValue.of("error", "true"));
+            context.addHighCardinalityKeyValue(KeyValue.of("errorMessage", context.getError().getMessage()));
+        }
+
+        return context;
     }
 }
