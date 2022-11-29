@@ -17,8 +17,8 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation 'io.github.openfeign:feign-core:12.1' // TODO: Fix this after Feign support is released
     implementation 'io.github.openfeign:feign-slf4j:12.1' // TODO: Fix this after Feign support is released
-    implementation 'io.github.openfeign:feign-okhttp:12.1'
-    implementation 'io.github.openfeign:feign-micrometer:12.1'
+    implementation 'io.github.openfeign:feign-okhttp:12.1' // TODO: Fix this after Feign support is released
+    implementation 'io.github.openfeign:feign-micrometer:12.1' // TODO: Fix this after Feign support is released
 
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'io.micrometer:micrometer-tracing-bridge-brave'
