@@ -1,5 +1,9 @@
 apply from: "$rootDir/gradle/spring-boot.gradle"
 
+repositories {
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+}
+
 dependencies {
     implementation project(':tealeaf-service:tealeaf-api')
 
@@ -11,7 +15,7 @@ dependencies {
     implementation 'io.micrometer:micrometer-tracing-bridge-brave'
     implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
 
-    implementation 'net.ttddyy.observation:datasource-micrometer-spring-boot:1.+'
+    implementation 'net.ttddyy.observation:datasource-micrometer-spring-boot:1.0.1-SNAPSHOT'
 
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.+'
 
