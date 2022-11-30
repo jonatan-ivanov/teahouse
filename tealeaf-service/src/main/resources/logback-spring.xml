@@ -24,7 +24,7 @@
         </http>
         <format>
             <label>
-                <pattern>org=teahouse,application=${appName},host=${HOSTNAME},level=%level,traceId=%X{traceId:-},spanId=%X{spanId:-}</pattern>
+                <pattern>org=teahouse,application=${appName},host=${HOSTNAME},level=%level</pattern>
             </label>
             <message>
                 <pattern>${FILE_LOG_PATTERN}</pattern>
