@@ -1,12 +1,10 @@
 package org.example.teahouse.core.actuator.config;
 
-import feign.Request;
 import feign.micrometer.FeignContext;
 import io.micrometer.common.KeyValue;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationPredicate;
 import io.micrometer.observation.ObservationRegistry;
-import jakarta.servlet.http.HttpServletRequest;
 import org.example.teahouse.core.actuator.info.RuntimeInfoContributor;
 
 import org.springframework.boot.actuate.autoconfigure.observation.ObservationRegistryCustomizer;
@@ -24,15 +22,22 @@ public class CommonActuatorConfig {
     }
 
     @Bean
-    public ObservationPredicate actuatorPredicate() {
+    public ObservationPredicate actuatorServerContextPredicate() {
         return (name, context) -> {
-            if (name.equals("http.server.requests")) {
-                HttpServletRequest request = ((ServerRequestObservationContext) context).getCarrier();
-                return !request.getRequestURI().startsWith("/actuator");
+            if (name.equals("http.server.requests") && context instanceof ServerRequestObservationContext serverContext) {
+                return !serverContext.getCarrier().getRequestURI().startsWith("/actuator");
             }
-            else if (name.equals("http.client.requests")){
-                Request request = ((FeignContext) context).getCarrier();
-                return !request.url().endsWith("/actuator/health");
+            else {
+                return true;
+            }
+        };
+    }
+
+    @Bean
+    public ObservationPredicate actuatorClientContextPredicate() {
+        return (name, context) -> {
+            if (name.equals("http.client.requests") && context instanceof FeignContext feignContext) {
+                    return !feignContext.getCarrier().url().endsWith("/actuator/health");
             }
             else {
                 return true;
