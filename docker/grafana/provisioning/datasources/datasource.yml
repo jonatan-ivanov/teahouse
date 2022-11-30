@@ -50,6 +50,7 @@ datasources:
       url: http://host.docker.internal:3100
       editable: true
       jsonData:
+        maxLines: 50
         derivedFields:
           - datasourceUid: tempo
             matcherRegex: '\w+ \[.+,(\w*),\w*\] \d+'
