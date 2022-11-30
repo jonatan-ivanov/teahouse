@@ -25,7 +25,7 @@ datasources:
         httpMethod: GET
         tracesToMetrics:
           datasourceUid: prometheus
-          tags: [{ key: 'service.name', value: 'application' }, { key: 'method' }, { key: 'uri' }, { key: 'outcome' }, { key: 'status' }, { key: 'exception' }]
+          tags: [{ key: 'service.name', value: 'application' }, { key: 'org' }, { key: 'method' }, { key: 'uri' }, { key: 'outcome' }, { key: 'status' }, { key: 'exception' }]
           queries:
             - name: 'Throughput'
               query: 'sum(rate(http_server_requests_seconds_count{$$__tags}[$$__rate_interval]))'
@@ -33,7 +33,7 @@ datasources:
               query: 'histogram_quantile(1.00, sum(rate(http_server_requests_seconds_bucket{$$__tags}[$$__rate_interval])) by (le))'
         tracesToLogs:
           datasourceUid: loki
-          mappedTags: [{ key: 'service.name', value: 'application' }]
+          mappedTags: [{ key: 'org' }]
           mapTagNamesEnabled: true
           filterByTraceID: true
           filterBySpanID: false

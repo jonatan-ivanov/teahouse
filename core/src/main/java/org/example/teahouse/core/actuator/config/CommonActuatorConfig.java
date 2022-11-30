@@ -42,7 +42,13 @@ public class CommonActuatorConfig {
 
     @Bean
     public ObservationRegistryCustomizer<ObservationRegistry> tempoCustomizer() {
-        return registry -> registry.observationConfig().observationFilter(this::tempoFilter);
+        return registry -> registry.observationConfig()
+            .observationFilter(this::orgFilter)
+            .observationFilter(this::tempoFilter);
+    }
+
+    private Observation.Context orgFilter(Observation.Context context) {
+        return context.addLowCardinalityKeyValue(KeyValue.of("org", "teahouse"));
     }
 
     // TODO: remove this once Tempo is fixed: https://github.com/grafana/tempo/issues/1916
