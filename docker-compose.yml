@@ -4,7 +4,6 @@ services:
         container_name: mysql
         image: mysql
         command: --default-authentication-plugin=mysql_native_password
-        restart: always
         environment:
             MYSQL_ROOT_PASSWORD: password
         volumes:
@@ -14,7 +13,6 @@ services:
     adminer:
         container_name: adminer
         image: adminer
-        restart: always
         environment:
             ADMINER_DEFAULT_SERVER: mysql
         depends_on:
@@ -25,7 +23,6 @@ services:
         container_name: toxiproxy
         image: ghcr.io/shopify/toxiproxy
         command: -host=0.0.0.0 -config /config/toxiproxy.json -proxy-metrics -runtime-metrics
-        restart: always
         depends_on:
             - mysql
         volumes:
@@ -37,7 +34,6 @@ services:
     toxiproxy-ui:
         container_name: toxiproxy-ui
         image: buckle/toxiproxy-frontend
-        restart: always
         environment:
             TOXIPROXY_URL: http://host.docker.internal:8474
         depends_on:
@@ -48,7 +44,6 @@ services:
         container_name: prometheus
         image: prom/prometheus
         extra_hosts: ['host.docker.internal:host-gateway']
-        restart: always
         command:
             - --enable-feature=exemplar-storage
             - --web.enable-remote-write-receiver
@@ -61,7 +56,6 @@ services:
         container_name: grafana
         image: grafana/grafana
         extra_hosts: ['host.docker.internal:host-gateway']
-        restart: always
         environment:
             - GF_AUTH_ANONYMOUS_ENABLED=true
             - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
@@ -76,7 +70,6 @@ services:
         container_name: tempo
         image: grafana/tempo
         extra_hosts: ['host.docker.internal:host-gateway']
-        restart: always
         command: ['-config.file=/etc/tempo.yml']
         volumes:
             - ./docker/grafana/tempo.yml:/etc/tempo.yml:ro
@@ -88,13 +81,11 @@ services:
         container_name: loki
         image: grafana/loki
         extra_hosts: ['host.docker.internal:host-gateway']
-        restart: always
         command: ['-config.file=/etc/loki/local-config.yaml']
         ports:
             - 3100:3100
     # zipkin:
     #     image: openzipkin/zipkin
     #     container_name: zipkin
-    #     restart: always
     #     ports:
     #         - 9411:9411
