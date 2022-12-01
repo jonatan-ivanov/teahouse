@@ -364,10 +364,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "process_files_open_files{application=\"$application\", instance=\"$instance\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Open Files",
+                    "legendFormat": "open",
+                    "range": true,
                     "refId": "A"
                 },
                 {
@@ -375,10 +377,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "process_files_max_files{application=\"$application\", instance=\"$instance\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Max Files",
+                    "legendFormat": "max",
+                    "range": true,
                     "refId": "B"
                 }
             ],
@@ -398,11 +402,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:2100",
                     "format": "locale",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:2101",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -513,7 +519,7 @@
             "id": 95,
             "legend": {
                 "alignAsTable": true,
-                "avg": true,
+                "avg": false,
                 "current": true,
                 "max": true,
                 "min": true,
@@ -543,10 +549,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "system_cpu_usage{instance=\"$instance\", application=\"$application\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "System CPU Usage",
+                    "legendFormat": "system",
+                    "range": true,
                     "refId": "A"
                 },
                 {
@@ -554,10 +562,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "process_cpu_usage{instance=\"$instance\", application=\"$application\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Process CPU Usage",
+                    "legendFormat": "process",
+                    "range": true,
                     "refId": "B"
                 }
             ],
@@ -577,11 +587,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:2176",
                     "format": "short",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:2177",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -612,7 +624,7 @@
             "id": 96,
             "legend": {
                 "alignAsTable": true,
-                "avg": true,
+                "avg": false,
                 "current": true,
                 "max": true,
                 "min": true,
@@ -642,10 +654,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "system_load_average_1m{instance=\"$instance\", application=\"$application\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Load Average [1m]",
+                    "legendFormat": "avg [1m]",
+                    "range": true,
                     "refId": "A"
                 },
                 {
@@ -653,16 +667,18 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "system_cpu_count{instance=\"$instance\", application=\"$application\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "CPU Core Size",
+                    "legendFormat": "CPUs",
+                    "range": true,
                     "refId": "B"
                 }
             ],
             "thresholds": [],
             "timeRegions": [],
-            "title": "Load Average",
+            "title": "Load",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -676,11 +692,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:2252",
                     "format": "short",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:2253",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -737,7 +755,7 @@
             "id": 85,
             "legend": {
                 "alignAsTable": true,
-                "avg": true,
+                "avg": false,
                 "current": true,
                 "max": true,
                 "min": true,
@@ -769,10 +787,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "jvm_memory_used_bytes{instance=\"$instance\", application=\"$application\", id=\"$memory_pool_heap\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Used",
+                    "legendFormat": "used",
+                    "range": true,
                     "refId": "C"
                 },
                 {
@@ -780,10 +800,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "jvm_memory_committed_bytes{instance=\"$instance\", application=\"$application\", id=\"$memory_pool_heap\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Commited",
+                    "legendFormat": "commited",
+                    "range": true,
                     "refId": "A"
                 },
                 {
@@ -791,10 +813,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "jvm_memory_max_bytes{instance=\"$instance\", application=\"$application\", id=\"$memory_pool_heap\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Max",
+                    "legendFormat": "max",
+                    "range": true,
                     "refId": "B"
                 }
             ],
@@ -851,7 +875,7 @@
             "id": 88,
             "legend": {
                 "alignAsTable": true,
-                "avg": true,
+                "avg": false,
                 "current": true,
                 "max": true,
                 "min": true,
@@ -883,10 +907,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "jvm_memory_used_bytes{instance=\"$instance\", application=\"$application\", id=\"$memory_pool_nonheap\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Used",
+                    "legendFormat": "used",
+                    "range": true,
                     "refId": "C"
                 },
                 {
@@ -894,10 +920,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "jvm_memory_committed_bytes{instance=\"$instance\", application=\"$application\", id=\"$memory_pool_nonheap\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Commited",
+                    "legendFormat": "commited",
+                    "range": true,
                     "refId": "A"
                 },
                 {
@@ -905,10 +933,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "jvm_memory_max_bytes{instance=\"$instance\", application=\"$application\", id=\"$memory_pool_nonheap\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Max",
+                    "legendFormat": "max",
+                    "range": true,
                     "refId": "B"
                 }
             ],
@@ -928,11 +958,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:251",
                     "format": "bytes",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:252",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -964,7 +996,7 @@
             "id": 50,
             "legend": {
                 "alignAsTable": true,
-                "avg": true,
+                "avg": false,
                 "current": true,
                 "max": true,
                 "min": true,
@@ -994,10 +1026,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "jvm_classes_loaded_classes{instance=\"$instance\", application=\"$application\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Classes Loaded",
+                    "legendFormat": "loaded",
+                    "range": true,
                     "refId": "A"
                 }
             ],
@@ -1086,10 +1120,10 @@
                         "uid": "prometheus"
                     },
                     "editorMode": "code",
-                    "expr": "irate(jvm_classes_unloaded_classes_total{instance=\"$instance\", application=\"$application\"}[5m])",
+                    "expr": "irate(jvm_classes_unloaded_classes_total{instance=\"$instance\", application=\"$application\"}[$__rate_interval])",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Classes Unloaded",
+                    "legendFormat": "unloaded",
                     "range": true,
                     "refId": "A"
                 }
@@ -1176,10 +1210,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "jvm_buffer_memory_used_bytes{instance=\"$instance\", application=\"$application\", id=\"direct\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Used Bytes",
+                    "legendFormat": "used",
+                    "range": true,
                     "refId": "A"
                 },
                 {
@@ -1187,10 +1223,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "jvm_buffer_total_capacity_bytes{instance=\"$instance\", application=\"$application\", id=\"direct\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Capacity Bytes",
+                    "legendFormat": "capacity",
+                    "range": true,
                     "refId": "B"
                 }
             ],
@@ -1210,11 +1248,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:113",
                     "format": "short",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:114",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -1274,10 +1314,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "jvm_buffer_memory_used_bytes{instance=\"$instance\", application=\"$application\", id=\"mapped\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Used Bytes",
+                    "legendFormat": "used",
+                    "range": true,
                     "refId": "A"
                 },
                 {
@@ -1285,10 +1327,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "jvm_buffer_total_capacity_bytes{instance=\"$instance\", application=\"$application\", id=\"mapped\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Capacity Bytes",
+                    "legendFormat": "capacity",
+                    "range": true,
                     "refId": "B"
                 }
             ],
@@ -1308,11 +1352,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:192",
                     "format": "short",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:193",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -1334,7 +1380,7 @@
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
-                "h": 8,
+                "h": 9,
                 "w": 12,
                 "x": 0,
                 "y": 47
@@ -1343,7 +1389,7 @@
             "id": 68,
             "legend": {
                 "alignAsTable": true,
-                "avg": true,
+                "avg": false,
                 "current": true,
                 "max": true,
                 "min": true,
@@ -1373,10 +1419,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "jvm_threads_daemon_threads{instance=\"$instance\", application=\"$application\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Daemon",
+                    "legendFormat": "daemon",
+                    "range": true,
                     "refId": "A"
                 },
                 {
@@ -1384,10 +1432,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "jvm_threads_live_threads{instance=\"$instance\", application=\"$application\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Live",
+                    "legendFormat": "live",
+                    "range": true,
                     "refId": "B"
                 },
                 {
@@ -1395,10 +1445,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "jvm_threads_peak_threads{instance=\"$instance\", application=\"$application\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Peak",
+                    "legendFormat": "peak",
+                    "range": true,
                     "refId": "C"
                 }
             ],
@@ -1418,11 +1470,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:279",
                     "format": "short",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:280",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -1444,7 +1498,7 @@
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
-                "h": 8,
+                "h": 9,
                 "w": 12,
                 "x": 12,
                 "y": 47
@@ -1482,10 +1536,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
-                    "expr": "irate(jvm_gc_memory_allocated_bytes_total{instance=\"$instance\", application=\"$application\"}[5m])",
+                    "editorMode": "code",
+                    "expr": "irate(jvm_gc_memory_allocated_bytes_total{instance=\"$instance\", application=\"$application\"}[$__rate_interval])",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "allocated",
+                    "range": true,
                     "refId": "A"
                 },
                 {
@@ -1493,10 +1549,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
-                    "expr": "irate(jvm_gc_memory_promoted_bytes_total{instance=\"$instance\", application=\"$application\"}[5m])",
+                    "editorMode": "code",
+                    "expr": "irate(jvm_gc_memory_promoted_bytes_total{instance=\"$instance\", application=\"$application\"}[$__rate_interval])",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "promoted",
+                    "range": true,
                     "refId": "B"
                 }
             ],
@@ -1516,11 +1574,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:435",
                     "format": "bytes",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:436",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -1540,7 +1600,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 55
+                "y": 56
             },
             "id": 72,
             "panels": [],
@@ -1571,13 +1631,13 @@
                 "h": 10,
                 "w": 12,
                 "x": 0,
-                "y": 56
+                "y": 57
             },
             "hiddenSeries": false,
             "id": 74,
             "legend": {
                 "alignAsTable": true,
-                "avg": true,
+                "avg": false,
                 "current": false,
                 "hideEmpty": true,
                 "hideZero": true,
@@ -1609,10 +1669,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
-                    "expr": "irate(jvm_gc_pause_seconds_count{instance=\"$instance\", application=\"$application\"}[5m])",
+                    "editorMode": "code",
+                    "expr": "irate(jvm_gc_pause_seconds_count{instance=\"$instance\", application=\"$application\"}[$__rate_interval])",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{action}} [{{cause}}]",
+                    "range": true,
                     "refId": "A"
                 }
             ],
@@ -1632,11 +1694,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:518",
                     "format": "locale",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:519",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -1661,13 +1725,13 @@
                 "h": 10,
                 "w": 12,
                 "x": 12,
-                "y": 56
+                "y": 57
             },
             "hiddenSeries": false,
             "id": 76,
             "legend": {
                 "alignAsTable": true,
-                "avg": true,
+                "avg": false,
                 "current": false,
                 "hideEmpty": true,
                 "hideZero": true,
@@ -1699,10 +1763,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
-                    "expr": "irate(jvm_gc_pause_seconds_sum{instance=\"$instance\", application=\"$application\"}[5m])",
+                    "editorMode": "code",
+                    "expr": "irate(jvm_gc_pause_seconds_sum{instance=\"$instance\", application=\"$application\"}[$__rate_interval])",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{action}} [{{cause}}]",
+                    "range": true,
                     "refId": "A"
                 }
             ],
@@ -1722,11 +1788,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:597",
                     "format": "s",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:598",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -1746,562 +1814,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 66
-            },
-            "id": 34,
-            "panels": [],
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "tempo",
-                        "uid": "tempo"
-                    },
-                    "refId": "A"
-                }
-            ],
-            "title": "HikariCP Statistics",
-            "type": "row"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "mappings": [
-                        {
-                            "options": {
-                                "match": "null",
-                                "result": {
-                                    "text": "N/A"
-                                }
-                            },
-                            "type": "special"
-                        }
-                    ],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
-                    "unit": "none"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 4,
-                "w": 4,
-                "x": 0,
                 "y": 67
-            },
-            "id": 44,
-            "links": [],
-            "maxDataPoints": 100,
-            "options": {
-                "colorMode": "none",
-                "graphMode": "none",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "textMode": "auto"
-            },
-            "pluginVersion": "9.2.6",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "hikaricp_connections{instance=\"$instance\", application=\"$application\", pool=\"$hikaricp\"}",
-                    "format": "time_series",
-                    "intervalFactor": 1,
-                    "legendFormat": "",
-                    "refId": "A"
-                }
-            ],
-            "title": "Connections Size",
-            "type": "stat"
-        },
-        {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-            },
-            "fill": 1,
-            "fillGradient": 0,
-            "gridPos": {
-                "h": 8,
-                "w": 20,
-                "x": 4,
-                "y": 67
-            },
-            "hiddenSeries": false,
-            "id": 36,
-            "legend": {
-                "alignAsTable": true,
-                "avg": true,
-                "current": true,
-                "hideEmpty": true,
-                "hideZero": false,
-                "max": true,
-                "min": true,
-                "show": true,
-                "total": false,
-                "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "options": {
-                "alertThreshold": true
-            },
-            "percentage": false,
-            "pluginVersion": "9.2.6",
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": true,
-            "steppedLine": false,
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "hikaricp_connections_active{instance=\"$instance\", application=\"$application\", pool=\"$hikaricp\"}",
-                    "format": "time_series",
-                    "intervalFactor": 1,
-                    "legendFormat": "Active",
-                    "refId": "B"
-                },
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "hikaricp_connections_idle{instance=\"$instance\", application=\"$application\", pool=\"$hikaricp\"}",
-                    "format": "time_series",
-                    "intervalFactor": 1,
-                    "legendFormat": "Idle",
-                    "refId": "A"
-                },
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "hikaricp_connections_pending{instance=\"$instance\", application=\"$application\", pool=\"$hikaricp\"}",
-                    "format": "time_series",
-                    "intervalFactor": 1,
-                    "legendFormat": "Pending",
-                    "refId": "C"
-                }
-            ],
-            "thresholds": [],
-            "timeRegions": [],
-            "title": "Connections",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "mode": "time",
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                    "format": "short",
-                    "logBase": 1,
-                    "show": true
-                },
-                {
-                    "format": "short",
-                    "logBase": 1,
-                    "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false
-            }
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "mappings": [
-                        {
-                            "options": {
-                                "match": "null",
-                                "result": {
-                                    "text": "N/A"
-                                }
-                            },
-                            "type": "special"
-                        }
-                    ],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
-                    "unit": "none"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 4,
-                "w": 4,
-                "x": 0,
-                "y": 71
-            },
-            "id": 46,
-            "links": [],
-            "maxDataPoints": 100,
-            "options": {
-                "colorMode": "none",
-                "graphMode": "none",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "textMode": "auto"
-            },
-            "pluginVersion": "9.2.6",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "hikaricp_connections_timeout_total{instance=\"$instance\", application=\"$application\", pool=\"$hikaricp\"}",
-                    "format": "time_series",
-                    "intervalFactor": 1,
-                    "legendFormat": "",
-                    "refId": "A"
-                }
-            ],
-            "title": "Connection Timeout Count",
-            "type": "stat"
-        },
-        {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-            },
-            "fill": 1,
-            "fillGradient": 0,
-            "gridPos": {
-                "h": 6,
-                "w": 8,
-                "x": 0,
-                "y": 75
-            },
-            "hiddenSeries": false,
-            "id": 38,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "options": {
-                "alertThreshold": true
-            },
-            "percentage": false,
-            "pluginVersion": "9.2.6",
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "hikaricp_connections_creation_seconds_sum{instance=\"$instance\", application=\"$application\", pool=\"$hikaricp\"} / hikaricp_connections_creation_seconds_count{instance=\"$instance\", application=\"$application\", pool=\"$hikaricp\"}",
-                    "format": "time_series",
-                    "intervalFactor": 1,
-                    "legendFormat": "Creation Time",
-                    "refId": "A"
-                }
-            ],
-            "thresholds": [],
-            "timeRegions": [],
-            "title": "Connection Creation Time",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "mode": "time",
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                    "format": "s",
-                    "logBase": 1,
-                    "show": true
-                },
-                {
-                    "format": "short",
-                    "logBase": 1,
-                    "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false
-            }
-        },
-        {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-            },
-            "fill": 1,
-            "fillGradient": 0,
-            "gridPos": {
-                "h": 6,
-                "w": 8,
-                "x": 8,
-                "y": 75
-            },
-            "hiddenSeries": false,
-            "id": 42,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "options": {
-                "alertThreshold": true
-            },
-            "percentage": false,
-            "pluginVersion": "9.2.6",
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "hikaricp_connections_usage_seconds_sum{instance=\"$instance\", application=\"$application\", pool=\"$hikaricp\"} / hikaricp_connections_usage_seconds_count{instance=\"$instance\", application=\"$application\", pool=\"$hikaricp\"}",
-                    "format": "time_series",
-                    "intervalFactor": 1,
-                    "legendFormat": "Usage Time",
-                    "refId": "A"
-                }
-            ],
-            "thresholds": [],
-            "timeRegions": [],
-            "title": "Connection Usage Time",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "mode": "time",
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                    "format": "s",
-                    "logBase": 1,
-                    "show": true
-                },
-                {
-                    "format": "short",
-                    "logBase": 1,
-                    "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false
-            }
-        },
-        {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-            },
-            "fill": 1,
-            "fillGradient": 0,
-            "gridPos": {
-                "h": 6,
-                "w": 8,
-                "x": 16,
-                "y": 75
-            },
-            "hiddenSeries": false,
-            "id": 40,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "options": {
-                "alertThreshold": true
-            },
-            "percentage": false,
-            "pluginVersion": "9.2.6",
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "hikaricp_connections_acquire_seconds_sum{instance=\"$instance\", application=\"$application\", pool=\"$hikaricp\"} / hikaricp_connections_acquire_seconds_count{instance=\"$instance\", application=\"$application\", pool=\"$hikaricp\"}",
-                    "format": "time_series",
-                    "intervalFactor": 1,
-                    "legendFormat": "Acquire Time",
-                    "refId": "A"
-                }
-            ],
-            "thresholds": [],
-            "timeRegions": [],
-            "title": "Connection Acquire Time",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "mode": "time",
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                    "format": "s",
-                    "logBase": 1,
-                    "show": true
-                },
-                {
-                    "format": "short",
-                    "logBase": 1,
-                    "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false
-            }
-        },
-        {
-            "collapsed": false,
-            "datasource": {
-                "type": "tempo",
-                "uid": "tempo"
-            },
-            "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 81
             },
             "id": 18,
             "panels": [],
@@ -2329,10 +1842,10 @@
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
-                "h": 7,
+                "h": 12,
                 "w": 24,
                 "x": 0,
-                "y": 82
+                "y": 68
             },
             "hiddenSeries": false,
             "id": 4,
@@ -2371,7 +1884,7 @@
                     },
                     "editorMode": "code",
                     "exemplar": false,
-                    "expr": "rate(http_server_requests_seconds_count{instance=\"$instance\", application=\"$application\", uri!~\".*actuator.*\"}[$__rate_interval])",
+                    "expr": "rate(http_server_requests_seconds_count{instance=\"$instance\", application=\"$application\", uri!~\".*actuator.*\", uri!~\".*swagger.*\", uri!~\".*api-docs.*\", uri!~\"/steep\", uri!~\"/\", uri!~\"/\\\\*\\\\*\"}[$__rate_interval])",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{method}} [{{status}}] - {{uri}}",
@@ -2423,10 +1936,10 @@
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
-                "h": 7,
+                "h": 11,
                 "w": 24,
                 "x": 0,
-                "y": 89
+                "y": 80
             },
             "hiddenSeries": false,
             "id": 2,
@@ -2539,7 +2052,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 96
+                "y": 91
             },
             "id": 22,
             "panels": [],
@@ -2597,7 +2110,7 @@
                 "h": 4,
                 "w": 4,
                 "x": 0,
-                "y": 97
+                "y": 92
             },
             "id": 28,
             "links": [],
@@ -2649,13 +2162,13 @@
                 "h": 7,
                 "w": 9,
                 "x": 4,
-                "y": 97
+                "y": 92
             },
             "hiddenSeries": false,
             "id": 24,
             "legend": {
                 "alignAsTable": true,
-                "avg": true,
+                "avg": false,
                 "current": true,
                 "max": true,
                 "min": true,
@@ -2685,16 +2198,18 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "tomcat_sessions_active_current_sessions{instance=\"$instance\", application=\"$application\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "active sessions",
+                    "legendFormat": "active",
+                    "range": true,
                     "refId": "A"
                 }
             ],
             "thresholds": [],
             "timeRegions": [],
-            "title": "Active Sessions",
+            "title": "Sessions",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -2708,12 +2223,14 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:1322",
                     "format": "none",
                     "label": "",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:1323",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -2738,13 +2255,13 @@
                 "h": 7,
                 "w": 11,
                 "x": 13,
-                "y": 97
+                "y": 92
             },
             "hiddenSeries": false,
             "id": 26,
             "legend": {
                 "alignAsTable": true,
-                "avg": true,
+                "avg": false,
                 "current": true,
                 "max": true,
                 "min": true,
@@ -2774,10 +2291,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
-                    "expr": "irate(tomcat_global_sent_bytes_total{instance=\"$instance\", application=\"$application\"}[5m])",
+                    "editorMode": "code",
+                    "expr": "irate(tomcat_global_sent_bytes_total{instance=\"$instance\", application=\"$application\"}[$__rate_interval])",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Sent Bytes",
+                    "legendFormat": "sent",
+                    "range": true,
                     "refId": "A"
                 },
                 {
@@ -2785,16 +2304,18 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
-                    "expr": "irate(tomcat_global_received_bytes_total{instance=\"$instance\", application=\"$application\"}[5m])",
+                    "editorMode": "code",
+                    "expr": "irate(tomcat_global_received_bytes_total{instance=\"$instance\", application=\"$application\"}[$__rate_interval])",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Recieved Bytes",
+                    "legendFormat": "received",
+                    "range": true,
                     "refId": "B"
                 }
             ],
             "thresholds": [],
             "timeRegions": [],
-            "title": "Sent & Recieved Bytes",
+            "title": "Traffic",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -2808,11 +2329,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:1478",
                     "format": "bytes",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:1479",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -2864,7 +2387,7 @@
                 "h": 3,
                 "w": 4,
                 "x": 0,
-                "y": 101
+                "y": 96
             },
             "id": 32,
             "links": [],
@@ -2912,10 +2435,10 @@
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
-                "h": 7,
-                "w": 13,
+                "h": 8,
+                "w": 24,
                 "x": 0,
-                "y": 104
+                "y": 99
             },
             "hiddenSeries": false,
             "id": 30,
@@ -2951,10 +2474,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "tomcat_threads_current_threads{instance=\"$instance\", application=\"$application\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Current thread",
+                    "legendFormat": "current",
+                    "range": true,
                     "refId": "A"
                 },
                 {
@@ -2962,10 +2487,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
+                    "editorMode": "code",
                     "expr": "tomcat_threads_busy_threads{instance=\"$instance\", application=\"$application\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "Current thread busy",
+                    "legendFormat": "busy",
+                    "range": true,
                     "refId": "B"
                 }
             ],
@@ -2985,11 +2512,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:1557",
                     "format": "short",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:1558",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -3009,7 +2538,434 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 111
+                "y": 107
+            },
+            "id": 34,
+            "panels": [],
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "tempo",
+                        "uid": "tempo"
+                    },
+                    "refId": "A"
+                }
+            ],
+            "title": "HikariCP Statistics",
+            "type": "row"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [
+                        {
+                            "options": {
+                                "match": "null",
+                                "result": {
+                                    "text": "N/A"
+                                }
+                            },
+                            "type": "special"
+                        }
+                    ],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 4,
+                "x": 0,
+                "y": 108
+            },
+            "id": 44,
+            "links": [],
+            "maxDataPoints": 100,
+            "options": {
+                "colorMode": "none",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "9.2.6",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "editorMode": "code",
+                    "expr": "hikaricp_connections{instance=\"$instance\", application=\"$application\", pool=\"$hikaricp\"}",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "title": "Current Connection Count",
+            "type": "stat"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 10,
+                "w": 20,
+                "x": 4,
+                "y": 108
+            },
+            "hiddenSeries": false,
+            "id": 36,
+            "legend": {
+                "alignAsTable": true,
+                "avg": true,
+                "current": true,
+                "hideEmpty": true,
+                "hideZero": false,
+                "max": true,
+                "min": true,
+                "show": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "9.2.6",
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": true,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "editorMode": "code",
+                    "expr": "hikaricp_connections_active{instance=\"$instance\", application=\"$application\", pool=\"$hikaricp\"}",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "active",
+                    "range": true,
+                    "refId": "B"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "editorMode": "code",
+                    "expr": "hikaricp_connections_idle{instance=\"$instance\", application=\"$application\", pool=\"$hikaricp\"}",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "idle",
+                    "range": true,
+                    "refId": "A"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "editorMode": "code",
+                    "expr": "hikaricp_connections_pending{instance=\"$instance\", application=\"$application\", pool=\"$hikaricp\"}",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "pending",
+                    "range": true,
+                    "refId": "C"
+                }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Connection Count",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "mode": "time",
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:918",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:919",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false
+            }
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [
+                        {
+                            "options": {
+                                "match": "null",
+                                "result": {
+                                    "text": "N/A"
+                                }
+                            },
+                            "type": "special"
+                        }
+                    ],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 4,
+                "x": 0,
+                "y": 113
+            },
+            "id": 46,
+            "links": [],
+            "maxDataPoints": 100,
+            "options": {
+                "colorMode": "none",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "9.2.6",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "expr": "hikaricp_connections_timeout_total{instance=\"$instance\", application=\"$application\", pool=\"$hikaricp\"}",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "",
+                    "refId": "A"
+                }
+            ],
+            "title": "Connection Timeout Count",
+            "type": "stat"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 9,
+                "w": 24,
+                "x": 0,
+                "y": 118
+            },
+            "hiddenSeries": false,
+            "id": 102,
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": false,
+                "hideEmpty": false,
+                "hideZero": false,
+                "max": true,
+                "min": true,
+                "rightSide": false,
+                "show": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "9.2.6",
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "editorMode": "code",
+                    "expr": "irate(hikaricp_connections_usage_seconds_sum{application=\"$application\", instance=\"$instance\", pool=~\"$hikaricp\"}[$__rate_interval]) / irate(hikaricp_connections_usage_seconds_count{application=\"$application\", instance=\"$instance\", pool=\"$hikaricp\"}[$__rate_interval])",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "usage",
+                    "range": true,
+                    "refId": "C"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "editorMode": "code",
+                    "expr": "irate(hikaricp_connections_creation_seconds_sum{application=\"$application\", instance=\"$instance\", pool=~\"$hikaricp\"}[$__rate_interval]) / irate(hikaricp_connections_creation_seconds_count{application=\"$application\", instance=\"$instance\", pool=\"$hikaricp\"}[$__rate_interval])",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "creation",
+                    "range": true,
+                    "refId": "A"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "editorMode": "code",
+                    "expr": "irate(hikaricp_connections_acquire_seconds_sum{application=\"$application\", instance=\"$instance\", pool=~\"$hikaricp\"}[$__rate_interval]) / irate(hikaricp_connections_acquire_seconds_count{application=\"$application\", instance=\"$instance\", pool=\"$hikaricp\"}[$__rate_interval])",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "acquire",
+                    "range": true,
+                    "refId": "B"
+                }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Connection Latency",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "mode": "time",
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:58",
+                    "format": "dtdurations",
+                    "logBase": 1,
+                    "min": "0",
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:59",
+                    "format": "short",
+                    "label": "",
+                    "logBase": 1,
+                    "show": false
+                }
+            ],
+            "yaxis": {
+                "align": false
+            }
+        },
+        {
+            "collapsed": false,
+            "datasource": {
+                "type": "tempo",
+                "uid": "tempo"
+            },
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 127
             },
             "id": 8,
             "panels": [],
@@ -3040,13 +2996,13 @@
                 "h": 7,
                 "w": 12,
                 "x": 0,
-                "y": 112
+                "y": 128
             },
             "hiddenSeries": false,
             "id": 6,
             "legend": {
                 "alignAsTable": true,
-                "avg": true,
+                "avg": false,
                 "current": true,
                 "max": true,
                 "min": true,
@@ -3077,10 +3033,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
-                    "expr": "irate(logback_events_total{instance=\"$instance\", application=\"$application\", level=\"info\"}[5m])",
+                    "editorMode": "code",
+                    "expr": "irate(logback_events_total{instance=\"$instance\", application=\"$application\", level=\"info\"}[$__rate_interval])",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "info",
+                    "range": true,
                     "rawSql": "SELECT\n  $__time(time_column),\n  value1\nFROM\n  metric_table\nWHERE\n  $__timeFilter(time_column)\n",
                     "refId": "A"
                 }
@@ -3101,11 +3059,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:1887",
                     "format": "none",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:1888",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -3130,13 +3090,13 @@
                 "h": 7,
                 "w": 12,
                 "x": 12,
-                "y": 112
+                "y": 128
             },
             "hiddenSeries": false,
             "id": 10,
             "legend": {
                 "alignAsTable": true,
-                "avg": true,
+                "avg": false,
                 "current": true,
                 "max": true,
                 "min": true,
@@ -3167,10 +3127,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
-                    "expr": "irate(logback_events_total{instance=\"$instance\", application=\"$application\", level=\"error\"}[5m])",
+                    "editorMode": "code",
+                    "expr": "irate(logback_events_total{instance=\"$instance\", application=\"$application\", level=\"error\"}[$__rate_interval])",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "error",
+                    "range": true,
                     "rawSql": "SELECT\n  $__time(time_column),\n  value1\nFROM\n  metric_table\nWHERE\n  $__timeFilter(time_column)\n",
                     "refId": "A"
                 }
@@ -3191,11 +3153,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:1966",
                     "format": "none",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:1967",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -3220,13 +3184,13 @@
                 "h": 7,
                 "w": 8,
                 "x": 0,
-                "y": 119
+                "y": 135
             },
             "hiddenSeries": false,
             "id": 14,
             "legend": {
                 "alignAsTable": true,
-                "avg": true,
+                "avg": false,
                 "current": true,
                 "max": true,
                 "min": true,
@@ -3257,10 +3221,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
-                    "expr": "irate(logback_events_total{instance=\"$instance\", application=\"$application\", level=\"warn\"}[5m])",
+                    "editorMode": "code",
+                    "expr": "irate(logback_events_total{instance=\"$instance\", application=\"$application\", level=\"warn\"}[$__rate_interval])",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "warn",
+                    "range": true,
                     "rawSql": "SELECT\n  $__time(time_column),\n  value1\nFROM\n  metric_table\nWHERE\n  $__timeFilter(time_column)\n",
                     "refId": "A"
                 }
@@ -3281,11 +3247,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:2122",
                     "format": "none",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:2123",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -3310,13 +3278,13 @@
                 "h": 7,
                 "w": 8,
                 "x": 8,
-                "y": 119
+                "y": 135
             },
             "hiddenSeries": false,
             "id": 16,
             "legend": {
                 "alignAsTable": true,
-                "avg": true,
+                "avg": false,
                 "current": true,
                 "max": true,
                 "min": true,
@@ -3347,10 +3315,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
-                    "expr": "irate(logback_events_total{instance=\"$instance\", application=\"$application\", level=\"debug\"}[5m])",
+                    "editorMode": "code",
+                    "expr": "irate(logback_events_total{instance=\"$instance\", application=\"$application\", level=\"debug\"}[$__rate_interval])",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "debug",
+                    "range": true,
                     "rawSql": "SELECT\n  $__time(time_column),\n  value1\nFROM\n  metric_table\nWHERE\n  $__timeFilter(time_column)\n",
                     "refId": "A"
                 }
@@ -3371,11 +3341,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:2201",
                     "format": "none",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:2202",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -3400,13 +3372,13 @@
                 "h": 7,
                 "w": 8,
                 "x": 16,
-                "y": 119
+                "y": 135
             },
             "hiddenSeries": false,
             "id": 20,
             "legend": {
                 "alignAsTable": true,
-                "avg": true,
+                "avg": false,
                 "current": true,
                 "max": true,
                 "min": true,
@@ -3437,10 +3409,12 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
-                    "expr": "irate(logback_events_total{instance=\"$instance\", application=\"$application\", level=\"trace\"}[5m])",
+                    "editorMode": "code",
+                    "expr": "irate(logback_events_total{instance=\"$instance\", application=\"$application\", level=\"trace\"}[$__rate_interval])",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "trace",
+                    "range": true,
                     "rawSql": "SELECT\n  $__time(time_column),\n  value1\nFROM\n  metric_table\nWHERE\n  $__timeFilter(time_column)\n",
                     "refId": "A"
                 }
@@ -3461,11 +3435,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:2280",
                     "format": "none",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:2281",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -3484,7 +3460,7 @@
         "list": [
             {
                 "current": {
-                    "selected": true,
+                    "selected": false,
                     "text": "tea-service",
                     "value": "tea-service"
                 },
@@ -3636,7 +3612,7 @@
         ]
     },
     "time": {
-        "from": "now-5m",
+        "from": "now-15m",
         "to": "now"
     },
     "timepicker": {
