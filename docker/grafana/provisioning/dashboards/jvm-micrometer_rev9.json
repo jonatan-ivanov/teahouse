@@ -112,7 +112,7 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 3,
+                "h": 4,
                 "w": 6,
                 "x": 0,
                 "y": 1
@@ -192,7 +192,7 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 3,
+                "h": 4,
                 "w": 6,
                 "x": 6,
                 "y": 1
@@ -277,7 +277,7 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 3,
+                "h": 4,
                 "w": 6,
                 "x": 12,
                 "y": 1
@@ -371,7 +371,7 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 3,
+                "h": 4,
                 "w": 6,
                 "x": 18,
                 "y": 1
@@ -421,7 +421,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 4
+                "y": 5
             },
             "id": 126,
             "panels": [],
@@ -452,7 +452,7 @@
                 "h": 7,
                 "w": 6,
                 "x": 0,
-                "y": 5
+                "y": 6
             },
             "hiddenSeries": false,
             "id": 111,
@@ -543,7 +543,7 @@
                 "h": 7,
                 "w": 6,
                 "x": 6,
-                "y": 5
+                "y": 6
             },
             "hiddenSeries": false,
             "id": 112,
@@ -631,7 +631,7 @@
                 "h": 7,
                 "w": 6,
                 "x": 12,
-                "y": 5
+                "y": 6
             },
             "hiddenSeries": false,
             "id": 113,
@@ -666,29 +666,19 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
-                    "expr": "sum(rate(http_server_requests_seconds_sum{application=\"$application\", instance=\"$instance\", status!~\"5..\"}[1m]))/sum(rate(http_server_requests_seconds_count{application=\"$application\", instance=\"$instance\", status!~\"5..\"}[1m]))",
-                    "format": "time_series",
-                    "hide": false,
-                    "intervalFactor": 1,
-                    "legendFormat": "HTTP - AVG",
-                    "refId": "A"
-                },
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "max(http_server_requests_seconds_max{application=\"$application\", instance=\"$instance\", status!~\"5..\"})",
+                    "editorMode": "code",
+                    "expr": "max(http_server_requests_seconds_max{application=\"$application\", instance=\"$instance\"})",
                     "format": "time_series",
                     "hide": false,
                     "intervalFactor": 1,
                     "legendFormat": "HTTP - MAX",
+                    "range": true,
                     "refId": "B"
                 }
             ],
             "thresholds": [],
             "timeRegions": [],
-            "title": "Duration",
+            "title": "Overall Latency",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -702,12 +692,14 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:246",
                     "format": "s",
                     "logBase": 1,
                     "min": "0",
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:247",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -733,7 +725,7 @@
                 "h": 7,
                 "w": 6,
                 "x": 18,
-                "y": 5
+                "y": 6
             },
             "hiddenSeries": false,
             "id": 119,
@@ -878,7 +870,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 12
+                "y": 13
             },
             "id": 127,
             "panels": [],
@@ -913,9 +905,9 @@
             },
             "gridPos": {
                 "h": 7,
-                "w": 6,
+                "w": 8,
                 "x": 0,
-                "y": 13
+                "y": 14
             },
             "hiddenSeries": false,
             "id": 24,
@@ -1040,9 +1032,9 @@
             },
             "gridPos": {
                 "h": 7,
-                "w": 6,
-                "x": 6,
-                "y": 13
+                "w": 8,
+                "x": 8,
+                "y": 14
             },
             "hiddenSeries": false,
             "id": 25,
@@ -1168,9 +1160,9 @@
             },
             "gridPos": {
                 "h": 7,
-                "w": 6,
-                "x": 12,
-                "y": 13
+                "w": 8,
+                "x": 16,
+                "y": 14
             },
             "hiddenSeries": false,
             "id": 26,
@@ -1279,144 +1271,6 @@
             }
         },
         {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-            },
-            "editable": true,
-            "error": false,
-            "fill": 1,
-            "fillGradient": 0,
-            "grid": {
-                "leftLogBase": 1,
-                "rightLogBase": 1
-            },
-            "gridPos": {
-                "h": 7,
-                "w": 6,
-                "x": 18,
-                "y": 13
-            },
-            "hiddenSeries": false,
-            "id": 86,
-            "legend": {
-                "avg": false,
-                "current": true,
-                "max": true,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": true
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "options": {
-                "alertThreshold": true
-            },
-            "percentage": false,
-            "pluginVersion": "9.2.6",
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "process_memory_vss_bytes{application=\"$application\", instance=\"$instance\"}",
-                    "format": "time_series",
-                    "hide": true,
-                    "intervalFactor": 2,
-                    "legendFormat": "vss",
-                    "metric": "",
-                    "refId": "A",
-                    "step": 2400
-                },
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "process_memory_rss_bytes{application=\"$application\", instance=\"$instance\"}",
-                    "format": "time_series",
-                    "intervalFactor": 2,
-                    "legendFormat": "rss",
-                    "refId": "B"
-                },
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "process_memory_swap_bytes{application=\"$application\", instance=\"$instance\"}",
-                    "format": "time_series",
-                    "intervalFactor": 2,
-                    "legendFormat": "swap",
-                    "refId": "C"
-                },
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "process_memory_rss_bytes{application=\"$application\", instance=\"$instance\"} + process_memory_swap_bytes{application=\"$application\", instance=\"$instance\"}",
-                    "format": "time_series",
-                    "intervalFactor": 2,
-                    "legendFormat": "total",
-                    "refId": "D"
-                }
-            ],
-            "thresholds": [],
-            "timeRegions": [],
-            "title": "JVM Process Memory",
-            "tooltip": {
-                "msResolution": false,
-                "shared": true,
-                "sort": 0,
-                "value_type": "cumulative"
-            },
-            "type": "graph",
-            "x-axis": true,
-            "xaxis": {
-                "mode": "time",
-                "show": true,
-                "values": []
-            },
-            "y-axis": true,
-            "y_formats": [
-                "mbytes",
-                "short"
-            ],
-            "yaxes": [
-                {
-                    "format": "bytes",
-                    "label": "",
-                    "logBase": 1,
-                    "min": "0",
-                    "show": true
-                },
-                {
-                    "format": "short",
-                    "logBase": 1,
-                    "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false
-            }
-        },
-        {
             "collapsed": false,
             "datasource": {
                 "type": "tempo",
@@ -1426,7 +1280,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 20
+                "y": 21
             },
             "id": 128,
             "panels": [],
@@ -1463,7 +1317,7 @@
                 "h": 7,
                 "w": 6,
                 "x": 0,
-                "y": 21
+                "y": 22
             },
             "hiddenSeries": false,
             "id": 106,
@@ -1594,7 +1448,7 @@
                 "h": 7,
                 "w": 6,
                 "x": 6,
-                "y": 21
+                "y": 22
             },
             "hiddenSeries": false,
             "id": 93,
@@ -1710,7 +1564,7 @@
                 "h": 7,
                 "w": 6,
                 "x": 12,
-                "y": 21
+                "y": 22
             },
             "hiddenSeries": false,
             "id": 32,
@@ -1853,7 +1707,7 @@
                 "h": 7,
                 "w": 6,
                 "x": 18,
-                "y": 21
+                "y": 22
             },
             "hiddenSeries": false,
             "id": 124,
@@ -1945,6 +1799,7 @@
             "editable": true,
             "error": false,
             "fill": 1,
+            "fillGradient": 0,
             "grid": {
                 "leftLogBase": 1,
                 "rightLogBase": 1
@@ -1953,9 +1808,10 @@
                 "h": 7,
                 "w": 18,
                 "x": 0,
-                "y": 28
+                "y": 29
             },
             "height": "",
+            "hiddenSeries": false,
             "id": 91,
             "legend": {
                 "alignAsTable": false,
@@ -1974,7 +1830,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": true,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2008,6 +1868,7 @@
                 }
             ],
             "thresholds": [],
+            "timeRegions": [],
             "title": "Log Events",
             "tooltip": {
                 "msResolution": false,
@@ -2040,7 +1901,10 @@
                     "logBase": 1,
                     "show": true
                 }
-            ]
+            ],
+            "yaxis": {
+                "align": false
+            }
         },
         {
             "aliasColors": {},
@@ -2054,6 +1918,7 @@
             "editable": true,
             "error": false,
             "fill": 1,
+            "fillGradient": 0,
             "grid": {
                 "leftLogBase": 1,
                 "rightLogBase": 1
@@ -2062,8 +1927,9 @@
                 "h": 7,
                 "w": 6,
                 "x": 18,
-                "y": 28
+                "y": 29
             },
+            "hiddenSeries": false,
             "id": 61,
             "legend": {
                 "avg": false,
@@ -2078,7 +1944,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2117,6 +1987,7 @@
                 }
             ],
             "thresholds": [],
+            "timeRegions": [],
             "title": "File Descriptors",
             "tooltip": {
                 "msResolution": false,
@@ -2149,7 +2020,10 @@
                     "logBase": 1,
                     "show": true
                 }
-            ]
+            ],
+            "yaxis": {
+                "align": false
+            }
         },
         {
             "collapsed": false,
@@ -2161,7 +2035,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 35
+                "y": 36
             },
             "id": 129,
             "panels": [],
@@ -2190,6 +2064,7 @@
             "editable": true,
             "error": false,
             "fill": 1,
+            "fillGradient": 0,
             "grid": {
                 "leftLogBase": 1,
                 "rightLogBase": 1
@@ -2198,8 +2073,9 @@
                 "h": 7,
                 "w": 8,
                 "x": 0,
-                "y": 36
+                "y": 37
             },
+            "hiddenSeries": false,
             "id": 3,
             "legend": {
                 "alignAsTable": false,
@@ -2217,7 +2093,11 @@
             "links": [],
             "maxPerRow": 3,
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2274,6 +2154,7 @@
                 }
             ],
             "thresholds": [],
+            "timeRegions": [],
             "title": "$jvm_memory_pool_heap",
             "tooltip": {
                 "msResolution": false,
@@ -2305,7 +2186,10 @@
                     "logBase": 1,
                     "show": true
                 }
-            ]
+            ],
+            "yaxis": {
+                "align": false
+            }
         },
         {
             "collapsed": false,
@@ -2317,7 +2201,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 43
+                "y": 44
             },
             "id": 130,
             "panels": [],
@@ -2345,6 +2229,7 @@
             "editable": true,
             "error": false,
             "fill": 1,
+            "fillGradient": 0,
             "grid": {
                 "leftLogBase": 1,
                 "rightLogBase": 1
@@ -2353,8 +2238,9 @@
                 "h": 7,
                 "w": 8,
                 "x": 0,
-                "y": 44
+                "y": 45
             },
+            "hiddenSeries": false,
             "id": 78,
             "legend": {
                 "alignAsTable": false,
@@ -2372,7 +2258,11 @@
             "links": [],
             "maxPerRow": 3,
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2429,6 +2319,7 @@
                 }
             ],
             "thresholds": [],
+            "timeRegions": [],
             "title": "$jvm_memory_pool_nonheap",
             "tooltip": {
                 "msResolution": false,
@@ -2460,7 +2351,10 @@
                     "logBase": 1,
                     "show": true
                 }
-            ]
+            ],
+            "yaxis": {
+                "align": false
+            }
         },
         {
             "collapsed": false,
@@ -2472,7 +2366,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 51
+                "y": 52
             },
             "id": 131,
             "panels": [],
@@ -2498,12 +2392,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 7,
                 "w": 8,
                 "x": 0,
-                "y": 52
+                "y": 53
             },
+            "hiddenSeries": false,
             "id": 98,
             "legend": {
                 "avg": false,
@@ -2518,7 +2414,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2541,6 +2441,7 @@
                 }
             ],
             "thresholds": [],
+            "timeRegions": [],
             "title": "Collections",
             "tooltip": {
                 "shared": true,
@@ -2566,7 +2467,10 @@
                     "logBase": 1,
                     "show": true
                 }
-            ]
+            ],
+            "yaxis": {
+                "align": false
+            }
         },
         {
             "aliasColors": {},
@@ -2578,12 +2482,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 7,
                 "w": 8,
                 "x": 8,
-                "y": 52
+                "y": 53
             },
+            "hiddenSeries": false,
             "id": 101,
             "legend": {
                 "avg": false,
@@ -2598,7 +2504,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2635,6 +2545,7 @@
                 }
             ],
             "thresholds": [],
+            "timeRegions": [],
             "title": "Pause Durations",
             "tooltip": {
                 "shared": true,
@@ -2660,7 +2571,10 @@
                     "logBase": 1,
                     "show": true
                 }
-            ]
+            ],
+            "yaxis": {
+                "align": false
+            }
         },
         {
             "aliasColors": {},
@@ -2672,12 +2586,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 7,
                 "w": 8,
                 "x": 16,
-                "y": 52
+                "y": 53
             },
+            "hiddenSeries": false,
             "id": 99,
             "legend": {
                 "avg": false,
@@ -2692,7 +2608,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2727,6 +2647,7 @@
                 }
             ],
             "thresholds": [],
+            "timeRegions": [],
             "title": "Allocated/Promoted",
             "tooltip": {
                 "shared": true,
@@ -2751,7 +2672,10 @@
                     "logBase": 1,
                     "show": true
                 }
-            ]
+            ],
+            "yaxis": {
+                "align": false
+            }
         },
         {
             "collapsed": false,
@@ -2763,7 +2687,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 59
+                "y": 60
             },
             "id": 132,
             "panels": [],
@@ -2791,6 +2715,7 @@
             "editable": true,
             "error": false,
             "fill": 1,
+            "fillGradient": 0,
             "grid": {
                 "leftLogBase": 1,
                 "rightLogBase": 1
@@ -2799,8 +2724,9 @@
                 "h": 7,
                 "w": 12,
                 "x": 0,
-                "y": 60
+                "y": 61
             },
+            "hiddenSeries": false,
             "id": 37,
             "legend": {
                 "avg": false,
@@ -2815,7 +2741,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2839,6 +2769,7 @@
                 }
             ],
             "thresholds": [],
+            "timeRegions": [],
             "title": "Classes loaded",
             "tooltip": {
                 "msResolution": false,
@@ -2870,7 +2801,10 @@
                     "logBase": 1,
                     "show": true
                 }
-            ]
+            ],
+            "yaxis": {
+                "align": false
+            }
         },
         {
             "aliasColors": {},
@@ -2884,6 +2818,7 @@
             "editable": true,
             "error": false,
             "fill": 1,
+            "fillGradient": 0,
             "grid": {
                 "leftLogBase": 1,
                 "rightLogBase": 1
@@ -2892,8 +2827,9 @@
                 "h": 7,
                 "w": 12,
                 "x": 12,
-                "y": 60
+                "y": 61
             },
+            "hiddenSeries": false,
             "id": 38,
             "legend": {
                 "avg": false,
@@ -2908,7 +2844,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2934,6 +2874,7 @@
                 }
             ],
             "thresholds": [],
+            "timeRegions": [],
             "title": "Class delta",
             "tooltip": {
                 "msResolution": false,
@@ -2965,7 +2906,10 @@
                     "logBase": 1,
                     "show": true
                 }
-            ]
+            ],
+            "yaxis": {
+                "align": false
+            }
         },
         {
             "collapsed": false,
@@ -2977,7 +2921,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 67
+                "y": 68
             },
             "id": 133,
             "panels": [],
@@ -3005,6 +2949,7 @@
             "editable": true,
             "error": false,
             "fill": 1,
+            "fillGradient": 0,
             "grid": {
                 "leftLogBase": 1,
                 "rightLogBase": 1
@@ -3013,8 +2958,9 @@
                 "h": 7,
                 "w": 6,
                 "x": 0,
-                "y": 68
+                "y": 69
             },
+            "hiddenSeries": false,
             "id": 33,
             "legend": {
                 "avg": false,
@@ -3029,7 +2975,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -3066,6 +3016,7 @@
                 }
             ],
             "thresholds": [],
+            "timeRegions": [],
             "title": "Direct Buffers",
             "tooltip": {
                 "msResolution": false,
@@ -3097,7 +3048,10 @@
                     "logBase": 1,
                     "show": true
                 }
-            ]
+            ],
+            "yaxis": {
+                "align": false
+            }
         },
         {
             "aliasColors": {},
@@ -3111,6 +3065,7 @@
             "editable": true,
             "error": false,
             "fill": 1,
+            "fillGradient": 0,
             "grid": {
                 "leftLogBase": 1,
                 "rightLogBase": 1
@@ -3119,8 +3074,9 @@
                 "h": 7,
                 "w": 6,
                 "x": 6,
-                "y": 68
+                "y": 69
             },
+            "hiddenSeries": false,
             "id": 83,
             "legend": {
                 "avg": false,
@@ -3135,7 +3091,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -3159,6 +3119,7 @@
                 }
             ],
             "thresholds": [],
+            "timeRegions": [],
             "title": "Direct Buffers",
             "tooltip": {
                 "msResolution": false,
@@ -3191,7 +3152,10 @@
                     "logBase": 1,
                     "show": true
                 }
-            ]
+            ],
+            "yaxis": {
+                "align": false
+            }
         },
         {
             "aliasColors": {},
@@ -3205,6 +3169,7 @@
             "editable": true,
             "error": false,
             "fill": 1,
+            "fillGradient": 0,
             "grid": {
                 "leftLogBase": 1,
                 "rightLogBase": 1
@@ -3213,8 +3178,9 @@
                 "h": 7,
                 "w": 6,
                 "x": 12,
-                "y": 68
+                "y": 69
             },
+            "hiddenSeries": false,
             "id": 85,
             "legend": {
                 "avg": false,
@@ -3229,7 +3195,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -3266,6 +3236,7 @@
                 }
             ],
             "thresholds": [],
+            "timeRegions": [],
             "title": "Mapped Buffers",
             "tooltip": {
                 "msResolution": false,
@@ -3297,7 +3268,10 @@
                     "logBase": 1,
                     "show": true
                 }
-            ]
+            ],
+            "yaxis": {
+                "align": false
+            }
         },
         {
             "aliasColors": {},
@@ -3311,6 +3285,7 @@
             "editable": true,
             "error": false,
             "fill": 1,
+            "fillGradient": 0,
             "grid": {
                 "leftLogBase": 1,
                 "rightLogBase": 1
@@ -3319,8 +3294,9 @@
                 "h": 7,
                 "w": 6,
                 "x": 18,
-                "y": 68
+                "y": 69
             },
+            "hiddenSeries": false,
             "id": 84,
             "legend": {
                 "avg": false,
@@ -3335,7 +3311,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -3359,6 +3339,7 @@
                 }
             ],
             "thresholds": [],
+            "timeRegions": [],
             "title": "Mapped Buffers",
             "tooltip": {
                 "msResolution": false,
@@ -3391,7 +3372,10 @@
                     "logBase": 1,
                     "show": true
                 }
-            ]
+            ],
+            "yaxis": {
+                "align": false
+            }
         }
     ],
     "refresh": "5s",
