@@ -21,7 +21,7 @@
             }
         ]
     },
-    "description": "Dashboard for Spring Boot2.1 Statistics(based on Spring Boot2 Statistic by micrometer-prometheus).",
+    "description": "Dashboard for Spring Boot",
     "editable": true,
     "fiscalYearStartMonth": 0,
     "gnetId": 10280,
@@ -182,7 +182,7 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 6,
+                "h": 7,
                 "w": 5,
                 "x": 6,
                 "y": 1
@@ -276,7 +276,7 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 6,
+                "h": 7,
                 "w": 5,
                 "x": 11,
                 "y": 1
@@ -326,7 +326,7 @@
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
-                "h": 6,
+                "h": 7,
                 "w": 8,
                 "x": 16,
                 "y": 1
@@ -451,7 +451,7 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 3,
+                "h": 4,
                 "w": 6,
                 "x": 0,
                 "y": 4
@@ -507,7 +507,7 @@
                 "h": 7,
                 "w": 12,
                 "x": 0,
-                "y": 7
+                "y": 8
             },
             "hiddenSeries": false,
             "id": 95,
@@ -606,7 +606,7 @@
                 "h": 7,
                 "w": 12,
                 "x": 12,
-                "y": 7
+                "y": 8
             },
             "hiddenSeries": false,
             "id": 96,
@@ -700,7 +700,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 14
+                "y": 15
             },
             "id": 48,
             "panels": [],
@@ -731,7 +731,7 @@
                 "h": 8,
                 "w": 8,
                 "x": 0,
-                "y": 15
+                "y": 16
             },
             "hiddenSeries": false,
             "id": 85,
@@ -814,11 +814,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:790",
                     "format": "bytes",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:791",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -838,12 +840,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 8,
                 "x": 0,
-                "y": 23
+                "y": 24
             },
+            "hiddenSeries": false,
             "id": 88,
             "legend": {
                 "alignAsTable": true,
@@ -859,7 +863,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -943,95 +951,16 @@
                 "type": "prometheus",
                 "uid": "prometheus"
             },
-            "fill": 1,
-            "gridPos": {
-                "h": 8,
-                "w": 8,
-                "x": 8,
-                "y": 31
-            },
-            "id": 80,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "irate(jvm_classes_unloaded_classes_total{instance=\"$instance\", application=\"$application\"}[5m])",
-                    "format": "time_series",
-                    "intervalFactor": 1,
-                    "legendFormat": "Classes Unloaded",
-                    "refId": "A"
-                }
-            ],
-            "thresholds": [],
-            "timeRegions": [],
-            "title": "Classes Unloaded",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "mode": "time",
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                    "format": "short",
-                    "logBase": 1,
-                    "show": true
-                },
-                {
-                    "format": "short",
-                    "logBase": 1,
-                    "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false
-            }
-        },
-        {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-            },
             "decimals": 0,
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 39
+                "y": 32
             },
+            "hiddenSeries": false,
             "id": 50,
             "legend": {
                 "alignAsTable": true,
@@ -1047,7 +976,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1084,6 +1017,7 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:298",
                     "decimals": 0,
                     "format": "locale",
                     "label": "",
@@ -1091,6 +1025,7 @@
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:299",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -1110,105 +1045,15 @@
                 "uid": "prometheus"
             },
             "fill": 1,
-            "gridPos": {
-                "h": 7,
-                "w": 12,
-                "x": 12,
-                "y": 39
-            },
-            "id": 83,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "jvm_buffer_memory_used_bytes{instance=\"$instance\", application=\"$application\", id=\"mapped\"}",
-                    "format": "time_series",
-                    "intervalFactor": 1,
-                    "legendFormat": "Used Bytes",
-                    "refId": "A"
-                },
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "jvm_buffer_total_capacity_bytes{instance=\"$instance\", application=\"$application\", id=\"mapped\"}",
-                    "format": "time_series",
-                    "intervalFactor": 1,
-                    "legendFormat": "Capacity Bytes",
-                    "refId": "B"
-                }
-            ],
-            "thresholds": [],
-            "timeRegions": [],
-            "title": "Mapped Buffers",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "mode": "time",
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                    "format": "short",
-                    "logBase": 1,
-                    "show": true
-                },
-                {
-                    "format": "short",
-                    "logBase": 1,
-                    "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false
-            }
-        },
-        {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-            },
-            "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 46
+                "y": 32
             },
-            "id": 78,
+            "hiddenSeries": false,
+            "id": 80,
             "legend": {
                 "avg": false,
                 "current": false,
@@ -1222,7 +1067,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1236,27 +1085,18 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
-                    "expr": "irate(jvm_gc_memory_allocated_bytes_total{instance=\"$instance\", application=\"$application\"}[5m])",
+                    "editorMode": "code",
+                    "expr": "irate(jvm_classes_unloaded_classes_total{instance=\"$instance\", application=\"$application\"}[5m])",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "allocated",
+                    "legendFormat": "Classes Unloaded",
+                    "range": true,
                     "refId": "A"
-                },
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "prometheus"
-                    },
-                    "expr": "irate(jvm_gc_memory_promoted_bytes_total{instance=\"$instance\", application=\"$application\"}[5m])",
-                    "format": "time_series",
-                    "intervalFactor": 1,
-                    "legendFormat": "promoted",
-                    "refId": "B"
                 }
             ],
             "thresholds": [],
             "timeRegions": [],
-            "title": "Memory Allocate/Promote",
+            "title": "Classes Unloaded",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -1270,11 +1110,13 @@
             },
             "yaxes": [
                 {
-                    "format": "bytes",
+                    "$$hashKey": "object:374",
+                    "format": "short",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:375",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -1294,12 +1136,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 7,
                 "w": 12,
                 "x": 0,
-                "y": 47
+                "y": 40
             },
+            "hiddenSeries": false,
             "id": 82,
             "legend": {
                 "avg": false,
@@ -1314,7 +1158,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1386,12 +1234,112 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 12,
+                "y": 40
+            },
+            "hiddenSeries": false,
+            "id": 83,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "9.2.6",
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "expr": "jvm_buffer_memory_used_bytes{instance=\"$instance\", application=\"$application\", id=\"mapped\"}",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "Used Bytes",
+                    "refId": "A"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "expr": "jvm_buffer_total_capacity_bytes{instance=\"$instance\", application=\"$application\", id=\"mapped\"}",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "Capacity Bytes",
+                    "refId": "B"
+                }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Mapped Buffers",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "mode": "time",
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+            },
+            "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 54
+                "y": 47
             },
+            "hiddenSeries": false,
             "id": 68,
             "legend": {
                 "alignAsTable": true,
@@ -1407,7 +1355,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1481,6 +1433,104 @@
             }
         },
         {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 47
+            },
+            "hiddenSeries": false,
+            "id": 78,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "9.2.6",
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "expr": "irate(jvm_gc_memory_allocated_bytes_total{instance=\"$instance\", application=\"$application\"}[5m])",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "allocated",
+                    "refId": "A"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "expr": "irate(jvm_gc_memory_promoted_bytes_total{instance=\"$instance\", application=\"$application\"}[5m])",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "promoted",
+                    "refId": "B"
+                }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Memory Allocate/Promote",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "mode": "time",
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "bytes",
+                    "logBase": 1,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false
+            }
+        },
+        {
             "collapsed": false,
             "datasource": {
                 "type": "tempo",
@@ -1490,7 +1540,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 62
+                "y": 55
             },
             "id": 72,
             "panels": [],
@@ -1516,12 +1566,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 10,
                 "w": 12,
                 "x": 0,
-                "y": 63
+                "y": 56
             },
+            "hiddenSeries": false,
             "id": 74,
             "legend": {
                 "alignAsTable": true,
@@ -1539,7 +1591,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1600,12 +1656,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 10,
                 "w": 12,
                 "x": 12,
-                "y": 63
+                "y": 56
             },
+            "hiddenSeries": false,
             "id": 76,
             "legend": {
                 "alignAsTable": true,
@@ -1623,7 +1681,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1684,7 +1746,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 73
+                "y": 66
             },
             "id": 34,
             "panels": [],
@@ -1742,7 +1804,7 @@
                 "h": 4,
                 "w": 4,
                 "x": 0,
-                "y": 74
+                "y": 67
             },
             "id": 44,
             "links": [],
@@ -1788,12 +1850,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 20,
                 "x": 4,
-                "y": 74
+                "y": 67
             },
+            "hiddenSeries": false,
             "id": 36,
             "legend": {
                 "alignAsTable": true,
@@ -1811,7 +1875,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1926,7 +1994,7 @@
                 "h": 4,
                 "w": 4,
                 "x": 0,
-                "y": 78
+                "y": 71
             },
             "id": 46,
             "links": [],
@@ -1972,12 +2040,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 6,
                 "w": 8,
                 "x": 0,
-                "y": 82
+                "y": 75
             },
+            "hiddenSeries": false,
             "id": 38,
             "legend": {
                 "avg": false,
@@ -1992,7 +2062,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2053,12 +2127,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 6,
                 "w": 8,
                 "x": 8,
-                "y": 82
+                "y": 75
             },
+            "hiddenSeries": false,
             "id": 42,
             "legend": {
                 "avg": false,
@@ -2073,7 +2149,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2134,12 +2214,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 6,
                 "w": 8,
                 "x": 16,
-                "y": 82
+                "y": 75
             },
+            "hiddenSeries": false,
             "id": 40,
             "legend": {
                 "avg": false,
@@ -2154,7 +2236,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2215,7 +2301,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 88
+                "y": 81
             },
             "id": 18,
             "panels": [],
@@ -2241,12 +2327,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 7,
                 "w": 24,
                 "x": 0,
-                "y": 89
+                "y": 82
             },
+            "hiddenSeries": false,
             "id": 4,
             "legend": {
                 "alignAsTable": true,
@@ -2263,7 +2351,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2277,16 +2369,19 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
-                    "expr": "irate(http_server_requests_seconds_count{instance=\"$instance\", application=\"$application\", uri!~\".*actuator.*\"}[5m])",
+                    "editorMode": "code",
+                    "exemplar": false,
+                    "expr": "rate(http_server_requests_seconds_count{instance=\"$instance\", application=\"$application\", uri!~\".*actuator.*\"}[$__rate_interval])",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{method}} [{{status}}] - {{uri}}",
+                    "range": true,
                     "refId": "A"
                 }
             ],
             "thresholds": [],
             "timeRegions": [],
-            "title": "Request Count",
+            "title": "Throughput",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -2300,11 +2395,13 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:482",
                     "format": "none",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:483",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -2324,17 +2421,19 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 7,
                 "w": 24,
                 "x": 0,
-                "y": 96
+                "y": 89
             },
+            "hiddenSeries": false,
             "id": 2,
             "legend": {
                 "alignAsTable": true,
-                "avg": true,
-                "current": false,
+                "avg": false,
+                "current": true,
                 "max": true,
                 "min": true,
                 "rightSide": true,
@@ -2346,7 +2445,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2360,16 +2463,42 @@
                         "type": "prometheus",
                         "uid": "prometheus"
                     },
-                    "expr": "irate(http_server_requests_seconds_sum{instance=\"$instance\", application=\"$application\", exception=\"None\", uri!~\".*actuator.*\"}[5m]) / irate(http_server_requests_seconds_count{instance=\"$instance\", application=\"$application\", exception=\"None\", uri!~\".*actuator.*\"}[5m])",
+                    "editorMode": "code",
+                    "expr": "histogram_quantile(1.00, sum(rate(http_server_requests_seconds_bucket{instance=\"$instance\", application=~\"$application\", uri!~\".*actuator.*\", uri!~\".*swagger.*\", uri!~\".*api-docs.*\", uri!~\"/steep\", uri!~\"/\", uri!~\"/\\\\*\\\\*\"}[$__rate_interval])) by (le,method,status,uri))",
                     "format": "time_series",
                     "intervalFactor": 1,
-                    "legendFormat": "{{method}} [{{status}}] - {{uri}}",
+                    "legendFormat": "max {{method}} [{{status}}] - {{uri}}",
+                    "range": true,
                     "refId": "A"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "editorMode": "code",
+                    "expr": "histogram_quantile(.99, sum(rate(http_server_requests_seconds_bucket{instance=\"$instance\", application=~\"$application\", uri!~\".*actuator.*\", uri!~\".*swagger.*\", uri!~\".*api-docs.*\", uri!~\"/steep\", uri!~\"/\", uri!~\"/\\\\*\\\\*\"}[$__rate_interval])) by (le,method,status,uri))",
+                    "hide": false,
+                    "legendFormat": "tp99 {{method}} [{{status}}] - {{uri}}",
+                    "range": true,
+                    "refId": "B"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "editorMode": "code",
+                    "expr": "histogram_quantile(.95, sum(rate(http_server_requests_seconds_bucket{instance=\"$instance\", application=~\"$application\", uri!~\".*actuator.*\", uri!~\".*swagger.*\", uri!~\".*api-docs.*\", uri!~\"/steep\", uri!~\"/\", uri!~\"/\\\\*\\\\*\"}[$__rate_interval])) by (le,method,status,uri))",
+                    "hide": true,
+                    "legendFormat": "tp95 {{method}} [{{status}}] - {{uri}}",
+                    "range": true,
+                    "refId": "C"
                 }
             ],
             "thresholds": [],
             "timeRegions": [],
-            "title": "Response Time",
+            "title": "Latency",
             "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -2383,12 +2512,14 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:636",
                     "format": "s",
                     "label": "",
                     "logBase": 1,
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:637",
                     "format": "short",
                     "logBase": 1,
                     "show": true
@@ -2408,7 +2539,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 103
+                "y": 96
             },
             "id": 22,
             "panels": [],
@@ -2466,7 +2597,7 @@
                 "h": 4,
                 "w": 4,
                 "x": 0,
-                "y": 104
+                "y": 97
             },
             "id": 28,
             "links": [],
@@ -2513,12 +2644,14 @@
             },
             "decimals": 0,
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 7,
                 "w": 9,
                 "x": 4,
-                "y": 104
+                "y": 97
             },
+            "hiddenSeries": false,
             "id": 24,
             "legend": {
                 "alignAsTable": true,
@@ -2534,7 +2667,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2596,12 +2733,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 7,
                 "w": 11,
                 "x": 13,
-                "y": 104
+                "y": 97
             },
+            "hiddenSeries": false,
             "id": 26,
             "legend": {
                 "alignAsTable": true,
@@ -2617,7 +2756,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2721,7 +2864,7 @@
                 "h": 3,
                 "w": 4,
                 "x": 0,
-                "y": 108
+                "y": 101
             },
             "id": 32,
             "links": [],
@@ -2767,12 +2910,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 7,
                 "w": 13,
                 "x": 0,
-                "y": 111
+                "y": 104
             },
+            "hiddenSeries": false,
             "id": 30,
             "legend": {
                 "alignAsTable": true,
@@ -2788,7 +2933,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2860,7 +3009,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 118
+                "y": 111
             },
             "id": 8,
             "panels": [],
@@ -2886,12 +3035,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 7,
                 "w": 12,
                 "x": 0,
-                "y": 119
+                "y": 112
             },
+            "hiddenSeries": false,
             "id": 6,
             "legend": {
                 "alignAsTable": true,
@@ -2907,7 +3058,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2970,12 +3125,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 7,
                 "w": 12,
                 "x": 12,
-                "y": 119
+                "y": 112
             },
+            "hiddenSeries": false,
             "id": 10,
             "legend": {
                 "alignAsTable": true,
@@ -2991,7 +3148,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -3054,12 +3215,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 7,
                 "w": 8,
                 "x": 0,
-                "y": 126
+                "y": 119
             },
+            "hiddenSeries": false,
             "id": 14,
             "legend": {
                 "alignAsTable": true,
@@ -3075,7 +3238,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -3138,12 +3305,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 7,
                 "w": 8,
                 "x": 8,
-                "y": 126
+                "y": 119
             },
+            "hiddenSeries": false,
             "id": 16,
             "legend": {
                 "alignAsTable": true,
@@ -3159,7 +3328,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -3222,12 +3395,14 @@
                 "uid": "prometheus"
             },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 7,
                 "w": 8,
                 "x": 16,
-                "y": 126
+                "y": 119
             },
+            "hiddenSeries": false,
             "id": 20,
             "legend": {
                 "alignAsTable": true,
@@ -3243,7 +3418,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "9.2.6",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -3486,8 +3665,8 @@
         ]
     },
     "timezone": "",
-    "title": "Spring Boot 2.1 Statistics",
-    "uid": "spring_boot_21",
-    "version": 5,
+    "title": "Spring Boot Statistics",
+    "uid": "spring_boot_stats",
+    "version": 1,
     "weekStart": ""
 }
