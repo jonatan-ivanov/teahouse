@@ -2,7 +2,7 @@
 
 ![build badge](https://github.com/jonatan-ivanov/teahouse/actions/workflows/gradle.yml/badge.svg)
 
-`./gradlew bootRun`
+`./gradlew bootRun -Pprofile=chaos`
 - Spring Boot Admin: http://localhost:8080/
 - Eureka: http://localhost:8761/
 - Tea Service: http://localhost:8090/
