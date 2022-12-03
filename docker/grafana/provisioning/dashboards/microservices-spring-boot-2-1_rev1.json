@@ -1827,7 +1827,7 @@
                     "refId": "A"
                 }
             ],
-            "title": "HTTP Statistics",
+            "title": "HTTP Server Stats",
             "type": "row"
         },
         {
@@ -2957,6 +2957,231 @@
         },
         {
             "collapsed": false,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 127
+            },
+            "id": 108,
+            "panels": [],
+            "title": "HTTP Client Stats",
+            "type": "row"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 12,
+                "w": 24,
+                "x": 0,
+                "y": 128
+            },
+            "hiddenSeries": false,
+            "id": 114,
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "rightSide": true,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "9.2.6",
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "editorMode": "code",
+                    "exemplar": false,
+                    "expr": "rate(http_client_requests_seconds_count{instance=\"$instance\", application=\"$application\", http_url!~\".*actuator.*\", http_url!~\".*swagger.*\", http_url!~\".*api-docs.*\", http_url!~\"/steep\", http_url!~\"/\", http_url!~\"/\\\\*\\\\*\"}[$__rate_interval])",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "{{http_method}} [{{http_status_code}}] - {{http_url}}",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Throughput",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "mode": "time",
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:482",
+                    "format": "none",
+                    "logBase": 1,
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:483",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 11,
+                "w": 24,
+                "x": 0,
+                "y": 140
+            },
+            "hiddenSeries": false,
+            "id": 116,
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "max": true,
+                "min": true,
+                "rightSide": true,
+                "show": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "9.2.6",
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "editorMode": "code",
+                    "expr": "histogram_quantile(1.00, sum(rate(http_client_requests_seconds_bucket{instance=\"$instance\", application=~\"$application\", http_url!~\".*actuator.*\"}[$__rate_interval])) by (le,http_method,http_status_code,http_url))",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "max {{http_method}} [{{http_status_code}}] - {{http_url}}",
+                    "range": true,
+                    "refId": "A"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "editorMode": "code",
+                    "expr": "histogram_quantile(.99, sum(rate(http_client_requests_seconds_bucket{instance=\"$instance\", application=~\"$application\", uri!~\".*actuator.*\"}[$__rate_interval])) by (le,http_method,http_status_code,http_url))",
+                    "hide": false,
+                    "legendFormat": "tp99 {{http_method}} [{{http_status_code}}] - {{http_url}}",
+                    "range": true,
+                    "refId": "B"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "editorMode": "code",
+                    "expr": "histogram_quantile(.95, sum(rate(http_client_requests_seconds_bucket{instance=\"$instance\", application=~\"$application\", uri!~\".*actuator.*\"}[$__rate_interval])) by (le,http_method,http_status_code,http_url))",
+                    "hide": true,
+                    "legendFormat": "tp95 {{http_method}} [{{http_status_code}}] - {{http_url}}",
+                    "range": true,
+                    "refId": "C"
+                }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Latency",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "mode": "time",
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:636",
+                    "format": "s",
+                    "label": "",
+                    "logBase": 1,
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:637",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false
+            }
+        },
+        {
+            "collapsed": false,
             "datasource": {
                 "type": "tempo",
                 "uid": "tempo"
@@ -2965,7 +3190,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 127
+                "y": 151
             },
             "id": 8,
             "panels": [],
@@ -2996,7 +3221,7 @@
                 "h": 7,
                 "w": 12,
                 "x": 0,
-                "y": 128
+                "y": 152
             },
             "hiddenSeries": false,
             "id": 6,
@@ -3090,7 +3315,7 @@
                 "h": 7,
                 "w": 12,
                 "x": 12,
-                "y": 128
+                "y": 152
             },
             "hiddenSeries": false,
             "id": 10,
@@ -3184,7 +3409,7 @@
                 "h": 7,
                 "w": 8,
                 "x": 0,
-                "y": 135
+                "y": 159
             },
             "hiddenSeries": false,
             "id": 14,
@@ -3278,7 +3503,7 @@
                 "h": 7,
                 "w": 8,
                 "x": 8,
-                "y": 135
+                "y": 159
             },
             "hiddenSeries": false,
             "id": 16,
@@ -3372,7 +3597,7 @@
                 "h": 7,
                 "w": 8,
                 "x": 16,
-                "y": 135
+                "y": 159
             },
             "hiddenSeries": false,
             "id": 20,
