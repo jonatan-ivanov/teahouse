@@ -13,10 +13,4 @@ public class FeignClientConfig {
     Logger.Level feignLoggerLevel() {
         return Level.BASIC;
     }
-
-    // TODO: Delete this after Feign support is released
-    @Bean
-    MicrometerObservationCapability micrometerObservationCapability(ObservationRegistry observationRegistry) {
-        return new MicrometerObservationCapability(observationRegistry);
-    }
 }

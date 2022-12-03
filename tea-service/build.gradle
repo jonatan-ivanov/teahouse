@@ -15,20 +15,14 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    implementation 'io.github.openfeign:feign-core:12.1' // TODO: Fix this after Feign support is released
-    implementation 'io.github.openfeign:feign-slf4j:12.1' // TODO: Fix this after Feign support is released
-    implementation 'io.github.openfeign:feign-okhttp:12.1' // TODO: Fix this after Feign support is released
-    implementation 'io.github.openfeign:feign-micrometer:12.1' // TODO: Fix this after Feign support is released
+    implementation 'io.github.openfeign:feign-okhttp'
+    implementation 'io.github.openfeign:feign-micrometer'
 
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'io.micrometer:micrometer-tracing-bridge-brave'
     implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
 
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.+'
-
-    // TODO: Add them back once released
-//    implementation 'org.springdoc:springdoc-openapi-hateoas:latest.release'
-//    implementation 'org.springdoc:springdoc-openapi-data-rest:latest.release'
 
     // implementation 'org.zalando:logbook-spring-boot-starter'
     // implementation 'org.zalando:logbook-okhttp'
