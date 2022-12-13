@@ -1,6 +1,6 @@
 apply from: "$rootDir/gradle/spring-boot.gradle"
 
 dependencies {
-    implementation 'de.codecentric:spring-boot-admin-starter-server:2.+'
+    implementation 'de.codecentric:spring-boot-admin-starter-server:3.+'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 }

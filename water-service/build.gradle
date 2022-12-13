@@ -1,5 +1,9 @@
 apply from: "$rootDir/gradle/spring-boot.gradle"
 
+repositories {
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+}
+
 dependencies {
     implementation project(':water-service:water-api')
 
@@ -8,18 +12,19 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+    implementation('io.micrometer:micrometer-tracing-bridge-brave') { exclude group: 'io.zipkin.reporter2' }
+    implementation 'io.micrometer:micrometer-tracing-reporter-wavefront'
+
     implementation 'com.wavefront:wavefront-spring-boot-starter'
 
-    implementation 'org.springdoc:springdoc-openapi-ui:latest.release'
-    implementation 'org.springdoc:springdoc-openapi-hateoas:latest.release'
-    implementation 'org.springdoc:springdoc-openapi-data-rest:latest.release'
+    implementation 'net.ttddyy.observation:datasource-micrometer-spring-boot:1.0.1-SNAPSHOT'
 
-    implementation 'org.zalando:logbook-spring-boot-starter'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.+'
+
+//    implementation 'org.zalando:logbook-spring-boot-starter'
 
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'mysql:mysql-connector-java'
     runtimeOnly 'org.flywaydb:flyway-core'
     runtimeOnly 'org.flywaydb:flyway-mysql'
-    runtimeOnly 'p6spy:p6spy:latest.release'
 }

@@ -3,9 +3,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Tea UI</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-IUOUHAPazai08QFs7W4MbzTlwEWFo7z/4zw8YmxEiko=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha256-xLI5SjD6DkojxrMIVBNT4ghypv12Xtj7cOa0AgKd6wA=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
@@ -14,6 +15,7 @@
             <div class="col col-2 form-floating">
                 <select id="tealeaf-selector" class="form-select" aria-label="Select tealeaf" required>
                     <option th:each="tealeaf, status : ${tealeaves}" th:selected="${status.first}" th:value="${tealeaf.getName()}" th:text="${tealeaf.getName()} + ' (' + ${tealeaf.getType()} + ')'"></option>
+                    <option value="english breakfast">english breakfast (!)</option>
                 </select>
                 <label for="tealeaf-selector" class="form-label">Tealeaf</label>
             </div>
@@ -34,17 +36,21 @@
                 </button>
             </div>
         </div>
-        <div id="tea-card" class="row col col-4 mt-5 card" hidden>
-            <div id="tea-header" class="card-header"></div>
-            <ul class="list-group list-group-flush">
-                <li id="steeping-time" class="list-group-item"></li>
-                <li id="water-amount" class="list-group-item"></li>
-                <li id="water-temperature"class="list-group-item"></li>
-                <li id="tealeaves-name" class="list-group-item"></li>
-                <li id="tealeaves-type" class="list-group-item"></li>
-                <li id="tealeaves-amount" class="list-group-item"></li>
-            </ul>
+
+        <div id="tea-card-container" class="row mt-5" hidden>
+            <div id="tea-card" class="col col-4 p-0 card">
+                <div id="tea-header" class="card-header"></div>
+                <ul class="list-group list-group-flush">
+                    <li id="steeping-time" class="list-group-item"></li>
+                    <li id="water-amount" class="list-group-item"></li>
+                    <li id="water-temperature"class="list-group-item"></li>
+                    <li id="tealeaves-name" class="list-group-item"></li>
+                    <li id="tealeaves-type" class="list-group-item"></li>
+                    <li id="tealeaves-amount" class="list-group-item"></li>
+                </ul>
+            </div>
         </div>
+        <div id="alert-container" class="m-5 alert alert-danger" role="alert" hidden></div>
     </div>
     <script src="steep.js"></script>
 </body>

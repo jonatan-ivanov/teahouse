@@ -1,21 +1,41 @@
-$(document).ready(() => $('#steep-it-button').click(fetchAndRenderTea));
+$(document).ready(() => {
+    $('#steep-it-button').click(fetchAndRenderData);
+    $('#tealeaf-selector').keypress(event => onEnterPressed(event, fetchAndRenderData));
+    $('#water-selector').keypress(event => onEnterPressed(event, fetchAndRenderData));
 
-function fetchAndRenderTea() {
+});
+
+function onEnterPressed(event, callback) {
+    const keycode = event.keyCode ? event.keyCode : event.which;
+    if (keycode == '13') {
+        callback();
+    }
+}
+
+function fetchAndRenderData() {
     const name = $('#tealeaf-selector').val();
     const size = $('#water-selector').val();
 
     $('#steep-it-button-spinner').removeAttr('hidden');
     $('#steep-it-button').prop('disabled', true);
     fetch(`/tea/${name}?size=${size}`)
-        .then(response => response.json())
-        .then(tea => renderTea(name, size, tea))
-        .catch(error => console.error(error));
+        .then(renderData)
+        .catch(renderError);
 }
 
-function renderTea(name, size, tea) {
+async function renderData(response) {
+    if (response.ok) {
+        renderTea(await response.json());
+    }
+    else {
+        renderErrorResponse(await response.json());
+    }
+}
+
+function renderTea(tea) {
     console.log(tea);
 
-    $('#tea-header').text(`${name} - ${size}`);
+    $('#tea-header').text(`${tea.water.amount} ${tea.tealeaf.name}`);
 
     $('#steeping-time').text(`Steeping time: ${tea.steepingTime}`);
     $('#water-amount').text(`Amount of water: ${tea.water.amount}`);
@@ -27,5 +47,34 @@ function renderTea(name, size, tea) {
 
     $('#steep-it-button').prop('disabled', false);
     $('#steep-it-button-spinner').attr('hidden', true);
-    $('#tea-card').removeAttr('hidden');
+
+    $('#alert-container').attr('hidden', true);
+    $('#tea-card-container').removeAttr('hidden');
+}
+
+function renderErrorResponse(response) {
+    if (response.title) {
+        renderErrorMessage(response.title);
+    }
+    else if (response.error) {
+        renderErrorMessage(response.error);
+    }
+    else {
+        renderErrorMessage(response);
+    }
+}
+
+function renderError(error) {
+    renderErrorMessage(`Error while calling the backend: ${error}`);
+}
+
+function renderErrorMessage(errorMessage) {
+    console.error(errorMessage);
+
+    $('#steep-it-button').prop('disabled', false);
+    $('#steep-it-button-spinner').attr('hidden', true);
+    $('#tea-card-container').attr('hidden', true);
+    $('#alert-container')
+        .text(errorMessage)
+        .removeAttr('hidden');
 }

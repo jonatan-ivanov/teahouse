@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "bb3554b4-d6f5-4011-85ba-2a869df9dee4",
+		"_postman_id": "e7552ad3-079b-424b-973c-6a2e92c5ecf2",
 		"name": "teahouse",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13782682"
 	},
 	"item": [
 		{
@@ -70,6 +71,34 @@
 			"response": []
 		},
 		{
+			"name": "/tealeaves",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"english breakfast\",\n    \"type\": \"black\",\n    \"suggestedAmount\": \"5 g\",\n    \"suggestedWaterTemperature\": \"99 °C\",\n    \"suggestedSteepingTime\": \"3 min\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8092/tealeaves",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"tealeaves"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "tealeaf-service/actuator",
 			"request": {
 				"method": "GET",
@@ -93,6 +122,34 @@
 			"request": {
 				"method": "GET",
 				"header": [],
+				"url": {
+					"raw": "http://localhost:8091/waters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"waters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/waters",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": \"400 ml\",\n    \"size\": \"xlarge\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://localhost:8091/waters",
 					"protocol": "http",

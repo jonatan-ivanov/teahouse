@@ -1,5 +1,9 @@
 apply from: "$rootDir/gradle/spring-boot.gradle"
 
+repositories {
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
 dependencies {
     implementation project(':water-service:water-api')
     implementation project(':tealeaf-service:tealeaf-api')
@@ -9,17 +13,19 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation 'io.github.openfeign:feign-okhttp'
     implementation 'io.github.openfeign:feign-micrometer'
+
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+    implementation('io.micrometer:micrometer-tracing-bridge-brave') { exclude group: 'io.zipkin.reporter2' }
+    implementation 'io.micrometer:micrometer-tracing-reporter-wavefront'
+
     implementation 'com.wavefront:wavefront-spring-boot-starter'
 
-    implementation 'org.springdoc:springdoc-openapi-ui:latest.release'
-    implementation 'org.springdoc:springdoc-openapi-hateoas:latest.release'
-    implementation 'org.springdoc:springdoc-openapi-data-rest:latest.release'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.+'
 
-    implementation 'org.zalando:logbook-spring-boot-starter'
-    implementation 'org.zalando:logbook-okhttp'
+    // implementation 'org.zalando:logbook-spring-boot-starter'
+    // implementation 'org.zalando:logbook-okhttp'
 }

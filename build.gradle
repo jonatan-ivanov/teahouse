@@ -1,15 +1,16 @@
 ext.buildTime = new Date().toInstant()
 
 buildscript {
-    ext.springBootVersion = 'latest.release'
-    ext.springCloudVersion = 'latest.release'
-    ext.springDataVersion = 'latest.release'
+    ext.springBootVersion = '3.+'
+    ext.springCloudVersion = '2022.+'
+    ext.springDataVersion = '2022.+'
 
     configurations.classpath {
         resolutionStrategy.activateDependencyLocking()
     }
 
     repositories {
+        maven { url 'https://repo.spring.io/milestone' }
         gradlePluginPortal()
     }
     dependencies {
@@ -38,19 +39,16 @@ allprojects {
 subprojects {
     repositories {
         mavenCentral()
+        maven { url 'https://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates' }
+        maven { url 'https://repo.spring.io/milestone' }
     }
 
     if (project.name != 'load-gen') {
         apply plugin: 'java'
         apply from: "$rootDir/gradle/dependency-locking.gradle"
 
-        sourceCompatibility = JavaVersion.VERSION_18
-        targetCompatibility = JavaVersion.VERSION_18
-
         group = 'org.example.teahouse'
-        ext.commitId = grgit ? grgit.head().id : System.env.SOURCE_VERSION ?: 'N/A'
-        ext.abbreviatedCommitId = grgit ? grgit.head().abbreviatedId : ext.commitId.take(7)
-        version = "${abbreviatedCommitId}.${buildTime.toEpochMilli()}"
+        version = "${grgit.head().abbreviatedId}.${buildTime.toEpochMilli()}"
 
         dependencies {
             ['annotationProcessor', 'compileOnly', 'implementation', 'runtimeOnly', 'testImplementation'].each { conf ->
@@ -58,9 +56,8 @@ subprojects {
                 dependencies.add(conf, platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"))
                 dependencies.add(conf, platform("org.springframework.data:spring-data-bom:$springDataVersion"))
                 dependencies.add(conf, platform('com.wavefront:wavefront-spring-boot-bom:latest.release'))
-                dependencies.add(conf, platform('org.zalando:logbook-bom:latest.release'))
+//                dependencies.add(conf, platform('org.zalando:logbook-bom:latest.release'))
             }
-
             testImplementation platform('org.junit:junit-bom:latest.release')
 
             annotationProcessor 'org.projectlombok:lombok'
@@ -71,17 +68,21 @@ subprojects {
             testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
         }
 
+        java {
+            toolchain { languageVersion = JavaLanguageVersion.of(19) }
+        }
+
         jar.manifest.attributes(
             'Name': project.name,
             'Implementation-Build-Date': buildTime,
             'Implementation-Title': project.name,
             'Implementation-Version': project.version,
             'Implementation-Vendor': project.group,
-            'Commit-AbbreviatedId': abbreviatedCommitId,
-            'Commit-Id': commitId,
-            'Commit-Date': grgit ? grgit.head().getDate().toInstant() : 'N/A',
-            'Source-Path': grgit ? grgit.remote.list().findResult { it.name == 'origin' ? it.url : null } : 'N/A',
-            'Created-By': "Gradle ${gradle.gradleVersion} with Gradle Ghost (grg)",
+            'Commit-AbbreviatedId': grgit.head().abbreviatedId,
+            'Commit-Id': grgit.head().id,
+            'Commit-Date': grgit.head().getDate().toInstant(),
+            'Source-Path': grgit.remote.list().findResult { it.name == 'origin' ? it.url : null },
+            'Created-By': "Gradle ${gradle.gradleVersion}",
             'Built-By': System.properties['user.name'],
             'JDK': org.gradle.internal.jvm.Jvm.current(),
             'OS': org.gradle.internal.os.OperatingSystem.current()
@@ -91,10 +92,6 @@ subprojects {
             useJUnitPlatform()
         }
     }
-}
-
-task stage {
-    dependsOn ":${System.getenv()['PROJECT_NAME']}:herokuStage"
 }
 
 wrapper {

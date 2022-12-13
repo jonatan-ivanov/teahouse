@@ -1,7 +1,9 @@
 load:
 	while true; do \
 		curl --silent --output /dev/null http://localhost:8090/tea/sencha?size=small; \
-		sleep 0.1; \
+		sleep 0.5; \
+		curl --silent --output /dev/null http://localhost:8090/tea/english%20breakfast?size=small; \
+		sleep 0.5; \
 	done \
 
 chaos:

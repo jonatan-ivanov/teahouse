@@ -12,26 +12,15 @@ dependencies {
     implementation 'com.wavefront:wavefront-spring-boot-starter'
 
     compileOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'org.jolokia:jolokia-core'
+    runtimeOnly 'org.jolokia:jolokia-core:1.+'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 bootJar.manifest.attributes += jar.manifest.attributes
 
-// Hack: Heroku removes the .git folder so gradle-git-properties fails, this task fakes the git.properties file
-task generateGitPropertiesForHeroku(type: WriteProperties) {
-    outputFile file("$buildDir/git.properties")
-    properties([
-        'git.branch': 'N/A',
-        'git.commit.id.abbrev': abbreviatedCommitId,
-        'git.commit.time': 'N/A'
-    ])
-}
-
 processResources {
     filesMatching('build.properties') { it.expand(project.properties) }
-    from(generateGitPropertiesForHeroku)
 }
 
 springBoot {
@@ -69,21 +58,4 @@ test {
     jvmArgs += commonjvmArgs + [
         "-Dspring.application.home=$rootDir"
     ]
-}
-
-task herokuStage {
-    dependsOn assemble
-    doLast {
-        file("$rootDir/Procfile").text = "web: java -Dserver.port=\$PORT -Dspring.profiles.active=heroku -jar $project.name/${relativePath(bootJar.archiveFile)}"
-    }
-}
-
-// Hack, see: generateGitPropertiesForHeroku task
-gradle.taskGraph.whenReady { graph ->
-    if (graph.hasTask(herokuStage)) {
-        generateGitProperties.enabled = false
-    }
-    else {
-        generateGitPropertiesForHeroku.enabled = false
-    }
 }
