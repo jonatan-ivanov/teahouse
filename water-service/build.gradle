@@ -20,7 +20,7 @@ dependencies {
     runtimeOnly 'com.github.loki4j:loki-logback-appender:latest.release'
 
     runtimeOnly 'com.h2database:h2'
-    runtimeOnly 'mysql:mysql-connector-java'
+    runtimeOnly 'mysql:mysql-connector-java:latest.release'
     runtimeOnly 'org.flywaydb:flyway-core'
     runtimeOnly 'org.flywaydb:flyway-mysql'
 }
