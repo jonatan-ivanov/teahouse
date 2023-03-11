@@ -10,7 +10,6 @@ buildscript {
     }
 
     repositories {
-        maven { url 'https://repo.spring.io/milestone' }
         gradlePluginPortal()
     }
     dependencies {
@@ -39,8 +38,6 @@ allprojects {
 subprojects {
     repositories {
         mavenCentral()
-        maven { url 'https://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates' }
-        maven { url 'https://repo.spring.io/milestone' }
     }
 
     if (project.name != 'load-gen') {
