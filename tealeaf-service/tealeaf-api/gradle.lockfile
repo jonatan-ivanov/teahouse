@@ -1,7 +1,7 @@
 # This is a Gradle generated file for dependency locking.
 # Manual edits can break the build and are not advised.
 # This file is expected to be part of source control.
-jakarta.validation:jakarta.validation-api:3.0.2=compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+jakarta.validation:jakarta.validation-api:3.0.2=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 org.apiguardian:apiguardian-api:1.1.2=testCompileClasspath
 org.junit.jupiter:junit-jupiter-api:5.9.2=testCompileClasspath,testRuntimeClasspath
 org.junit.jupiter:junit-jupiter-engine:5.9.2=testRuntimeClasspath
@@ -10,8 +10,8 @@ org.junit.platform:junit-platform-commons:1.9.2=testCompileClasspath,testRuntime
 org.junit.platform:junit-platform-engine:1.9.2=testRuntimeClasspath
 org.junit:junit-bom:5.9.2=testCompileClasspath,testRuntimeClasspath
 org.opentest4j:opentest4j:1.2.0=testCompileClasspath,testRuntimeClasspath
-org.projectlombok:lombok:1.18.24=annotationProcessor,compileClasspath
-org.springframework.boot:spring-boot-dependencies:3.0.2=annotationProcessor,compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-org.springframework.cloud:spring-cloud-dependencies:2022.0.0=annotationProcessor,compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-org.springframework.data:spring-data-bom:2022.0.1=annotationProcessor,compileClasspath,default,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-empty=archives,testAnnotationProcessor
+org.projectlombok:lombok:1.18.26=annotationProcessor,compileClasspath
+org.springframework.boot:spring-boot-dependencies:3.0.4=annotationProcessor,compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+org.springframework.cloud:spring-cloud-dependencies:2022.0.1=annotationProcessor,compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+org.springframework.data:spring-data-bom:2022.0.3=annotationProcessor,compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+empty=testAnnotationProcessor
