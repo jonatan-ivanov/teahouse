@@ -1,7 +1,7 @@
 apply plugin: 'org.springframework.boot'
 apply plugin: 'com.gorylenko.gradle-git-properties'
 
-ext.profile = project.hasProperty('profile') ? project.getProperty('profile') : 'local' //./gradlew bootRun -Pprofile=profileName
+ext.profiles = project.hasProperty('profiles') ? project.getProperty('profiles').split(',') : ['local'] // ./gradlew bootRun -Pprofiles=profileName
 
 dependencies {
     implementation project(':core')
@@ -47,14 +47,30 @@ def commonjvmArgs = [
 
 mkdir "$rootDir/logs"
 bootRun {
-    jvmArgs += commonjvmArgs + [
-        "-Dspring.profiles.active=$profile",
-        "-Dspring.application.home=$rootDir"
-    ]
+    doFirst {
+        if (isPortOpen('localhost', 3100) && 'loki' !in profiles) { // is Loki listening?
+            profiles += 'loki'
+        }
+        jvmArgs += commonjvmArgs + [
+                "-Dspring.profiles.active=${profiles.join(',')}",
+                "-Dspring.application.home=$rootDir"
+        ]
+    }
 }
 
 test {
     jvmArgs += commonjvmArgs + [
         "-Dspring.application.home=$rootDir"
     ]
+}
+
+private static boolean isPortOpen(String host, int port) {
+    try {
+        new Socket(host, port).close()
+        return true
+    }
+    catch (Exception exception) {
+        return false
+    }
+
 }
