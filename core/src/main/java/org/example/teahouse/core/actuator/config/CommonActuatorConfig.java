@@ -2,27 +2,27 @@ package org.example.teahouse.core.actuator.config;
 
 import feign.micrometer.FeignContext;
 import io.micrometer.common.KeyValue;
-import io.micrometer.observation.Observation;
+import io.micrometer.observation.ObservationFilter;
 import io.micrometer.observation.ObservationPredicate;
-import io.micrometer.observation.ObservationRegistry;
+import net.ttddyy.observation.tracing.DataSourceBaseContext;
 import org.example.teahouse.core.actuator.info.RuntimeInfoContributor;
 
-import org.springframework.boot.actuate.autoconfigure.observation.ObservationRegistryCustomizer;
 import org.springframework.boot.actuate.info.InfoContributor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.http.server.observation.ServerRequestObservationContext;
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class CommonActuatorConfig {
     @Bean
-    public InfoContributor runtimeInfoContributor(Environment environment) {
+    InfoContributor runtimeInfoContributor(Environment environment) {
         return new RuntimeInfoContributor(environment);
     }
 
     @Bean
-    public ObservationPredicate actuatorServerContextPredicate() {
+    ObservationPredicate actuatorServerContextPredicate() {
         return (name, context) -> {
             if (name.equals("http.server.requests") && context instanceof ServerRequestObservationContext serverContext) {
                 return !serverContext.getCarrier().getRequestURI().startsWith("/actuator");
@@ -34,7 +34,7 @@ public class CommonActuatorConfig {
     }
 
     @Bean
-    public ObservationPredicate actuatorClientContextPredicate() {
+    ObservationPredicate actuatorClientContextPredicate() {
         return (name, context) -> {
             if (name.equals("http.client.requests") && context instanceof FeignContext feignContext) {
                     return !feignContext.getCarrier().url().endsWith("/actuator/health");
@@ -46,23 +46,34 @@ public class CommonActuatorConfig {
     }
 
     @Bean
-    public ObservationRegistryCustomizer<ObservationRegistry> tempoCustomizer() {
-        return registry -> registry.observationConfig()
-            .observationFilter(this::orgFilter)
-            .observationFilter(this::tempoFilter);
-    }
-
-    private Observation.Context orgFilter(Observation.Context context) {
-        return context.addLowCardinalityKeyValue(KeyValue.of("org", "teahouse"));
+    ObservationFilter orgFilter() {
+        return context -> context.addLowCardinalityKeyValue(KeyValue.of("org", "teahouse"));
     }
 
     // TODO: remove this once Tempo is fixed: https://github.com/grafana/tempo/issues/1916
-    private Observation.Context tempoFilter(Observation.Context context) {
-        if (context.getError() != null) {
-            context.addHighCardinalityKeyValue(KeyValue.of("error", "true"));
-            context.addHighCardinalityKeyValue(KeyValue.of("errorMessage", context.getError().getMessage()));
-        }
+    @Bean
+    ObservationFilter tempoErrorFilter() {
+        return context -> {
+            if (context.getError() != null) {
+                context.addHighCardinalityKeyValue(KeyValue.of("error", "true"));
+                context.addHighCardinalityKeyValue(KeyValue.of("errorMessage", context.getError().getMessage()));
+            }
+            return context;
+        };
+    }
 
-        return context;
+    @Configuration(proxyBeanMethods = false)
+    @ConditionalOnClass(DataSourceBaseContext.class)
+    static class DataSourceActuatorConfig {
+        @Bean
+        ObservationFilter tempoServiceGraphFilter() {
+            // TODO: remove this once Tempo is fixed and it can render nodes without this special tag
+            return context -> {
+                if (context instanceof DataSourceBaseContext dataSourceContext) {
+                    context.addHighCardinalityKeyValue(KeyValue.of("db.name", dataSourceContext.getRemoteServiceName()));
+                }
+                return context;
+            };
+        }
     }
 }
