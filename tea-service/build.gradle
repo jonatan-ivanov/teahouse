@@ -1,9 +1,5 @@
 apply from: "$rootDir/gradle/spring-boot.gradle"
 
-repositories {
-    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
-}
-
 dependencies {
     implementation project(':water-service:water-api')
     implementation project(':tealeaf-service:tealeaf-api')
