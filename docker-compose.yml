@@ -7,6 +7,7 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: password
         volumes:
+            - mysql:/var/lib/mysql
             - ./docker/mysql/initdb:/docker-entrypoint-initdb.d
         ports:
             - 3306:3306
@@ -49,6 +50,7 @@ services:
             - --web.enable-remote-write-receiver
             - --config.file=/etc/prometheus/prometheus.yml
         volumes:
+            - prometheus:/prometheus
             - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
         ports:
             - 9090:9090
@@ -72,8 +74,8 @@ services:
         extra_hosts: ['host.docker.internal:host-gateway']
         command: ['-config.file=/etc/tempo.yml']
         volumes:
+            - tempo:/tmp/tempo
             - ./docker/grafana/tempo.yml:/etc/tempo.yml:ro
-            - ./docker/tempo-data/:/tmp/tempo
         ports:
             - 3200:3200    # tempo
             - 9411:9411    # zipkin
@@ -89,3 +91,10 @@ services:
     #     container_name: zipkin
     #     ports:
     #         - 9411:9411
+volumes:
+  mysql:
+    driver: local
+  prometheus:
+    driver: local
+  tempo:
+    driver: local

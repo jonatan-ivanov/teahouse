@@ -9,4 +9,3 @@ out/
 .vscode/
 
 logs/
-docker/tempo-data/
