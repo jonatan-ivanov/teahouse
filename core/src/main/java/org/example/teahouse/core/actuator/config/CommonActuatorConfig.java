@@ -50,9 +50,9 @@ public class CommonActuatorConfig {
         return context -> context.addLowCardinalityKeyValue(KeyValue.of("org", "teahouse"));
     }
 
-    // TODO: remove this once Tempo is fixed: https://github.com/grafana/tempo/issues/1916
     @Bean
     ObservationFilter tempoErrorFilter() {
+        // TODO: remove this once Tempo is fixed: https://github.com/grafana/tempo/issues/1916
         return context -> {
             if (context.getError() != null) {
                 context.addHighCardinalityKeyValue(KeyValue.of("error", "true"));
@@ -67,7 +67,7 @@ public class CommonActuatorConfig {
     static class DataSourceActuatorConfig {
         @Bean
         ObservationFilter tempoServiceGraphFilter() {
-            // TODO: remove this once Tempo is fixed and it can render nodes without this special tag
+            // TODO: remove this once Tempo is fixed: https://github.com/grafana/tempo/issues/2212
             return context -> {
                 if (context instanceof DataSourceBaseContext dataSourceContext) {
                     context.addHighCardinalityKeyValue(KeyValue.of("db.name", dataSourceContext.getRemoteServiceName()));

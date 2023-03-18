@@ -9,10 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.filter.ServerHttpObservationFilter;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
-import static org.springframework.web.util.WebUtils.ERROR_EXCEPTION_ATTRIBUTE;
 
 @ControllerAdvice
 public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
@@ -25,7 +25,8 @@ public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Throwable.class)
     ProblemDetail handleThrowable(HttpServletRequest request, Throwable error) {
         logger.error(ExceptionUtils.getStackTrace(error));
-        request.setAttribute(ERROR_EXCEPTION_ATTRIBUTE, error);
+        ServerHttpObservationFilter.findObservationContext(request)
+            .ifPresent(context -> context.setError(error));
 
         return createProblemDetail(INTERNAL_SERVER_ERROR, error);
     }
