@@ -31,12 +31,16 @@ datasources:
               query: 'sum(rate(http_server_requests_seconds_count{$$__tags}[$$__rate_interval]))'
             - name: 'Latency'
               query: 'histogram_quantile(1.00, sum(rate(http_server_requests_seconds_bucket{$$__tags}[$$__rate_interval])) by (le))'
+          spanStartTimeShift: '-10m'
+          spanEndTimeShift: '10m'
         tracesToLogs:
           datasourceUid: loki
           mappedTags: [{ key: 'org' }]
           mapTagNamesEnabled: true
           filterByTraceID: true
           filterBySpanID: false
+          spanStartTimeShift: '-10m'
+          spanEndTimeShift: '10m'
         lokiSearch:
           datasourceUid: loki
         serviceMap:
