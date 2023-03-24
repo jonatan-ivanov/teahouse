@@ -14,4 +14,4 @@
 - Loki, Grafana, Tempo: http://localhost:3000/
 
 Selecting profiles:
-`./gradlew bootRun -Pprofiles=chaos`
+`./gradlew bootRun -Pprofiles=mysql`
