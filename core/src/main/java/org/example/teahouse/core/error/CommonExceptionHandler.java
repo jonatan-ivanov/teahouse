@@ -13,6 +13,7 @@ import org.springframework.web.filter.ServerHttpObservationFilter;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @ControllerAdvice
 public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
@@ -22,13 +23,22 @@ public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
         this.tracer = tracer;
     }
 
+    @ExceptionHandler(ResourceNotFoundException.class)
+    ProblemDetail onResourceNotFound(HttpServletRequest request, ResourceNotFoundException resourceNotFoundException) {
+        return handleError(request, resourceNotFoundException, NOT_FOUND);
+    }
+
     @ExceptionHandler(Throwable.class)
-    ProblemDetail handleThrowable(HttpServletRequest request, Throwable error) {
+    ProblemDetail onThrowable(HttpServletRequest request, Throwable error) {
+        return handleError(request, error, INTERNAL_SERVER_ERROR);
+    }
+
+    private ProblemDetail handleError(HttpServletRequest request, Throwable error, HttpStatus status) {
         logger.error(ExceptionUtils.getStackTrace(error));
         ServerHttpObservationFilter.findObservationContext(request)
             .ifPresent(context -> context.setError(error));
 
-        return createProblemDetail(INTERNAL_SERVER_ERROR, error);
+        return createProblemDetail(status, error);
     }
 
     private ProblemDetail createProblemDetail(HttpStatus status, Throwable error) {

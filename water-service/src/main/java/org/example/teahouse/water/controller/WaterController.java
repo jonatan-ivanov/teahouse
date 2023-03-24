@@ -1,19 +1,17 @@
 package org.example.teahouse.water.controller;
 
-import static org.springframework.http.HttpStatus.CREATED;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
-import static org.springframework.http.HttpStatus.NO_CONTENT;
-
 import java.util.UUID;
-import jakarta.validation.Valid;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.example.teahouse.core.error.ResourceNotFoundException;
 import org.example.teahouse.water.api.CreateWaterRequest;
 import org.example.teahouse.water.api.WaterModel;
 import org.example.teahouse.water.repo.Water;
 import org.example.teahouse.water.repo.WaterRepository;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
@@ -28,6 +26,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 @RestController
 @RequestMapping("/waters")
@@ -50,7 +52,7 @@ public class WaterController {
     public WaterModel findById(@PathVariable UUID id) {
         return waterRepository.findById(id)
             .map(modelAssembler::toModel)
-            .orElseThrow(this::notFound);
+            .orElseThrow(() -> new ResourceNotFoundException("water with id: " + id));
     }
 
     @GetMapping("/search/findBySize")
@@ -58,7 +60,7 @@ public class WaterController {
     public WaterModel findBySize(@RequestParam("size") String size) {
         return waterRepository.findBySize(size)
             .map(modelAssembler::toModel)
-            .orElseThrow(this::notFound);
+            .orElseThrow(() -> new ResourceNotFoundException("water with size: " + size));
     }
 
     @PostMapping
