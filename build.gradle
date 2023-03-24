@@ -65,7 +65,7 @@ subprojects {
         }
 
         java {
-            toolchain { languageVersion = JavaLanguageVersion.of(19) }
+            toolchain { languageVersion = JavaLanguageVersion.of(20) }
         }
 
         jar.manifest.attributes(
