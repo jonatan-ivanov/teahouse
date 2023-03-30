@@ -2,6 +2,7 @@ package org.example.teahouse.core.actuator.config;
 
 import feign.micrometer.FeignContext;
 import io.micrometer.common.KeyValue;
+import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationFilter;
 import io.micrometer.observation.ObservationPredicate;
 import net.ttddyy.observation.tracing.DataSourceBaseContext;
@@ -14,6 +15,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.http.server.observation.ServerRequestObservationContext;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.filter.ServerHttpObservationFilter;
+
+import static org.springframework.web.context.request.RequestAttributes.SCOPE_REQUEST;
 
 @Configuration(proxyBeanMethods = false)
 public class CommonActuatorConfig {
@@ -39,6 +46,20 @@ public class CommonActuatorConfig {
         return (name, context) -> {
             if (name.equals("http.client.requests") && context instanceof FeignContext feignContext) {
                     return !feignContext.getCarrier().url().endsWith("/actuator/health");
+            }
+            else {
+                return true;
+            }
+        };
+    }
+
+    @Bean
+    ObservationPredicate noRootlessHttpObservations() {
+        return (name, context) -> {
+            RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
+            if (requestAttributes instanceof ServletRequestAttributes) {
+                Observation observation = (Observation) requestAttributes.getAttribute(ServerHttpObservationFilter.class.getName() + ".observation", SCOPE_REQUEST);
+                return observation == null || !observation.isNoop();
             }
             else {
                 return true;
