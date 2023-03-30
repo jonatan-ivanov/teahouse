@@ -7,6 +7,7 @@ import io.micrometer.observation.ObservationPredicate;
 import net.ttddyy.observation.tracing.DataSourceBaseContext;
 import org.example.teahouse.core.actuator.info.RuntimeInfoContributor;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.info.InfoContributor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +23,7 @@ public class CommonActuatorConfig {
     }
 
     @Bean
-    ObservationPredicate actuatorServerContextPredicate() {
+    ObservationPredicate noActuatorServerObservations() {
         return (name, context) -> {
             if (name.equals("http.server.requests") && context instanceof ServerRequestObservationContext serverContext) {
                 return !serverContext.getCarrier().getRequestURI().startsWith("/actuator");
@@ -34,7 +35,7 @@ public class CommonActuatorConfig {
     }
 
     @Bean
-    ObservationPredicate actuatorClientContextPredicate() {
+    ObservationPredicate noActuatorClientObservations() {
         return (name, context) -> {
             if (name.equals("http.client.requests") && context instanceof FeignContext feignContext) {
                     return !feignContext.getCarrier().url().endsWith("/actuator/health");
@@ -46,8 +47,8 @@ public class CommonActuatorConfig {
     }
 
     @Bean
-    ObservationFilter orgFilter() {
-        return context -> context.addLowCardinalityKeyValue(KeyValue.of("org", "teahouse"));
+    ObservationFilter orgFilter(@Value("${spring.application.org}") String org) {
+        return context -> context.addLowCardinalityKeyValue(KeyValue.of("org", org));
     }
 
     @Bean
