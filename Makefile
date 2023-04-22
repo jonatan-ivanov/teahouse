@@ -12,3 +12,7 @@ chaos:
 	# since ToxiProxy injects latency on the connection (TCP) level
 	# and a new connection is needed to inject latency for less than 100% or the connections
 	#docker exec toxiproxy /toxiproxy-cli toxic add --toxicName tail-latency --type latency --downstream --toxicity 0.005 --attribute latency=150 --attribute jitter=0 water-db
+
+order:
+	docker exec toxiproxy /toxiproxy-cli toxic remove --toxicName base-latency water-db
+	#docker exec toxiproxy /toxiproxy-cli toxic remove --toxicName tail-latency water-db
