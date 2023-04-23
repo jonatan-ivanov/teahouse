@@ -17,6 +17,7 @@ public class AccessLogConfig {
 
     private void tomcatContextCustomizer(Context context) {
         LogbackValve logbackValve = new LogbackValve();
+        logbackValve.setAsyncSupported(true);
         logbackValve.setFilename("logback-access.xml");
         context.getPipeline().addValve(logbackValve);
     }
