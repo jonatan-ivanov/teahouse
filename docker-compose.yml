@@ -4,6 +4,7 @@ services:
         container_name: mysql
         image: mysql
         command: --default-authentication-plugin=mysql_native_password
+        extra_hosts: ['host.docker.internal:host-gateway']
         environment:
             MYSQL_ROOT_PASSWORD: password
         volumes:
@@ -14,6 +15,7 @@ services:
     adminer:
         container_name: adminer
         image: adminer
+        extra_hosts: ['host.docker.internal:host-gateway']
         environment:
             ADMINER_DEFAULT_SERVER: mysql
         depends_on:
@@ -23,6 +25,7 @@ services:
     toxiproxy:
         container_name: toxiproxy
         image: ghcr.io/shopify/toxiproxy
+        extra_hosts: ['host.docker.internal:host-gateway']
         command: -host=0.0.0.0 -config /config/toxiproxy.json -proxy-metrics -runtime-metrics
         depends_on:
             - mysql
@@ -35,6 +38,7 @@ services:
     toxiproxy-ui:
         container_name: toxiproxy-ui
         image: buckle/toxiproxy-frontend
+        extra_hosts: ['host.docker.internal:host-gateway']
         environment:
             TOXIPROXY_URL: http://host.docker.internal:8474
         depends_on:
