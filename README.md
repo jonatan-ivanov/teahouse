@@ -5,7 +5,7 @@
 `./gradlew bootRun`
 - Spring Boot Admin: http://localhost:8080/
 - Eureka: http://localhost:8761/
-- Tea Service: http://localhost:8090/
+- Tea Service: http://localhost:8090/ (UI - http://localhost:8090/steep)
 - Tealeaf Service: http://localhost:8091/
 - Water Service: http://localhost:8092/
   
@@ -15,3 +15,12 @@
 
 Selecting profiles:
 `./gradlew bootRun -Pprofiles=mysql`
+
+Adding chaos
+`make chaos`
+
+Running load tests
+`./gradlew :load-gen:gatlingRun`
+
+Removing chaos
+`make order`
