@@ -3,6 +3,7 @@ package org.example.teahouse.water.observation;
 import io.micrometer.common.KeyValue;
 import io.micrometer.observation.ObservationFilter;
 import io.micrometer.observation.ObservationHandler;
+import io.micrometer.observation.ObservationPredicate;
 import io.micrometer.observation.ObservationRegistry;
 import io.micrometer.observation.aop.ObservedAspect;
 import org.example.teahouse.water.observation._03_context.WaterFetcherObservationHandler;
@@ -18,12 +19,12 @@ public class WaterObservabilityConfiguration {
         return new ObservedAspect(observationRegistry);
     }
 
-    @Bean
+//    @Bean
     ObservationHandler<WaterFetcherContext> myLoggingObservationHandler() {
         return new WaterFetcherObservationHandler();
     }
 
-    @Bean
+//    @Bean
     ObservationFilter myObservationFilter() {
         return context -> {
             if (context instanceof WaterFetcherContext) {
@@ -31,6 +32,16 @@ public class WaterObservabilityConfiguration {
                 context.addLowCardinalityKeyValue(KeyValue.of("environment", "dev"));
             }
             return context;
+        };
+    }
+
+    @Bean
+    ObservationPredicate myObservationPredicate() {
+        return (name, context) -> {
+            if (name.equals("I should be ignored")) {
+                return false;
+            }
+            return !(context instanceof SomeContextToIgnore);
         };
     }
 }

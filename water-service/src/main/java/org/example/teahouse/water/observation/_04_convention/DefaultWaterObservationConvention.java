@@ -23,6 +23,6 @@ public class DefaultWaterObservationConvention implements WaterObservationConven
 
     @Override
     public String getContextualName(WaterFetcherContext context) {
-        return "find-by-size";
+        return "find-by-size [" + context.getSize() + "]";
     }
 }

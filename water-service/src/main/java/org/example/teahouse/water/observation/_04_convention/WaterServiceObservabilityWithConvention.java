@@ -13,7 +13,7 @@ import org.example.teahouse.water.repo.WaterRepository;
 
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 @Slf4j
 @RequiredArgsConstructor
 public class WaterServiceObservabilityWithConvention implements WaterFetcher {
