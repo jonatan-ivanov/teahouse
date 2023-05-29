@@ -29,3 +29,22 @@ dependencies {
 
 // TODO: remove this once the Boot Gradle Plugin works with Java 22
 springBoot.mainClass = 'org.example.teahouse.water.WaterServiceApplication'
+
+ext {
+    micrometerDocsVersion="1.0.1"
+}
+
+configurations {
+    adoc
+}
+
+dependencies {
+    adoc "io.micrometer:micrometer-docs-generator:$micrometerDocsVersion"
+}
+
+task generateObservabilityDocs(type: JavaExec) {
+    mainClass = "io.micrometer.docs.DocsGeneratorCommand"
+    classpath configurations.adoc
+    // input folder, inclusion pattern, output folder
+    args project.projectDir.getAbsolutePath(), ".*", project.buildDir.getAbsolutePath()
+}

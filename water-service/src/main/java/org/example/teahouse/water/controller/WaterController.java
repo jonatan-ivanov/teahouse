@@ -41,6 +41,8 @@ public class WaterController {
     private final WaterModelAssembler modelAssembler;
     private final PagedResourcesAssembler<Water> pagedAssembler;
 
+    private final WaterFetcher waterFetcher;
+
     @GetMapping
     @Operation(summary = "Fetches all of the resources")
     public PagedModel<RepresentationWaterModel> findAll(Pageable pageable) {
@@ -58,7 +60,7 @@ public class WaterController {
     @GetMapping("/search/findBySize")
     @Operation(summary = "Finds a resource by its size")
     public WaterModel findBySize(@RequestParam("size") String size) {
-        return waterRepository.findBySize(size)
+        return waterFetcher.findBySize(size)
             .map(modelAssembler::toModel)
             .orElseThrow(() -> new ResourceNotFoundException("water with size: " + size));
     }
