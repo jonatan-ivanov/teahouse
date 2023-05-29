@@ -1,0 +1,9 @@
+= Micrometer Observation Live Coding
+
+* Separate Metrics, Tracing instrumentation (`WaterServiceMetricsAndTracing`)
+* Combining instrumentation using Micrometer Observation (`WaterServiceObservability`)
+** Aspect (`WaterObservationConfiguration`)
+* Customizations
+** Custom handler (`WaterFetcherObservationHandler`)
+** Observation filter (`WaterObservationConfiguration`)
+** Observation documentation (`./gradlew generateObservabilityDocs`)

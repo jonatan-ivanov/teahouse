@@ -24,3 +24,22 @@ dependencies {
     runtimeOnly 'org.flywaydb:flyway-core'
     runtimeOnly 'org.flywaydb:flyway-mysql'
 }
+
+ext {
+    micrometerDocsVersion="1.0.1"
+}
+
+configurations {
+    adoc
+}
+
+dependencies {
+    adoc "io.micrometer:micrometer-docs-generator:$micrometerDocsVersion"
+}
+
+task generateObservabilityDocs(type: JavaExec) {
+    mainClass = "io.micrometer.docs.DocsGeneratorCommand"
+    classpath configurations.adoc
+    // input folder, inclusion pattern, output folder
+    args project.projectDir.getAbsolutePath(), ".*", project.buildDir.getAbsolutePath()
+}
