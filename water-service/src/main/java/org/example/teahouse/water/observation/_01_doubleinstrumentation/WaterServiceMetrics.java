@@ -4,6 +4,7 @@ import java.util.Optional;
 import java.util.function.Function;
 
 import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Tags;
 import io.micrometer.core.instrument.Timer;
 import lombok.RequiredArgsConstructor;
 import org.example.teahouse.water.controller.WaterFetcher;
@@ -18,7 +19,7 @@ public class WaterServiceMetrics implements WaterFetcher {
 
     @Override
     public Optional<Water> findBySize(String size) {
-        Timer timer = meterRegistry.timer("water.by.size");
+        Timer timer = meterRegistry.timer("water.by.size", Tags.of("tag", size));
         return timer.record(() -> function.apply(size));
     }
 }

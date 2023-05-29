@@ -1,4 +1,10 @@
-= Micrometer Observation Live Coding
+= Observability of your Application
+
+== About me
+
+TODO: Add info here
+
+== Micrometer Observation Coding
 
 * Separate Metrics, Tracing instrumentation (`WaterServiceMetricsAndTracing`)
 * Combining instrumentation using Micrometer Observation (`WaterServiceObservability`)
@@ -6,4 +12,7 @@
 * Customizations
 ** Custom handler (`WaterFetcherObservationHandler`)
 ** Observation filter (`WaterObservationConfiguration`)
+** Observation predicate (`WaterObservationConfiguration`)
 ** Observation documentation (`./gradlew generateObservabilityDocs`)
+
+IMPORTANT: CHECK THE DOCS https://micrometer.io/docs

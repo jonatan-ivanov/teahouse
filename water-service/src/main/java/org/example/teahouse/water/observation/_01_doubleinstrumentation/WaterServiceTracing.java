@@ -22,7 +22,7 @@ public class WaterServiceTracing implements WaterFetcher {
     public Optional<Water> findBySize(String size) {
         Span span = tracer.nextSpan().name("find-by-size").tag("size", size);
         try (Tracer.SpanInScope ws = tracer.withSpan(span.start())) {
-            log.info("Here we will have the child span trace id injected");
+            log.info("Here we will have the child span trace id injected"); // This is also an instrumentation!
             Optional<Water> bySize = function.apply(size);
             Thread.sleep(1000);
             span.event("water-by-size.calculated");
