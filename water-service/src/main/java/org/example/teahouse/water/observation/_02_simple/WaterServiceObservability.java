@@ -31,12 +31,22 @@ public class WaterServiceObservability implements WaterFetcher {
             .contextualName("water-by-size")
             .lowCardinalityKeyValue("foo2", "bar2")
             .highCardinalityKeyValue("size", size);
-        // TODO: do try -finally and then comment it out and do it with observe
-        return observation.observe(() -> {
+        try (Observation.Scope scope = observation.start().openScope()) {
             log.info("This will have a trace id");
             Optional<Water> bySize = waterRepository.findBySize(size);
             observation.event(() -> "water-by-size.calculated");
             return bySize;
-        });
+        } catch (Exception e) {
+            observation.error(e);
+            throw e;
+        } finally {
+            observation.stop();
+        }
+//        return observation.observe(() -> {
+//            log.info("This will have a trace id");
+//            Optional<Water> bySize = waterRepository.findBySize(size);
+//            observation.event(() -> "water-by-size.calculated");
+//            return bySize;
+//        });
     }
 }
