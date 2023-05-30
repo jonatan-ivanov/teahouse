@@ -1,8 +1,11 @@
-= Observability of your Application
+= Observability of Your Application
 
 == About me
 
-TODO: Add info here
+Whoami: Marcin Grzejszczak, developer @ Spring team (VMware)
+Mastodon: toomuchcoding@fosstodon.org
+Twitter: @mgrzejszczak
+Blog: https://toomuchcoding.com
 
 == Micrometer Observation Coding
 
