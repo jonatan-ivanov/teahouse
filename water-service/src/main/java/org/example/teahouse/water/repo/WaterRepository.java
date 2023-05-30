@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
-@Cacheable("water")
+//@Cacheable("water")
 public interface WaterRepository extends PagingAndSortingRepository<Water, UUID>, CrudRepository<Water, UUID> {
     Optional<Water> findBySize(@Param("size") String size);
 }
