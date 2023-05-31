@@ -7,6 +7,12 @@ Mastodon: toomuchcoding@fosstodon.org
 Twitter: @mgrzejszczak
 Blog: https://toomuchcoding.com
 
+== System architecture
+
+Tea Service
+          \ --->  Tealeaf Service  ---> DB
+          \ --->  Water Service    ---> DB
+
 == Micrometer Observation Coding
 
 * Separate Metrics, Tracing instrumentation (`WaterServiceMetricsAndTracing`)
