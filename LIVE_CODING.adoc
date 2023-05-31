@@ -9,9 +9,26 @@ Blog: https://toomuchcoding.com
 
 == System architecture
 
-Tea Service
-          \ --->  Tealeaf Service  ---> DB
-          \ --->  Water Service    ---> DB
+--> Tea Service
+\ --->  Tealeaf Service  ---> DB
+\ --->  Water Service    ---> DB
+
+Characteristics:
+
+* Spring Boot 3 apps
+** Instrumented with Micrometer Observation
+** Metrics plugged in via Micrometer Core
+** Tracing plugged in via Micrometer Tracing
+*** Tracer - OpenZipkin Brave (you could pick OpenTelemetry)
+
+Poor man's version poll:
+
+* Do you know what Distributed Tracing is?
+* Are you using Observability (whatever that means) in production?
+
+== DEMO TIME
+
+Time for the teahouse demo!
 
 == Micrometer Observation Coding
 
