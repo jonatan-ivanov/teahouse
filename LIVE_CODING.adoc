@@ -1,4 +1,4 @@
-= Observability of Your Application
+= To Production and Beyond: Observability for Modern Spring Applications
 
 == About me
 
