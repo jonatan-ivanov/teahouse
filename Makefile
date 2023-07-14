@@ -16,3 +16,10 @@ chaos:
 order:
 	docker exec toxiproxy /toxiproxy-cli toxic remove --toxicName base-latency water-db
 	#docker exec toxiproxy /toxiproxy-cli toxic remove --toxicName tail-latency water-db
+
+errors:
+	TEA_URL=$(shell http ':8092/tealeaves/search/findByName?name=english+breakfast' | jq --raw-output '._links.self.href'); \
+	http DELETE $$TEA_URL
+
+errors-fixed:
+	http POST ':8092/tealeaves' --raw '{ "name": "english breakfast", "type": "black", "suggestedAmount": "5 g", "suggestedWaterTemperature": "99 °C", "suggestedSteepingTime": "3 min" }'
