@@ -70,6 +70,7 @@ services:
             - ./docker/grafana/grafana.ini:/etc/grafana/grafana.ini:ro
             - ./docker/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources:ro
             - ./docker/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro
+            - ./docker/grafana/provisioning/alerting:/etc/grafana/provisioning/alerting:ro
         ports:
             - 3000:3000
     tempo:
@@ -90,6 +91,13 @@ services:
         command: ['-config.file=/etc/loki/local-config.yaml']
         ports:
             - 3100:3100
+    maildev:
+        container_name: maildev
+        image: djfarrelly/maildev
+        extra_hosts: [ 'host.docker.internal:host-gateway' ]
+        ports:
+            - 3001:80
+            - 25:25
     # zipkin:
     #     image: openzipkin/zipkin
     #     container_name: zipkin
