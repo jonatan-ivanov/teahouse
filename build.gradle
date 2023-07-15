@@ -61,6 +61,7 @@ subprojects {
 
             testImplementation 'org.junit.jupiter:junit-jupiter-api'
             testImplementation 'org.junit.jupiter:junit-jupiter-params'
+            testImplementation 'io.rest-assured:rest-assured'
             testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
         }
 
