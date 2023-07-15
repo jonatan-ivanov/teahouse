@@ -23,4 +23,6 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java:latest.release'
     runtimeOnly 'org.flywaydb:flyway-core'
     runtimeOnly 'org.flywaydb:flyway-mysql'
+
+    testImplementation 'org.flywaydb:flyway-core'
 }
