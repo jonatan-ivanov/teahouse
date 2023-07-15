@@ -1,10 +1,13 @@
 package org.example.teahouse.water;
 
 import org.example.teahouse.water.api.CreateWaterRequest;
+import org.flywaydb.core.Flyway;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.ActiveProfiles;
@@ -19,8 +22,13 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @ActiveProfiles("test")
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 class WaterServiceApplicationTest {
-
     @LocalServerPort int port;
+
+    @AfterEach
+    void cleanDb(@Autowired Flyway flyway) {
+        flyway.clean();
+        flyway.migrate();
+    }
 
     @Test
     void watersEndpointShouldReturnWaterResources() {
