@@ -36,7 +36,7 @@ rm -rf logs
 
 ## Start the apps using MySQL
 
-This is needed if you want to inject latency on the network (see [ToxiProxy](#Useful-URLs)).
+This is needed if you want to inject latency on the network (see [ToxiProxy](#useful-urls)).
 
 ```shell
 ./gradlew bootRun -Pprofiles=mysql
@@ -68,9 +68,9 @@ See `SteepTeaSimulation.java` for duration, request rate, and traffic patterns.
 
 When start the apps for the first time, `english breakfast` is missing from the DB but you can make requests through the UI using `english breakfast` and the load generator also sends requests containing it. Those calls will end-up with HTTP 500; approximately 10% of the requests should fail: ~0.5 rq/sec error- and ~4.5 rq/sec success rate (~5 rq/sec total throughput, see `SteepTeaSimulation.java`).
 
-You should see these errors on the throughput panel of the Tea API dashboard and Grafana also alerts on them (see the emails in [MailDev](#Useful-URLs)).
+You should see these errors on the throughput panel of the Tea API dashboard and Grafana also alerts on them (see the emails in [MailDev](#useful-urls)).
 
-If you want to fix these errors, you need to create a record in the DB for `english breakfast`. The easiest way is sending an HTTP POST request to `/tealeaves` to create the resource (you can also log into the DB and insert the record for example using [Adminer](#Useful-URLs)). The `Makefile` contains a goal for this to make it simple for you, you can run this to fix errors (httpie and jq needed):
+If you want to fix these errors, you need to create a record in the DB for `english breakfast`. The easiest way is sending an HTTP POST request to `/tealeaves` to create the resource (you can also log into the DB and insert the record for example using [Adminer](#useful-urls)). The `Makefile` contains a goal for this to make it simple for you, you can run this to fix errors (httpie and jq needed):
 
 ```shell
 make errors-fixed
@@ -84,7 +84,7 @@ make errors
 
 ## Latency simulation
 
-If you [start the apps with the `mysql` profile](#Start-the-apps-using-MySQL), the apps are not connected to the DB directly but through [ToxiProxy](#Useful-URLs) so that you can inject failures (i.e.: latency) on the network. You can do this in multiple ways (e.g.: using the [ToxiProxy UI](#Useful-URLs) or the ToxiProxy CLI). The `Makefile` contains a goal for this to make it simple for you, you can run this to inject latency:
+If you [start the apps with the `mysql` profile](#start-the-apps-using-mysql), the apps are not connected to the DB directly but through [ToxiProxy](#useful-urls) so that you can inject failures (i.e.: latency) on the network. You can do this in multiple ways (e.g.: using the [ToxiProxy UI](#useful-urls) or the ToxiProxy CLI). The `Makefile` contains a goal for this to make it simple for you, you can run this to inject latency:
 
 ```shell
 make chaos
