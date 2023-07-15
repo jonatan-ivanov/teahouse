@@ -53,8 +53,8 @@ class WaterServiceApplicationTest {
     @CsvSource({
         "dd1457d5-e0ec-4ba8-aaf5-b880e5aee672,small,100 ml",
         "768805a0-3ef7-478f-8de4-6c3ed1bcf65b,medium,200 ml",
-        "71d27ee9-8146-411a-b87c-289aa198d881,large,300 ml"}
-    )
+        "71d27ee9-8146-411a-b87c-289aa198d881,large,300 ml"
+    })
     void watersEndpointShouldReturnWaterResourceById(String id, String size, String amount) {
         given()
             .port(this.port)
@@ -72,8 +72,8 @@ class WaterServiceApplicationTest {
     @CsvSource({
         "dd1457d5-e0ec-4ba8-aaf5-b880e5aee672,small,100 ml",
         "768805a0-3ef7-478f-8de4-6c3ed1bcf65b,medium,200 ml",
-        "71d27ee9-8146-411a-b87c-289aa198d881,large,300 ml"}
-    )
+        "71d27ee9-8146-411a-b87c-289aa198d881,large,300 ml"
+    })
     void searchEndpointShouldFindWaterResources(String id, String size, String amount) {
         given()
             .port(this.port)
