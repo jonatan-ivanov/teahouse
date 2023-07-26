@@ -190,7 +190,7 @@ groups:
           isPaused: false
 contactPoints:
   - orgId: 1
-    name: alerts-email
+    name: alerts-email-and-local-webhook
     receivers:
       - uid: 4e3bfe25-00cf-4173-b02b-16f077e539da
         type: email
@@ -198,9 +198,14 @@ contactPoints:
         settings:
             addresses: alerts@example.org
             singleEmail: false
+      - uid: ffc01bb5-d147-4890-a406-b2598f3cd0cc
+        type: webhook
+        disableResolveMessage: false
+        settings:
+            url: 'http://host.docker.internal:3333'
 policies:
   - orgId: 1
-    receiver: alerts-email
+    receiver: alerts-email-and-local-webhook
     group_by: ['grafana_folder', 'alertname']
     group_wait: 0s
     group_interval: 1s
