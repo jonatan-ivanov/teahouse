@@ -15,7 +15,7 @@ import static io.gatling.javaapi.core.CoreDsl.scenario;
 import static io.gatling.javaapi.http.HttpDsl.http;
 
 public class SteepTeaSimulation extends Simulation {
-    final Duration duration = Duration.ofMinutes(30);
+    final Duration duration = Duration.ofMinutes(120);
     final int usersPerSec = 5;
 
     final HttpProtocolBuilder httpProtocol = http.baseUrl("http://localhost:8090")
