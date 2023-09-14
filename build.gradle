@@ -77,7 +77,7 @@ subprojects {
             'Implementation-Vendor': project.group,
             'Commit-AbbreviatedId': grgit.head().abbreviatedId,
             'Commit-Id': grgit.head().id,
-            'Commit-Date': grgit.head().getDate().toInstant(),
+            'Commit-Date': grgit.head().getDateTime().toInstant(),
             'Source-Path': grgit.remote.list().findResult { it.name == 'origin' ? it.url : null },
             'Created-By': "Gradle ${gradle.gradleVersion}",
             'Built-By': System.properties['user.name'],
