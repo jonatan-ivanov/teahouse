@@ -16,7 +16,7 @@ jobs:
       with:
         distribution: 'liberica'
         java-version: |
-          20
+          21
           17
         cache: 'gradle'
         check-latest: true
