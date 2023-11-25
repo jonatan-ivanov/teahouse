@@ -57,6 +57,6 @@ datasources:
         maxLines: 50
         derivedFields:
           - datasourceUid: tempo
-            matcherRegex: '\w+ \[.+,(\w*),\w*\] \d+'
+            matcherRegex: '.+ --- \[.+\] \[.+\] \[(\w*)-\w*\] .+'
             name: traceId
             url: $${__value.raw}
