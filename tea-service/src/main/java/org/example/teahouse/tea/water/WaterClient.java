@@ -9,7 +9,7 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "water", configuration = FeignClientConfig.class, url = "${feign.client.config.water.url}")
+@FeignClient(name = "water", configuration = FeignClientConfig.class)
 public interface WaterClient extends HealthClient {
     @GetMapping("/waters/search/findBySize")
     SimpleWaterModel findBySize(@RequestParam("size") String size);
