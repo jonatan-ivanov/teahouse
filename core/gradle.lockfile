@@ -71,4 +71,5 @@ org.springframework:spring-expression:6.1.1=compileClasspath,runtimeClasspath,te
 org.springframework:spring-jcl:6.1.1=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 org.springframework:spring-web:6.1.1=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 org.springframework:spring-webmvc:6.1.1=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+org.zalando:logbook-bom:3.6.0=annotationProcessor,compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 empty=testAnnotationProcessor
