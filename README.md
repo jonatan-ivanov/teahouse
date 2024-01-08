@@ -10,6 +10,32 @@ Demo setup for Spring Boot apps with Prometheus, Grafana, Loki, Tempo, Eureka, a
 docker compose up
 ```
 
+## Remove logs
+
+```shell
+rm -rf logs
+```
+
+## Start the apps
+If you want to use an in-memory DB (H2):
+```shell
+./gradlew bootRun
+```
+
+If you want to use a real DB (MySQL):
+```shell
+./gradlew bootRun -Pprofiles=mysql
+```
+You need a real DB if you want to inject latency on the network (see [ToxiProxy](#useful-urls)).
+
+## Start load tests
+
+See `SteepTeaSimulation.java` for duration, request rate, and traffic patterns.
+
+```shell
+./gradlew :load-gen:gatlingRun
+```
+
 ## Stop dependencies
 
 ```shell
@@ -20,34 +46,6 @@ docker compose down
 
 ```shell
 docker compose down --volumes
-```
-
-## Remove logs
-
-```shell
-rm -rf logs
-```
-
-## Start the apps (using in-memory H2 DB)
-
-```shell
-./gradlew bootRun
-```
-
-## Start the apps using MySQL
-
-This is needed if you want to inject latency on the network (see [ToxiProxy](#useful-urls)).
-
-```shell
-./gradlew bootRun -Pprofiles=mysql
-```
-
-## Start load tests
-
-See `SteepTeaSimulation.java` for duration, request rate, and traffic patterns.
-
-```shell
-./gradlew :load-gen:gatlingRun
 ```
 
 ## Useful URLs
@@ -84,7 +82,7 @@ make errors
 
 ## Latency simulation
 
-If you [start the apps with the `mysql` profile](#start-the-apps-using-mysql), the apps are not connected to the DB directly but through [ToxiProxy](#useful-urls) so that you can inject failures (i.e.: latency) on the network. You can do this in multiple ways (e.g.: using the [ToxiProxy UI](#useful-urls) or the ToxiProxy CLI). The `Makefile` contains a goal for this to make it simple for you, you can run this to inject latency:
+If you [start the apps with the `mysql` profile](#start-the-apps), the apps are not connected to the DB directly but through [ToxiProxy](#useful-urls) so that you can inject failures (i.e.: latency) on the network. You can do this in multiple ways (e.g.: using the [ToxiProxy UI](#useful-urls) or the ToxiProxy CLI). The `Makefile` contains a goal for this to make it simple for you, you can run this to inject latency:
 
 ```shell
 make chaos
