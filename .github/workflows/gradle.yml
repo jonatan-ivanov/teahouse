@@ -17,7 +17,6 @@ jobs:
         distribution: 'liberica'
         java-version: |
           21
-          17
         cache: 'gradle'
         check-latest: true
     - name: Validate Gradle wrapper
