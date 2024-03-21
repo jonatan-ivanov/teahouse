@@ -38,7 +38,6 @@ allprojects {
 subprojects {
     repositories {
         mavenCentral()
-        maven { url 'https://repo.spring.io/milestone' }
     }
 
     if (project.name != 'load-gen') {
