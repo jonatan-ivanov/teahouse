@@ -4,3 +4,6 @@ dependencies {
     implementation 'de.codecentric:spring-boot-admin-starter-server:3.+'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 }
+
+// TODO: remove this once the Boot Gradle Plugin works with Java 22
+springBoot.mainClass = 'org.example.teahouse.sba.SbaApplication'

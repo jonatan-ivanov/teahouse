@@ -25,3 +25,6 @@ dependencies {
 
     runtimeOnly 'com.github.loki4j:loki-logback-appender:latest.release'
 }
+
+// TODO: remove this once the Boot Gradle Plugin works with Java 22
+springBoot.mainClass = 'org.example.teahouse.tea.TeaServiceApplication'
