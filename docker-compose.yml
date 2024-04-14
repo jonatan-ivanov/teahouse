@@ -2,7 +2,7 @@ version: '3'
 services:
     mysql:
         container_name: mysql
-        image: mysql
+        image: mysql:8.3.0 # https://hub.docker.com/_/mysql
         command: --default-authentication-plugin=mysql_native_password
         extra_hosts: ['host.docker.internal:host-gateway']
         environment:
@@ -14,7 +14,7 @@ services:
             - 3306:3306
     adminer:
         container_name: adminer
-        image: adminer
+        image: adminer:4.8.1-standalone # https://hub.docker.com/_/adminer
         extra_hosts: ['host.docker.internal:host-gateway']
         environment:
             ADMINER_DEFAULT_SERVER: mysql
@@ -24,7 +24,7 @@ services:
             - 8888:8080
     toxiproxy:
         container_name: toxiproxy
-        image: ghcr.io/shopify/toxiproxy
+        image: ghcr.io/shopify/toxiproxy:2.9.0 # https://github.com/shopify/toxiproxy/pkgs/container/toxiproxy
         extra_hosts: ['host.docker.internal:host-gateway']
         command: -host=0.0.0.0 -config /config/toxiproxy.json -proxy-metrics -runtime-metrics
         depends_on:
@@ -37,7 +37,7 @@ services:
             - 3308:3308
     toxiproxy-ui:
         container_name: toxiproxy-ui
-        image: buckle/toxiproxy-frontend
+        image: buckle/toxiproxy-frontend:0.10 # https://hub.docker.com/r/buckle/toxiproxy-frontend
         extra_hosts: ['host.docker.internal:host-gateway']
         environment:
             TOXIPROXY_URL: http://host.docker.internal:8474
@@ -47,7 +47,7 @@ services:
             - 8484:8080
     prometheus:
         container_name: prometheus
-        image: prom/prometheus
+        image: prom/prometheus:v2.51.2 # https://hub.docker.com/r/prom/prometheus
         extra_hosts: ['host.docker.internal:host-gateway']
         command:
             - --enable-feature=exemplar-storage
@@ -60,7 +60,7 @@ services:
             - 9090:9090
     grafana:
         container_name: grafana
-        image: grafana/grafana
+        image: grafana/grafana:10.4.2 # https://hub.docker.com/r/grafana/grafana/tags
         extra_hosts: ['host.docker.internal:host-gateway']
         environment:
             - GF_AUTH_ANONYMOUS_ENABLED=true
@@ -75,7 +75,7 @@ services:
             - 3000:3000
     tempo:
         container_name: tempo
-        image: grafana/tempo
+        image: grafana/tempo:2.4.1 # https://hub.docker.com/r/grafana/tempo/tags and https://github.com/grafana/tempo/releases
         extra_hosts: ['host.docker.internal:host-gateway']
         command: ['-config.file=/etc/tempo.yml']
         volumes:
@@ -86,23 +86,18 @@ services:
             - 9411:9411    # zipkin
     loki:
         container_name: loki
-        image: grafana/loki
+        image: grafana/loki:3.0.0 # https://hub.docker.com/r/grafana/loki/tags and https://github.com/grafana/loki/releases
         extra_hosts: ['host.docker.internal:host-gateway']
         command: ['-config.file=/etc/loki/local-config.yaml']
         ports:
             - 3100:3100
     maildev:
         container_name: maildev
-        image: djfarrelly/maildev
+        image: maildev/maildev:2.1.0 # https://hub.docker.com/r/maildev/maildev/tags
         extra_hosts: [ 'host.docker.internal:host-gateway' ]
         ports:
-            - 3001:80
-            - 25:25
-    # zipkin:
-    #     image: openzipkin/zipkin
-    #     container_name: zipkin
-    #     ports:
-    #         - 9411:9411
+            - 3001:1080
+            - 25:1025
 volumes:
   mysql:
     driver: local
