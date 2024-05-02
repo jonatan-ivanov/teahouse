@@ -11,4 +11,5 @@ buildscript {
     }
 }
 
+apply plugin: 'java'
 apply plugin: 'io.gatling.gradle'
