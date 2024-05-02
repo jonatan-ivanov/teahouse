@@ -20,7 +20,7 @@ public class PercussionObservationHandler extends AbstractMidiObservationHandler
 
     private final MidiChannel frenchHorn;
 
-    protected PercussionObservationHandler(MeterRegistry registry) throws MidiUnavailableException {
+    public PercussionObservationHandler(MeterRegistry registry) throws MidiUnavailableException {
         super(registry);
         // ch #9 is for percussion
         this.percussion = this.synthesizer.getChannels()[9];
