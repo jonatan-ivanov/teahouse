@@ -2,7 +2,6 @@ $(document).ready(() => {
     $('#steep-it-button').click(fetchAndRenderData);
     $('#tealeaf-selector').keypress(event => onEnterPressed(event, fetchAndRenderData));
     $('#water-selector').keypress(event => onEnterPressed(event, fetchAndRenderData));
-
 });
 
 function onEnterPressed(event, callback) {
@@ -16,8 +15,6 @@ function fetchAndRenderData() {
     const name = $('#tealeaf-selector').val();
     const size = $('#water-selector').val();
 
-    $('#steep-it-button-spinner').removeAttr('hidden');
-    $('#steep-it-button').prop('disabled', true);
     fetch(`/tea/${name}?size=${size}`)
         .then(renderData)
         .catch(renderError);
@@ -45,9 +42,6 @@ function renderTea(tea) {
     $('#tealeaves-type').text(`Type of tealeaves: ${tea.tealeaf.type}`);
     $('#tealeaves-amount').text(`Amount of tealeaves: ${tea.tealeaf.amount}`);
 
-    $('#steep-it-button').prop('disabled', false);
-    $('#steep-it-button-spinner').attr('hidden', true);
-
     $('#alert-container').attr('hidden', true);
     $('#tea-card-container').removeAttr('hidden');
 }
@@ -71,8 +65,6 @@ function renderError(error) {
 function renderErrorMessage(errorMessage) {
     console.error(errorMessage);
 
-    $('#steep-it-button').prop('disabled', false);
-    $('#steep-it-button-spinner').attr('hidden', true);
     $('#tea-card-container').attr('hidden', true);
     $('#alert-container')
         .text(errorMessage)
