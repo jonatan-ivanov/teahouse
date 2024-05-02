@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copied from https://github.com/gatling/gatling-gradle-plugin/blob/50b49cff2903765b90459009ce3426b6ee22c4d4/src/main/groovy/io/gatling/gradle/LogbackConfigTask.groovy#L22-L34
+Since log config default was removed in https://github.com/gatling/gatling-gradle-plugin/commit/151e0515208b580eed3af3a9f40873c9038754af
+-->
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%-5level] %logger{15} - %msg%n%rEx</pattern>
+        </encoder>
+        <immediateFlush>false</immediateFlush>
+    </appender>
+    <!--
+        DEBUG to log failing HTTP rq/rs
+        TRACE to log  all HTTP rq/rs
+    -->
+    <!-- <logger name="io.gatling.http.engine.response" level="DEBUG" /> -->
+
+    <root level="WARN">
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>
