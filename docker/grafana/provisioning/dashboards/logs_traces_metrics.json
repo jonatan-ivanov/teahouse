@@ -24,8 +24,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 6,
-    "iteration": 1654517000502,
+    "id": 8,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -59,12 +58,12 @@
                         "uid": "loki"
                     },
                     "editorMode": "builder",
-                    "expr": "{traceID=\"$traceID\"}",
+                    "expr": "{traceId=\"$traceId\"}",
                     "queryType": "range",
                     "refId": "A"
                 }
             ],
-            "title": "Logs with trace ID $traceID",
+            "title": "Logs with trace ID $traceId",
             "type": "logs"
         },
         {
@@ -86,18 +85,27 @@
                         "type": "tempo",
                         "uid": "tempo"
                     },
-                    "query": "$traceID",
-                    "queryType": "traceId",
-                    "refId": "A"
+                    "filters": [
+                        {
+                            "id": "ede501e2",
+                            "operator": "=",
+                            "scope": "span"
+                        }
+                    ],
+                    "limit": 20,
+                    "query": "$traceId",
+                    "queryType": "traceql",
+                    "refId": "A",
+                    "tableType": "traces"
                 }
             ],
-            "title": "Trace View for trace with id $traceID",
+            "title": "Trace View for trace with id $traceId",
             "type": "traces"
         },
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "prometheus"
             },
             "fieldConfig": {
                 "defaults": {
@@ -105,6 +113,9 @@
                         "mode": "palette-classic"
                     },
                     "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
                         "axisLabel": "",
                         "axisPlacement": "auto",
                         "barAlignment": 0,
@@ -116,6 +127,7 @@
                             "tooltip": false,
                             "viz": false
                         },
+                        "insertNulls": false,
                         "lineInterpolation": "linear",
                         "lineWidth": 1,
                         "pointSize": 5,
@@ -161,7 +173,8 @@
                 "legend": {
                     "calcs": [],
                     "displayMode": "list",
-                    "placement": "bottom"
+                    "placement": "bottom",
+                    "showLegend": true
                 },
                 "tooltip": {
                     "mode": "single",
@@ -172,11 +185,12 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "PBFA97CFB590B2093"
+                        "uid": "prometheus"
                     },
                     "editorMode": "code",
                     "exemplar": true,
-                    "expr": "histogram_quantile(1.00, sum(rate(http_server_requests_seconds_bucket{application=~\"tea-service\", uri=~\".*\"}[$__rate_interval])) by (le))",
+                    "expr": "histogram_quantile(1.00, sum(rate(http_server_requests_seconds_bucket{application=~\"tea-service\", uri=~\"/tea/{name}\"}[$__rate_interval])) by (le))",
+                    "instant": false,
                     "legendFormat": "max",
                     "range": true,
                     "refId": "A"
@@ -184,12 +198,13 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "PBFA97CFB590B2093"
+                        "uid": "prometheus"
                     },
                     "editorMode": "code",
                     "exemplar": true,
-                    "expr": "histogram_quantile(0.99, sum(rate(http_server_requests_seconds_bucket{application=~\"tea-service\", uri=~\".*\"}[$__rate_interval])) by (le))",
+                    "expr": "histogram_quantile(0.99, sum(rate(http_server_requests_seconds_bucket{application=~\"tea-service\", uri=~\"/tea/{name}\"}[$__rate_interval])) by (le))",
                     "hide": false,
+                    "instant": false,
                     "legendFormat": "tp99",
                     "range": true,
                     "refId": "B"
@@ -197,44 +212,50 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "PBFA97CFB590B2093"
+                        "uid": "prometheus"
                     },
                     "editorMode": "code",
                     "exemplar": true,
-                    "expr": "histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket{application=~\"tea-service\", uri=~\".*\"}[$__rate_interval])) by (le))",
+                    "expr": "histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket{application=~\"tea-service\", uri=~\"/tea/{name}\"}[$__rate_interval])) by (le))",
                     "hide": false,
+                    "instant": false,
                     "legendFormat": "tp95",
                     "range": true,
                     "refId": "C"
                 }
             ],
-            "title": "tea-service latency for All",
+            "title": "tea-service latency for tea/{name}",
             "type": "timeseries"
         }
     ],
-    "schemaVersion": 36,
-    "style": "dark",
+    "refresh": "",
+    "schemaVersion": 39,
     "tags": [],
     "templating": {
         "list": [
             {
                 "current": {
                     "selected": false,
-                    "text": "0003776c79e02b6c",
-                    "value": "0003776c79e02b6c"
+                    "text": "663b648c0bd290dcf68d1f5214cea8ba",
+                    "value": "663b648c0bd290dcf68d1f5214cea8ba"
                 },
                 "datasource": {
                     "type": "loki",
                     "uid": "loki"
                 },
-                "definition": "label_values(traceID)",
+                "definition": "",
                 "hide": 0,
                 "includeAll": false,
                 "label": "Trace ID",
                 "multi": false,
-                "name": "traceID",
+                "name": "traceId",
                 "options": [],
-                "query": "label_values(traceID)",
+                "query": {
+                    "label": "traceId",
+                    "refId": "LokiVariableQueryEditor-VariableQuery",
+                    "stream": "",
+                    "type": 1
+                },
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
@@ -250,7 +271,7 @@
     "timepicker": {},
     "timezone": "",
     "title": "Logs, Traces, Metrics",
-    "uid": "szVLMe97z",
-    "version": 7,
+    "uid": "szVLMe97z2",
+    "version": 8,
     "weekStart": ""
 }
