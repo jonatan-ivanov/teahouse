@@ -27,13 +27,17 @@ public class WaterServiceObservabilityWithConvention implements WaterFetcher {
     @Override
     public Optional<Water> findBySize(String size) {
         WaterFetcherContext waterFetcherContext = new WaterFetcherContext(size, WaterServiceObservabilityWithConvention.class);
-        Observation observation = WaterObservationDocumentation.FIND_BY_SIZE.observation(customWaterObservationConvention, new DefaultWaterObservationConvention(), () -> waterFetcherContext, observationRegistry);
+        Observation observation = observationDocumentation(waterFetcherContext);
         return observation.observe(() -> {
             log.info("This will have a trace id");
             Optional<Water> bySize = waterRepository.findBySize(size);
             observation.event(WaterObservationDocumentation.Events.WATER_CALCULATED);
             return bySize;
         });
+    }
+
+    private Observation observationDocumentation(WaterFetcherContext waterFetcherContext) {
+        return WaterObservationDocumentation.FIND_BY_SIZE.observation(customWaterObservationConvention, new DefaultWaterObservationConvention(), () -> waterFetcherContext, observationRegistry);
     }
 
     public void setCustomWaterObservationConvention(WaterObservationConvention customWaterObservationConvention) {

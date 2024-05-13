@@ -34,11 +34,6 @@ public class WaterFetcherObservationHandler implements ObservationHandler<WaterF
     }
 
     @Override
-    public void onScopeReset(WaterFetcherContext context) {
-        log.info("<Handler> On scope reset");
-    }
-
-    @Override
     public void onStop(WaterFetcherContext context) {
         log.info("<Handler> On stop");
     }
