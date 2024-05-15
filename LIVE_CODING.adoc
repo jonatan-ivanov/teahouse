@@ -1,8 +1,8 @@
-= To Production and Beyond: Observability for Modern Spring Applications
+= Is your JVM app flying blind? Unmask hidden issues with Observability superpowers!
 
 == About me
 
-Whoami: Marcin Grzejszczak, developer @ Spring team (VMware)
+Whoami: Marcin Grzejszczak, developer @ Spring team (Broadcom)
 Mastodon: toomuchcoding@fosstodon.org
 Twitter: @mgrzejszczak
 Blog: https://toomuchcoding.com
@@ -13,6 +13,19 @@ Blog: https://toomuchcoding.com
 \ --->  Tealeaf Service  ---> DB
 \ --->  Water Service    ---> DB
 
+Poor man's version poll:
+
+* Do you know what Distributed Tracing is?
+* Are you using Observability (whatever that means) in production?
+
+=== What is observability?
+
+How well we can understand the internals of a system based on its outputs
+
+== DEMO TIME
+
+Time for the teahouse demo!
+
 Characteristics:
 
 * Spring Boot 3 apps
@@ -20,15 +33,6 @@ Characteristics:
 ** Metrics plugged in via Micrometer Core
 ** Tracing plugged in via Micrometer Tracing
 *** Tracer - OpenZipkin Brave (you could pick OpenTelemetry)
-
-Poor man's version poll:
-
-* Do you know what Distributed Tracing is?
-* Are you using Observability (whatever that means) in production?
-
-== DEMO TIME
-
-Time for the teahouse demo!
 
 == Micrometer Observation Coding
 

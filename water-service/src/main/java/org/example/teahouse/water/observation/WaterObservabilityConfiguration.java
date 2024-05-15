@@ -4,6 +4,7 @@ import io.micrometer.common.KeyValue;
 import io.micrometer.observation.ObservationFilter;
 import io.micrometer.observation.ObservationHandler;
 import io.micrometer.observation.ObservationPredicate;
+import io.micrometer.observation.ObservationRegistry;
 import org.example.teahouse.water.observation._03_context.WaterFetcherObservationHandler;
 
 import org.springframework.context.annotation.Bean;

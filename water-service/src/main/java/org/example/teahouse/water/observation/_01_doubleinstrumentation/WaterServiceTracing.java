@@ -24,7 +24,6 @@ public class WaterServiceTracing implements WaterFetcher {
         try (Tracer.SpanInScope ws = tracer.withSpan(span.start())) {
             log.info("Here we will have the child span trace id injected"); // This is also an instrumentation!
             Optional<Water> bySize = function.apply(size);
-            Thread.sleep(1000);
             span.event("water-by-size.calculated");
             return bySize;
         } catch (Exception ex) {

@@ -33,6 +33,7 @@ public class MelodyObservationHandler extends AbstractMidiObservationHandler<Ser
         "d", 74
     );
 
+    // Who knows what this song is - raise you hand!
     private static final String melody = """
             D E G E BBB BBB AAAAAA
             D E G E AAA AAA GGGGGG
