@@ -15,13 +15,16 @@ Blog: https://toomuchcoding.com
 
 Poor man's version poll:
 
-* Do you know what Distributed Tracing is?
-* Are you using Observability (whatever that means) in production?
+* Observability in production?
+* Spring Boot 3?
+* Micrometer?
+* Prometheus
+* OpenTelemetry?
 
 === What is observability?
 
 How well we can understand the internals of a system based on its outputs
-
+io.freefair.
 == DEMO TIME
 
 Time for the teahouse demo!
@@ -45,4 +48,4 @@ Characteristics:
 ** Observation predicate (`WaterObservationConfiguration`)
 ** Observation documentation (`./gradlew generateObservabilityDocs`)
 
-IMPORTANT: CHECK THE DOCS https://micrometer.io/docs
+IMPORTANT: CHECK THE DOCS https://docs.micrometer.io
