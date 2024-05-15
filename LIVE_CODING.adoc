@@ -23,8 +23,15 @@ Poor man's version poll:
 
 === What is observability?
 
-How well we can understand the internals of a system based on its outputs
-io.freefair.
+"How well we can understand the internals of a system based on its outputs"
+
+=== Jumping through pillars
+
+* logs <-- through traces --> metrics
+* logs <-- trace id --> traces
+* traces -- through tags -- > metrics
+* metrics -- through exemplars --> traces
+
 == DEMO TIME
 
 Time for the teahouse demo!
@@ -37,15 +44,6 @@ Characteristics:
 ** Tracing plugged in via Micrometer Tracing
 *** Tracer - OpenZipkin Brave (you could pick OpenTelemetry)
 
-== Micrometer Observation Coding
 
-* Separate Metrics, Tracing instrumentation (`WaterServiceMetricsAndTracing`)
-* Combining instrumentation using Micrometer Observation (`WaterServiceObservability`)
-** Aspect (`WaterObservationConfiguration`)
-* Customizations
-** Custom handler (`WaterFetcherObservationHandler`)
-** Observation filter (`WaterObservationConfiguration`)
-** Observation predicate (`WaterObservationConfiguration`)
-** Observation documentation (`./gradlew generateObservabilityDocs`)
 
 IMPORTANT: CHECK THE DOCS https://docs.micrometer.io
