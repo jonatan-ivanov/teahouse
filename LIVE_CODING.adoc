@@ -3,8 +3,11 @@
 == About me
 
 Whoami: Marcin Grzejszczak, developer @ Spring team (Broadcom)
+
 Mastodon: toomuchcoding@fosstodon.org
+
 Twitter: @mgrzejszczak
+
 Blog: https://toomuchcoding.com
 
 == Poll
@@ -23,9 +26,11 @@ Poor man's version poll:
 
 == System architecture
 
+```
 --> Tea Service
 \ --->  Tealeaf Service  ---> DB
 \ --->  Water Service    ---> DB
+```
 
 == DEMO TIME
 
