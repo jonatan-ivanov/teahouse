@@ -7,23 +7,31 @@ Mastodon: toomuchcoding@fosstodon.org
 Twitter: @mgrzejszczak
 Blog: https://toomuchcoding.com
 
-== System architecture
-
---> Tea Service
-\ --->  Tealeaf Service  ---> DB
-\ --->  Water Service    ---> DB
+== Poll
 
 Poor man's version poll:
 
 * Observability in production?
 * Spring Boot 3?
 * Micrometer?
-* Prometheus
+* Prometheus?
 * OpenTelemetry?
 
 === What is observability?
 
 "How well we can understand the internals of a system based on its outputs"
+
+== System architecture
+
+--> Tea Service
+\ --->  Tealeaf Service  ---> DB
+\ --->  Water Service    ---> DB
+
+== DEMO TIME
+
+Time for the teahouse demo!
+
+IMPORTANT: CHECK THE DOCS https://docs.micrometer.io
 
 === Jumping through pillars
 
@@ -31,19 +39,3 @@ Poor man's version poll:
 * logs <-- trace id --> traces
 * traces -- through tags -- > metrics
 * metrics -- through exemplars --> traces
-
-== DEMO TIME
-
-Time for the teahouse demo!
-
-Characteristics:
-
-* Spring Boot 3 apps
-** Instrumented with Micrometer Observation
-** Metrics plugged in via Micrometer Core
-** Tracing plugged in via Micrometer Tracing
-*** Tracer - OpenZipkin Brave (you could pick OpenTelemetry)
-
-
-
-IMPORTANT: CHECK THE DOCS https://docs.micrometer.io
