@@ -18,8 +18,8 @@ import org.springframework.http.server.observation.ServerRequestObservationConte
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile("rick")
-public class RickObservationHandler extends AbstractMidiObservationHandler<ServerRequestObservationContext> {
+@Profile("melody")
+public class MelodyObservationHandler extends AbstractMidiObservationHandler<ServerRequestObservationContext> {
 
     // D is D4, d is an octave higher (D5)
     // ₣ is mapped to F# so that every note can be encoded with one character
@@ -50,7 +50,7 @@ public class RickObservationHandler extends AbstractMidiObservationHandler<Serve
 
     private final AtomicInteger programPosition = new AtomicInteger();
 
-    public RickObservationHandler(MeterRegistry registry) throws MidiUnavailableException {
+    public MelodyObservationHandler(MeterRegistry registry) throws MidiUnavailableException {
         super(registry);
         // ch #0 is set to Acoustic Grand Piano by default
         this.channel = this.synthesizer.getChannels()[0];
