@@ -1,23 +1,18 @@
-ext.buildTime = new Date().toInstant()
-
 buildscript {
-    ext.springBootVersion = '3.+'
-    ext.springCloudVersion = '2023.+'
-    ext.springDataVersion = '2023.+'
-
-    configurations.classpath {
-        resolutionStrategy.activateDependencyLocking()
-    }
-
     repositories {
         gradlePluginPortal()
     }
     dependencies {
         classpath 'org.ajoberstar.grgit:grgit-gradle:latest.release'
         classpath 'com.gorylenko.gradle-git-properties:gradle-git-properties:latest.release'
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
     }
 }
+
+plugins {
+    alias(libs.plugins.springBoot)
+}
+
+ext.buildTime = new Date().toInstant()
 
 task clean
 
@@ -42,16 +37,15 @@ subprojects {
 
     if (project.name != 'load-gen') {
         apply plugin: 'java'
-        apply from: "$rootDir/gradle/dependency-locking.gradle"
 
         group = 'org.example.teahouse'
         version = "${grgit.head().abbreviatedId}.${buildTime.toEpochMilli()}"
 
         dependencies {
             ['annotationProcessor', 'compileOnly', 'implementation', 'runtimeOnly', 'testImplementation'].each { conf ->
-                dependencies.add(conf, platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
-                dependencies.add(conf, platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"))
-                dependencies.add(conf, platform("org.springframework.data:spring-data-bom:$springDataVersion"))
+                dependencies.add(conf, platform(libs.springBoot))
+                dependencies.add(conf, platform(libs.springCloud))
+                dependencies.add(conf, platform(libs.springData))
                 dependencies.add(conf, platform('org.zalando:logbook-bom:latest.release'))
             }
             testImplementation platform('org.junit:junit-bom:latest.release')

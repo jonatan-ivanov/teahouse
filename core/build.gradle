@@ -9,5 +9,5 @@ dependencies {
     implementation 'ch.qos.logback:logback-access'
     implementation 'org.apache.tomcat.embed:tomcat-embed-core'
 
-    compileOnly 'net.ttddyy.observation:datasource-micrometer-spring-boot:1.+'
+    compileOnly libs.datasourceMicrometerSpringBoot
 }

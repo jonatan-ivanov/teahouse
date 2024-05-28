@@ -1,0 +1,22 @@
+[versions]
+datasourceMicrometerSpringBoot = "1.0.3"
+jolokia = "1.7.2"
+micrometerDocsVersion = "1.0.2"
+springBoot = '3.2.5'
+springBootAdmin = "3.2.3"
+springCloud = '2023.0.1'
+springData = '2023.1.5'
+springDoc = "2.5.0"
+
+[libraries]
+datasourceMicrometerSpringBoot = { module = "net.ttddyy.observation:datasource-micrometer-spring-boot", version.ref = "datasourceMicrometerSpringBoot" }
+jolokia = { module = "org.jolokia:jolokia-core", version.ref = "jolokia" }
+springBoot = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "springBoot" }
+springCloud = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "springCloud" }
+springData = { module = "org.springframework.data:spring-data-bom", version.ref = "springData" }
+springDoc = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springDoc" }
+springBootAdminStarterServer = { module = "de.codecentric:spring-boot-admin-starter-server", version.ref = "springBootAdmin" }
+
+# plugin dependencies
+[plugins]
+springBoot = { id = "org.springframework.boot", version.ref = "springBoot"}
