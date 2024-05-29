@@ -5,6 +5,7 @@ import io.micrometer.tracing.Tracer;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -16,6 +17,7 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @ControllerAdvice
+@ConditionalOnClass(HttpServletRequest.class)
 public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
     private final Tracer tracer;
 

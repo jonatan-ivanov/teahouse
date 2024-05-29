@@ -44,3 +44,10 @@ IMPORTANT: CHECK THE DOCS https://docs.micrometer.io
 * logs <-- trace id --> traces
 * traces -- through tags -- > metrics
 * metrics -- through exemplars --> traces
+
+== Additional options to show
+
+- `@SpanTag`
+- `management.observations.long-task-timer.enabled` (Boot 3.3)
+
+- Example of instrumentation - outgoing and incoming

@@ -9,11 +9,11 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "water", configuration = FeignClientConfig.class)
+@FeignClient(name = "proxy-service", configuration = FeignClientConfig.class)
 public interface WaterClient extends HealthClient {
-    @GetMapping("/waters/search/findBySize")
+    @GetMapping("/water-service/waters/search/findBySize")
     SimpleWaterModel findBySize(@RequestParam("size") String size);
 
-    @GetMapping("/waters")
+    @GetMapping("/water-service/waters")
     PagedModel<SimpleWaterModel> waters(Pageable pageable);
 }

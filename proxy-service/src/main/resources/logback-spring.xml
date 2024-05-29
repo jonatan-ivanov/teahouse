@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <jmxConfigurator />
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+    <property scope="local" name="payloadFileName" value="${spring.application.home:-.}/logs/proxy-service.payload.log" />
+    <springProperty scope="context" name="appName" source="spring.application.name" />
+    <springProperty scope="context" name="orgName" source="spring.application.org" />
+
+    <appender name="PAYLOAD_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <file>${payloadFileName}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${payloadFileName}.%i</fileNamePattern>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>10MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+    <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
+        <http>
+            <url>http://localhost:3100/loki/api/v1/push</url>
+        </http>
+        <format>
+            <label>
+                <pattern>org=${orgName},application=${appName},host=${HOSTNAME},level=%level,traceId=%X{traceId:-00000000000000000000000000000000}</pattern>
+            </label>
+            <message>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+            </message>
+            <sortByTime>true</sortByTime>
+        </format>
+    </appender>
+
+    <logger name="org.zalando.logbook.Logbook" level="ALL" additivity="false">
+        <appender-ref ref="PAYLOAD_FILE" />
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+        <springProfile name="loki">
+            <appender-ref ref="LOKI" />
+        </springProfile>
+    </root>
+</configuration>

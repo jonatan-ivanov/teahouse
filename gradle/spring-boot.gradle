@@ -4,10 +4,19 @@ apply plugin: 'com.gorylenko.gradle-git-properties'
 ext.profiles = project.hasProperty('profiles') ? project.getProperty('profiles').split(',') : ['local'] // ./gradlew bootRun -Pprofiles=profileName
 
 dependencies {
-    implementation project(':core')
+    if (!project.getName().contains("proxy")) {
+        implementation project(':core')
+    } else {
+        implementation(project(':core')) {
+            exclude group: 'org.apache.tomcat.embed', module: 'tomcat-embed-core'
+            exclude group: 'org.springframework', module: 'spring-mvc'
+        }
+    }
 
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    if (!project.getName().contains("proxy")) {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+    }
     implementation 'io.micrometer:micrometer-registry-prometheus'
 
     compileOnly 'org.springframework.boot:spring-boot-devtools'

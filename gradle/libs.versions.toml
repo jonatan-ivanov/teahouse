@@ -19,4 +19,5 @@ springBootAdminStarterServer = { module = "de.codecentric:spring-boot-admin-star
 
 # plugin dependencies
 [plugins]
+asciidoctor = { id = "org.asciidoctor.jvm.convert", version = "4.0.2"}
 springBoot = { id = "org.springframework.boot", version.ref = "springBoot"}

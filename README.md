@@ -54,6 +54,7 @@ docker compose down --volumes
 - Tea Service: http://localhost:8090
 - Tealeaf Service: http://localhost:8091
 - Water Service: http://localhost:8092
+- Proxy Service: http://localhost:8093 (for observability http://localhost:8093/actuator/observability/index.html)
 - Spring Boot Admin: http://localhost:8080
 - Eureka: http://localhost:8761
 - Prometheus: http://localhost:9090
@@ -78,6 +79,22 @@ If you want the errors back again, you need to remove the record from the DB, th
 
 ```shell
 make errors
+```
+
+### Quota reached simulation
+
+Another error you can cause is to simulate through proxy-service reaching maximum quota of requests. At the beginning we're serving approximately 5 req / s. However, when enabled, rate limitting gets applied, and we serve only 2 req / s. The rest (~ 3 req / s) will get rejected with 429 status code.
+
+To enable this error you type
+
+```shell
+make errors-quota
+```
+
+To fix them
+
+```shell
+make errors-quota-fixed
 ```
 
 ## Latency simulation

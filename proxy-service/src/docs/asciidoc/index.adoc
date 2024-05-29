@@ -1,0 +1,15 @@
+= Observability features
+
+In this doc you will be able to find all observability related data.
+
+== Conventions
+
+include::_conventions.adoc[]
+
+== Metrics
+
+include::_metrics.adoc[]
+
+== Spans
+
+include::_spans.adoc[]

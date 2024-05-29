@@ -27,6 +27,12 @@ errors:
 errors-fixed:
 	http POST ':8092/tealeaves' --raw '{ "name": "english breakfast", "type": "black", "suggestedAmount": "5 g", "suggestedWaterTemperature": "99 °C", "suggestedSteepingTime": "3 min" }'
 
+errors-quota:
+	http POST ':8093/quota' --raw '{ "enabled": true }'
+
+errors-quota-fixed:
+	http POST ':8093/quota' --raw '{ "enabled": false }'
+
 notification-server:
 	# ncat --listen --keep-open --verbose --source-port 3333 --sh-exec 'tee /dev/tty | echo HTTP/1.1 200 OK\\r\\n'
 	ncat --listen --keep-open --verbose --source-port 3333 --sh-exec "noti -t 'I cannot drink tea!' -m 'Please do something!' && echo 'HTTP/1.1 200 OK\\r\\n'"

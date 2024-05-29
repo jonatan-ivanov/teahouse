@@ -18,4 +18,6 @@ include ':tealeaf-service:tealeaf-api'
 include ':tea-service'
 include ':tea-service:tea-api'
 
+include ':proxy-service'
+
 include ':load-gen'

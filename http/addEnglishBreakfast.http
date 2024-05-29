@@ -8,3 +8,21 @@ Content-Type: application/json
     "suggestedWaterTemperature": "99 °C",
     "suggestedSteepingTime": "3 min"
 }
+
+### Quota enable
+
+POST http://localhost:8093/quota
+Content-Type: application/json
+
+{
+    "enabled": true
+}
+
+### Quota disable
+
+POST http://localhost:8093/quota
+Content-Type: application/json
+
+{
+    "enabled": false
+}
