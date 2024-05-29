@@ -7,6 +7,7 @@ springBootAdmin = "3.2.3"
 springCloud = '2023.0.1'
 springData = '2023.1.5'
 springDoc = "2.5.0"
+vaadin = "24.3.12"
 
 [libraries]
 datasourceMicrometerSpringBoot = { module = "net.ttddyy.observation:datasource-micrometer-spring-boot", version.ref = "datasourceMicrometerSpringBoot" }
@@ -16,8 +17,10 @@ springCloud = { module = "org.springframework.cloud:spring-cloud-dependencies", 
 springData = { module = "org.springframework.data:spring-data-bom", version.ref = "springData" }
 springDoc = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springDoc" }
 springBootAdminStarterServer = { module = "de.codecentric:spring-boot-admin-starter-server", version.ref = "springBootAdmin" }
+vaadin = { module = "com.vaadin:vaadin-bom", version.ref = "vaadin" }
 
 # plugin dependencies
 [plugins]
 asciidoctor = { id = "org.asciidoctor.jvm.convert", version = "4.0.2"}
 springBoot = { id = "org.springframework.boot", version.ref = "springBoot"}
+vaadin = { id = "com.vaadin", version.ref = "vaadin"}

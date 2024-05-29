@@ -1,0 +1,26 @@
+plugins {
+    alias(libs.plugins.vaadin)
+}
+
+apply from: "$rootDir/gradle/spring-boot.gradle"
+
+dependencies {
+    ['annotationProcessor', 'compileOnly', 'implementation', 'runtimeOnly', 'testImplementation'].each { conf ->
+        dependencies.add(conf, platform(libs.vaadin))
+    }
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation 'org.springframework.cloud:spring-cloud-starter-stream-rabbit'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+    implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
+    implementation 'com.vaadin:vaadin-spring-boot-starter'
+
+    implementation 'org.zalando:logbook-spring-boot-starter'
+
+    runtimeOnly 'com.github.loki4j:loki-logback-appender:latest.release'
+
+}
+
+// TODO: remove this once the Boot Gradle Plugin works with Java 22
+springBoot.mainClass = 'org.example.teahouse.reporting.ReportingServiceApplication'

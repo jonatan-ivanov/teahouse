@@ -55,6 +55,7 @@ docker compose down --volumes
 - Tealeaf Service: http://localhost:8091
 - Water Service: http://localhost:8092
 - Proxy Service: http://localhost:8093 (for observability http://localhost:8093/actuator/observability/index.html)
+- Reporting Service: http://localhost:8094
 - Spring Boot Admin: http://localhost:8080
 - Eureka: http://localhost:8761
 - Prometheus: http://localhost:9090
@@ -62,6 +63,8 @@ docker compose down --volumes
 - ToxiProxy UI (failure injection): http://localhost:8484
 - MailDev (emails for alerts): http://localhost:3001
 - Adminer (DB Admin UI): http://localhost:8888 (credentials: `root:password`)
+- Mongo Express (Mongo UI): http://localhost:8081 (Mongo db creds `root:example`)
+- RabbitMQ UI: http://localhost:15672 (credentials: `guest:guest`)
 
 ## Errors simulation
 
@@ -110,3 +113,5 @@ And this to eliminate the extra latency:
 ```shell
 make order
 ```
+
+Another latency problem is there on the Reporting Service and MongoDb integration. One of the methods will not have an index on one of the fields. 

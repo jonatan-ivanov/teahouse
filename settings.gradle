@@ -20,4 +20,6 @@ include ':tea-service:tea-api'
 
 include ':proxy-service'
 
+include ':reporting-service'
+
 include ':load-gen'
