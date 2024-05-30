@@ -1,0 +1,13 @@
+= Observability features
+
+== Conventions
+
+include::../build/asciidoctor/_conventions.adoc[]
+
+== Metrics
+
+include::../build/asciidoctor/_metrics.adoc[]
+
+== Spans
+
+include::../build/asciidoctor/_spans.adoc[]
