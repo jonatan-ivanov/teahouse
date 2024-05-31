@@ -5,6 +5,7 @@ import java.time.Duration;
 import io.gatling.javaapi.core.ChainBuilder;
 import io.gatling.javaapi.core.Simulation;
 import io.gatling.javaapi.http.HttpProtocolBuilder;
+import jdk.jfr.ContentType;
 
 import static io.gatling.http.HeaderNames.ContentType;
 import static io.gatling.http.HeaderNames.Accept;
@@ -17,6 +18,7 @@ import static io.gatling.javaapi.http.HttpDsl.http;
 public class SteepTeaSimulation extends Simulation {
     final Duration duration = Duration.ofMinutes(120);
     final int usersPerSec = 5;
+    final int usersPerSecForReporting = 2;
 
     final HttpProtocolBuilder httpProtocol = http.baseUrl("http://localhost:8090")
         .contentTypeHeader(ApplicationJson())
@@ -25,6 +27,17 @@ public class SteepTeaSimulation extends Simulation {
     final ChainBuilder makeRandomTea = exec(http("makeRandomTea")
         .get(session -> "/tea/%s".formatted(generateTeaName()))
         .queryParam("size", session -> generateTeaSize())
+        .header(ContentType(), ApplicationJson())
+        .header(Accept(), ApplicationJson())
+    );
+
+    final HttpProtocolBuilder httpProtocolForReportingService = http.baseUrl("http://localhost:8094")
+        .contentTypeHeader(ApplicationJson())
+        .acceptHeader(ApplicationJson());
+
+    final ChainBuilder askForTealeaf = exec(http("makeRandomTea")
+        .get(session -> "/orders")
+        .queryParam("tealeaf", session -> generateTeaName())
         .header(ContentType(), ApplicationJson())
         .header(Accept(), ApplicationJson())
     );
@@ -50,6 +63,9 @@ public class SteepTeaSimulation extends Simulation {
         setUp(scenario("steepTea")
             .exec(makeRandomTea)
             .injectOpen(constantUsersPerSec(usersPerSec).during(duration))
-        ).protocols(httpProtocol);
+            .protocols(httpProtocol),
+        scenario("findTealeaves")
+            .exec(askForTealeaf)
+            .injectOpen(constantUsersPerSec(usersPerSecForReporting).during(duration)).protocols(httpProtocolForReportingService));
     }
 }

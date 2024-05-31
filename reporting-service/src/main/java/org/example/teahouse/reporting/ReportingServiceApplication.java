@@ -31,7 +31,7 @@ public class ReportingServiceApplication {
     @Bean
     Consumer<Order> orderConsumer(OrderRepository orderRepository) {
         return order -> {
-            log.info("Got a new order! {}", order);
+            log.debug("Got a new order! {}", order);
             orderRepository.save(order);
         };
     }

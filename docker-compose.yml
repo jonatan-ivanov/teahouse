@@ -119,6 +119,10 @@ services:
         ports:
             - 5672:5672
             - 15672:15672
+    httpbin:
+        image: kennethreitz/httpbin
+        ports:
+            - 12345:80
 volumes:
   mysql:
     driver: local
