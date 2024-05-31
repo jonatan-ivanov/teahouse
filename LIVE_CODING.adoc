@@ -26,12 +26,10 @@ Poor man's version poll:
 
 == System architecture
 
-// TODO: Update
-
 ```
---> Tea Service
-\ --->  Tealeaf Service  ---> DB
-\ --->  Water Service    ---> DB
+--> Tea Service --> RabbitMq --> Reporting Service --> Mongo Db
+\ ---> Proxy Service --->  Tealeaf Service  ---> DB
+\ ---> Water Service ---> DB
 ```
 
 == DEMO TIME
@@ -46,10 +44,3 @@ IMPORTANT: CHECK THE DOCS https://docs.micrometer.io
 * logs <-- trace id --> traces
 * traces -- through tags -- > metrics
 * metrics -- through exemplars --> traces
-
-== Additional options to show
-
-- `@SpanTag`
-- `management.observations.long-task-timer.enabled` (Boot 3.3)
-
-- Example of instrumentation - outgoing and incoming

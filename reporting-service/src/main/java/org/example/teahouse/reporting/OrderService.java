@@ -19,7 +19,7 @@ public class OrderService {
 
     @Observed
     public List<Order> getOrdersByTealeaf(String tealeaf) {
-        return orderRepository.findByTealeafOrderByTealeafAscTimestampDesc(tealeaf, Pageable.ofSize(100)).getContent();
+        return orderRepository.findByTealeafOrderByTealeafAsc(tealeaf, Pageable.ofSize(100)).getContent();
     }
 
     @Observed

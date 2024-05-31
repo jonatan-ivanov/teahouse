@@ -26,6 +26,6 @@ public class OrderController {
     @GetMapping("/orders")
     public List<Order> getOrdersByTealeaf(@RequestParam("tealeaf") String tealeaf) {
         log.info("Finding by tealeaf <{}>", tealeaf);
-        return orderRepository.findByTealeafOrderByTealeafAscTimestampDesc(tealeaf, Pageable.ofSize(100)).getContent();
+        return orderRepository.findByTealeafOrderByTealeafAsc(tealeaf, Pageable.ofSize(100)).getContent();
     }
 }

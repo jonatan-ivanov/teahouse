@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface OrderRepository extends MongoRepository<Order, String> {
-    Page<Order> findByTealeafOrderByTealeafAscTimestampDesc(String tealeaf, Pageable pageable);
+    Page<Order> findByTealeafOrderByTealeafAsc(String tealeaf, Pageable pageable);
 
     List<Order> findByWater(String tealeaf);
 }
