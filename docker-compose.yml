@@ -89,6 +89,8 @@ services:
         image: grafana/loki:3.0.0 # https://hub.docker.com/r/grafana/loki/tags and https://github.com/grafana/loki/releases
         extra_hosts: ['host.docker.internal:host-gateway']
         command: ['-config.file=/etc/loki/local-config.yaml']
+        volumes:
+          - ./docker/loki/:/etc/loki/
         ports:
             - 3100:3100
     maildev:

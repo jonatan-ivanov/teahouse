@@ -19,7 +19,6 @@ public class BatchInsertData {
     public static void main() {
         // System.setProperty("spring.autoconfigure.exclude", )
         System.setProperty("spring.cloud.function.definition", "foo");
-        System.setProperty("spring.cloud.function.definition", "foo");
         SpringApplication springApplication = new SpringApplication(ReportingServiceApplication.class, BatchInsertData.class);
         springApplication.run();
     }

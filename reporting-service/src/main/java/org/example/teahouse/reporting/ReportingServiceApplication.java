@@ -22,7 +22,6 @@ import org.springframework.data.mongodb.observability.MongoObservationCommandLis
 @Slf4j
 public class ReportingServiceApplication {
     public static void main(String[] args) {
-        Hooks.enableAutomaticContextPropagation();
         SpringApplication springApplication = new SpringApplication(ReportingServiceApplication.class);
         springApplication.setApplicationStartup(new BufferingApplicationStartup(10_000));
         springApplication.run(args);
