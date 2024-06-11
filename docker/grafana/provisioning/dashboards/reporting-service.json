@@ -36,27 +36,16 @@
                         "axisColorMode": "text",
                         "axisLabel": "",
                         "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
+                        "fillOpacity": 80,
                         "gradientMode": "none",
                         "hideFrom": {
                             "legend": false,
                             "tooltip": false,
                             "viz": false
                         },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
                         "lineWidth": 1,
-                        "pointSize": 5,
                         "scaleDistribution": {
                             "type": "linear"
-                        },
-                        "showPoints": "auto",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
                         },
                         "thresholdsStyle": {
                             "mode": "off"
@@ -80,23 +69,32 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 8,
+                "h": 12,
                 "w": 24,
                 "x": 0,
                 "y": 0
             },
             "id": 1,
             "options": {
+                "barRadius": 0,
+                "barWidth": 0.97,
+                "fullHighlight": false,
+                "groupWidth": 0.7,
                 "legend": {
                     "calcs": [],
                     "displayMode": "list",
                     "placement": "bottom",
                     "showLegend": true
                 },
+                "orientation": "auto",
+                "showValue": "auto",
+                "stacking": "none",
                 "tooltip": {
                     "mode": "single",
                     "sort": "none"
-                }
+                },
+                "xTickLabelRotation": 0,
+                "xTickLabelSpacing": 0
             },
             "targets": [
                 {
@@ -106,7 +104,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
-                    "expr": "rate(spring_data_mongodb_command_active_seconds_duration_sum{db_operation=\"find\", db_mongodb_collection=\"orders\"}[$__rate_interval]) / rate(spring_data_mongodb_command_active_seconds_active_count{db_operation=\"find\", db_mongodb_collection=\"orders\"}[$__rate_interval])",
+                    "expr": "rate(spring_data_mongodb_command_seconds_sum{db_operation=\"find\", db_mongodb_collection=\"orders\"}[$__rate_interval]) / rate(spring_data_mongodb_command_seconds_count{db_operation=\"find\", db_mongodb_collection=\"orders\"}[$__rate_interval])",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -117,7 +115,7 @@
                 }
             ],
             "title": "Query duration",
-            "type": "timeseries"
+            "type": "barchart"
         }
     ],
     "refresh": "5s",
@@ -133,6 +131,7 @@
     "timepicker": {},
     "timezone": "browser",
     "title": "Reporting service",
-    "version": 0,
+    "uid": "ddnqzhhttyepsb",
+    "version": 1,
     "weekStart": ""
 }

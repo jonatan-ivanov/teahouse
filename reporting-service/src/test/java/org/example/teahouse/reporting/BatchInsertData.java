@@ -30,7 +30,7 @@ public class BatchInsertData {
             // for loop 1000 x 1000
             int counter = 1;
             int iMax = 1000;
-            int jMax = 2000;
+            int jMax = 1000;
             for (int i = 0; i < iMax; i++) {
                 List<Order> orders = new ArrayList<>();
                 for (int j = 0; j < jMax; j++) {
