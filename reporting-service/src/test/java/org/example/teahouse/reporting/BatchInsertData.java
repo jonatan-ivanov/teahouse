@@ -17,7 +17,7 @@ public class BatchInsertData {
     private static final Logger log = LoggerFactory.getLogger(BatchInsertData.class);
 
     public static void main() {
-        // System.setProperty("spring.autoconfigure.exclude", )
+//         System.setProperty("server.port", "9876");
         System.setProperty("spring.cloud.function.definition", "foo");
         SpringApplication springApplication = new SpringApplication(ReportingServiceApplication.class, BatchInsertData.class);
         springApplication.run();

@@ -1,5 +1,7 @@
 = Is your JVM app flying blind? Unmask hidden issues with Observability superpowers!
 
+// ADD MONGODB RECORDS!!!!!!!!!!!!!!
+
 == About me
 
 Whoami: Marcin Grzejszczak, developer @ Spring team (Broadcom)
@@ -44,3 +46,12 @@ IMPORTANT: CHECK THE DOCS https://docs.micrometer.io
 * logs <-- trace id --> traces
 * traces -- through tags -- > metrics
 * metrics -- through exemplars --> traces
+
+TODO:
+
+- Summary at the end (observation, spring boot ... )
+- Image after each section summarizing what we've managed to do
+- Add links to repos
+- Rate my talk
+- Live coding - do Only Java Client
+- Better cursor (https://askubuntu.com/questions/777896/how-do-i-highlight-my-mouse-pointer-while-screen-recording)
