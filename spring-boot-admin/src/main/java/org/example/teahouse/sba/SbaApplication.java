@@ -6,12 +6,10 @@ import org.example.teahouse.core.actuator.config.CommonActuatorConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.metrics.buffering.BufferingApplicationStartup;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 
 @EnableAdminServer
-@EnableDiscoveryClient
 @SpringBootApplication
 @PropertySource("classpath:build.properties")
 @Import({CommonActuatorConfig.class})

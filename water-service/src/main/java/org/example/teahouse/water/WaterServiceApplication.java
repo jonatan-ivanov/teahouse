@@ -3,11 +3,9 @@ package org.example.teahouse.water;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.metrics.buffering.BufferingApplicationStartup;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 
-@EnableDiscoveryClient
 @SpringBootApplication
 @PropertySource("classpath:build.properties")
 @ComponentScan(basePackages = { "org.example.teahouse" })
