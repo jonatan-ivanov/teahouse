@@ -11,7 +11,7 @@ services:
             - mysql:/var/lib/mysql
             - ./docker/mysql/initdb:/docker-entrypoint-initdb.d
         ports:
-            - 3306:3306
+            - "3306:3306"
     adminer:
         container_name: adminer
         image: adminer:4.8.1-standalone # https://hub.docker.com/_/adminer
@@ -21,7 +21,7 @@ services:
         depends_on:
             - mysql
         ports:
-            - 8888:8080
+            - "8888:8080"
     toxiproxy:
         container_name: toxiproxy
         image: ghcr.io/shopify/toxiproxy:2.9.0 # https://github.com/shopify/toxiproxy/pkgs/container/toxiproxy
@@ -32,9 +32,9 @@ services:
         volumes:
             - ./docker/toxiproxy:/config
         ports:
-            - 8474:8474
-            - 3307:3307
-            - 3308:3308
+            - "8474:8474"
+            - "3307:3307"
+            - "3308:3308"
     toxiproxy-ui:
         container_name: toxiproxy-ui
         image: buckle/toxiproxy-frontend:0.10 # https://hub.docker.com/r/buckle/toxiproxy-frontend
@@ -44,7 +44,7 @@ services:
         depends_on:
             - toxiproxy
         ports:
-            - 8484:8080
+            - "8484:8080"
     prometheus:
         container_name: prometheus
         image: prom/prometheus:v2.51.2 # https://hub.docker.com/r/prom/prometheus
@@ -57,7 +57,7 @@ services:
             - prometheus:/prometheus
             - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
         ports:
-            - 9090:9090
+            - "9090:9090"
     grafana:
         container_name: grafana
         image: grafana/grafana:10.4.2 # https://hub.docker.com/r/grafana/grafana/tags
@@ -72,7 +72,7 @@ services:
             - ./docker/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro
             - ./docker/grafana/provisioning/alerting:/etc/grafana/provisioning/alerting:ro
         ports:
-            - 3000:3000
+            - "3000:3000"
     tempo:
         container_name: tempo
         image: grafana/tempo:2.4.1 # https://hub.docker.com/r/grafana/tempo/tags and https://github.com/grafana/tempo/releases
@@ -82,22 +82,22 @@ services:
             - tempo:/tmp/tempo
             - ./docker/grafana/tempo.yml:/etc/tempo.yml:ro
         ports:
-            - 3200:3200    # tempo
-            - 9411:9411    # zipkin
+            - "3200:3200"    # tempo
+            - "9411:9411"    # zipkin
     loki:
         container_name: loki
         image: grafana/loki:3.0.0 # https://hub.docker.com/r/grafana/loki/tags and https://github.com/grafana/loki/releases
         extra_hosts: ['host.docker.internal:host-gateway']
         command: ['-config.file=/etc/loki/local-config.yaml']
         ports:
-            - 3100:3100
+            - "3100:3100"
     maildev:
         container_name: maildev
         image: maildev/maildev:2.1.0 # https://hub.docker.com/r/maildev/maildev/tags
         extra_hosts: [ 'host.docker.internal:host-gateway' ]
         ports:
-            - 3001:1080
-            - 25:1025
+            - "3001:1080"
+            - "25:1025"
 volumes:
   mysql:
     driver: local
