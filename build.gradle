@@ -1,9 +1,9 @@
 ext.buildTime = new Date().toInstant()
 
 buildscript {
-    ext.springBootVersion = '3.+'
-    ext.springCloudVersion = '2023.+'
-    ext.springDataVersion = '2023.+'
+    ext.springBootVersion = 'latest.release'
+    ext.springCloudVersion = 'latest.release'
+    ext.springDataVersion = 'latest.release'
 
     configurations.classpath {
         resolutionStrategy.activateDependencyLocking()

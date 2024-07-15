@@ -12,7 +12,7 @@ dependencies {
     implementation 'io.micrometer:micrometer-registry-prometheus'
 
     compileOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'org.jolokia:jolokia-core:1.+'
+    runtimeOnly 'org.jolokia:jolokia-core:latest.release'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
