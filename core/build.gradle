@@ -6,7 +6,7 @@ dependencies {
     implementation 'org.slf4j:slf4j-api'
     implementation 'org.apache.commons:commons-lang3'
     implementation 'io.github.openfeign:feign-micrometer'
-    implementation 'ch.qos.logback:logback-access:latest.release'
+    implementation 'ch.qos.logback:logback-access:1.4.+'
     implementation 'org.apache.tomcat.embed:tomcat-embed-core'
 
     compileOnly 'net.ttddyy.observation:datasource-micrometer-spring-boot:latest.release'
