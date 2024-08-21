@@ -1,7 +1,7 @@
 services:
     mysql:
         container_name: mysql
-        image: mysql:8.3.0 # https://hub.docker.com/_/mysql
+        image: mysql:8.4.2 # https://hub.docker.com/_/mysql
         command: --default-authentication-plugin=mysql_native_password
         extra_hosts: ['host.docker.internal:host-gateway']
         environment:
@@ -46,7 +46,7 @@ services:
             - "8484:8080"
     prometheus:
         container_name: prometheus
-        image: prom/prometheus:v2.51.2 # https://hub.docker.com/r/prom/prometheus
+        image: prom/prometheus:v2.54.0 # https://hub.docker.com/r/prom/prometheus
         extra_hosts: ['host.docker.internal:host-gateway']
         command:
             - --enable-feature=exemplar-storage
@@ -59,7 +59,7 @@ services:
             - "9090:9090"
     grafana:
         container_name: grafana
-        image: grafana/grafana:10.4.2 # https://hub.docker.com/r/grafana/grafana/tags
+        image: grafana/grafana:11.1.4 # https://hub.docker.com/r/grafana/grafana/tags and https://github.com/grafana/grafana/releases
         extra_hosts: ['host.docker.internal:host-gateway']
         environment:
             - GF_AUTH_ANONYMOUS_ENABLED=true
@@ -85,7 +85,7 @@ services:
             - "9411:9411"    # zipkin
     loki:
         container_name: loki
-        image: grafana/loki:3.0.0 # https://hub.docker.com/r/grafana/loki/tags and https://github.com/grafana/loki/releases
+        image: grafana/loki:3.0.1 # https://hub.docker.com/r/grafana/loki/tags and https://github.com/grafana/loki/releases
         extra_hosts: ['host.docker.internal:host-gateway']
         command: ['-config.file=/etc/loki/local-config.yaml']
         ports:
