@@ -72,13 +72,28 @@ services:
             - ./docker/grafana/provisioning/alerting:/etc/grafana/provisioning/alerting:ro
         ports:
             - "3000:3000"
+    tempo-init:
+        # Tempo runs as user 10001, and docker compose creates the volume as root.
+        # As such, we need to chown the volume in order for Tempo to start correctly.
+        # This should not be needed but this is the official solution recommended by Tempo maintainers
+        # See: https://github.com/grafana/tempo/blob/a21001a72a5865bfcfc1b0d2dfa30160c5a26103/example/docker-compose/local/docker-compose.yaml
+        # See: https://github.com/grafana/tempo/issues/1657
+        image: &tempoImage grafana/tempo:2.5.0 # https://hub.docker.com/r/grafana/tempo/tags and https://github.com/grafana/tempo/releases
+        user: root
+        entrypoint:
+            - "chown"
+            - "10001:10001"
+            - "/var/tempo"
+        volumes:
+            - tempo:/var/tempo
     tempo:
         container_name: tempo
-        image: grafana/tempo:2.4.1 # https://hub.docker.com/r/grafana/tempo/tags and https://github.com/grafana/tempo/releases
+        image: *tempoImage
         extra_hosts: ['host.docker.internal:host-gateway']
         command: ['-config.file=/etc/tempo.yml']
+        depends_on: ['tempo-init']
         volumes:
-            - tempo:/tmp/tempo
+            - tempo:/var/tempo
             - ./docker/grafana/tempo.yml:/etc/tempo.yml:ro
         ports:
             - "3200:3200"    # tempo
@@ -98,9 +113,9 @@ services:
             - "3001:1080"
             - "25:1025"
 volumes:
-  mysql:
-    driver: local
-  prometheus:
-    driver: local
-  tempo:
-    driver: local
+    mysql:
+        driver: local
+    prometheus:
+        driver: local
+    tempo:
+        driver: local
