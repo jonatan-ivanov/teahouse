@@ -85,7 +85,7 @@ public class CommonActuatorConfig {
         ObservationFilter tempoServiceGraphFilter() {
             // TODO: remove this once Tempo is fixed: https://github.com/grafana/tempo/issues/2212
             return context -> {
-                if (context instanceof DataSourceBaseContext dataSourceContext) {
+                if (context instanceof DataSourceBaseContext dataSourceContext && dataSourceContext.getRemoteServiceName() != null) {
                     context.addHighCardinalityKeyValue(KeyValue.of("db.name", dataSourceContext.getRemoteServiceName()));
                 }
                 return context;
