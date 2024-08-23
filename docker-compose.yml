@@ -2,7 +2,7 @@ services:
     mysql:
         container_name: mysql
         image: mysql:8.4.2 # https://hub.docker.com/_/mysql
-        command: --default-authentication-plugin=mysql_native_password
+        command: --mysql_native_password=on
         extra_hosts: ['host.docker.internal:host-gateway']
         environment:
             MYSQL_ROOT_PASSWORD: password
