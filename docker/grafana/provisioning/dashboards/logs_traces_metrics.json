@@ -24,7 +24,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 8,
+    "id": 3,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -58,7 +58,7 @@
                         "uid": "loki"
                     },
                     "editorMode": "builder",
-                    "expr": "{traceId=\"$traceId\"}",
+                    "expr": "{app=~\".+\"} |= `$traceId`",
                     "queryType": "range",
                     "refId": "A"
                 }
@@ -87,7 +87,7 @@
                     },
                     "filters": [
                         {
-                            "id": "ede501e2",
+                            "id": "015bc435",
                             "operator": "=",
                             "scope": "span"
                         }
@@ -158,7 +158,7 @@
                             }
                         ]
                     },
-                    "unit": "s"
+                    "unit": "ms"
                 },
                 "overrides": []
             },
@@ -189,8 +189,7 @@
                     },
                     "editorMode": "code",
                     "exemplar": true,
-                    "expr": "histogram_quantile(1.00, sum(rate(http_server_requests_seconds_bucket{application=~\"tea-service\", uri=~\"/tea/{name}\"}[$__rate_interval])) by (le))",
-                    "instant": false,
+                    "expr": "histogram_quantile(1.00, sum(rate(http_server_requests_milliseconds_bucket{application=~\"tea-service\", uri=~\"/tea/{name}\"}[$__rate_interval])) by (le))",
                     "legendFormat": "max",
                     "range": true,
                     "refId": "A"
@@ -202,9 +201,8 @@
                     },
                     "editorMode": "code",
                     "exemplar": true,
-                    "expr": "histogram_quantile(0.99, sum(rate(http_server_requests_seconds_bucket{application=~\"tea-service\", uri=~\"/tea/{name}\"}[$__rate_interval])) by (le))",
+                    "expr": "histogram_quantile(0.99, sum(rate(http_server_requests_milliseconds_bucket{application=~\"tea-service\", uri=~\"/tea/{name}\"}[$__rate_interval])) by (le))",
                     "hide": false,
-                    "instant": false,
                     "legendFormat": "tp99",
                     "range": true,
                     "refId": "B"
@@ -216,62 +214,47 @@
                     },
                     "editorMode": "code",
                     "exemplar": true,
-                    "expr": "histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket{application=~\"tea-service\", uri=~\"/tea/{name}\"}[$__rate_interval])) by (le))",
+                    "expr": "histogram_quantile(0.95, sum(rate(http_server_requests_milliseconds_bucket{application=~\"tea-service\", uri=~\"/tea/{name}\"}[$__rate_interval])) by (le))",
                     "hide": false,
-                    "instant": false,
                     "legendFormat": "tp95",
                     "range": true,
                     "refId": "C"
                 }
             ],
-            "title": "tea-service latency for tea/{name}",
+            "title": "latency for All",
             "type": "timeseries"
         }
     ],
-    "refresh": "",
     "schemaVersion": 39,
     "tags": [],
     "templating": {
         "list": [
             {
                 "current": {
-                    "selected": false,
-                    "text": "663b648c0bd290dcf68d1f5214cea8ba",
-                    "value": "663b648c0bd290dcf68d1f5214cea8ba"
+                    "selected": false
                 },
-                "datasource": {
-                    "type": "loki",
-                    "uid": "loki"
-                },
-                "definition": "",
+                "description": "Trace Id",
                 "hide": 0,
                 "includeAll": false,
                 "label": "Trace ID",
                 "multi": false,
                 "name": "traceId",
                 "options": [],
-                "query": {
-                    "label": "traceId",
-                    "refId": "LokiVariableQueryEditor-VariableQuery",
-                    "stream": "",
-                    "type": 1
-                },
-                "refresh": 1,
-                "regex": "",
+                "query": "",
+                "queryValue": "",
                 "skipUrlSync": false,
-                "sort": 0,
-                "type": "query"
+                "type": "custom"
             }
         ]
     },
     "time": {
-        "from": "now-6h",
+        "from": "now-15m",
         "to": "now"
     },
     "timepicker": {},
     "timezone": "",
     "title": "Logs, Traces, Metrics",
-    "uid": "szVLMe97z2",
-    "version": 8,
+    "uid": "edz2d9w1so8aoa",
+    "version": 1,
     "weekStart": ""
 }

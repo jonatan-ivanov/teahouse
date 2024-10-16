@@ -8,7 +8,7 @@ scrape_configs:
           - targets: ['host.docker.internal:9090']
     - job_name: 'demo-app'
       static_configs:
-          - targets: ['host.docker.internal:4567']
+          - targets: ['host.docker.internal:4567', 'host.docker.internal:4568']
     - job_name: 'eureka'
     #   scheme: 'https'
       metrics_path: '/actuator/prometheus'
