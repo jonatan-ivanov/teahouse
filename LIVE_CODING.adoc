@@ -29,29 +29,98 @@ Poor man's version poll:
 == System architecture
 
 ```
---> Tea Service --> RabbitMq --> Reporting Service --> Mongo Db
-\ ---> Proxy Service --->  Tealeaf Service  ---> DB
-\ ---> Water Service ---> DB
+--> Tea Service ---> Proxy Service --->  Tealeaf Service  ---> DB
+
+--> Tea Service ---> Water Service ---> DB
+
+--> Tea Service ---> RabbitMq ---> Reporting Service ---> Mongo Db
 ```
 
 == DEMO TIME
 
 Time for the teahouse demo!
 
-IMPORTANT: CHECK THE DOCS https://docs.micrometer.io
+=== Summary
+
+Let's summarize what we've seen so far
+
+==== Database Error
+
+```
+--> Tea Service ---> Proxy Service --->  Tealeaf Service  ---> DB (the problem was here)
+```
+
+- Issues in the UI and alerting system
+- Metrics confirm that there's a problem (metrics)
+- From error logs (logs)
+- We went to a trace (tracing)
+- Analyzed the problem
+- Added missing entry in DB
+
+==== Latency problem
+
+```
+--> Tea Service ---> Water Service ---> (the problem was here) ---> DB
+```
+
+- We've got an alert about latency
+- Metrics confirm that there's a problem (metrics)
+- From metrics we jump to traces (metrics --exemplars--> tracing)
+- Comparing 2 traces - latency is there
+- Datasource metrics confirm latency
+- Disable ToxiProxy
+
+==== Quota reached
+
+```
+--> Tea Service ---> Proxy Service (the problem was here) --->  Tealeaf Service  ---> DB
+```
+
+- We've checked a trace where latency was present (tracing)
+- We went to the proxy service dashboard (metrics)
+- We've checked proxy service automated documentation
+- We came to the conclusion that we reached some quota
+- We ask our managers to swipe a card
+- Problem is gone
+
+==== Mongo problem
+
+```
+--> Tea Service ---> RabbitMq ---> Reporting Service ---> Mongo Db (problem was here)
+```
+
+- We're clicking the UI - it's slow
+- We're checking the metrics - they're slow (metrics)
+- We go to Mongo Express and check how many entries we have
+- We ask chat gpt what to do about it (it says create an index)
+- We add an index
+- We see a massive drop in the database latency
+
+== Summary
 
 === Jumping through pillars
 
 * logs <-- through traces --> metrics
 * logs <-- trace id --> traces
-* traces -- through tags -- > metrics
-* metrics -- through exemplars --> traces
+* traces <-- through tags -- > metrics
+* metrics <-- through exemplars --> traces
 
-TODO:
+=== How does it work?
 
-- Summary at the end (observation, spring boot ... )
-- Image after each section summarizing what we've managed to do
-- Add links to repos
-- Rate my talk
-- Live coding - do Only Java Client
-- Better cursor (https://askubuntu.com/questions/777896/how-do-i-highlight-my-mouse-pointer-while-screen-recording)
+- Spring projects use Micrometer Observation to instrument code
+- Spring Boot configures Micrometer Observation when actuator on the classpath
+- Micrometer Observation is used by Micrometer Core (metrics) and Micrometer Tracing (tracing)
+- Spring Boot sets everything up when on classpath
+
+== Thank you!
+
+Links:
+
+- Twitter: @mgrzejszczak
+- Teahouse: https://github.com/jonatan-ivanov/teahouse (`2024-marcin` branch)
+- Live coding: https://github.com/marcingrzejszczak/Is-your-JVM-app-flying-blind
+
+IMPORTANT: Please rate my talk :)
+
+// TODO:
+// - Better cursor (https://askubuntu.com/questions/777896/how-do-i-highlight-my-mouse-pointer-while-screen-recording)
