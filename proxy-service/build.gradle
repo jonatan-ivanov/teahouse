@@ -17,9 +17,6 @@ dependencies {
 
 }
 
-// TODO: remove this once the Boot Gradle Plugin works with Java 22
-springBoot.mainClass = 'org.example.teahouse.proxy.ProxyServiceApplication'
-
 configurations {
     adoc
 }
@@ -28,6 +25,7 @@ dependencies {
     adoc "io.micrometer:micrometer-docs-generator:${libs.versions.micrometerDocsVersion.get()}"
 }
 
+processResources.dependsOn("asciidoctor")
 build.dependsOn("generateObservabilityDocs")
 build.dependsOn("asciidoctor")
 

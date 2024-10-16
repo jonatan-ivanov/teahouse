@@ -5,6 +5,7 @@ buildscript {
     dependencies {
         classpath 'org.ajoberstar.grgit:grgit-gradle:latest.release'
         classpath 'com.gorylenko.gradle-git-properties:gradle-git-properties:latest.release'
+        classpath 'org.cyclonedx:cyclonedx-gradle-plugin:latest.release'
     }
 }
 
@@ -60,7 +61,7 @@ subprojects {
         }
 
         java {
-            toolchain { languageVersion = JavaLanguageVersion.of(22) }
+            toolchain { languageVersion = JavaLanguageVersion.of(23) }
         }
 
         jar.manifest.attributes(

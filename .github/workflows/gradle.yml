@@ -16,11 +16,11 @@ jobs:
       with:
         distribution: 'liberica'
         java-version: |
-          22
+          23
           21
         cache: 'gradle'
         check-latest: true
     - name: Validate Gradle wrapper
-      uses: gradle/wrapper-validation-action@v2
+      uses: gradle/actions/wrapper-validation@v3
     - name: Build with Gradle
       run: ./gradlew build --no-daemon

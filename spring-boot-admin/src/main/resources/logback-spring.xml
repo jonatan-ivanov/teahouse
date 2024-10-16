@@ -2,7 +2,7 @@
 <configuration>
     <jmxConfigurator />
     <include resource="org/springframework/boot/logging/logback/base.xml" />
-    <property scope="local" name="payloadFileName" value="${spring.application.home:-.}/logs/water-service.payload.log" />
+    <property scope="local" name="payloadFileName" value="${spring.application.home:-.}/logs/sprint-boot-admin.payload.log" />
 
     <appender name="PAYLOAD_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder>

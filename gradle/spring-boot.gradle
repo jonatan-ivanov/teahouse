@@ -1,5 +1,6 @@
 apply plugin: 'org.springframework.boot'
 apply plugin: 'com.gorylenko.gradle-git-properties'
+apply plugin: 'org.cyclonedx.bom'
 
 ext.profiles = project.hasProperty('profiles') ? project.getProperty('profiles').split(',') : ['local'] // ./gradlew bootRun -Pprofiles=profileName
 

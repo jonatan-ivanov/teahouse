@@ -3,6 +3,3 @@ apply from: "$rootDir/gradle/spring-boot.gradle"
 dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
 }
-
-// TODO: remove this once the Boot Gradle Plugin works with Java 22
-springBoot.mainClass = 'org.example.teahouse.eureka.EurekaApplication'

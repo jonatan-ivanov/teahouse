@@ -39,8 +39,6 @@ public class RuntimeInfoContributor implements InfoContributor {
 
         builder.withDetail("runtime", ImmutableMap.builder()
             .put("memory", memoryInfo())
-            .put("cpu", cpuInfo())
-            .put("java", javaInfo())
             .put("gcs", gcInfo())
             .put("user", userInfo())
             .put("network", networkInfo())
@@ -56,22 +54,6 @@ public class RuntimeInfoContributor implements InfoContributor {
             .put("total", Runtime.getRuntime().totalMemory())
             .put("max", Runtime.getRuntime().maxMemory())
             .put("free", Runtime.getRuntime().freeMemory())
-            .build();
-    }
-
-    private Map<String, Object> cpuInfo() {
-        return ImmutableMap.<String, Object>builder()
-            .put("availableProcessors", Runtime.getRuntime().availableProcessors())
-            .build();
-    }
-
-    private Map<String, Object> javaInfo() {
-        return ImmutableMap.<String, Object>builder()
-            .put("class.version", System.getProperty("java.class.version"))
-            .put("version", System.getProperty("java.version"))
-            .put("version.date", System.getProperty("java.version.date"))
-            .put("compilation.name", ManagementFactory.getCompilationMXBean().getName())
-            .put("file.encoding", System.getProperty("file.encoding"))
             .build();
     }
 

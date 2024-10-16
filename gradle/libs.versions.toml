@@ -1,17 +1,19 @@
 [versions]
-datasourceMicrometerSpringBoot = "1.0.3"
+datasourceMicrometerSpringBoot = "1.0.5"
 jolokia = "1.7.2"
-micrometerDocsVersion = "1.0.2"
-springBoot = '3.2.5'
-springBootAdmin = "3.2.3"
-springCloud = '2023.0.1'
-springData = '2023.1.5'
-springDoc = "2.5.0"
-vaadin = "24.3.12"
+logbackTomcat = "2.0.3"
+micrometerDocsVersion = "1.0.4"
+springBoot = '3.3.4'
+springBootAdmin = "3.3.4"
+springCloud = '2023.0.3'
+springData = '2024.0.4'
+springDoc = "2.6.0"
+vaadin = "24.4.13"
 
 [libraries]
 datasourceMicrometerSpringBoot = { module = "net.ttddyy.observation:datasource-micrometer-spring-boot", version.ref = "datasourceMicrometerSpringBoot" }
 jolokia = { module = "org.jolokia:jolokia-core", version.ref = "jolokia" }
+logbackTomcat = { module = "ch.qos.logback.access:tomcat", version.ref = "logbackTomcat"}
 springBoot = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "springBoot" }
 springCloud = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "springCloud" }
 springData = { module = "org.springframework.data:spring-data-bom", version.ref = "springData" }
@@ -21,6 +23,6 @@ vaadin = { module = "com.vaadin:vaadin-bom", version.ref = "vaadin" }
 
 # plugin dependencies
 [plugins]
-asciidoctor = { id = "org.asciidoctor.jvm.convert", version = "4.0.2"}
+asciidoctor = { id = "org.asciidoctor.jvm.convert", version = "4.0.3"}
 springBoot = { id = "org.springframework.boot", version.ref = "springBoot"}
 vaadin = { id = "com.vaadin", version.ref = "vaadin"}

@@ -21,11 +21,8 @@ dependencies {
 
     implementation libs.springDoc
 
-     implementation 'org.zalando:logbook-spring-boot-starter'
-     implementation 'org.zalando:logbook-okhttp'
+    implementation 'org.zalando:logbook-spring-boot-starter'
+    implementation 'org.zalando:logbook-okhttp'
 
     runtimeOnly 'com.github.loki4j:loki-logback-appender:latest.release'
 }
-
-// TODO: remove this once the Boot Gradle Plugin works with Java 22
-springBoot.mainClass = 'org.example.teahouse.tea.TeaServiceApplication'
