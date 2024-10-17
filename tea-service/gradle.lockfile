@@ -215,7 +215,6 @@ org.xmlunit:xmlunit-core:2.9.1=testCompileClasspath,testRuntimeClasspath
 org.yaml:snakeyaml:2.2=compileClasspath,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 org.zalando:faux-pas:0.9.0=compileClasspath,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 org.zalando:logbook-api:3.9.0=compileClasspath,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-org.zalando:logbook-bom:3.9.0=annotationProcessor,compileClasspath,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 org.zalando:logbook-common:3.9.0=compileClasspath,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 org.zalando:logbook-core:3.9.0=compileClasspath,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 org.zalando:logbook-json:3.9.0=compileClasspath,productionRuntimeClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath

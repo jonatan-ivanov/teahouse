@@ -20,8 +20,8 @@ dependencies {
 
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:latest.release'
 
-    implementation 'org.zalando:logbook-spring-boot-starter'
-    implementation 'org.zalando:logbook-okhttp'
+    implementation 'org.zalando:logbook-spring-boot-starter:latest.release'
+    implementation 'org.zalando:logbook-okhttp:latest.release'
 
     runtimeOnly 'com.github.loki4j:loki-logback-appender:latest.release'
 }

@@ -53,7 +53,6 @@ subprojects {
                 dependencies.add(conf, platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
                 dependencies.add(conf, platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"))
                 dependencies.add(conf, platform("org.springframework.data:spring-data-bom:$springDataVersion"))
-                dependencies.add(conf, platform('org.zalando:logbook-bom:latest.release'))
             }
             testImplementation platform('org.junit:junit-bom:latest.release')
 

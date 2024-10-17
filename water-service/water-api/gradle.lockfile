@@ -30,5 +30,4 @@ org.projectlombok:lombok:1.18.34=annotationProcessor,compileClasspath
 org.springframework.boot:spring-boot-dependencies:3.3.4=annotationProcessor,compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 org.springframework.cloud:spring-cloud-dependencies:2023.0.3=annotationProcessor,compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 org.springframework.data:spring-data-bom:2024.0.4=annotationProcessor,compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-org.zalando:logbook-bom:3.9.0=annotationProcessor,compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 empty=testAnnotationProcessor
