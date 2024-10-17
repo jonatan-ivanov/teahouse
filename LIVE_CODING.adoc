@@ -96,6 +96,13 @@ Let's summarize what we've seen so far
 - We add an index
 - We see a massive drop in the database latency
 
+==== Observation Handlers
+
+* "How well we can understand the internals of a system based on its outputs"
+* What can be an output?
+** SSE
+** Music
+
 == Summary
 
 === Jumping through pillars
