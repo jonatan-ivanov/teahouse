@@ -8,6 +8,8 @@ Whoami: Marcin Grzejszczak, Java Champion, developer @ Spring team (Broadcom)
 
 Mastodon: toomuchcoding@fosstodon.org
 
+Bluesky: toomuchcoding.com
+
 Twitter: @mgrzejszczak
 
 Blog: https://toomuchcoding.com
@@ -125,7 +127,6 @@ Let's summarize what we've seen so far
 
 Links:
 
-- Twitter: @mgrzejszczak
 - Teahouse: https://github.com/jonatan-ivanov/teahouse (`2024-marcin` branch)
 - Live coding: https://github.com/marcingrzejszczak/Is-your-JVM-app-flying-blind
 
