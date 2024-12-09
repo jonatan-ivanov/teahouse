@@ -66,6 +66,7 @@ Let's summarize what we've seen so far
 - We've got an alert about latency
 - Metrics confirm that there's a problem (metrics)
 - From metrics we jump to traces (metrics --exemplars--> tracing)
+- Metrics and traces share same tags - we can check metrics for given trace (traces --same tags --> metrics)
 - Comparing 2 traces - latency is there
 - Datasource metrics confirm latency
 - Disable ToxiProxy
@@ -117,6 +118,7 @@ Let's summarize what we've seen so far
 - Spring projects use Micrometer Observation to instrument code
 - Spring Boot configures Micrometer Observation when actuator on the classpath
 - Micrometer Observation is used by Micrometer Core (metrics) and Micrometer Tracing (tracing)
+- We instrument once using same subset of tags for all signals
 - Spring Boot sets everything up when on classpath
 
 == Thank you!
