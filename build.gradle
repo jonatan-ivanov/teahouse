@@ -1,9 +1,9 @@
 ext.buildTime = new Date().toInstant()
 
 buildscript {
-    ext.springBootVersion = 'latest.release'
-    ext.springCloudVersion = 'latest.release'
-    ext.springDataVersion = 'latest.release'
+    ext.springBootVersion = '3.+'
+    ext.springCloudVersion = '2024.+'
+    ext.springDataVersion = '2024.+'
 
     configurations.classpath {
         resolutionStrategy.activateDependencyLocking()
@@ -13,9 +13,9 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath 'org.ajoberstar.grgit:grgit-gradle:latest.release'
-        classpath 'com.gorylenko.gradle-git-properties:gradle-git-properties:latest.release'
-        classpath 'org.cyclonedx:cyclonedx-gradle-plugin:latest.release'
+        classpath 'org.ajoberstar.grgit:grgit-gradle:5.+'
+        classpath 'com.gorylenko.gradle-git-properties:gradle-git-properties:2.+'
+        classpath 'org.cyclonedx:cyclonedx-gradle-plugin:2.+'
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
     }
 }

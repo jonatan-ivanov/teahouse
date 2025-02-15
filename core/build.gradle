@@ -6,7 +6,7 @@ dependencies {
     implementation 'org.slf4j:slf4j-api'
     implementation 'org.apache.commons:commons-lang3'
     implementation 'io.github.openfeign:feign-micrometer'
-    implementation('ch.qos.logback.access:tomcat:latest.release') {
+    implementation('ch.qos.logback.access:logback-access-tomcat:latest.release') {
         exclude group: 'org.apache.tomcat'
         exclude group: 'jakarta.servlet'
     }

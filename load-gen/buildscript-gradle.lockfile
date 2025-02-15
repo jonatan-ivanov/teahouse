@@ -1,17 +1,17 @@
 # This is a Gradle generated file for dependency locking.
 # Manual edits can break the build and are not advised.
 # This file is expected to be part of source control.
-com.fasterxml.jackson.core:jackson-annotations:2.18.1=classpath
-com.fasterxml.jackson.core:jackson-core:2.18.1=classpath
-com.fasterxml.jackson.core:jackson-databind:2.18.1=classpath
-com.fasterxml.jackson:jackson-bom:2.18.1=classpath
-com.github.spotbugs:spotbugs-annotations:4.8.6=classpath
+com.fasterxml.jackson.core:jackson-annotations:2.18.2=classpath
+com.fasterxml.jackson.core:jackson-core:2.18.2=classpath
+com.fasterxml.jackson.core:jackson-databind:2.18.2=classpath
+com.fasterxml.jackson:jackson-bom:2.18.2=classpath
+com.github.spotbugs:spotbugs-annotations:4.9.0=classpath
 com.google.code.findbugs:jsr305:3.0.2=classpath
 com.typesafe:config:1.4.3=classpath
-gradle.plugin.io.gatling.gradle:gatling-gradle-plugin:3.13.1=classpath
+gradle.plugin.io.gatling.gradle:gatling-gradle-plugin:3.13.4=classpath
 io.gatling:gatling-asm-shaded:9.7.1=classpath
-io.gatling:gatling-enterprise-plugin-commons:1.10.0=classpath
+io.gatling:gatling-enterprise-plugin-commons:1.15.0=classpath
 io.gatling:gatling-scanner:1.6.4=classpath
-io.gatling:gatling-shared-cli:0.0.3=classpath
+io.gatling:gatling-shared-cli:0.0.6=classpath
 org.codehaus.plexus:plexus-utils:4.0.2=classpath
 empty=
