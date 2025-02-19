@@ -1,5 +1,9 @@
 apply from: "$rootDir/gradle/spring-boot.gradle"
 
+configurations {
+    adoc
+}
+
 dependencies {
     implementation project(':water-service:water-api')
     implementation project(':tealeaf-service:tealeaf-api')
@@ -24,4 +28,13 @@ dependencies {
     implementation 'org.zalando:logbook-okhttp:latest.release'
 
     runtimeOnly 'com.github.loki4j:loki-logback-appender:latest.release'
+
+    adoc 'io.micrometer:micrometer-docs-generator:1.+'
+}
+
+tasks.register('asciidoctor', JavaExec) {
+    mainClass = 'io.micrometer.docs.DocsGeneratorCommand'
+    classpath configurations.adoc
+    // input folder, inclusion pattern, output folder
+    args projectDir.path, '.*', project.layout.buildDirectory.dir('asciidoctor').get().asFile.path
 }
