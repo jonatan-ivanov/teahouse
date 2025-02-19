@@ -8,4 +8,6 @@ out/
 *.ipr
 .vscode/
 
+tea-service/docs/index.html
+
 logs/
