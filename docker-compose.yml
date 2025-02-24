@@ -39,7 +39,8 @@ services:
         image: buckle/toxiproxy-frontend:0.10 # https://hub.docker.com/r/buckle/toxiproxy-frontend
         extra_hosts: ['host.docker.internal:host-gateway']
         environment:
-            TOXIPROXY_URL: http://host.docker.internal:8474
+            - TOXIPROXY_URL=http://host.docker.internal:8474
+            - SPRING_AUTOCONFIGURE_EXCLUDE=org.springframework.boot.actuate.autoconfigure.metrics.SystemMetricsAutoConfiguration,org.springframework.boot.actuate.autoconfigure.metrics.web.tomcat.TomcatMetricsAutoConfiguration
         depends_on:
             - toxiproxy
         ports:
