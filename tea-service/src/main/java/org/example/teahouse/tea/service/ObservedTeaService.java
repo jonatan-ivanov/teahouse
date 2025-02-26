@@ -34,7 +34,8 @@ public class ObservedTeaService implements TeaService {
 
 //        return Observation.createNotStarted(
 //            customConvention,
-//            DEFAULT_CONVENTION, () -> new MakeTeaContext(name, size),
+//            DEFAULT_CONVENTION,
+//            () -> new MakeTeaContext(name, size),
 //            registry)
 //            .observe(() -> delegate.make(name, size));
 
