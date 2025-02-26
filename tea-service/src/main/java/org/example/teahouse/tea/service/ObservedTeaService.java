@@ -28,8 +28,8 @@ public class ObservedTeaService implements TeaService {
     @Override
     public TeaResponse make(String name, String size) {
 //        return Observation.createNotStarted("make.tea", registry)
-//            .lowCardinalityKeyValue("name", name)
-//            .lowCardinalityKeyValue("size", size)
+//            .lowCardinalityKeyValue("tea.name", name)
+//            .lowCardinalityKeyValue("water.size", size)
 //            .observe(() -> delegate.make(name, size));
 
 //        return Observation.createNotStarted(
