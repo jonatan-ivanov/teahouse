@@ -47,8 +47,8 @@ function renderTea(tea) {
 }
 
 function renderErrorResponse(response) {
-    if (response.title) {
-        renderErrorMessage(response.title);
+    if (response.status && response.title) {
+        renderErrorMessage(`HTTP ${response.status}: ${response.title}`);
     }
     else if (response.error) {
         renderErrorMessage(response.error);
