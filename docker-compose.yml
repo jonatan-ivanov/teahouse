@@ -1,8 +1,7 @@
 services:
     mysql:
         container_name: mysql
-        image: mysql:8.4.2 # https://hub.docker.com/_/mysql
-        command: --mysql_native_password=on
+        image: mysql:9.3.0 # https://hub.docker.com/_/mysql
         extra_hosts: ['host.docker.internal:host-gateway']
         environment:
             MYSQL_ROOT_PASSWORD: password
@@ -13,7 +12,7 @@ services:
             - "3306:3306"
     adminer:
         container_name: adminer
-        image: adminer:4.8.1-standalone # https://hub.docker.com/_/adminer
+        image: adminer:5.3.0-standalone # https://hub.docker.com/_/adminer
         extra_hosts: ['host.docker.internal:host-gateway']
         environment:
             ADMINER_DEFAULT_SERVER: mysql
