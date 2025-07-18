@@ -22,7 +22,7 @@ services:
             - "8888:8080"
     toxiproxy:
         container_name: toxiproxy
-        image: ghcr.io/shopify/toxiproxy:2.9.0 # https://github.com/shopify/toxiproxy/pkgs/container/toxiproxy
+        image: ghcr.io/shopify/toxiproxy:2.12.0 # https://github.com/shopify/toxiproxy/pkgs/container/toxiproxy
         extra_hosts: ['host.docker.internal:host-gateway']
         command: -host=0.0.0.0 -config /config/toxiproxy.json -proxy-metrics -runtime-metrics
         depends_on:
@@ -107,7 +107,7 @@ services:
             - "3100:3100"
     maildev:
         container_name: maildev
-        image: maildev/maildev:2.1.0 # https://hub.docker.com/r/maildev/maildev/tags
+        image: maildev/maildev:2.2.1 # https://hub.docker.com/r/maildev/maildev/tags
         extra_hosts: [ 'host.docker.internal:host-gateway' ]
         ports:
             - "3001:1080"
