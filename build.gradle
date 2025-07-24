@@ -3,9 +3,9 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath 'org.ajoberstar.grgit:grgit-gradle:latest.release'
-        classpath 'com.gorylenko.gradle-git-properties:gradle-git-properties:latest.release'
-        classpath 'org.cyclonedx:cyclonedx-gradle-plugin:latest.release'
+        classpath 'org.ajoberstar.grgit:grgit-gradle:5.+'
+        classpath 'com.gorylenko.gradle-git-properties:gradle-git-properties:2.+'
+        classpath 'org.cyclonedx:cyclonedx-gradle-plugin:2.+'
     }
 }
 
@@ -47,21 +47,19 @@ subprojects {
                 dependencies.add(conf, platform(libs.springBoot))
                 dependencies.add(conf, platform(libs.springCloud))
                 dependencies.add(conf, platform(libs.springData))
-                dependencies.add(conf, platform('org.zalando:logbook-bom:latest.release'))
             }
             testImplementation platform('org.junit:junit-bom:latest.release')
 
             annotationProcessor 'org.projectlombok:lombok'
             compileOnly 'org.projectlombok:lombok'
 
-            testImplementation 'org.junit.jupiter:junit-jupiter-api'
-            testImplementation 'org.junit.jupiter:junit-jupiter-params'
+            testImplementation 'org.junit.jupiter:junit-jupiter'
             testImplementation 'io.rest-assured:rest-assured'
-            testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+            testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
         }
 
         java {
-            toolchain { languageVersion = JavaLanguageVersion.of(23) }
+            toolchain { languageVersion = JavaLanguageVersion.of(24) }
         }
 
         jar.manifest.attributes(

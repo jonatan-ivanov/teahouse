@@ -1,6 +1,6 @@
 package org.example.teahouse.core.log.access;
 
-import ch.qos.logback.access.tomcat.LogbackValve;
+//import ch.qos.logback.access.tomcat.LogbackValve;
 import org.apache.catalina.Context;
 import org.apache.catalina.Valve;
 
@@ -20,9 +20,9 @@ public class AccessLogConfig {
     }
 
     private void tomcatContextCustomizer(Context context) {
-        LogbackValve logbackValve = new LogbackValve();
-        logbackValve.setAsyncSupported(true);
-        logbackValve.setFilename("logback-access.xml");
-        context.getPipeline().addValve(logbackValve);
+//        LogbackValve logbackValve = new LogbackValve();
+//        logbackValve.setAsyncSupported(true);
+//        logbackValve.setFilename("logback-access.xml");
+//        context.getPipeline().addValve(logbackValve);
     }
 }

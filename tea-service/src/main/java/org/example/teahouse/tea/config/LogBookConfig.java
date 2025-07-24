@@ -7,9 +7,9 @@ import org.zalando.logbook.okhttp.LogbookInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class LogBookConfig {
-    @Bean
+//    @Bean
     public OkHttpClient.Builder okHttpClientBuilder(Logbook logbook) {
         return new OkHttpClient.Builder()
             .addNetworkInterceptor(new LogbookInterceptor(logbook));

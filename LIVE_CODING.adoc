@@ -4,7 +4,7 @@
 
 == About me
 
-Whoami: Marcin Grzejszczak, Java Champion, developer @ Spring team (Broadcom)
+Whoami: Marcin Grzejszczak, Java Champion, developer @ Spring team
 
 Mastodon: toomuchcoding@fosstodon.org
 

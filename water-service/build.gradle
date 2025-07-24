@@ -15,9 +15,7 @@ dependencies {
 
     implementation libs.springDoc
 
-   implementation 'org.zalando:logbook-spring-boot-starter'
-
-    runtimeOnly 'com.github.loki4j:loki-logback-appender:latest.release'
+    runtimeOnly 'com.github.loki4j:loki-logback-appender:1.+'
 
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'mysql:mysql-connector-java:latest.release'

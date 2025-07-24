@@ -1,14 +1,14 @@
 [versions]
-datasourceMicrometerSpringBoot = "1.0.6"
+datasourceMicrometerSpringBoot = "1.1.2"
 jolokia = "1.7.2"
 logbackTomcat = "2.0.3"
 micrometerDocsVersion = "1.0.4"
-springBoot = '3.4.0'
-springBootAdmin = "3.4.1"
-springCloud = '2024.0.0'
-springData = '2024.1.0'
-springDoc = "2.7.0"
-vaadin = "24.5.7"
+springBoot = '3.5.4'
+springBootAdmin = "3.5.1"
+springCloud = '2025.0.0'
+springData = '2025.0.2'
+springDoc = "2.8.9"
+vaadin = "24.8.4"
 
 [libraries]
 datasourceMicrometerSpringBoot = { module = "net.ttddyy.observation:datasource-micrometer-spring-boot", version.ref = "datasourceMicrometerSpringBoot" }

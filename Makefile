@@ -14,7 +14,7 @@ chaos:
 	#docker exec toxiproxy /toxiproxy-cli toxic add --toxicName tail-latency --type latency --downstream --toxicity 0.005 --attribute latency=150 --attribute jitter=0 water-db
 
 big-chaos:
-	docker exec toxiproxy /toxiproxy-cli toxic add --toxicName base-latency --type latency --downstream --toxicity 1.0 --attribute latency=200 --attribute jitter=0 water-db
+	docker exec toxiproxy /toxiproxy-cli toxic add --toxicName base-latency --type latency --downstream --toxicity 1.0 --attribute latency=300 --attribute jitter=0 water-db
 
 order:
 	docker exec toxiproxy /toxiproxy-cli toxic remove --toxicName base-latency water-db

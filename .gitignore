@@ -8,6 +8,8 @@ out/
 *.ipr
 .vscode/
 
+tea-service/docs/index.html
+
 logs/
 LIVE_CODING.html
 frontend

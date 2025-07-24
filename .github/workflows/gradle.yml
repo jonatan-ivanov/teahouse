@@ -1,26 +1,40 @@
-# This workflow will build a Java project with Gradle
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
-
 name: Build
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'jonatan-ivanov' }}
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-java@v4
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Setup Java
+      uses: actions/setup-java@v4
       with:
         distribution: 'liberica'
         java-version: |
-          23
-          21
+          24
         cache: 'gradle'
         check-latest: true
-    - name: Validate Gradle wrapper
-      uses: gradle/actions/wrapper-validation@v3
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v4
+    - name: Build Info
+      shell: bash
+      run: |
+        echo 'Triggered by: ${{ github.event_name }}'
+        echo 'Ref type: ${{ github.ref_type }}'
+        echo 'Ref name: ${{ github.ref_name }}'
+        echo 'Ref: ${{ github.ref }}'
+        echo 'Commit: ${{ github.sha }}'
+        ./gradlew --version
     - name: Build with Gradle
-      run: ./gradlew build --no-daemon
+      shell: bash
+      run: ./gradlew build

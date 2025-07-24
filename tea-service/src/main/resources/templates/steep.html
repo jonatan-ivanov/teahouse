@@ -10,7 +10,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>Let's make some Tea!</h1>
+        <div class="row mt-2">
+            <h1 class="col col-4">Let's make some Tea!</h1>
+            <img class="col col-1" src="https://spring.io/img/spring.svg" />
+        </div>
         <div class="row mt-2">
             <div class="col col-2 form-floating">
                 <select id="tealeaf-selector" class="form-select" aria-label="Select tealeaf" required>
@@ -47,7 +50,7 @@
                 </ul>
             </div>
         </div>
-        <div id="alert-container" class="m-5 alert alert-danger" role="alert" hidden></div>
+        <div id="alert-container" class="m-5 alert alert-danger text-center" role="alert" hidden></div>
     </div>
     <script src="/assets/steep.js"></script>
 </body>

@@ -3,6 +3,7 @@ server:
 distributor:
   receivers:
     zipkin:
+      endpoint: "tempo:9411"
 storage:
   trace:
     backend: local
