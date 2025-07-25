@@ -1,30 +1,28 @@
-= Is your JVM app flying blind? Unmask hidden issues with Observability superpowers!
+= Observability of your Application
 
 // ADD MONGODB RECORDS!!!!!!!!!!!!!!
 
 == About me
 
-Whoami: Marcin Grzejszczak, Java Champion, developer @ Spring team
+*Whoami*:
 
-Mastodon: toomuchcoding@fosstodon.org
+* Marcin Grzejszczak,
+* Java Champion,
+* Maintainer of Spring Cloud / Micrometer projects
+* Over 150 presentations and workshops in 16 countries over a decade
+* Author of mockito books, video courses (https://smarttesting.pl)
+* Mentoring, consultations
+* Owner of https://iurista.org
 
-Bluesky: toomuchcoding.com
+*Contact*:
 
-Twitter: @mgrzejszczak
+* Bluesky: toomuchcoding.com
+* Twitter: @mgrzejszczak
+* Mastodon: toomuchcoding@fosstodon.org
+* Blog: https://toomuchcoding.com
+* Email: contact@toomuchcoding.com
 
-Blog: https://toomuchcoding.com
-
-== Poll
-
-Poor man's version poll:
-
-* Observability in production?
-* Spring Boot 3?
-* Micrometer?
-* Prometheus?
-* OpenTelemetry?
-
-=== What is observability?
+== What is observability?
 
 "How well we can understand the internals of a system based on its outputs"
 
