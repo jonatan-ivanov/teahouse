@@ -38,3 +38,9 @@ tasks.register('asciidoctor', JavaExec) {
     // input folder, inclusion pattern, output folder
     args projectDir.path, '.*', project.layout.buildDirectory.dir('asciidoctor').get().asFile.path
 }
+
+bootRun {
+    jvmArgs = [
+        "-XX:StartFlightRecording=filename=tea.jfr,duration=60s"
+    ]
+}

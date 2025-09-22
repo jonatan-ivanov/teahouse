@@ -5,7 +5,6 @@
     <property scope="local" name="payloadFileName" value="${spring.application.home:-.}/logs/water-service.payload.log" />
     <springProperty scope="context" name="appName" source="spring.application.name" />
     <springProperty scope="context" name="orgName" source="spring.application.org" />
-
     <appender name="PAYLOAD_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder>
             <pattern>${FILE_LOG_PATTERN}</pattern>
@@ -37,7 +36,15 @@
     <logger name="org.zalando.logbook.Logbook" level="ALL" additivity="false">
         <appender-ref ref="PAYLOAD_FILE" />
     </logger>
-
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>${CONSOLE_LOG_THRESHOLD}</level>
+        </filter>
+        <encoder class="org.springframework.boot.logging.logback.StructuredLogEncoder">
+            <format>${CONSOLE_LOG_STRUCTURED_FORMAT}</format>
+            <charset>${CONSOLE_LOG_CHARSET}</charset>
+        </encoder>
+    </appender>
     <root level="INFO">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="FILE" />

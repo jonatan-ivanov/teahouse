@@ -1,9 +1,8 @@
 package org.example.teahouse.tea.service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.XSlf4j;
 import org.example.teahouse.tea.api.TeaResponse;
 import org.example.teahouse.tea.api.Tealeaf;
 import org.example.teahouse.tea.api.Water;
@@ -13,13 +12,16 @@ import org.example.teahouse.tealeaf.api.SimpleTealeafModel;
 import org.example.teahouse.tealeaf.api.TealeafModel;
 import org.example.teahouse.water.api.SimpleWaterModel;
 import org.example.teahouse.water.api.WaterModel;
-
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.PagedModel;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 @RequiredArgsConstructor
-public class DefaultTeaService implements TeaService{
+@Slf4j
+public class DefaultTeaService implements TeaService {
     private final WaterClient waterClient;
     private final TealeafClient tealeafClient;
 
@@ -28,7 +30,7 @@ public class DefaultTeaService implements TeaService{
         WaterModel waterModel = waterClient.findBySize(size);
         TealeafModel tealeafModel = tealeafClient.findByName(name);
 
-        return TeaResponse.builder()
+        var build = TeaResponse.builder()
             .water(
                 Water.builder()
                     .amount(waterModel.getAmount())
@@ -44,6 +46,12 @@ public class DefaultTeaService implements TeaService{
             )
             .steepingTime(tealeafModel.getSuggestedSteepingTime())
             .build();
+        log.atInfo()
+            .addKeyValue("teaType", build.getTealeaf().getType())
+            .addKeyValue("teaName", build.getTealeaf().getName())
+            .addKeyValue("waterUsed", build.getWater().getAmount())
+            .log("Tea served!");
+        return build;
     }
 
     @Override
