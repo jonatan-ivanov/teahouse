@@ -1,10 +1,7 @@
 package org.example.teahouse.tea;
 
 import io.micrometer.observation.ObservationRegistry;
-import org.example.teahouse.tea.service.DefaultTeaService;
-import org.example.teahouse.tea.service.JmxMonitoredTeaService;
-import org.example.teahouse.tea.service.MakeTeaConvention;
-import org.example.teahouse.tea.service.TeaService;
+import org.example.teahouse.tea.service.*;
 import org.example.teahouse.tea.tealeaf.TealeafClient;
 import org.example.teahouse.tea.water.WaterClient;
 import org.springframework.beans.factory.ObjectProvider;
@@ -19,7 +16,7 @@ import org.springframework.context.annotation.PropertySource;
 @EnableFeignClients
 @SpringBootApplication
 @PropertySource("classpath:build.properties")
-@ComponentScan(basePackages = { "org.example.teahouse" })
+@ComponentScan(basePackages = {"org.example.teahouse"})
 public class TeaServiceApplication {
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplication(TeaServiceApplication.class);
@@ -28,8 +25,18 @@ public class TeaServiceApplication {
     }
 
     @Bean
-    TeaService teaService(WaterClient waterClient, TealeafClient tealeafClient, ObservationRegistry registry, ObjectProvider<MakeTeaConvention> customConvention) {
-//        return new ObservedTeaService(new DefaultTeaService(waterClient, tealeafClient), registry, customConvention.getIfAvailable());
+    TeaService teaService(ObservedTeaService observedTeaService) {
+        return new JfrMonitoredTeaService(observedTeaService);
+    }
+
+
+    @Bean
+    ObservedTeaService observedTeaService(JmxMonitoredTeaService jmxMonitoredTeaService, ObservationRegistry registry, ObjectProvider<MakeTeaConvention> customConvention) {
+        return new ObservedTeaService(jmxMonitoredTeaService, registry, customConvention.getIfAvailable());
+    }
+
+    @Bean
+    private static JmxMonitoredTeaService jmxMonitoredTeaService(WaterClient waterClient, TealeafClient tealeafClient) {
         return new JmxMonitoredTeaService(new DefaultTeaService(waterClient, tealeafClient));
     }
 }
