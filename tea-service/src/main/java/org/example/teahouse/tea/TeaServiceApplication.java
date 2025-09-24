@@ -36,7 +36,7 @@ public class TeaServiceApplication {
     }
 
     @Bean
-    private static JmxMonitoredTeaService jmxMonitoredTeaService(WaterClient waterClient, TealeafClient tealeafClient) {
+    JmxMonitoredTeaService jmxMonitoredTeaService(WaterClient waterClient, TealeafClient tealeafClient) {
         return new JmxMonitoredTeaService(new DefaultTeaService(waterClient, tealeafClient));
     }
 }
