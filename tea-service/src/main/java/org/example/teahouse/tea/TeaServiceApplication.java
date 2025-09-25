@@ -1,10 +1,11 @@
 package org.example.teahouse.tea;
 
+import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.observation.ObservationRegistry;
+import io.micrometer.tracing.Tracer;
 import org.example.teahouse.tea.service.*;
 import org.example.teahouse.tea.tealeaf.TealeafClient;
 import org.example.teahouse.tea.water.WaterClient;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.metrics.buffering.BufferingApplicationStartup;
@@ -31,8 +32,8 @@ public class TeaServiceApplication {
 
 
     @Bean
-    ObservedTeaService observedTeaService(JmxMonitoredTeaService jmxMonitoredTeaService, ObservationRegistry registry, ObjectProvider<MakeTeaConvention> customConvention) {
-        return new ObservedTeaService(jmxMonitoredTeaService, registry, customConvention.getIfAvailable());
+    ObservedTeaService observedTeaService(JmxMonitoredTeaService jmxMonitoredTeaService, MeterRegistry meterRegistry, Tracer tracer, ObservationRegistry observationRegistry) {
+        return new ObservedTeaService(jmxMonitoredTeaService, meterRegistry, tracer, observationRegistry);
     }
 
     @Bean

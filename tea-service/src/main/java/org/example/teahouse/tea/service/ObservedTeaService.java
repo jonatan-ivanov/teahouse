@@ -1,50 +1,35 @@
 package org.example.teahouse.tea.service;
 
-import java.util.Collection;
-
-import io.micrometer.common.lang.Nullable;
+import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.observation.ObservationRegistry;
+import io.micrometer.tracing.Tracer;
 import org.example.teahouse.tea.api.TeaResponse;
 import org.example.teahouse.tealeaf.api.SimpleTealeafModel;
 import org.example.teahouse.water.api.SimpleWaterModel;
 
+import java.util.Collection;
+import java.util.concurrent.atomic.AtomicReference;
+
 public class ObservedTeaService implements TeaService {
-    private final static MakeTeaConvention DEFAULT_CONVENTION = new DefaultMakeTeaConvention();
     private final TeaService delegate;
-    private final ObservationRegistry registry;
-    @Nullable
-    private final MakeTeaConvention customConvention;
+    private final MeterRegistry meterRegistry;
+    private final Tracer tracer;
+    private final ObservationRegistry observationRegistry;
 
-    public ObservedTeaService(TeaService delegate, ObservationRegistry registry) {
-        this(delegate, registry, null);
-    }
+    private final AtomicReference<TeaResponse> lastResponse = new AtomicReference<>();
 
-    public ObservedTeaService(TeaService delegate, ObservationRegistry registry, @Nullable MakeTeaConvention customConvention) {
+    public ObservedTeaService(TeaService delegate, MeterRegistry meterRegistry, Tracer tracer, ObservationRegistry observationRegistry) {
         this.delegate = delegate;
-        this.registry = registry;
-        this.customConvention = customConvention;
+        this.meterRegistry = meterRegistry;
+        this.tracer = tracer;
+        this.observationRegistry = observationRegistry;
     }
 
     @Override
     public TeaResponse make(String name, String size) {
-//        return Observation.createNotStarted("make.tea", registry)
-//            .lowCardinalityKeyValue("tea.name", name)
-//            .lowCardinalityKeyValue("water.size", size)
-//            .observe(() -> delegate.make(name, size));
-
-//        return Observation.createNotStarted(
-//            customConvention,
-//            DEFAULT_CONVENTION,
-//            () -> new MakeTeaContext(name, size),
-//            registry)
-//            .observe(() -> delegate.make(name, size));
-
-        return MakeTeaDocumentation.MAKE_TEA.observation(
-            customConvention,
-            DEFAULT_CONVENTION,
-            () -> new MakeTeaContext(name, size),
-            registry)
-            .observe(() -> delegate.make(name, size));
+        TeaResponse response = delegate.make(name, size);
+        lastResponse.set(response);
+        return response;
     }
 
     @Override
