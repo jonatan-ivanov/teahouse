@@ -50,12 +50,12 @@ public class JmxMonitoredTeaService implements TeaService {
         if (response == null) {
             return "No tea made yet";
         }
-        final var water = response.getWater();
-        final var tealeaf = response.getTealeaf();
-        return (water != null ? water.getAmount() : "?") + " " +
-               (tealeaf != null ? tealeaf.getName() : "?") +
-               ", steeping time: " + response.getSteepingTime() +
-               (water != null && water.getTemperature() != null ? ", water temp: " + water.getTemperature() : "");
+        final var water = response.water();
+        final var tealeaf = response.tealeaf();
+        return (water != null ? water.amount() : "?") + " " +
+               (tealeaf != null ? tealeaf.name() : "?") +
+               ", steeping time: " + response.steepingTime() +
+               (water != null && water.temperature() != null ? ", water temp: " + water.temperature() : "");
     }
 
 }

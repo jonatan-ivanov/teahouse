@@ -2,7 +2,6 @@ package org.example.teahouse.tea.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lombok.extern.slf4j.XSlf4j;
 import org.example.teahouse.tea.api.TeaResponse;
 import org.example.teahouse.tea.api.Tealeaf;
 import org.example.teahouse.tea.api.Water;
@@ -47,9 +46,9 @@ public class DefaultTeaService implements TeaService {
             .steepingTime(tealeafModel.getSuggestedSteepingTime())
             .build();
         log.atInfo()
-            .addKeyValue("teaType", build.getTealeaf().getType())
-            .addKeyValue("teaName", build.getTealeaf().getName())
-            .addKeyValue("waterUsed", build.getWater().getAmount())
+            .addKeyValue("teaType", build.tealeaf().type())
+            .addKeyValue("teaName", build.tealeaf().name())
+            .addKeyValue("waterUsed", build.water().amount())
             .log("Tea served!");
         return build;
     }
