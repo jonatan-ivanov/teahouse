@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run All Services" type="CompoundRunConfigurationType">
+    <toRun name="EurekaApplication" type="SpringBootApplicationConfigurationType" />
+    <toRun name="SbaApplication" type="SpringBootApplicationConfigurationType" />
+    <toRun name="TeaServiceApplication" type="SpringBootApplicationConfigurationType" />
+    <toRun name="TealeafServiceApplication" type="SpringBootApplicationConfigurationType" />
+    <toRun name="WaterServiceApplication" type="SpringBootApplicationConfigurationType" />
+    <method v="2" />
+  </configuration>
+</component>
