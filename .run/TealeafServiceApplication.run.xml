@@ -1,5 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="TealeafServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <option name="ACTIVE_PROFILES" value="local, loki" />
     <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
     <module name="teahouse.tealeaf-service.main" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.teahouse.tealeaf.TealeafServiceApplication" />
