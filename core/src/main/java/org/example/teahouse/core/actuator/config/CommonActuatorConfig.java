@@ -8,6 +8,9 @@ import io.micrometer.observation.ObservationPredicate;
 import net.ttddyy.observation.tracing.DataSourceBaseContext;
 import org.example.teahouse.core.actuator.info.RuntimeInfoContributor;
 
+import org.example.teahouse.core.observation.jfr.ContextToEventMapper;
+import org.example.teahouse.core.observation.jfr.JfrObservationHandler;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.actuate.info.InfoContributor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +26,14 @@ import static org.springframework.web.context.request.RequestAttributes.SCOPE_RE
 
 @Configuration(proxyBeanMethods = false)
 public class CommonActuatorConfig {
+
+    @Bean
+    JfrObservationHandler jfrObservationHandler(ObjectProvider<ContextToEventMapper<?>> mappers) {
+        JfrObservationHandler handler = new JfrObservationHandler();
+        mappers.forEach(handler::register);
+        return handler;
+    }
+
     @Bean
     InfoContributor runtimeInfoContributor(Environment environment) {
         return new RuntimeInfoContributor(environment);

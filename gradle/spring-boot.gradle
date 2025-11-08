@@ -40,6 +40,7 @@ def commonjvmArgs = [
     '-XX:+HeapDumpOnOutOfMemoryError',
     "-XX:HeapDumpPath=$rootDir/logs",
     "-Xlog:gc*:file=$rootDir/logs/$project.name-gc.log:time,uptime,pid,tid,level,tags:filecount=5,filesize=5M",
+    "-XX:StartFlightRecording=name=${project.name}-recording,defaultrecording=true,delay=5s,maxsize=16M,maxage=30m",
 
     '-Djava.security.egd=file:/dev/./urandom',
     '-Duser.timezone=UTC',

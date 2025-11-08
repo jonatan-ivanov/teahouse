@@ -1,13 +1,9 @@
 package org.example.teahouse.tea;
 
 import io.micrometer.observation.ObservationRegistry;
-import org.example.teahouse.tea.service.DefaultTeaService;
-import org.example.teahouse.tea.service.MakeTeaConvention;
-import org.example.teahouse.tea.service.ObservedTeaService;
-import org.example.teahouse.tea.service.TeaService;
+import org.example.teahouse.tea.service.*;
 import org.example.teahouse.tea.tealeaf.TealeafClient;
 import org.example.teahouse.tea.water.WaterClient;
-
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,5 +27,10 @@ public class TeaServiceApplication {
     @Bean
     TeaService teaService(WaterClient waterClient, TealeafClient tealeafClient, ObservationRegistry registry, ObjectProvider<MakeTeaConvention> customConvention) {
         return new ObservedTeaService(new DefaultTeaService(waterClient, tealeafClient), registry, customConvention.getIfAvailable());
+    }
+
+    @Bean
+    MakeTeaContextToEventMapper makeTeaContextToEventMapper() {
+        return new MakeTeaContextToEventMapper();
     }
 }
