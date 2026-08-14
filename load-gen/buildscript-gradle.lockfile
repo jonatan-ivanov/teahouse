@@ -1,18 +1,20 @@
 # This is a Gradle generated file for dependency locking.
 # Manual edits can break the build and are not advised.
 # This file is expected to be part of source control.
-com.fasterxml.jackson.core:jackson-annotations:2.21=classpath
-com.fasterxml.jackson.core:jackson-core:2.21.3=classpath
-com.fasterxml.jackson.core:jackson-databind:2.21.3=classpath
-com.fasterxml.jackson:jackson-bom:2.21.3=classpath
+# To regenerate this file, run: ./gradlew dependencies --write-locks
+com.fasterxml.jackson.core:jackson-annotations:2.22=classpath
+com.fasterxml.jackson.core:jackson-core:2.22.1=classpath
+com.fasterxml.jackson.core:jackson-databind:2.22.1=classpath
+com.fasterxml.jackson:jackson-bom:2.22.1=classpath
 com.github.spotbugs:spotbugs-annotations:4.9.0=classpath
 com.google.code.findbugs:jsr305:3.0.2=classpath
-com.typesafe:config:1.4.7=classpath
-gradle.plugin.io.gatling.gradle:gatling-gradle-plugin:3.15.0.2=classpath
-io.gatling:gatling-asm-shaded:9.9.1=classpath
-io.gatling:gatling-enterprise-plugin-commons:1.24.2=classpath
-io.gatling:gatling-scanner:1.6.7=classpath
+com.typesafe:config:1.4.9=classpath
+gradle.plugin.io.gatling.gradle:gatling-gradle-plugin:3.15.1.2=classpath
+io.gatling:gatling-enterprise-plugin-commons:1.25.2=classpath
+io.gatling:gatling-scanner:1.7.0=classpath
 io.gatling:gatling-shared-cli:0.0.6=classpath
 org.codehaus.plexus:plexus-utils:4.0.3=classpath
 org.jspecify:jspecify:1.0.0=classpath
+org.ow2.asm:asm-tree:9.10.1=classpath
+org.ow2.asm:asm:9.10.1=classpath
 empty=
