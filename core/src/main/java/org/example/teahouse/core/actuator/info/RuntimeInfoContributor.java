@@ -9,18 +9,13 @@ import org.springframework.boot.actuate.info.InfoContributor;
 import org.springframework.core.SpringVersion;
 import org.springframework.core.env.Environment;
 
-import java.lang.management.ManagementFactory;
 import java.net.InetAddress;
-import java.time.Instant;
 import java.util.Map;
-
-import static java.time.Duration.between;
 
 @Slf4j
 @RequiredArgsConstructor
 public class RuntimeInfoContributor implements InfoContributor {
     private final Environment environment;
-    private final Instant startTime = Instant.ofEpochMilli(ManagementFactory.getRuntimeMXBean().getStartTime());
 
     @Override
     public void contribute(Builder builder) {
@@ -34,23 +29,7 @@ public class RuntimeInfoContributor implements InfoContributor {
             ImmutableMap.of("activeProfiles", environment.getActiveProfiles())
         );
 
-        builder.withDetail("runtime", ImmutableMap.builder()
-            .put("user", userInfo())
-            .put("network", networkInfo())
-            .put("startTime", startTime)
-            .put("uptime", between(startTime, Instant.now()))
-            .put("heartbeat", Instant.now())
-            .build()
-        );
-    }
-
-    private Map<String, Object> userInfo() {
-        return ImmutableMap.<String, Object>builder()
-            .put("timezone", System.getProperty("user.timezone"))
-            .put("country", System.getProperty("user.country"))
-            .put("language", System.getProperty("user.language"))
-            .put("dir", System.getProperty("user.dir"))
-            .build();
+        builder.withDetail("network", networkInfo());
     }
 
     private Map<String, Object> networkInfo() {
