@@ -20,7 +20,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         distribution: 'liberica'
-        java-version: 26
+        java-version: 27
         cache: 'gradle'
         check-latest: true
     - name: Setup Gradle
