@@ -61,8 +61,8 @@ subprojects {
             }
             testImplementation platform('org.junit:junit-bom:6.+')
 
-            annotationProcessor 'org.projectlombok:lombok'
-            compileOnly 'org.projectlombok:lombok'
+            annotationProcessor 'org.projectlombok:lombok:1.18.48'
+            compileOnly 'org.projectlombok:lombok:1.18.48'
 
             testImplementation 'org.junit.jupiter:junit-jupiter'
             testImplementation 'io.rest-assured:rest-assured:latest.release'
